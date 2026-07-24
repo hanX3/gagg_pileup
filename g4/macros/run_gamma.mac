@@ -1,0 +1,24 @@
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Charged-particle max step limits.
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+
+/run/initialize
+
+# phi20 mm source disk.
+# aimAtGagg=true samples a random target point on the GAGG front face,
+# so the event still has random source point, target point, and incident angle,
+# but the primary is not wasted outside the GAGG.
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+
+/gun/particle gamma
+/gun/energy 661.657 keV
+
+/run/printProgress 1000
+/run/beamOn 1000
