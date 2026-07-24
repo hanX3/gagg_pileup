@@ -1,0 +1,18 @@
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Charged-particle max step limits.
+# These are applied through G4StepLimiterPhysics to charged particles only.
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+
+/gun/particle alpha
+/gun/energy 5.486 MeV
+/gun/position 0 0 0 mm
+/gun/direction 0 0 1
+
+/run/initialize
+/run/beamOn 10
