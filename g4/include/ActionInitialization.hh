@@ -12,7 +12,7 @@ class RootIO;
 class ActionInitialization : public G4VUserActionInitialization
 {
 public:
-  ActionInitialization(DetectorConstruction* detector, ULong64_t random_seed);
+  ActionInitialization(DetectorConstruction* detector, ULong64_t random_seed, const G4String& macro_file_name);
   ~ActionInitialization() override;
 
 public:
@@ -21,6 +21,7 @@ public:
 private:
   DetectorConstruction* detector = nullptr;
   ULong64_t random_seed = 0;
+  G4String macro_file_name;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

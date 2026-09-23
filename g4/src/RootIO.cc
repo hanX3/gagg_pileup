@@ -6,11 +6,94 @@
 #include <fstream>
 #include <sstream>
 #include <cstring>
+#include <algorithm>
+#include <cctype>
 
 #include "G4UnitsTable.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ThreeVector.hh"
 #include "Randomize.hh"
+
+namespace
+{
+  std::string TrimLeft(const std::string& s)
+  {
+    const auto it = std::find_if(s.begin(), s.end(), [](unsigned char ch){
+      return !std::isspace(ch);
+    });
+    return std::string(it, s.end());
+  }
+
+  bool IsSourceEnableOrRateLine(const std::string& line)
+  {
+    const auto trimmed = TrimLeft(line);
+    if(trimmed.empty()) return false;
+    if(trimmed[0] == '#') return false;
+
+    const bool is_source_line = (trimmed.find("/gagg/source/") == 0);
+    const bool is_enable_or_rate =
+      (trimmed.find("/enable") != std::string::npos) ||
+      (trimmed.find("/rateHz") != std::string::npos);
+
+    return is_source_line && is_enable_or_rate;
+  }
+
+  std::string NormalizeSourceConfigLine(const std::string& line)
+  {
+    std::string s = TrimLeft(line);
+
+    const std::string prefix = "/gagg/source/";
+    if(s.find(prefix) == 0){
+      s.erase(0, prefix.size());
+    }
+
+    std::string out;
+    out.reserve(s.size());
+
+    bool last_was_separator = false;
+    for(const auto ch_raw : s){
+      const unsigned char ch = static_cast<unsigned char>(ch_raw);
+      const bool is_separator = (ch_raw == '/') || std::isspace(ch);
+
+      if(is_separator){
+        if(!out.empty() && !last_was_separator){
+          out.push_back('_');
+          last_was_separator = true;
+        }
+      }else{
+        out.push_back(ch_raw);
+        last_was_separator = false;
+      }
+    }
+
+    while(!out.empty() && out.back() == '_'){
+      out.pop_back();
+    }
+
+    return out;
+  }
+
+  std::string Trim(const std::string& s)
+  {
+    const auto first = std::find_if(s.begin(), s.end(), [](unsigned char ch){
+      return !std::isspace(ch);
+    });
+    if(first == s.end()){
+      return "";
+    }
+
+    const auto last = std::find_if(s.rbegin(), s.rend(), [](unsigned char ch){
+      return !std::isspace(ch);
+    }).base();
+    return std::string(first, last);
+  }
+
+  std::string GetMacroCommand(const std::string& line)
+  {
+    const auto comment_pos = line.find('#');
+    return Trim(line.substr(0, comment_pos));
+  }
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 RootIO::RootIO()
@@ -50,6 +133,77 @@ void RootIO::SetStepLimits(G4double gagg_step, G4double mylar_front_step, G4doub
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+void RootIO::SetMacroFile(const G4String& macro_file_name)
+{
+  this->macro_file_name = macro_file_name;
+  run_info_data.macro_file = macro_file_name.c_str();
+
+  if(macro_file_name.empty() || macro_file_name == "interactive"){
+    run_info_data.source_config_tag = "";
+    return;
+  }
+
+  std::ifstream fin(macro_file_name.c_str());
+  if(!fin){
+    run_info_data.source_config_tag = "ERROR_cannot_open_macro_file";
+    return;
+  }
+
+  std::ostringstream tag;
+  std::string line;
+  while(std::getline(fin, line)){
+    if(IsSourceEnableOrRateLine(line)){
+      const auto item = NormalizeSourceConfigLine(line);
+      if(item.empty()) continue;
+
+      if(tag.tellp() > 0){
+        tag << "_";
+      }
+      tag << item;
+    }
+  }
+
+  run_info_data.source_config_tag = tag.str().c_str();
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+void RootIO::AppendRunLog(const std::string& root_file_name) const
+{
+  std::stringstream log_path;
+  log_path << DATAPATH << "/data.log";
+
+  std::ofstream log(log_path.str(), std::ios::app);
+  if(!log){
+    G4cerr << " RootIO:: cannot append to " << log_path.str() << G4endl;
+    return;
+  }
+
+  log << "============================================================\n";
+  log << "root_file: " << root_file_name << "\n";
+  log << "macro_file: " << macro_file_name << "\n";
+  log << "commands:\n";
+
+  if(!macro_file_name.empty() && macro_file_name != "interactive"){
+    std::ifstream macro(macro_file_name.c_str());
+    if(!macro){
+      log << "[cannot open macro file]\n";
+    }else{
+      std::string line;
+      while(std::getline(macro, line)){
+        const auto command = GetMacroCommand(line);
+        if(!command.empty()){
+          log << command << "\n";
+        }
+      }
+    }
+  }else{
+    log << "[interactive session]\n";
+  }
+
+  log << "\n";
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void RootIO::OpenFile()
 {
   time_t t;
@@ -59,9 +213,11 @@ void RootIO::OpenFile()
   sprintf(file_name, "%d%02d%02d_%02dh%02dm%02ds", tt->tm_year+1900, tt->tm_mon+1, tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
   G4cout << "\n----> ROOT file is opened in " << file_name << G4endl;
 
+  std::stringstream root_file_name;
+  root_file_name << "gagg_waveform_" << file_name << ".root";
+
   std::stringstream ss;
-  ss.str("");
-  ss << DATAPATH << "/gagg_waveform_" << file_name << ".root";
+  ss << DATAPATH << "/" << root_file_name.str();
 
   root_file = new TFile(ss.str().c_str(), "RECREATE");
   if(!root_file){
@@ -71,6 +227,8 @@ void RootIO::OpenFile()
     G4cout << " RootIO::" << " successful creating the " << ss.str().c_str() << "  !!!" << G4endl;
   }
 
+  AppendRunLog(root_file_name.str());
+
   // run info
   run_info_tree = new TTree("RunInfo", "run information");
   run_info_tree->Branch("t_length_ps", &run_info_data.t_length_ps, "t_length_ps/i");
@@ -79,6 +237,8 @@ void RootIO::OpenFile()
   run_info_tree->Branch("gagg_max_step_um", &run_info_data.gagg_max_step_um, "gagg_max_step_um/F");
   run_info_tree->Branch("mylar_front_max_step_um", &run_info_data.mylar_front_max_step_um, "mylar_front_max_step_um/F");
   run_info_tree->Branch("mylar_side_max_step_um", &run_info_data.mylar_side_max_step_um, "mylar_side_max_step_um/F");
+  run_info_tree->Branch("macro_file", &run_info_data.macro_file);
+  run_info_tree->Branch("source_config_tag", &run_info_data.source_config_tag);
 
   // waveform event
   waveform_event_tree = new TTree("WaveformEvent", "one entry is one 1 ms waveform event");

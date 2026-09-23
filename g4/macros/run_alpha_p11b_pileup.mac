@@ -1,0 +1,37 @@
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Charged-particle max step limits.
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+
+/run/initialize
+
+# Efficient conditional source: alpha particles are aimed at the GAGG front face.
+# This samples particles entering the detector, not the absolute geometrical efficiency.
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+
+# One Geant4 event = one 1-ms waveform window.
+/gagg/pileup/enable true
+
+# Disable photon-background components.
+/gagg/source/brems/enable false
+/gagg/source/brems/rateHz 0
+
+/gagg/source/c12Capture/enable false
+/gagg/source/c12Capture/rateHz 0
+
+# p-11B alpha source.
+# Fixed effective single-alpha spectrum in Constants.hh:
+#   1/3 primary alpha: E = 3.76 MeV
+#   2/3 secondary alpha from sequential 8Be* decay.
+# The rate is an effective alpha-particle rate toward the detector, not a fusion-reaction rate.
+/gagg/source/alphaP11B/enable true
+/gagg/source/alphaP11B/rateHz 1.0e4
+
+/run/printProgress 1
+/run/beamOn 10

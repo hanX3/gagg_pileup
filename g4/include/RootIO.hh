@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <map>
+#include <string>
 
 #include "TFile.h"
 #include "TTree.h"
@@ -25,6 +26,7 @@ public:
   void SetNEvents(G4int n_events);
   void SetRandomSeed(ULong64_t seed);
   void SetStepLimits(G4double gagg_step, G4double mylar_front_step, G4double mylar_side_step);
+  void SetMacroFile(const G4String& macro_file_name);
 
 // run info
 public:
@@ -40,9 +42,14 @@ public:
 
 // private
 private:
+  void AppendRunLog(const std::string& root_file_name) const;
+
+private:
   RunInfoData run_info_data;
   WaveformEventData waveform_event_data;
   PrimaryPhotonData primary_photon_data;
+
+  G4String macro_file_name;
 
   TFile* root_file = nullptr;
   TTree* run_info_tree = nullptr;

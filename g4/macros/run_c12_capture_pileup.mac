@@ -1,0 +1,37 @@
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Charged-particle max step limits.
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+
+/run/initialize
+
+# Efficient conditional photon source: photons are aimed at the GAGG front face.
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+
+# One Geant4 event = one 1-ms waveform window.
+/gagg/pileup/enable true
+
+# Disable other components.
+/gagg/source/brems/enable false
+/gagg/source/brems/rateHz 0
+/gagg/source/alphaP11B/enable false
+/gagg/source/alphaP11B/rateHz 0
+
+# Enable only the 11B(p,gamma)12C capture/de-excitation photon component.
+# Fixed in Constants.hh:
+#   gamma0      = 16.1 MeV
+#   gamma1      = 11.7 MeV
+#   gamma_star  = 4.439 MeV
+#   gamma0/gamma1 = 4.6% from J. J. He et al., Phys. Rev. C 93, 055804 (2016).
+# This component uses the effective single-photon line-mixture model fixed in code.
+/gagg/source/c12Capture/enable true
+/gagg/source/c12Capture/rateHz 1.0e4
+
+/run/printProgress 1
+/run/beamOn 10

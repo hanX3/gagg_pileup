@@ -70,7 +70,12 @@ int main(int argc, char** argv)
 
   G4cout << "\n----> Random seed = " << random_seed << G4endl;
 
-  run_manager->SetUserInitialization(new ActionInitialization(detector, random_seed));
+  G4String macro_file_name = "interactive";
+  if(argc > 1){
+    macro_file_name = argv[1];
+  }
+
+  run_manager->SetUserInitialization(new ActionInitialization(detector, random_seed, macro_file_name));
 
   auto vis_manager = new G4VisExecutive();
   vis_manager->Initialize();
