@@ -4,6 +4,7 @@
 #include "G4DecayPhysics.hh"
 #include "G4IonPhysics.hh"
 #include "G4OpticalPhysics.hh"
+#include "G4OpticalParameters.hh"
 #include "G4StepLimiterPhysics.hh"
 #include "G4SystemOfUnits.hh"
 
@@ -15,6 +16,10 @@ PhysicsList::PhysicsList()
   RegisterPhysics(new G4EmLivermorePhysics());
   RegisterPhysics(new G4DecayPhysics());
   RegisterPhysics(new G4IonPhysics());
+
+  // Use particle-dependent scintillation yield vectors from the material
+  // properties table, e.g. ELECTRONSCINTILLATIONYIELD and ALPHASCINTILLATIONYIELD.
+  G4OpticalParameters::Instance()->SetScintByParticleType(true);
   RegisterPhysics(new G4OpticalPhysics());
 
   // Applies G4UserLimits/uStepMax to charged particles by default.

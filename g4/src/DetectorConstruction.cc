@@ -2,6 +2,8 @@
 #include "Constants.hh"
 #include "SiPMSD.hh"
 
+#include <vector>
+
 #include "G4Box.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
@@ -13,6 +15,7 @@
 #include "G4LogicalBorderSurface.hh"
 #include "G4SDManager.hh"
 #include "G4SystemOfUnits.hh"
+#include "gagg_birks_yield_curves.inc"
 #include "G4PhysicalConstants.hh"
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
@@ -203,21 +206,77 @@ void DetectorConstruction::ConstructOpticalProperties()
   gagg_mpt->AddProperty("SCINTILLATIONCOMPONENT1", photon_energy, scint_fast, n_entries);
   gagg_mpt->AddProperty("SCINTILLATIONCOMPONENT2", photon_energy, scint_slow, n_entries);
 
-  gagg_mpt->AddConstProperty("SCINTILLATIONYIELD", GAGG_SCINT_YIELD_PER_MEV/MeV);
+  // Particle-dependent cumulative scintillation yield curves.
+  // These vectors are generated externally and included from
+  // src/gagg_birks_yield_curves.inc.  The electron curve is used by
+  // electrons/positrons produced by gamma interactions.  The alpha curve
+  // already includes Birks quenching, so no additional SetBirksConstant()
+  // should be applied to the GAGG material below.
+  // Geant4 11.3.x AddProperty() expects non-const G4double* arrays.
+  // The included tables are static const vectors, so copy them into local
+  // mutable vectors before passing .data() to AddProperty().
+  std::vector<G4double> scint_yield_energy(
+    gaggScintillationEnergy.begin(),
+    gaggScintillationEnergy.end());
+  std::vector<G4double> electron_scint_yield(
+    gaggGammaElectronScintillationYield.begin(),
+    gaggGammaElectronScintillationYield.end());
+  std::vector<G4double> alpha_scint_yield(
+    gaggAlphaScintillationYield.begin(),
+    gaggAlphaScintillationYield.end());
+  std::vector<G4double> ion_scint_yield(
+    gaggIonScintillationYield.begin(),
+    gaggIonScintillationYield.end());
+
+  const G4int n_scint_yield_entries =
+    static_cast<G4int>(scint_yield_energy.size());
+
+  gagg_mpt->AddProperty("ELECTRONSCINTILLATIONYIELD",
+                        scint_yield_energy.data(),
+                        electron_scint_yield.data(),
+                        n_scint_yield_entries);
+  gagg_mpt->AddProperty("ALPHASCINTILLATIONYIELD",
+                        scint_yield_energy.data(),
+                        alpha_scint_yield.data(),
+                        n_scint_yield_entries);
+  // Geant4 uses IONSCINTILLATIONYIELD as the generic light-yield curve for
+  // heavy ions/recoil nuclei such as O16, Al, Ga, and Gd.  The current
+  // generated table uses an O16-derived stopping-power curve as the generic
+  // heavy-ion fallback and exposes it as gaggIonScintillationYield.
+  gagg_mpt->AddProperty("IONSCINTILLATIONYIELD",
+                        scint_yield_energy.data(),
+                        ion_scint_yield.data(),
+                        n_scint_yield_entries);
+
   gagg_mpt->AddConstProperty("RESOLUTIONSCALE", 1.0);
+
+  // Two-component decay constants are common to all particle responses in the
+  // current model.  Particle dependence is applied through the total cumulative
+  // yield curves above and through the component fractions below.
   gagg_mpt->AddConstProperty("SCINTILLATIONTIMECONSTANT1", GAGG_FAST_TIME_NS*ns);
   gagg_mpt->AddConstProperty("SCINTILLATIONTIMECONSTANT2", GAGG_SLOW_TIME_NS*ns);
-  gagg_mpt->AddConstProperty("SCINTILLATIONYIELD1", GAGG_FAST_FRACTION);
-  gagg_mpt->AddConstProperty("SCINTILLATIONYIELD2", GAGG_SLOW_FRACTION);
+
+  // Global fallback component fractions.
+  gagg_mpt->AddConstProperty("SCINTILLATIONYIELD1", GAMMA_ELECTRON_FAST_FRACTION);
+  gagg_mpt->AddConstProperty("SCINTILLATIONYIELD2", GAMMA_ELECTRON_SLOW_FRACTION);
+
+  // Particle-dependent component fractions for Geant4 default scintillation.
+  // Gamma events create scintillation through secondary electrons/positrons,
+  // so their pulse-shape response is controlled by ELECTRONSCINTILLATIONYIELD1/2.
+  gagg_mpt->AddConstProperty("ELECTRONSCINTILLATIONYIELD1", GAMMA_ELECTRON_FAST_FRACTION);
+  gagg_mpt->AddConstProperty("ELECTRONSCINTILLATIONYIELD2", GAMMA_ELECTRON_SLOW_FRACTION);
+  gagg_mpt->AddConstProperty("ALPHASCINTILLATIONYIELD1", ALPHA_FAST_FRACTION);
+  gagg_mpt->AddConstProperty("ALPHASCINTILLATIONYIELD2", ALPHA_SLOW_FRACTION);
+  // Generic heavy-ion/recoil-ion pulse-shape fractions are treated as alpha-like for now.
+  gagg_mpt->AddConstProperty("IONSCINTILLATIONYIELD1", ION_FAST_FRACTION);
+  gagg_mpt->AddConstProperty("IONSCINTILLATIONYIELD2", ION_SLOW_FRACTION);
 
   gagg_material->SetMaterialPropertiesTable(gagg_mpt);
 
-  // Enable Birks-type scintillation quenching in Geant4 optical photon generation.
-  // In the current ROOT scheme, edep_total_MeV is the truth energy and the
-  // optical-photon branches carry the detector optical response.
-  if(gagg_material->GetIonisation()){
-    gagg_material->GetIonisation()->SetBirksConstant(GAGG_BIRKS_CONSTANT_MM_PER_MEV*mm/MeV);
-  }
+  // Do not call SetBirksConstant() here.  The alpha scintillation yield curve
+  // above is already a Birks-quenched cumulative light-yield curve.  Applying
+  // G4Material::GetIonisation()->SetBirksConstant() as well would double-count
+  // the alpha quenching.
 
   // Virtual SiPM uses the same refractive index as GAGG to suppress Fresnel reflection
   // at the GAGG/SiPM interface in the first-version model.
@@ -430,8 +489,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   ApplyStepLimits();
   PrintStepLimits();
 
-  auto world_vis = new G4VisAttributes();
-  world_vis->SetVisibility(false);
+  auto world_vis = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5));
+  world_vis->SetVisibility(true);
+  world_vis->SetForceWireframe(true);
+  world_vis->SetForceAuxEdgeVisible(true);
   world_logical->SetVisAttributes(world_vis);
 
   auto gagg_vis = new G4VisAttributes(G4Colour(0.1,0.8,0.1,0.35));

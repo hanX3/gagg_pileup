@@ -36,10 +36,11 @@ G4bool SiPMSD::ProcessHits(G4Step* step, G4TouchableHistory*)
 
   auto pre_step_point = step->GetPreStepPoint();
   auto time = pre_step_point->GetGlobalTime();
+  auto position = pre_step_point->GetPosition();
 
   auto event_action = (EventAction*)G4RunManager::GetRunManager()->GetUserEventAction();
   if(event_action){
-    event_action->AddPhotonArrival(info->GetPrimaryId(), time);
+    event_action->AddPhotonArrival(info->GetPrimaryId(), time, position);
   }
 
   // The first-version SiPM is a virtual absorbing sensitive layer.

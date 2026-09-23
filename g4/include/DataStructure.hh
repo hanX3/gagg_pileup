@@ -22,6 +22,21 @@ enum PrimaryType
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+// Internal representation of one optical photon hit on the virtual SiPM plane.
+//
+// This structure is used inside the simulation to keep the arrival time and
+// SiPM-plane position tied together during sorting.  ROOT output still uses
+// three parallel vector branches:
+//   *_arrival_t_ps[i], *_arrival_x_mm[i], *_arrival_y_mm[i]
+// for easier interactive analysis with TTree::Draw/Scan.
+struct OpticalPhotonHitData
+{
+  UInt_t t_ps = 0;
+  Float_t x_mm = 0.;
+  Float_t y_mm = 0.;
+};
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 struct RunInfoData
 {
   UInt_t t_length_ps;
@@ -49,7 +64,14 @@ struct WaveformEventData
   UInt_t n_primary;
   ULong64_t n_optical_photons_arrived_total;
   Float_t edep_total_MeV;
+
+  // ROOT output vectors.  The same index corresponds to the same optical photon.
   std::vector<UInt_t> all_photon_arrival_t_ps;
+  std::vector<Float_t> all_photon_arrival_x_mm;
+  std::vector<Float_t> all_photon_arrival_y_mm;
+
+  // Internal vector used to sort t/x/y as one object before filling ROOT.
+  std::vector<OpticalPhotonHitData> all_photon_arrival_hits;
 
   void Clear()
   {
@@ -58,6 +80,9 @@ struct WaveformEventData
     n_optical_photons_arrived_total = 0;
     edep_total_MeV = 0.;
     all_photon_arrival_t_ps.clear();
+    all_photon_arrival_x_mm.clear();
+    all_photon_arrival_y_mm.clear();
+    all_photon_arrival_hits.clear();
   }
 };
 
@@ -80,7 +105,14 @@ struct PrimaryPhotonData
   Float_t edep_total_MeV;
   UInt_t n_scint_photons_generated;
   UInt_t n_optical_photons_arrived;
+
+  // ROOT output vectors.  The same index corresponds to the same optical photon.
   std::vector<UInt_t> photon_arrival_t_ps;
+  std::vector<Float_t> photon_arrival_x_mm;
+  std::vector<Float_t> photon_arrival_y_mm;
+
+  // Internal vector used to sort t/x/y as one object before filling ROOT.
+  std::vector<OpticalPhotonHitData> photon_arrival_hits;
 
   void Clear()
   {
@@ -101,6 +133,9 @@ struct PrimaryPhotonData
     n_scint_photons_generated = 0;
     n_optical_photons_arrived = 0;
     photon_arrival_t_ps.clear();
+    photon_arrival_x_mm.clear();
+    photon_arrival_y_mm.clear();
+    photon_arrival_hits.clear();
   }
 };
 

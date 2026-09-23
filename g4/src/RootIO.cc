@@ -87,6 +87,8 @@ void RootIO::OpenFile()
   waveform_event_tree->Branch("n_optical_photons_arrived_total", &waveform_event_data.n_optical_photons_arrived_total, "n_optical_photons_arrived_total/l");
   waveform_event_tree->Branch("edep_total_MeV", &waveform_event_data.edep_total_MeV, "edep_total_MeV/F");
   waveform_event_tree->Branch("all_photon_arrival_t_ps", &waveform_event_data.all_photon_arrival_t_ps);
+  waveform_event_tree->Branch("all_photon_arrival_x_mm", &waveform_event_data.all_photon_arrival_x_mm);
+  waveform_event_tree->Branch("all_photon_arrival_y_mm", &waveform_event_data.all_photon_arrival_y_mm);
 
   // primary photon
   primary_photon_tree = new TTree("PrimaryPhoton", "one entry is one primary response");
@@ -106,6 +108,8 @@ void RootIO::OpenFile()
   primary_photon_tree->Branch("n_scint_photons_generated", &primary_photon_data.n_scint_photons_generated, "n_scint_photons_generated/i");
   primary_photon_tree->Branch("n_optical_photons_arrived", &primary_photon_data.n_optical_photons_arrived, "n_optical_photons_arrived/i");
   primary_photon_tree->Branch("photon_arrival_t_ps", &primary_photon_data.photon_arrival_t_ps);
+  primary_photon_tree->Branch("photon_arrival_x_mm", &primary_photon_data.photon_arrival_x_mm);
+  primary_photon_tree->Branch("photon_arrival_y_mm", &primary_photon_data.photon_arrival_y_mm);
 
   if(!run_info_tree || !waveform_event_tree || !primary_photon_tree){
     G4cout << "\n can't create ROOT trees" << G4endl;
