@@ -9,6 +9,7 @@ class G4ParticleGun;
 class G4GenericMessenger;
 class G4Event;
 class EventAction;
+struct RunInfoData;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
@@ -19,6 +20,7 @@ public:
 
 public:
   void GeneratePrimaries(G4Event* event) override;
+  void FillRunInfo(RunInfoData& data) const;
 
 private:
   G4String GetPrimaryResponseName(const G4String& particle_name) const;
@@ -52,9 +54,9 @@ private:
   G4double source_cone_half_angle = 0.0;
 
   // Pileup source:
-  // one Geant4 event = one 1-ms waveform window.
+  // one Geant4 event = one configurable waveform window of length T.
   // Each enabled p-11B source component is sampled independently
-  // with Poisson(rate * 1 ms).  All generated primaries are sorted by
+  // with Poisson(rate * T). All generated primaries are sorted by
   // emission time before assigning primary_id, so primary_id follows
   // chronological order inside the waveform window.
   G4bool pileup_enabled = false;

@@ -2,6 +2,8 @@
 #include "EventAction.hh"
 #include "PrimaryInformation.hh"
 #include "Constants.hh"
+#include "RunConfig.hh"
+#include "DataStructure.hh"
 
 #include "G4Event.hh"
 #include "G4ParticleGun.hh"
@@ -97,7 +99,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(EventAction* action)
 
   auto& pileup_enable_cmd = pileup_messenger->DeclareProperty(
     "enable", pileup_enabled,
-    "If true, one Geant4 event is one 1-ms waveform window with multiple primary photons."
+    "If true, one Geant4 event is one configurable time window with Poisson-distributed primaries."
   );
   pileup_enable_cmd.SetParameterName("enable", false);
 
@@ -112,9 +114,10 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(EventAction* action)
 
   auto& brems_rate_cmd = brems_source_messenger->DeclareProperty(
     "rateHz", brems_source_rate_hz,
-    "Effective bremsstrahlung photon rate in Hz. Multiplicity is Poisson(rateHz * 1 ms)."
+    "Effective bremsstrahlung photon rate in Hz. Multiplicity is Poisson(rateHz * T)."
   );
   brems_rate_cmd.SetParameterName("rateHz", false);
+  brems_rate_cmd.SetRange("rateHz>=0");
 
   c12_capture_source_messenger = new G4GenericMessenger(this, "/gagg/source/c12Capture/",
                                                         "11B(p,gamma)12C capture/de-excitation photon-source component.");
@@ -127,9 +130,10 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(EventAction* action)
 
   auto& c12_rate_cmd = c12_capture_source_messenger->DeclareProperty(
     "rateHz", c12_capture_source_rate_hz,
-    "Effective 12C capture/de-excitation photon rate in Hz. Multiplicity is Poisson(rateHz * 1 ms)."
+    "Effective 12C capture/de-excitation photon rate in Hz. Multiplicity is Poisson(rateHz * T)."
   );
   c12_rate_cmd.SetParameterName("rateHz", false);
+  c12_rate_cmd.SetRange("rateHz>=0");
 
 
   alpha_p11b_source_messenger = new G4GenericMessenger(this, "/gagg/source/alphaP11B/",
@@ -143,9 +147,25 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(EventAction* action)
 
   auto& alpha_rate_cmd = alpha_p11b_source_messenger->DeclareProperty(
     "rateHz", alpha_p11b_source_rate_hz,
-    "Effective p-11B alpha-particle rate in Hz. Multiplicity is Poisson(rateHz * 1 ms)."
+    "Effective p-11B alpha-particle rate in Hz. Multiplicity is Poisson(rateHz * T)."
   );
   alpha_rate_cmd.SetParameterName("rateHz", false);
+  alpha_rate_cmd.SetRange("rateHz>=0");
+}
+
+void PrimaryGeneratorAction::FillRunInfo(RunInfoData& data) const
+{
+  data.pileup_enabled = pileup_enabled;
+  data.brems_enabled = brems_source_enabled;
+  data.c12_capture_enabled = c12_capture_source_enabled;
+  data.alpha_p11b_enabled = alpha_p11b_source_enabled;
+  data.brems_rate_hz = brems_source_rate_hz;
+  data.c12_capture_rate_hz = c12_capture_source_rate_hz;
+  data.alpha_p11b_rate_hz = alpha_p11b_source_rate_hz;
+  data.use_disk_cone_source = use_disk_cone_source;
+  data.aim_at_gagg = aim_at_gagg;
+  data.source_disk_radius_mm = source_disk_radius/mm;
+  data.source_cone_half_angle_deg = source_cone_half_angle/deg;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -366,15 +386,16 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
   // Multi-component p-11B pileup mode.
   // Current components: bremsstrahlung photons, 12C capture/de-excitation
   // photons, and p-11B alpha particles.
-  // One Geant4 event is one 1-ms waveform window.  Each source component has
+  // One Geant4 event is one configurable time window. Each source component has
   // its own effective particle/photon rate.  The generated primaries are sorted
   // by time, so primary_id is chronological across all source components.
   auto particle_table = G4ParticleTable::GetParticleTable();
   auto gamma = particle_table->FindParticle("gamma");
   auto alpha = particle_table->FindParticle("alpha");
 
-  const G4double time_window_s = static_cast<G4double>(EVENT_TIME_LENGTH_PS)*1.0e-12;
-  const G4double primary_time_window = static_cast<G4double>(EVENT_TIME_LENGTH_PS)*ps;
+  const auto window_ps = RunConfig::Instance().WindowPS();
+  const G4double time_window_s = static_cast<G4double>(window_ps)*1.0e-12;
+  const G4double primary_time_window = static_cast<G4double>(window_ps)*ps;
 
   std::vector<PrimarySample> primaries;
 

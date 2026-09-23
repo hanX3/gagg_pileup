@@ -8,7 +8,7 @@
 # The 11B(p,p'gamma)11B 2.125-MeV inelastic gamma component is intentionally
 # not included in this version.
 #
-# One Geant4 event = one 1-ms waveform window.
+# One Geant4 event = one configurable waveform window (10 us by default).
 #
 # Run example:
 #   ./GAGGWaveformSim ../macros/run_all_p11b_sources_pileup.mac
@@ -36,7 +36,7 @@
 /gagg/source/useDiskConeSource true
 /gagg/source/aimAtGagg true
 
-# One Geant4 event = one 1-ms waveform window.
+# One Geant4 event = one configurable waveform window (10 us by default).
 /gagg/pileup/enable true
 
 # --------------------------------------------------------------------------

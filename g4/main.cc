@@ -2,6 +2,7 @@
 #include "PhysicsList.hh"
 #include "ActionInitialization.hh"
 #include "Constants.hh"
+#include "RunConfig.hh"
 
 #include "G4RunManagerFactory.hh"
 #include "G4UImanager.hh"
@@ -11,7 +12,7 @@
 #include <chrono>
 #include <random>
 #include <string>
-#include <sys/stat.h>
+#include <exception>
 
 #include "Randomize.hh"
 #include "Rtypes.h"
@@ -40,60 +41,59 @@ namespace
     return 1ULL + (mixed % 2147483646ULL);
   }
 
-  void MakeDataDirectory()
-  {
-    struct stat st;
-    if(stat(DATAPATH, &st) != 0){
-      mkdir(DATAPATH, 0755);
-    }
-  }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 int main(int argc, char** argv)
 {
-  MakeDataDirectory();
+  try {
 
-  G4UIExecutive* ui = nullptr;
-  if(argc == 1){
-    ui = new G4UIExecutive(argc, argv);
+    G4UIExecutive* ui = nullptr;
+    if(argc == 1){
+      ui = new G4UIExecutive(argc, argv);
+    }
+
+    auto run_manager = G4RunManagerFactory::CreateRunManager(G4RunManagerType::SerialOnly);
+    RunConfig::Instance();
+
+    auto detector = new DetectorConstruction();
+    run_manager->SetUserInitialization(detector);
+    run_manager->SetUserInitialization(new PhysicsList());
+
+    const auto random_seed = MakeRandomSeed();
+    CLHEP::HepRandom::setTheSeed(static_cast<long>(random_seed));
+
+    G4cout << "\n----> Initial random seed (macro may override) = " << random_seed << G4endl;
+
+    G4String macro_file_name = "interactive";
+    if(argc > 1){
+      macro_file_name = argv[1];
+    }
+
+    run_manager->SetUserInitialization(new ActionInitialization(detector, random_seed, macro_file_name));
+
+    auto vis_manager = new G4VisExecutive();
+    vis_manager->Initialize();
+
+    auto ui_manager = G4UImanager::GetUIpointer();
+
+    G4int command_status = 0;
+    if(!ui){
+      G4String command = "/control/execute ";
+      G4String file_name = argv[1];
+      command_status = ui_manager->ApplyCommand(command + file_name);
+    }else{
+      ui_manager->ApplyCommand("/control/execute ../macros/init_vis.mac");
+      ui->SessionStart();
+      delete ui;
+    }
+
+    delete vis_manager;
+    delete run_manager;
+
+    return command_status == 0 ? 0 : 1;
+  } catch(const std::exception& error) {
+    G4cerr << "Simulation failed: " << error.what() << G4endl;
+    return 1;
   }
-
-  auto run_manager = G4RunManagerFactory::CreateRunManager(G4RunManagerType::SerialOnly);
-
-  auto detector = new DetectorConstruction();
-  run_manager->SetUserInitialization(detector);
-  run_manager->SetUserInitialization(new PhysicsList());
-
-  const auto random_seed = MakeRandomSeed();
-  CLHEP::HepRandom::setTheSeed(static_cast<long>(random_seed));
-
-  G4cout << "\n----> Random seed = " << random_seed << G4endl;
-
-  G4String macro_file_name = "interactive";
-  if(argc > 1){
-    macro_file_name = argv[1];
-  }
-
-  run_manager->SetUserInitialization(new ActionInitialization(detector, random_seed, macro_file_name));
-
-  auto vis_manager = new G4VisExecutive();
-  vis_manager->Initialize();
-
-  auto ui_manager = G4UImanager::GetUIpointer();
-
-  if(!ui){
-    G4String command = "/control/execute ";
-    G4String file_name = argv[1];
-    ui_manager->ApplyCommand(command + file_name);
-  }else{
-    ui_manager->ApplyCommand("/control/execute ../macros/init_vis.mac");
-    ui->SessionStart();
-    delete ui;
-  }
-
-  delete vis_manager;
-  delete run_manager;
-
-  return 0;
 }

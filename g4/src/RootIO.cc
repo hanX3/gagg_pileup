@@ -1,4 +1,7 @@
 #include "RootIO.hh"
+#include "RunConfig.hh"
+#include "PrimaryGeneratorAction.hh"
+#include "G4RunManager.hh"
 
 #include <iostream>
 #include <stdio.h>
@@ -8,6 +11,10 @@
 #include <cstring>
 #include <algorithm>
 #include <cctype>
+#include <chrono>
+#include <filesystem>
+#include <stdexcept>
+#include <unistd.h>
 
 #include "G4UnitsTable.hh"
 #include "G4SystemOfUnits.hh"
@@ -152,6 +159,7 @@ void RootIO::SetMacroFile(const G4String& macro_file_name)
   std::ostringstream tag;
   std::string line;
   while(std::getline(fin, line)){
+    run_info_data.macro_contents += (line + "\n").c_str();
     if(IsSourceEnableOrRateLine(line)){
       const auto item = NormalizeSourceConfigLine(line);
       if(item.empty()) continue;
@@ -170,7 +178,7 @@ void RootIO::SetMacroFile(const G4String& macro_file_name)
 void RootIO::AppendRunLog(const std::string& root_file_name) const
 {
   std::stringstream log_path;
-  log_path << DATAPATH << "/data.log";
+  log_path << std::filesystem::path(root_file->GetName()).parent_path().string() << "/data.log";
 
   std::ofstream log(log_path.str(), std::ios::app);
   if(!log){
@@ -206,6 +214,19 @@ void RootIO::AppendRunLog(const std::string& root_file_name) const
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void RootIO::OpenFile()
 {
+  const auto& config = RunConfig::Instance();
+  config.Validate();
+  run_info_data.t_length_ps = config.WindowPS();
+  run_info_data.analysis_start_ps = config.PreWindowPS();
+  run_info_data.analysis_end_ps = config.WindowPS() - config.PostWindowPS();
+  run_info_data.random_seed = static_cast<ULong64_t>(CLHEP::HepRandom::getTheSeed());
+  std::ostringstream engine_state;
+  CLHEP::HepRandom::saveFullState(engine_state);
+  run_info_data.random_engine_state = engine_state.str().c_str();
+  const auto* source = dynamic_cast<const PrimaryGeneratorAction*>(
+    G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
+  if(source){ source->FillRunInfo(run_info_data); }
+
   time_t t;
   struct tm* tt;
   t=time(0);
@@ -214,20 +235,25 @@ void RootIO::OpenFile()
   G4cout << "\n----> ROOT file is opened in " << file_name << G4endl;
 
   std::stringstream root_file_name;
-  root_file_name << "gagg_waveform_" << file_name << ".root";
+  const auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(
+    std::chrono::system_clock::now().time_since_epoch()).count() % 1000000;
+  root_file_name << "gagg_waveform_" << file_name << "_" << microseconds << "_" << getpid() << ".root";
 
   std::stringstream ss;
   ss << DATAPATH << "/" << root_file_name.str();
-
-  root_file = new TFile(ss.str().c_str(), "RECREATE");
-  if(!root_file){
-    G4cout << " RootIO::" << " problem creating the ROOT TFile!!!" << G4endl;
-    return;
-  }else{
-    G4cout << " RootIO::" << " successful creating the " << ss.str().c_str() << "  !!!" << G4endl;
+  const auto path = std::filesystem::absolute(config.OutputFile().empty()
+    ? std::filesystem::path(ss.str()) : std::filesystem::path(config.OutputFile().c_str()));
+  std::filesystem::create_directories(path.parent_path());
+  if(std::filesystem::exists(path)){
+    throw std::runtime_error("ROOT output already exists: " + path.string());
   }
-
-  AppendRunLog(root_file_name.str());
+  if(root_file){ delete root_file; root_file = nullptr; }
+  root_file = TFile::Open(path.string().c_str(), "NEW");
+  if(!root_file || root_file->IsZombie()){
+    throw std::runtime_error("Cannot create ROOT output: " + path.string());
+  }
+  G4cout << "----> ROOT output: " << path.string() << G4endl;
+  AppendRunLog(path.filename().string());
 
   // run info
   run_info_tree = new TTree("RunInfo", "run information");
@@ -239,9 +265,24 @@ void RootIO::OpenFile()
   run_info_tree->Branch("mylar_side_max_step_um", &run_info_data.mylar_side_max_step_um, "mylar_side_max_step_um/F");
   run_info_tree->Branch("macro_file", &run_info_data.macro_file);
   run_info_tree->Branch("source_config_tag", &run_info_data.source_config_tag);
+  run_info_tree->Branch("macro_contents", &run_info_data.macro_contents);
+  run_info_tree->Branch("random_engine_state", &run_info_data.random_engine_state);
+  run_info_tree->Branch("analysis_start_ps", &run_info_data.analysis_start_ps, "analysis_start_ps/i");
+  run_info_tree->Branch("analysis_end_ps", &run_info_data.analysis_end_ps, "analysis_end_ps/i");
+  run_info_tree->Branch("pileup_enabled", &run_info_data.pileup_enabled, "pileup_enabled/O");
+  run_info_tree->Branch("brems_enabled", &run_info_data.brems_enabled, "brems_enabled/O");
+  run_info_tree->Branch("c12_capture_enabled", &run_info_data.c12_capture_enabled, "c12_capture_enabled/O");
+  run_info_tree->Branch("alpha_p11b_enabled", &run_info_data.alpha_p11b_enabled, "alpha_p11b_enabled/O");
+  run_info_tree->Branch("brems_rate_hz", &run_info_data.brems_rate_hz, "brems_rate_hz/D");
+  run_info_tree->Branch("c12_capture_rate_hz", &run_info_data.c12_capture_rate_hz, "c12_capture_rate_hz/D");
+  run_info_tree->Branch("alpha_p11b_rate_hz", &run_info_data.alpha_p11b_rate_hz, "alpha_p11b_rate_hz/D");
+  run_info_tree->Branch("use_disk_cone_source", &run_info_data.use_disk_cone_source, "use_disk_cone_source/O");
+  run_info_tree->Branch("aim_at_gagg", &run_info_data.aim_at_gagg, "aim_at_gagg/O");
+  run_info_tree->Branch("source_disk_radius_mm", &run_info_data.source_disk_radius_mm, "source_disk_radius_mm/D");
+  run_info_tree->Branch("source_cone_half_angle_deg", &run_info_data.source_cone_half_angle_deg, "source_cone_half_angle_deg/D");
 
   // waveform event
-  waveform_event_tree = new TTree("WaveformEvent", "one entry is one 1 ms waveform event");
+  waveform_event_tree = new TTree("WaveformEvent", "one entry is one independent waveform window; duration in RunInfo");
   waveform_event_tree->Branch("event_id", &waveform_event_data.event_id, "event_id/i");
   waveform_event_tree->Branch("n_primary", &waveform_event_data.n_primary, "n_primary/i");
   waveform_event_tree->Branch("n_optical_photons_arrived_total", &waveform_event_data.n_optical_photons_arrived_total, "n_optical_photons_arrived_total/l");
