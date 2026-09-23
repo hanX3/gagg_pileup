@@ -1,0 +1,13 @@
+{
+  "recorded_utc": "2026-09-23T02:46:20.914544+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "cmake": "cmake version 3.22.1\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+  "compiler": "c++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+  "geant4": "11.3.2",
+  "root": "6.34.10",
+  "dependency_environment": {
+    "CMAKE_PREFIX_PATH": "/opt/intel/oneapi/tbb/2022.3/env/..:/opt/intel/oneapi/mkl/2025.3/lib/cmake:/opt/intel/oneapi/compiler/2025.3",
+    "LD_LIBRARY_PATH": "/opt/intel/oneapi/tcm/1.4/lib:/opt/intel/oneapi/umf/1.0/lib:/opt/intel/oneapi/tbb/2022.3/env/../lib/intel64/gcc4.8:/opt/intel/oneapi/mpi/2021.17/opt/mpi/libfabric/lib:/opt/intel/oneapi/mpi/2021.17/lib:/opt/intel/oneapi/mkl/2025.3/lib:/opt/intel/oneapi/debugger/2025.3/opt/debugger/lib:/opt/intel/oneapi/compiler/2025.3/opt/compiler/lib:/opt/intel/oneapi/compiler/2025.3/lib:/home/xc/nptool_v3/NPSimulation/lib:/home/xc/nptool_v3/NPLib/lib:/opt/geant4/geant4-v1132/lib:/opt/root/root63410/lib"
+  }
+}

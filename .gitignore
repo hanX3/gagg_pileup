@@ -13,6 +13,8 @@
 
 # Simulation data and duplicate archives
 /g4/data/
+/pileup/experiments/*/runs/
+/pileup/results/
 *.root
 *.zip
 

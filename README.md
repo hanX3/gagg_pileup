@@ -9,6 +9,7 @@
 | 目录 | 内容 |
 | --- | --- |
 | [g4](g4/) | Geant4 工程，包含源码、宏、分析脚本和结果图。 |
+| [pileup](pileup/) | 纯 α 计数率实验：配置、可独立重跑的源码快照、运行器和数据检查。 |
 | [11BH_alpha_spectra](11BH_alpha_spectra/) | 简化 p–¹¹B 单 α 能谱、生成脚本、CSV 和检查图。 |
 | [bremsstrahlung](bremsstrahlung/) | 参数化热轫致辐射光子谱、生成脚本、CSV 和检查图。 |
 | [stopping_power](stopping_power/) | 阻止本领表、Birks 光产额曲线和生成程序。 |
@@ -22,7 +23,7 @@ ROOT 原始数据、构建产物和本地研究笔记不随仓库分发，排除
 - GAGG 尺寸为 10 × 10 × 1 mm，入口位于 z = 250 mm；前 Mylar 膜厚 5 μm，侧膜厚 20 μm。
 - 背面虚拟 SiPM 尺寸为 10 × 10 × 0.01 mm，记录进入的光子并终止其轨迹。
 - 堆积模式下，一个 Geant4 event 是一个时间窗。各源独立抽样 N ~ Poisson(R × T)，再在窗内均匀抽样发射时间。
-- 当前源码 T = 10 μs。部分历史宏、帮助文字及 ROOT 树标题仍写着 1 ms；解释历史数据时使用其 RunInfo.t_length_ps。
+- 默认 T = 10 μs，可用 `/gagg/run/windowLength` 配置。纯 α 首轮实验使用完整 20 μs 窗和中央 10 μs 评价区。部分历史 ROOT 树标题写着 1 ms；解释历史数据时使用其 RunInfo.t_length_ps。
 - 常用宏启用圆盘源并将粒子瞄准晶体前表面；速率表示有效注入粒子/光子数率，不直接等于等离子体总产额或探测事件率。
 - α 使用有效单粒子能谱；¹²C γ 使用单光子谱线混合，当前没有生成完整三 α 关联事件或 γ 级联符合对。
 
@@ -41,9 +42,25 @@ cd g4/build
 ./gagg ../macros/run_all_pileup.mac
 ```
 
-程序使用相对输出路径 `../data`，因此应在 `g4/build/` 中启动；新结果位于 `g4/data/`。无参数运行 `./gagg` 会进入交互可视化模式。
+未指定输出文件时，程序使用相对目录 `../data`，因此上述运行方式将新结果写入 `g4/data/`。宏可用 `/gagg/run/outputFile` 指定相对于启动目录的 ROOT 路径；已有同名文件会被拒绝覆盖。无参数运行 `./gagg` 会进入交互可视化模式。
 
 当前 [run_all_pileup.mac](g4/macros/run_all_pileup.mac) 配置为轫致辐射 10⁶ Hz、¹²C γ 10 Hz、α 10⁶ Hz，生成 10 个时间窗。每窗期望初级粒子数约 20。另有单源宏与 [低速率三源宏](g4/macros/run_all_p11b_sources_pileup.mac)。大规模运行前应先用独立输出目录和少量事件检查配置。
+
+## 纯 α 堆积实验
+
+首轮沿用当前 p–¹¹B 有效单 α 能谱，扫描注入率 10⁵、10⁶、10⁷、10⁸ Hz，关闭光子背景。准备与运行方法见 [pileup/README.md](pileup/README.md)。每个实验目录保存自己的源码、宏、运行器和配置；以后修改主工程时，旧实验仍能自行编译重跑，无需切换 Git 提交。Geant4、ROOT 等外部依赖须保持可用。
+
+运行接口支持以下命令，均应在 `/run/beamOn` 前设置；`preWindow` 和 `postWindow` 定义中央评价区，不会删除保护区内的粒子或光子：
+
+```text
+/gagg/run/seed 260923101
+/gagg/run/windowLength 20 us
+/gagg/run/preWindow 5 us
+/gagg/run/postWindow 5 us
+/gagg/run/outputFile waveform.root
+```
+
+未知脉冲数的 pileup 重建尚未实现；当前阶段先准备可追溯的输入数据，待精读用户提供的文献结果后再实现算法。
 
 ## 分析已有数据
 
@@ -64,11 +81,13 @@ python3 plot_pileup_waveform.py ../data/gagg_waveform_20260624_16h28m34s.root --
 
 | 树 | 每行含义 | 主要字段 |
 | --- | --- | --- |
-| RunInfo | 一次运行的信息 | 时间窗 ps、事件数、随机种子、步长限制、宏路径、源配置标签。 |
+| RunInfo | 一次运行的信息 | 时间窗和中央评价区 ps、事件数、实际种子与随机引擎状态、步长、宏路径与内容、各源启用状态及注入率。 |
 | WaveformEvent | 一个完整时间窗 | 初级粒子数、总沉积能量 MeV、全部到达光子的时间 ps 与位置 mm。 |
-| PrimaryPhoton | 一个初级粒子及其后代贡献，包含 α | 粒子/源标签、入射能量和时间、沉积能量、闪烁光子数、到达光子的时间与位置。 |
+| PrimaryPhoton | 一个初级粒子及其后代贡献，包含 α | 粒子/源标签、源能量和发射时间、沉积能量、闪烁光子数、到达光子的时间与位置。 |
 
 ps 除以 1000 得到 ns。`edep_total_MeV` 是沉积能量真值，不是淬灭及光收集后的可见能量。模板形状、绝对光输出和能量标定须分别处理。
+
+新运行将发射与光子到达时间向下量化到 1 ps，记录范围为 `[0,T)`；旧版使用最近整数舍入。差异小于 1 ps，物理输运和发光模型不变。`primary_time_ps` 是源发射时间，并非进入晶体或首次沉积的时刻。旧文件可能没有新增的 RunInfo 字段。
 
 本地现有多源样本均只有一个 10 μs 窗；下表来自各自 ROOT 的 RunInfo 和 PrimaryPhoton，不由当前宏推断。完整文件名为 `gagg_waveform_<时间戳>.root`，这些 ROOT 文件不随 Git 仓库分发。
 
