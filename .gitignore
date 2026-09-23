@@ -1,0 +1,32 @@
+# Local research notes and agent configuration
+/AGENTS.md
+/jupyter/
+*.ipynb
+.ipynb_checkpoints/
+/.agents/
+/.codex/
+
+# Local original repositories, data backups, validation, and worktrees
+/.local_archive/
+/.worktrees/
+/papers/
+
+# Simulation data and duplicate archives
+/g4/data/
+*.root
+*.zip
+
+# Build products
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.o
+*.a
+*.so
+
+# Python and platform metadata
+__pycache__/
+*.py[cod]
+*:Zone.Identifier
