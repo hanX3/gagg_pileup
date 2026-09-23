@@ -52,6 +52,21 @@ struct RunInfoData
   Float_t mylar_side_max_step_um;
   TString macro_file;
   TString source_config_tag;
+  TString macro_contents;
+  TString random_engine_state;
+  UInt_t analysis_start_ps;
+  UInt_t analysis_end_ps;
+  Bool_t pileup_enabled;
+  Bool_t brems_enabled;
+  Bool_t c12_capture_enabled;
+  Bool_t alpha_p11b_enabled;
+  Double_t brems_rate_hz;
+  Double_t c12_capture_rate_hz;
+  Double_t alpha_p11b_rate_hz;
+  Bool_t use_disk_cone_source;
+  Bool_t aim_at_gagg;
+  Double_t source_disk_radius_mm;
+  Double_t source_cone_half_angle_deg;
 
   void Clear()
   {
@@ -63,6 +78,18 @@ struct RunInfoData
     mylar_side_max_step_um = DEFAULT_MYLAR_SIDE_MAX_STEP_UM;
     macro_file = "";
     source_config_tag = "";
+    macro_contents = "";
+    random_engine_state = "";
+    analysis_start_ps = 0;
+    analysis_end_ps = EVENT_TIME_LENGTH_PS;
+    pileup_enabled = false;
+    brems_enabled = false;
+    c12_capture_enabled = false;
+    alpha_p11b_enabled = false;
+    brems_rate_hz = c12_capture_rate_hz = alpha_p11b_rate_hz = 0.;
+    use_disk_cone_source = false;
+    aim_at_gagg = false;
+    source_disk_radius_mm = source_cone_half_angle_deg = 0.;
   }
 };
 

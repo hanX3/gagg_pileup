@@ -1,5 +1,6 @@
 #include "EventAction.hh"
 #include "RootIO.hh"
+#include "RunConfig.hh"
 
 #include "G4Event.hh"
 #include "G4SystemOfUnits.hh"
@@ -103,7 +104,8 @@ void EventAction::AddPrimary(G4int primary_id,
   data.primary_particle_name = particle_name;
   data.primary_response_name = response_name;
   data.primary_energy_MeV = energy / MeV;
-  data.primary_time_ps = static_cast<UInt_t>(std::llround(time / ps));
+  // Floor to 1 ps bins so an emission just below T stays inside [0,T).
+  data.primary_time_ps = static_cast<UInt_t>(std::floor(time / ps));
   data.primary_x_mm = position.x() / mm;
   data.primary_y_mm = position.y() / mm;
   data.primary_z_mm = position.z() / mm;
@@ -159,13 +161,12 @@ void EventAction::AddPhotonArrival(G4int primary_id, G4double time, const G4Thre
     return;
   }
 
-  auto time_ps_64 = static_cast<unsigned long long>(std::llround(time / ps));
-  if(time_ps_64 > EVENT_TIME_LENGTH_PS){
+  if(!std::isfinite(time) || time < 0. || time / ps >= RunConfig::Instance().WindowPS()){
     return;
   }
 
   OpticalPhotonHitData hit;
-  hit.t_ps = static_cast<UInt_t>(time_ps_64);
+  hit.t_ps = static_cast<UInt_t>(std::floor(time / ps));
   hit.x_mm = static_cast<Float_t>(position.x() / mm);
   hit.y_mm = static_cast<Float_t>(position.y() / mm);
 

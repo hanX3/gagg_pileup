@@ -15,7 +15,7 @@
 /gagg/source/aimAtGagg true
 
 # Pileup model.
-# One Geant4 event = one 1-ms waveform window.
+# One Geant4 event = one configurable waveform window (10 us by default).
 # Source energies and brems parameters are defined in include/Constants.hh.
 # For brems only:
 #   E sampled from dN/dE proportional to exp(-E/kTe)/E

@@ -14,7 +14,7 @@
 /gagg/source/useDiskConeSource true
 /gagg/source/aimAtGagg true
 
-# One Geant4 event = one 1-ms waveform window.
+# One Geant4 event = one configurable waveform window (10 us by default).
 /gagg/pileup/enable true
 
 # Component 1: p-11B plasma bremsstrahlung photon background.

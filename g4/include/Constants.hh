@@ -6,12 +6,12 @@
 
 #include "G4SystemOfUnits.hh"
 
-// ROOT output directory. Run from build/; data are written outside build/.
+// Default ROOT output directory; /gagg/run/outputFile can select an explicit path.
 static const char DATAPATH[] = "../data";
 
 // One Geant4 event is one waveform time window.
-// For pileup studies this is both the gamma-emission window and the recorded
-// photon-arrival window.
+// Default only: /gagg/run/windowLength controls both source emission and
+// photon recording at runtime; RunInfo stores the actual window and analysis gate.
 static const std::uint32_t EVENT_TIME_LENGTH_PS = 10000000U; // 10 us
 
 // -----------------------------------------------------------------------------
@@ -99,7 +99,7 @@ static const double SOURCE_TARGET_SIZE_Y_MM = GAGG_SIZE_Y_MM;
 // -----------------------------------------------------------------------------
 // One Geant4 event corresponds to one waveform time window.  In pileup mode,
 // each enabled source component is sampled independently with Poisson(rate*T),
-// where T = EVENT_TIME_LENGTH_PS in seconds.  All generated primaries are
+// where T is the runtime window length in seconds. All generated primaries are
 // then sorted by emission time, so primary_id follows chronological order.
 static const bool DEFAULT_PILEUP_ENABLED = false;
 

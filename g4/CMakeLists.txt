@@ -25,6 +25,7 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 list(REMOVE_ITEM sources ${PROJECT_SOURCE_DIR}/src/main.cc)
 
 add_executable(gagg ${PROJECT_SOURCE_DIR}/main.cc ${sources} ${headers})
+target_compile_features(gagg PRIVATE cxx_std_17)
 target_link_libraries(gagg ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
 
 # CMake reserves the built-in target name "clean". The normal "make clean" still
