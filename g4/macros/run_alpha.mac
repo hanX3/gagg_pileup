@@ -17,8 +17,8 @@
 /gagg/source/useDiskConeSource true
 /gagg/source/aimAtGagg true
 
-/gun/particle gamma
-/gun/energy 661.657 keV
+/gun/particle alpha
+/gun/energy 5.486 MeV
 
 /run/printProgress 1000
 /run/beamOn 1000

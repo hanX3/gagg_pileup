@@ -7,6 +7,34 @@
 #include <algorithm>
 #include <cmath>
 
+namespace
+{
+  void SortPhotonHitsAndFillVectors(std::vector<OpticalPhotonHitData>& hits,
+                                    std::vector<UInt_t>& t_ps,
+                                    std::vector<Float_t>& x_mm,
+                                    std::vector<Float_t>& y_mm)
+  {
+    std::sort(hits.begin(), hits.end(),
+              [](const OpticalPhotonHitData& a, const OpticalPhotonHitData& b){
+                return a.t_ps < b.t_ps;
+              });
+
+    t_ps.clear();
+    x_mm.clear();
+    y_mm.clear();
+
+    t_ps.reserve(hits.size());
+    x_mm.reserve(hits.size());
+    y_mm.reserve(hits.size());
+
+    for(const auto& hit : hits){
+      t_ps.push_back(hit.t_ps);
+      x_mm.push_back(hit.x_mm);
+      y_mm.push_back(hit.y_mm);
+    }
+  }
+}
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 EventAction::EventAction(RootIO* io)
 : root_io(io)
@@ -29,19 +57,25 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 void EventAction::EndOfEventAction(const G4Event*)
 {
   waveform_event_data.n_primary = primary_photon_data_vec.size();
-  waveform_event_data.n_optical_photons_arrived_total = waveform_event_data.all_photon_arrival_t_ps.size();
+  waveform_event_data.n_optical_photons_arrived_total =
+    waveform_event_data.all_photon_arrival_hits.size();
 
-  std::sort(waveform_event_data.all_photon_arrival_t_ps.begin(),
-            waveform_event_data.all_photon_arrival_t_ps.end());
+  SortPhotonHitsAndFillVectors(waveform_event_data.all_photon_arrival_hits,
+                               waveform_event_data.all_photon_arrival_t_ps,
+                               waveform_event_data.all_photon_arrival_x_mm,
+                               waveform_event_data.all_photon_arrival_y_mm);
 
   if(root_io){
     root_io->FillWaveformEventTree(waveform_event_data);
   }
 
   for(auto& primary_data : primary_photon_data_vec){
-    std::sort(primary_data.photon_arrival_t_ps.begin(),
-              primary_data.photon_arrival_t_ps.end());
-    primary_data.n_optical_photons_arrived = primary_data.photon_arrival_t_ps.size();
+    primary_data.n_optical_photons_arrived = primary_data.photon_arrival_hits.size();
+
+    SortPhotonHitsAndFillVectors(primary_data.photon_arrival_hits,
+                                 primary_data.photon_arrival_t_ps,
+                                 primary_data.photon_arrival_x_mm,
+                                 primary_data.photon_arrival_y_mm);
 
     if(root_io){
       root_io->FillPrimaryPhotonTree(primary_data);
@@ -116,7 +150,9 @@ void EventAction::AddScintPhotonGenerated(G4int primary_id)
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-void EventAction::AddPhotonArrival(G4int primary_id, G4double time)
+void EventAction::AddPhotonArrival(G4int primary_id,
+                                  G4double time,
+                                  const G4ThreeVector& position)
 {
   if(!IsValidPrimaryId(primary_id)){
     return;
@@ -127,9 +163,11 @@ void EventAction::AddPhotonArrival(G4int primary_id, G4double time)
     return;
   }
 
-  UInt_t time_ps = static_cast<UInt_t>(time_ps_64);
+  OpticalPhotonHitData hit;
+  hit.t_ps = static_cast<UInt_t>(time_ps_64);
+  hit.x_mm = static_cast<Float_t>(position.x() / mm);
+  hit.y_mm = static_cast<Float_t>(position.y() / mm);
 
-  waveform_event_data.all_photon_arrival_t_ps.push_back(time_ps);
-  primary_photon_data_vec[primary_id].photon_arrival_t_ps.push_back(time_ps);
-  primary_photon_data_vec[primary_id].n_optical_photons_arrived++;
+  waveform_event_data.all_photon_arrival_hits.push_back(hit);
+  primary_photon_data_vec[primary_id].photon_arrival_hits.push_back(hit);
 }
