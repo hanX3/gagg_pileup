@@ -60,6 +60,8 @@ cd g4/build
 /gagg/run/outputFile waveform.root
 ```
 
+当前生产采用 G4 串行、每个 ROOT 一个波形窗、最多 8 个独立任务。ROOT 统一存入 `g4/data/`，使用原有秒级文件名，任务启动至少间隔 1 秒。具体入口与运行记录见 [pileup 说明](pileup/README.md)。
+
 未知脉冲数的 pileup 重建尚未实现；当前阶段先准备可追溯的输入数据，待精读用户提供的文献结果后再实现算法。
 
 ## 分析已有数据
