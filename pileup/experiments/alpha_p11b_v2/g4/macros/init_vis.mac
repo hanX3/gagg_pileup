@@ -1,0 +1,14 @@
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+/run/initialize
+/vis/open OGL
+/vis/drawVolume
+
+/vis/viewer/set/viewpointVector 1 1 1
+/vis/viewer/set/style surface
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate 10
+/vis/viewer/flush

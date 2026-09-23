@@ -40,6 +40,42 @@ def load_runner(case):
     return runner, build
 
 
+def pending_jobs(directory, case, runner, config):
+    """Continue a stopped scan, retaining its indices and seeds across an I/O-only update."""
+    previous = runner.read(directory / 'submission.json')
+    state = runner.read(directory / 'status.json')
+    if state['status'] not in ('stopped', 'failed') or state.get('resumed_by'):
+        raise ValueError('Resume requires a stopped/failed batch that has not already been resumed.')
+    if any(job['status'] in ('running', 'validating') for job in state['jobs']):
+        raise ValueError('Wait for every in-flight window to finish before resuming.')
+    old_case = Path(previous['experiment'])
+    old_runner, _ = load_runner(old_case)
+    if old_runner.digest(old_case / 'bundle.json') != previous['bundle_sha256']:
+        raise ValueError('Original experiment no longer matches its submission.')
+    ignored = {'experiment', 'description', 'events'}
+    if ({k: v for k, v in previous['config'].items() if k not in ignored} !=
+            {k: v for k, v in config.items() if k not in ignored}):
+        raise ValueError('Resume cannot change source or physical configuration.')
+    old_files = old_runner.read(old_case / 'bundle.json')['files']
+    new_files = runner.read(case / 'bundle.json')['files']
+    io_files = {'g4/include/RootIO.hh', 'g4/src/RootIO.cc'}
+    physical = lambda files: {k: v for k, v in files.items() if k.startswith('g4/') and k not in io_files}
+    if physical(old_files) != physical(new_files):
+        raise ValueError('Resume across snapshots permits only reviewed RootIO changes.')
+    jobs = []
+    for job in state['jobs']:
+        if job['status'] == 'completed':
+            if not (Path(previous['project_root']) / job['root_file']).is_file():
+                raise ValueError('A completed ROOT file is missing; resolve it before resuming.')
+            continue
+        if job['status'] not in ('cancelled', 'queued', 'failed') or job['events'] != 1:
+            raise ValueError('Resume supports unfinished single-window jobs only.')
+        jobs.append({**{k: job[k] for k in ('point', 'index', 'events', 'seed')}, 'status': 'queued'})
+    if not jobs:
+        raise ValueError('No unfinished windows to resume.')
+    return previous, state, jobs
+
+
 def prepare(args):
     project = Path(__file__).resolve().parents[1]
     case = (project / args.experiment).resolve()
@@ -48,7 +84,10 @@ def prepare(args):
     if not 1 <= args.workers <= 8 or args.files_per_rate < 1:
         raise ValueError('Use 1..8 workers and at least one file per rate.')
     jobs = []
-    if args.replay:
+    previous = None
+    if args.resume:
+        previous, previous_state, jobs = pending_jobs(args.resume.resolve(), case, runner, config)
+    elif args.replay:
         original = runner.read(args.replay)
         if original['events'] != 1 or original['bundle_sha256'] != runner.digest(case / 'bundle.json'):
             raise ValueError('Replay needs a one-window manifest from the selected experiment snapshot.')
@@ -69,10 +108,14 @@ def prepare(args):
     shutil.copy2(__file__, directory / 'run_scan.py')
     record = {'submission_id': name, 'created_utc': stamp(), 'project_root': str(project),
               'experiment': str(case), 'output_directory': str(project / 'g4/data'),
-              'files_per_rate': 1 if args.replay else args.files_per_rate, 'events_per_file': 1, 'max_workers': args.workers,
+              'campaign_id': (previous.get('campaign_id', previous['submission_id']) if previous else name),
+              'resume_of': str(args.resume.resolve()) if args.resume else None,
+              'files_per_rate': previous['files_per_rate'] if previous else (1 if args.replay else args.files_per_rate),
+              'events_per_file': 1, 'max_workers': args.workers,
               'replay_of': str(args.replay.resolve()) if args.replay else None,
-              'seed_offset': args.seed_offset, 'seed_rule': 'point seed + seed_offset + 1000 * file_index',
-              'filename_format': 'gagg_waveform_YYYYMMDD_HHhMMmSSs.root', 'minimum_launch_spacing_seconds': 1.0,
+              'seed_offset': previous['seed_offset'] if previous else args.seed_offset,
+              'seed_rule': 'point seed + seed_offset + 1000 * file_index',
+              'filename_format': 'YYYYMMDD_HHhMMmSSs.root', 'minimum_launch_spacing_seconds': 1.0,
               'bundle_sha256': runner.digest(case / 'bundle.json'), 'build_record': build,
               'driver_sha256': runner.digest(directory / 'run_scan.py'), 'config': config,
               'project_git_commit': runner.capture(['git', '-C', str(project), 'rev-parse', 'HEAD']),
@@ -80,6 +123,9 @@ def prepare(args):
               'jobs': jobs}
     write(directory / 'submission.json', record)
     write(directory / 'status.json', {'status': 'prepared', 'submission_id': name, 'jobs': jobs})
+    if previous:
+        previous_state['resumed_by'] = str(directory.relative_to(project))
+        write(args.resume.resolve() / 'status.json', previous_state)
     print(directory, flush=True)
     return directory
 
@@ -97,6 +143,8 @@ def execute(directory):
         raise ValueError('Submission driver was modified.')
     if runner.digest(case / 'bundle.json') != submission['bundle_sha256']:
         raise ValueError('Experiment changed after submission preparation.')
+    if json.loads((directory / 'status.json').read_text())['status'] != 'prepared':
+        raise ValueError('This submission has already started; prepare a resume instead of running it twice.')
     environment = runner.environment()
     lock = Lock()
     launch_lock = Lock()
@@ -120,7 +168,7 @@ def execute(directory):
                 time.sleep(delay)
             while True:
                 local_time = datetime.now().astimezone()
-                path = output_directory / ('gagg_waveform_' + local_time.strftime('%Y%m%d_%Hh%Mm%Ss') + '.root')
+                path = output_directory / (local_time.strftime('%Y%m%d_%Hh%Mm%Ss') + '.root')
                 if path.name not in launch_state['used_names'] and not path.exists():
                     launch_state['used_names'].add(path.name)
                     launch_state['last_time'] = time.monotonic()
@@ -150,6 +198,8 @@ def execute(directory):
         command = [str(case / 'build/gagg'), str(macro_path)]
         record = {'status': 'running', 'started_utc': stamp(), 'experiment': submission['config']['experiment'],
                   'submission_id': submission['submission_id'], 'point': job['point'], 'events': 1,
+                  'campaign_id': submission.get('campaign_id', submission['submission_id']),
+                  'file_index': job['index'], 'resume_of': submission.get('resume_of'),
                   'seed': job['seed'], 'config': submission['config'], 'command': command,
                   'output': str(root_path), 'root_relative_path': str(root_path.relative_to(project)),
                   'macro_relative_path': str(macro_path.relative_to(project)), 'filename_timezone': str(local_time.tzinfo),
@@ -218,12 +268,14 @@ def execute(directory):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--experiment', default='pileup/experiments/alpha_p11b_v1')
+    parser.add_argument('--experiment', default='pileup/experiments/alpha_p11b_v2')
     parser.add_argument('--files-per-rate', type=int, default=100)
     parser.add_argument('--workers', type=int, default=8)
     parser.add_argument('--seed-offset', type=int, default=200)
     parser.add_argument('--prepare-only', action='store_true')
-    parser.add_argument('--replay', type=Path, help='Replay one saved single-window run with the same seed into a new ROOT file')
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--replay', type=Path, help='Replay one saved single-window run with the same seed into a new ROOT file')
+    mode.add_argument('--resume', type=Path, help='Continue unfinished windows from a stopped submission directory')
     parser.add_argument('--submission', type=Path, help='Execute an already prepared submission with its saved driver')
     args = parser.parse_args()
     directory = args.submission.resolve() if args.submission else prepare(args)

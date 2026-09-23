@@ -1,0 +1,19 @@
+/control/verbose 1
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+
+/gun/particle chargedgeantino
+/gun/energy 1 MeV
+
+/tracking/storeTrajectory 1
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate 20
+
+/vis/enable
+/run/beamOn 2000
+/vis/viewer/flush
+
