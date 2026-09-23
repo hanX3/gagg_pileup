@@ -1,0 +1,81 @@
+# run_all_p11b_sources_pileup.mac
+#
+# Mixed p-11B radiation-field source:
+#   1. Bremsstrahlung photon background
+#   2. 11B(p,gamma)12C capture / de-excitation gamma component
+#   3. p-11B fusion alpha particles
+#
+# The 11B(p,p'gamma)11B 2.125-MeV inelastic gamma component is intentionally
+# not included in this version.
+#
+# One Geant4 event = one configurable waveform window (10 us by default).
+#
+# Run example:
+#   ./GAGGWaveformSim ../macros/run_all_p11b_sources_pileup.mac
+#
+# Notes:
+#   - Source spectra and fixed physical constants are defined in Constants.hh.
+#   - The rates below are effective particles/photons injected toward the detector,
+#     not necessarily total plasma production rates.
+#   - The total source rate is the sum of all enabled component rates.
+
+# Verbosity
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Charged-particle max step limits.
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+
+/run/initialize
+
+# Efficient conditional source: particles/photons are aimed at the GAGG front face.
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+
+# One Geant4 event = one configurable waveform window (10 us by default).
+/gagg/pileup/enable true
+
+# --------------------------------------------------------------------------
+# Component 1: p-11B plasma bremsstrahlung photon background
+# Fixed spectrum in Constants.hh:
+#   dN/dE ∝ exp(-E/kTe)/E
+#   default kTe = 100 keV, Emin = 10 keV, Emax = 5 MeV
+# --------------------------------------------------------------------------
+/gagg/source/brems/enable true
+/gagg/source/brems/rateHz 1.0e4
+
+# --------------------------------------------------------------------------
+# Component 2: 11B(p,gamma)12C capture / de-excitation gamma component
+# Effective single-photon line-mixture model fixed in Constants.hh:
+#   gamma0      ~16.1 MeV
+#   gamma1      ~11.7 MeV
+#   gamma_star   4.439 MeV
+# with gamma0/gamma1 = 4.6%.
+# --------------------------------------------------------------------------
+/gagg/source/c12Capture/enable true
+/gagg/source/c12Capture/rateHz 1.0e2
+
+# --------------------------------------------------------------------------
+# Component 3: p-11B fusion alpha particles
+# Effective single-alpha source spectrum fixed in Constants.hh:
+#   1/3 primary alpha:
+#       E_alpha = 3.76 MeV
+#   2/3 secondary alpha:
+#       E = Eboost + Estar + 2*sqrt(Eboost*Estar)*cos(theta)
+#       cos(theta) uniformly sampled in [-1, 1]
+#
+# This rate is an effective alpha-particle injection rate, not a fusion
+# reaction rate. One generated primary = one alpha particle.
+# --------------------------------------------------------------------------
+/gagg/source/alphaP11B/enable true
+/gagg/source/alphaP11B/rateHz 1.0e4
+
+# Print progress every event.
+/run/printProgress 1
+
+# Run events.
+/run/beamOn 10

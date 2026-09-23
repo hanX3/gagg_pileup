@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "experiment": "alpha_p11b_v1",
+  "source_model": "p11b_effective_single_alpha",
+  "description": "纯 p–¹¹B α 随机堆积；先准备仿真，重建方法待文献确认。",
+  "window_us": 20.0,
+  "pre_window_us": 5.0,
+  "post_window_us": 5.0,
+  "events": 100,
+  "disk_radius_mm": 10.0,
+  "gagg_max_step_um": 1.0,
+  "mylar_front_max_step_um": 0.5,
+  "mylar_side_max_step_um": 1.0,
+  "points": [
+    {
+      "id": "alpha_1e5Hz",
+      "rate_hz": 100000.0,
+      "seed": 260923101
+    },
+    {
+      "id": "alpha_1e6Hz",
+      "rate_hz": 1000000.0,
+      "seed": 260923102
+    },
+    {
+      "id": "alpha_1e7Hz",
+      "rate_hz": 10000000.0,
+      "seed": 260923103
+    },
+    {
+      "id": "alpha_1e8Hz",
+      "rate_hz": 100000000.0,
+      "seed": 260923104
+    }
+  ]
+}

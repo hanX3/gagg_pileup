@@ -1,0 +1,85 @@
+# run_p11b_brems_c12_alpha_pileup.mac
+#
+# p-11B radiation-field pileup source without 11B inelastic gamma:
+#   1. Bremsstrahlung gamma / X-ray background
+#   2. 12C capture / de-excitation gamma component
+#   3. p-11B fusion alpha particles
+#
+# One Geant4 event = one waveform time window.
+# The time-window length is controlled in Constants.hh:
+#   EVENT_TIME_LENGTH_PS
+#
+# Run example:
+#   ./GAGGWaveformSim ../macros/run_p11b_brems_c12_alpha_pileup.mac
+#
+# Notes:
+#   - Fixed spectra and physical constants are defined in Constants.hh.
+#   - Rates below are effective particles/photons injected toward the detector.
+#   - Total primary rate = brems rate + c12Capture rate + alphaP11B rate.
+#   - alphaP11B/rateHz is an effective alpha-particle rate, not a fusion-reaction rate.
+#     The 1 primary alpha + 2 secondary alpha structure is handled internally by
+#     the alphaP11B energy sampler.
+
+# Verbosity
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Charged-particle max step limits.
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+
+/run/initialize
+
+# Efficient conditional source: particles/photons are aimed at the GAGG front face.
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+
+# Enable pileup mode:
+# one Geant4 event = one waveform window with Poisson-sampled primaries.
+/gagg/pileup/enable true
+
+# --------------------------------------------------------------------------
+# Component 1: bremsstrahlung gamma / X-ray background
+# Fixed spectrum in Constants.hh:
+#   dN/dE ∝ exp(-E/kTe)/E
+#   default kTe = 100 keV, Emin = 10 keV, Emax = 5 MeV
+# --------------------------------------------------------------------------
+/gagg/source/brems/enable true
+/gagg/source/brems/rateHz 1.0e6
+
+# --------------------------------------------------------------------------
+# Component 2: 12C capture / de-excitation gamma component
+# Effective single-photon line-mixture model fixed in Constants.hh:
+#   gamma0      ~16.1 MeV
+#   gamma1      ~11.7 MeV
+#   gamma_star   4.439 MeV
+#
+# This source represents the 11B(p,gamma)12C channel.
+# --------------------------------------------------------------------------
+/gagg/source/c12Capture/enable true
+/gagg/source/c12Capture/rateHz 1.0e1
+
+# --------------------------------------------------------------------------
+# Component 3: p-11B fusion alpha particles
+# Effective single-alpha spectrum fixed in Constants.hh:
+#   1/3 primary alpha:
+#       E_alpha = 3.76 MeV
+#
+#   2/3 secondary alpha:
+#       E = Eboost + Estar + 2*sqrt(Eboost*Estar)*cos(theta)
+#       cos(theta) uniformly sampled in [-1, 1]
+#
+# This is an effective alpha-particle injection rate.
+# One generated primary = one alpha particle.
+# --------------------------------------------------------------------------
+/gagg/source/alphaP11B/enable true
+/gagg/source/alphaP11B/rateHz 1.0e6
+
+# Print progress every event.
+/run/printProgress 1
+
+# Run events.
+/run/beamOn 10

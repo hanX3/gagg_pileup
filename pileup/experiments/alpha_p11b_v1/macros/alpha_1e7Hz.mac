@@ -1,0 +1,33 @@
+# Frozen experiment: alpha_p11b_v1; condition: alpha_1e7Hz
+# Rate is the injected alpha-particle rate, NOT reaction or detected-event rate.
+# Primaries: independent Poisson(rate*T) and uniform emission times in [0,T).
+# Central analysis gate: [5, 15) us.
+# Pre/post guards are an initial choice; reconstruction convergence is not yet tested.
+/control/verbose 1
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gagg/step/setGaggMaxStep 1 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1 um
+/run/initialize
+
+/gagg/run/seed 260923103
+/gagg/run/windowLength 20 us
+/gagg/run/preWindow 5 us
+/gagg/run/postWindow 5 us
+/gagg/run/outputFile waveform.root
+
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+/gagg/source/diskRadius 10 mm
+/gagg/pileup/enable true
+/gagg/source/brems/enable false
+/gagg/source/brems/rateHz 0
+/gagg/source/c12Capture/enable false
+/gagg/source/c12Capture/rateHz 0
+/gagg/source/alphaP11B/enable true
+/gagg/source/alphaP11B/rateHz 10000000
+
+/run/printProgress 1
+/run/beamOn 100
