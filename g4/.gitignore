@@ -1,0 +1,15 @@
+# CMake build products
+/build/
+/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Simulation output
+/data/*.root
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Windows download metadata
+*:Zone.Identifier
