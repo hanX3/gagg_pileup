@@ -4,36 +4,16 @@
 
 当前波形的纵轴是每个时间 bin 的到达光子数；实际 SiPM 的 PDE、雪崩、串扰、后脉冲及读出电子学尚未建模。已有分粒子波形来自仿真真值，自动盲重建算法仍待实现与评估。
 
-## 目录与版本
+## 项目目录
 
 | 目录 | 内容 |
 | --- | --- |
-| [g4](g4/) | 当前 Geant4 工程，基于原 g4_260623；包含源码、宏、分析脚本和历史小型结果图。 |
+| [g4](g4/) | Geant4 工程，包含源码、宏、分析脚本和结果图。 |
 | [11BH_alpha_spectra](11BH_alpha_spectra/) | 简化 p–¹¹B 单 α 能谱、生成脚本、CSV 和检查图。 |
 | [bremsstrahlung](bremsstrahlung/) | 参数化热轫致辐射光子谱、生成脚本、CSV 和检查图。 |
 | [stopping_power](stopping_power/) | 阻止本领表、Birks 光产额曲线和生成程序。 |
 
-整个项目使用一个 Git 仓库。旧工程统一以 `g4/` 为路径，使用以下标签回溯：
-
-| 标签 | 对应内容 |
-| --- | --- |
-| `g4_260621` | 早期光学响应、波长谱检查版本。 |
-| `g4_260622` | 粒子相关光产额、α/γ 单粒子波形与 PSD 分析版本。 |
-| `g4_260623` | 随机多源堆积版本。 |
-
-标签保存的是 **2026-09-23 迁移时各旧目录的工作区快照**，包括当时尚未提交的源码和分析结果；标签名称沿用旧目录名，不表示已完整恢复那个日期的运行环境。原有提交也作为历史父提交保留，路径统一到 `g4/` 并排除本地笔记，因此提交号发生变化；提交说明中的 `Original-Commit` 记录原编号。
-
-`main` 在最新仿真版本基础上汇集早期可复用的光学、单粒子分析脚本及结果图。C++ 源码、物理参数和当前宏保持原 g4_260623 的内容。历史图的来源见 [分析目录说明](g4/analysis/README.md)。
-
-查看差异或在独立目录运行旧版本：
-
-```bash
-git log --first-parent --oneline --decorate
-git diff g4_260622 g4_260623 -- g4/
-git worktree add --detach .worktrees/g4_260622 g4_260622
-```
-
-旧版本的数据文件需另行取得。Git 标签不包含 ROOT 原始数据、构建产物和本地笔记。`AGENTS.md`、`jupyter/`、所有 `.ipynb`、`papers/` 与本地归档通过 `.gitignore` 保留在本机。
+ROOT 原始数据、构建产物和本地研究笔记不随仓库分发，排除规则见 [.gitignore](.gitignore)。
 
 ## 当前模型
 
@@ -50,7 +30,7 @@ git worktree add --detach .worktrees/g4_260622 g4_260622
 
 ## 编译与运行
 
-需要 CMake、C++ 编译器、带 UI/可视化组件的 Geant4，以及 ROOT 的 Core/RIO/Tree。迁移前工作区使用 Geant4 11.3.2、ROOT 6.34.10；这不代表所有历史数据的生成环境已被完整追溯。
+需要 CMake、C++ 编译器、带 UI/可视化组件的 Geant4，以及 ROOT 的 Core/RIO/Tree。已验证的本地环境为 Geant4 11.3.2、ROOT 6.34.10。
 
 从项目根目录运行，先按本机安装方式加载 Geant4/ROOT 环境：
 
@@ -61,7 +41,7 @@ cd g4/build
 ./gagg ../macros/run_all_pileup.mac
 ```
 
-程序使用相对输出路径 `../data`，因此应在 `g4/build/` 中启动；新结果位于 `g4/data/`。无参数运行 `./gagg` 会进入交互可视化模式。不要复用旧目录中含绝对路径的 CMake 缓存。
+程序使用相对输出路径 `../data`，因此应在 `g4/build/` 中启动；新结果位于 `g4/data/`。无参数运行 `./gagg` 会进入交互可视化模式。
 
 当前 [run_all_pileup.mac](g4/macros/run_all_pileup.mac) 配置为轫致辐射 10⁶ Hz、¹²C γ 10 Hz、α 10⁶ Hz，生成 10 个时间窗。每窗期望初级粒子数约 20。另有单源宏与 [低速率三源宏](g4/macros/run_all_p11b_sources_pileup.mac)。大规模运行前应先用独立输出目录和少量事件检查配置。
 
@@ -76,9 +56,9 @@ cd g4/analysis
 python3 plot_pileup_waveform.py ../data/gagg_waveform_20260624_16h28m34s.root --bin-width-ns 1.0
 ```
 
-脚本目前只画第一个 event，PNG 保存到启动命令所在目录。它会读取完整事件树，大文件分析需要预留内存。本机 uproot 默认文件读取曾出现等待，显式使用 `uproot.source.file.MemmapSource` 可读取；此迁移未改变脚本的读取算法。
+脚本目前只画第一个 event，PNG 保存到启动命令所在目录。它会读取完整事件树，大文件分析需要预留内存。本机 uproot 默认文件读取曾出现等待，显式使用 `uproot.source.file.MemmapSource` 可读取。
 
-单粒子比较示例和各历史图的来源见 [分析目录说明](g4/analysis/README.md)。
+单粒子比较示例与分析工具说明见 [分析目录说明](g4/analysis/README.md)。
 
 ## ROOT 数据与运行记录
 
