@@ -1,5 +1,7 @@
 # 纯 α 随机堆积实验
 
+当前生产采用 **G4 串行、一窗一 ROOT、最多同时运行 8 个独立任务**。每档 100 个窗对应 100 个 ROOT 文件。新入口为 [submit_scan.py](submit_scan.py)，实际数据统一写入项目的 `g4/data/`；文件名沿用 `gagg_waveform_YYYYMMDD_HHhMMmSSs.root`，启动至少间隔 1 秒，同名则等待。
+
 第一步准备纯 α 输入数据，研究对象是给定计数率下随机出现的多脉冲。沿用主工程的 p–¹¹B 有效单 α 能谱和光学参数，暂不加入 brems / ¹²C γ 背景。未知脉冲数的重建将在精读用户提供的文献结果后实现；这里的检查脚本只读取仿真真值做数据一致性检查。
 
 ## 首轮条件
@@ -17,7 +19,7 @@
 
 注入率是生成器发射的 α 粒子数率，不是融合反应率，也不是实际形成信号的事件率。当前源是原有有效单 α 能谱，不生成一次 p–¹¹B 反应的三个关联 α。源能量、晶体入口能量、沉积能量和由光输出标定的能量需要分别处理。
 
-100 窗是初始运行规模，可用 `--events` 覆盖并自动记录。最高速率默认期望生成 20 万个 α，完整光学输运成本尚未测定；先运行小样本再决定正式统计量。
+100 窗是每档的初始总规模，可用新提交器的 `--files-per-rate` 调整；每次 G4 运行固定 `/run/beamOn 1`。最高速率默认期望生成 20 万个 α，完整光学输运成本尚未测定；先运行小样本再决定正式统计量。
 
 ## 文件与结果
 
@@ -37,7 +39,9 @@ pileup/
     run.py
     analysis/check_run.py
     build/                    # 本实验的构建目录，Git 忽略
-    runs/<条件>/<运行编号>/    # ROOT、实际宏、日志、运行清单，Git 忽略
+    runs/<条件>/<运行编号>/    # 早先测试的宏、日志与清单；ROOT 已迁至 g4/data
+  submit_scan.py              # 一窗一文件的独立任务提交器
+  results/submissions/        # 各批次的脚本副本、实际宏、日志、清单和状态，Git 忽略
 ```
 
 每次运行创建新的输出目录；旧 ROOT 不被覆盖。运行清单保存种子、实际事件数、完整配置、宏与二进制哈希、依赖版本、耗时、返回码和 ROOT 哈希。`RunInfo` 另存实际时间窗、中央评价区、源启用状态/速率及随机引擎状态。
@@ -47,29 +51,26 @@ pileup/
 需要 CMake、C++17 编译器、Geant4 和 ROOT；本地验证环境为 Geant4 11.3.2、ROOT 6.34.10。加载依赖环境后，从项目根目录执行：
 
 ```bash
-python3 pileup/experiments/alpha_p11b_v1/run.py list
 python3 pileup/experiments/alpha_p11b_v1/run.py verify
 python3 pileup/experiments/alpha_p11b_v1/run.py build --jobs 2
-python3 pileup/experiments/alpha_p11b_v1/run.py run --point alpha_1e5Hz --events 2
+python3 pileup/submit_scan.py --files-per-rate 100 --workers 8
 ```
 
-确认日志和小样本后，由用户提交完整一档或四档：
+一次只启动一个生产批次，以保持总并发上限。当前已经提交的批次在本机 tmux 后台运行；不需要再运行上面的提交命令。每个任务调用冻结实验的串行 `gagg`，独立设置种子、秒级输出路径和 `/run/beamOn 1`。冻结目录内早先的 100 窗宏保留用于历史记录，当前实际运行宏由新提交器保存。
+
+提交器打印 `pileup/results/submissions/<批次>/`。其中 `submission.json` 保存任务安排，`status.json` 持续更新，`runs/<条件>/<文件序号>/` 保存实际 `run.mac`、`manifest.json`、运行日志和检查结果；ROOT 本体统一位于 `g4/data/`。每份完成后自动检查恰好一个 WaveformEvent、时间窗、种子、速率与真值树一致性。
+
+默认种子为各速率的原始种子加 `200 + 1000 × 文件序号`。新增独立批次应换用不重叠的 `--seed-offset`；相同种子的重跑是复现检查，不增加独立统计量。若要保留在后台运行，可先加 `--prepare-only`，再在 tmux 中执行所打印目录下的 `run_scan.py --submission <该目录>`。在批次目录建立 `STOP_AFTER_CURRENT` 文件可让正在运行的单窗完成后停止后续任务。
+
+重跑一个已完成的单窗文件，指定其实际清单；输出仍用新的秒级文件名写入 `g4/data/`：
 
 ```bash
-python3 pileup/experiments/alpha_p11b_v1/run.py run --point alpha_1e5Hz
-python3 pileup/experiments/alpha_p11b_v1/run.py run --all
+python3 pileup/submit_scan.py --replay pileup/results/submissions/<批次>/runs/<条件>/<文件序号>/manifest.json --workers 1
 ```
 
-上述两个命令分别是单档与全部条件的运行选项。`--all` 按顺序运行各档。正式运行使用冻结宏中的种子；增加独立重复样本时，为单档指定新的 `--seed`。相同种子和事件数的重复运行是复现检查，不能当作新增独立统计量。
+不同快照需同时指定 `--experiment`。ROOT 包含时间戳、UUID 和路径，复现应比较物理分支，不能只比较文件哈希。
 
-记录运行器打印的结果目录。重跑时，把下面路径中的 `<条件>/<运行编号>` 换成那次运行的实际路径：
-
-```bash
-python3 pileup/experiments/alpha_p11b_v1/run.py replay pileup/experiments/alpha_p11b_v1/runs/<条件>/<运行编号>/manifest.json
-python3 pileup/experiments/alpha_p11b_v1/analysis/check_run.py pileup/experiments/alpha_p11b_v1/runs/<条件>/<运行编号>/waveform.root
-```
-
-`replay` 使用历史运行的实际种子和事件数，输出到新目录。ROOT 包含时间戳、UUID 和运行路径，复现判断应比较物理数据分支，不能只比较文件哈希。检查脚本需要 numpy、uproot；可用 `--output 检查结果.json` 保存报告，已有同名报告不会被覆盖。
+本地 `jupyter/Run_Catalog.ipynb` 统一列出 ROOT、实际宏、注入率、种子、窗口、状态和说明。执行索引单元即可刷新；历史文件缺失原始宏时明确标注，不以当前同名宏替代。早先多窗测试及中断文件分别放在 `g4/data/legacy_ten_window/` 与 `g4/data/interrupted/`，旧路径保留相对符号链接。
 
 ## 保留旧实验，继续修改新实验
 
@@ -89,4 +90,4 @@ python3 pileup/prepare.py --config pileup/configs/alpha_p11b_v1.json --name alph
 - 真值树用于检查与后续评分。重建算法的输入应只有总波形及预先建立的响应模型，不提供真实粒子数、时间或能量。
 - 5 μs 保护区、统计量、时间分箱和光输出到 α 能量的标定仍需验证。尚未得到重建效率、漏检／误拆分／误合并、能量分辨率或可恢复计数率的结论。
 
-研究过程和实际验证记录保存在本地 `jupyter/Note.ipynb` 与 `jupyter/Research_Plan_20260921.ipynb`。源码可按完成阶段做本地 Git 提交；上传须由用户另行明确发起。
+研究过程和实际验证记录保存在本地 `jupyter/Note.ipynb` 与 `jupyter/Research_Plan_20260921.ipynb`。数据索引见本地 `jupyter/Run_Catalog.ipynb`。源码可按完成阶段做本地 Git 提交；上传须由用户另行明确发起。
