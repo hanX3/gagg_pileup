@@ -1,0 +1,36 @@
+/control/verbose 1
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Charged-particle max step limits.
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+
+/run/initialize
+
+# Efficient conditional source: photons are aimed at the GAGG front face.
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+
+# Pileup model.
+# One Geant4 event = one configurable waveform window (10 us by default).
+# Source energies and brems parameters are defined in include/Constants.hh.
+# For brems only:
+#   E sampled from dN/dE proportional to exp(-E/kTe)/E
+#   default kTe = 100 keV, Emin = 10 keV, Emax = 5 MeV.
+/gagg/pileup/enable true
+
+# Enable only bremsstrahlung photon source.
+/gagg/source/brems/enable true
+/gagg/source/brems/rateHz 1.0e4
+
+/gagg/source/c12Capture/enable false
+/gagg/source/c12Capture/rateHz 0
+
+/gagg/source/alphaP11B/enable false
+/gagg/source/alphaP11B/rateHz 0
+
+/run/printProgress 1
+/run/beamOn 10

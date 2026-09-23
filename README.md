@@ -42,7 +42,7 @@ cd g4/build
 ./gagg ../macros/run_all_pileup.mac
 ```
 
-未指定输出文件时，程序使用相对目录 `../data`，因此上述运行方式将新结果写入 `g4/data/`。宏可用 `/gagg/run/outputFile` 指定相对于启动目录的 ROOT 路径；已有同名文件会被拒绝覆盖。无参数运行 `./gagg` 会进入交互可视化模式。
+未指定输出文件时，程序使用相对目录 `../data` 和秒级文件名 `YYYYMMDD_HHhMMmSSs.root`，因此上述运行方式将新结果写入 `g4/data/`；同名时等待下一秒。宏可用 `/gagg/run/outputFile` 指定相对于启动目录的 ROOT 路径；显式指定的已有同名文件会被拒绝覆盖。无参数运行 `./gagg` 会进入交互可视化模式。
 
 当前 [run_all_pileup.mac](g4/macros/run_all_pileup.mac) 配置为轫致辐射 10⁶ Hz、¹²C γ 10 Hz、α 10⁶ Hz，生成 10 个时间窗。每窗期望初级粒子数约 20。另有单源宏与 [低速率三源宏](g4/macros/run_all_p11b_sources_pileup.mac)。大规模运行前应先用独立输出目录和少量事件检查配置。
 
@@ -72,7 +72,7 @@ Python 绘图依赖 numpy、matplotlib、uproot、awkward；源谱辅助脚本�
 
 ```bash
 cd g4/analysis
-python3 plot_pileup_waveform.py ../data/gagg_waveform_20260624_16h28m34s.root --bin-width-ns 1.0
+python3 plot_pileup_waveform.py ../data/20260624_16h28m34s.root --bin-width-ns 1.0
 ```
 
 脚本目前只画第一个 event，PNG 保存到启动命令所在目录。它会读取完整事件树，大文件分析需要预留内存。本机 uproot 默认文件读取曾出现等待，显式使用 `uproot.source.file.MemmapSource` 可读取。
@@ -91,7 +91,7 @@ ps 除以 1000 得到 ns。`edep_total_MeV` 是沉积能量真值，不是淬灭
 
 新运行将发射与光子到达时间向下量化到 1 ps，记录范围为 `[0,T)`；旧版使用最近整数舍入。相对连续时间的量化误差小于 1 ps，与旧版整数记录最多相差 1 ps；物理输运和发光模型不变。`primary_time_ps` 是源发射时间，并非进入晶体或首次沉积的时刻。旧文件可能没有新增的 RunInfo 字段。
 
-本地现有多源样本均只有一个 10 μs 窗；下表来自各自 ROOT 的 RunInfo 和 PrimaryPhoton，不由当前宏推断。完整文件名为 `gagg_waveform_<时间戳>.root`，这些 ROOT 文件不随 Git 仓库分发。
+本地现有多源样本均只有一个 10 μs 窗；下表来自各自 ROOT 的 RunInfo 和 PrimaryPhoton，不由当前宏推断。完整文件名为 `<时间戳>.root`，这些 ROOT 文件不随 Git 仓库分发。
 
 | 时间戳 | brems / ¹²C γ / α 注入率（Hz） | 初级粒子数 | 实际 brems / ¹²C γ / α 数 |
 | --- | --- | ---: | --- |
@@ -101,4 +101,4 @@ ps 除以 1000 得到 ns。`edep_total_MeV` 是沉积能量真值，不是淬灭
 
 单窗示例不能给出可靠的重建效率或误差统计。后续主实验应使用多段独立随机流，处理窗前历史和窗末截断，评价 α 效率、漏检、误拆分/误合并、假 α 率、能量偏差/分辨率和整体能谱偏差。
 
-每次运行记录代码提交号及未提交改动、完整宏、随机种子、事件数、源谱和注入率、时间窗、关键参数、依赖环境和输出路径。`data/data.log` 与 RunInfo 不能代替完整源码和参数记录；现有历史数据的几何、光学参数及环境仍有追溯缺口。
+每次运行记录代码提交号及未提交改动、完整宏、随机种子、事件数、源谱和注入率、时间窗、关键参数、依赖环境和输出路径。实际宏和 manifest 保存在对应提交目录，ROOT 与宏的索引记录在本地 `jupyter/Run_Catalog.ipynb`。原 `data.log` 已归档到 `jupyter/run_records/`，新代码不再生成这个重复日志；RunInfo 继续保存运行条件和实际宏内容。现有历史数据的几何、光学参数及环境仍有追溯缺口。

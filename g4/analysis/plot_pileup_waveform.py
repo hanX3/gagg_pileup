@@ -16,7 +16,7 @@ The figure includes:
 
 Command-line usage
 ------------------
-python3 plot_pileup_waveform.py ../data/gagg_waveform_20260624_15h46m34s.root
+python3 plot_pileup_waveform.py ../data/20260624_16h28m34s.root
 
 Change histogram bin width:
 python3 plot_pileup_waveform.py input.root --bin-width-ns 2.0
@@ -24,10 +24,10 @@ python3 plot_pileup_waveform.py input.root --bin-width-ns 2.0
 The PNG is saved directly in the current working directory. For example:
 
   input ROOT:
-    ../data/gagg_waveform_20260624_15h46m34s.root
+    ../data/20260624_16h28m34s.root
 
   output PNG:
-    ./20260624_15h46m34s.png
+    ./20260624_16h28m34s.png
 
 Jupyter usage
 -------------
@@ -36,7 +36,7 @@ Run the notebook from the project root directory, then use:
     from analysis.plot_pileup_waveform import plot_first_event
 
     fig = plot_first_event(
-        "data/gagg_waveform_20260624_15h46m34s.root",
+        "data/20260624_16h28m34s.root",
         bin_width_ns=1.0,
         save=False,
     )
@@ -88,8 +88,8 @@ def make_output_filename(root_file_name):
     Build the output PNG filename from the ROOT filename.
 
     Example:
-      gagg_waveform_20260624_15h46m34s.root
-        -> 20260624_15h46m34s.png
+      gagg_waveform_20260624_16h28m34s.root
+        -> 20260624_16h28m34s.png
 
       test.root
         -> test.png

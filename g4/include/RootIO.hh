@@ -42,7 +42,6 @@ public:
 
 // private
 private:
-  void AppendRunLog(const std::string& root_file_name) const;
 
 private:
   RunInfoData run_info_data;

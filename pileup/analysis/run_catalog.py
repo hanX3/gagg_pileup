@@ -13,6 +13,8 @@ def collect(project):
     paths += list((project / 'pileup/results/submissions').glob('*/runs/*/*/manifest.json'))
     for path in paths:
         record = json.loads(path.read_text())
+        if record.get('status') == 'deleted':
+            continue
         if 'root_relative_path' in record:
             root_path = project / record['root_relative_path']
         else:
@@ -36,6 +38,7 @@ def collect(project):
                'seed': record.get('seed'), 'macro_file': macro,
                'manifest': str(manifest.relative_to(project)) if manifest else None,
                'submission_id': record.get('submission_id'), 'macro_path_in_RunInfo': None,
+               'campaign_id': record.get('campaign_id', record.get('submission_id')),
                'notes': ''}
         if state in ('running', 'validating'):
             row['notes'] = '运行或检查中；只读运行清单，不读取正在写入的 ROOT。'

@@ -12,9 +12,9 @@
 单粒子比较需要对应的数据文件；ROOT 原始数据单独保存，不在 Git 中。以下命令从仓库根目录开始，建议在单独结果目录运行，避免覆盖已有图：
 
 ```bash
-mkdir -p g4/data/single-particle-check
-cd g4/data/single-particle-check
-python3 ../../analysis/compare_alpha_gamma.py ../gagg_waveform_20260623_15h14m49s.root ../gagg_waveform_20260623_15h14m57s.root
+mkdir -p jupyter/artifacts/single-particle-check
+cd jupyter/artifacts/single-particle-check
+python3 ../../../g4/analysis/compare_alpha_gamma.py ../../../g4/data/20260623_15h14m49s.root ../../../g4/data/20260623_15h14m57s.root
 ```
 
 上述 γ/α 源能量分别为 661.657 keV 和 5.486 MeV。旧 ROOT 记录窗为 1 μs；平均模板绘图到 1200 ns 不代表补回了窗外尾部。两份脚本分别采用首光子对齐和不作逐事件对齐的约定，调用前应核对。单一 α 源能量也不能替代完整的 Qα(E) 标定。
