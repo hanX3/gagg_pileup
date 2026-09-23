@@ -4,11 +4,15 @@
 #include <cstdint>
 #include <cmath>
 
+#include "G4SystemOfUnits.hh"
+
 // ROOT output directory. Run from build/; data are written outside build/.
 static const char DATAPATH[] = "../data";
 
 // One Geant4 event is one waveform time window.
-static const std::uint32_t EVENT_TIME_LENGTH_PS = 1000000U; // 1 us
+// For pileup studies this is both the gamma-emission window and the recorded
+// photon-arrival window.
+static const std::uint32_t EVENT_TIME_LENGTH_PS = 10000000U; // 10 us
 
 // -----------------------------------------------------------------------------
 // Geometry constants, in mm unless otherwise stated
@@ -88,6 +92,98 @@ static const double SOURCE_TARGET_CENTER_Y_MM = 0.0;
 static const double SOURCE_TARGET_Z_MM = GAGG_FRONT_SURFACE_Z_MM;
 static const double SOURCE_TARGET_SIZE_X_MM = GAGG_SIZE_X_MM;
 static const double SOURCE_TARGET_SIZE_Y_MM = GAGG_SIZE_Y_MM;
+
+
+// -----------------------------------------------------------------------------
+// Pileup particle/photon-source defaults
+// -----------------------------------------------------------------------------
+// One Geant4 event corresponds to one waveform time window.  In pileup mode,
+// each enabled source component is sampled independently with Poisson(rate*T),
+// where T = EVENT_TIME_LENGTH_PS in seconds.  All generated primaries are
+// then sorted by emission time, so primary_id follows chronological order.
+static const bool DEFAULT_PILEUP_ENABLED = false;
+
+// p-11B-related source components used in the current parameterized model:
+//   1. bremsstrahlung: p-11B plasma X-ray/photon background;
+//   2. c12_capture: 11B(p,gamma)12C capture/de-excitation photon component;
+//   3. alpha_p11b: effective alpha-particle source from p + 11B -> 3 alpha.
+//
+// The 11B(p,p'gamma)11B 2.125-MeV inelastic-gamma component has been removed
+// from this model because it is not expected in the energy range currently
+// considered for the p-11B fusion case.
+//
+// Only component enable flags and rates are intended to be changed in macros.
+static const bool DEFAULT_BREMS_SOURCE_ENABLED = false;
+static const bool DEFAULT_C12_CAPTURE_SOURCE_ENABLED = false;
+static const bool DEFAULT_ALPHA_P11B_SOURCE_ENABLED = false;
+
+static const double DEFAULT_BREMS_SOURCE_RATE_HZ = 1.0e4;
+static const double DEFAULT_C12_CAPTURE_SOURCE_RATE_HZ = 1.0e3;
+static const double DEFAULT_ALPHA_P11B_SOURCE_RATE_HZ = 1.0e4;
+
+// Maxwellian thermal bremsstrahlung photon-number spectrum:
+//   dN/dE proportional to E^{-1} exp(-E/kTe), Emin <= E <= Emax.
+// These values define the nominal p-11B plasma photon background.  The nominal
+// kTe is 100 keV; 40--300 keV can be used in dedicated code-level scans if
+// needed, but it is intentionally not exposed as a routine macro parameter here.
+static const double BREMS_EMIN = 10.0*keV;
+static const double BREMS_EMAX = 5.0*MeV;
+static const double BREMS_KTE  = 100.0*keV;
+
+
+// 11B(p,gamma)12C capture/de-excitation photon component.
+// Reference for low-energy 11B(p,gamma)12C gamma branches:
+//   J. J. He et al., "Direct measurement of 11B(p,gamma)12C astrophysical
+//   S factors at low energies", Phys. Rev. C 93, 055804 (2016).
+// In that notation:
+//   gamma0      : capture to 12C ground state, E_gamma ~ 16.1 MeV;
+//   gamma1      : capture to 12C first excited state, E_gamma ~ 11.7 MeV;
+//   gamma_star  : 12C*(4.439) -> 12C(g.s.) de-excitation gamma.
+// The measured low-energy yield ratio gamma0/gamma1 is approximately 4.6%.
+static const double C12_CAPTURE_GAMMA0_ENERGY = 16.1*MeV;
+static const double C12_CAPTURE_GAMMA1_ENERGY = 11.7*MeV;
+static const double C12_CAPTURE_GAMMA_STAR_ENERGY = 4.439*MeV;
+static const double C12_CAPTURE_GAMMA0_TO_GAMMA1_RATIO = 0.046;
+
+// Convert gamma0/gamma1 yield ratio to reaction-branch probabilities:
+//   B0 = gamma0 branch, B1 = gamma1 branch, B0/B1 = 0.046.
+static const double C12_CAPTURE_BRANCH_GROUND =
+  C12_CAPTURE_GAMMA0_TO_GAMMA1_RATIO /
+  (1.0 + C12_CAPTURE_GAMMA0_TO_GAMMA1_RATIO);
+static const double C12_CAPTURE_BRANCH_FIRST_EXCITED =
+  1.0 / (1.0 + C12_CAPTURE_GAMMA0_TO_GAMMA1_RATIO);
+
+// Current implementation uses an effective single-photon line-mixture model for
+// the c12_capture component.  It does not explicitly force gamma1 and
+// gamma_star to be generated as a coincidence pair.  The photon-yield weights
+// below follow from the reaction branches:
+//   gamma0 branch emits one photon;
+//   gamma1 branch emits gamma1 plus gamma_star, i.e. two photons.
+static const double C12_CAPTURE_PHOTON_WEIGHT_DENOMINATOR =
+  C12_CAPTURE_BRANCH_GROUND + 2.0*C12_CAPTURE_BRANCH_FIRST_EXCITED;
+static const double C12_CAPTURE_GAMMA0_PHOTON_WEIGHT =
+  C12_CAPTURE_BRANCH_GROUND / C12_CAPTURE_PHOTON_WEIGHT_DENOMINATOR;
+static const double C12_CAPTURE_GAMMA1_PHOTON_WEIGHT =
+  C12_CAPTURE_BRANCH_FIRST_EXCITED / C12_CAPTURE_PHOTON_WEIGHT_DENOMINATOR;
+static const double C12_CAPTURE_GAMMA_STAR_PHOTON_WEIGHT =
+  C12_CAPTURE_BRANCH_FIRST_EXCITED / C12_CAPTURE_PHOTON_WEIGHT_DENOMINATOR;
+
+
+// p + 11B -> 3 alpha effective single-alpha source spectrum.
+// Current model is used for detector-response and pileup studies, not for a
+// full three-body Dalitz simulation.  The source rate is interpreted as an
+// effective alpha-particle rate toward the detector, not as a fusion-reaction
+// rate.
+//
+// Model:
+//   1/3 primary alpha:   E = 3.76 MeV;
+//   2/3 secondary alpha: sequential 8Be* decay approximation,
+//      E = Eboost + Estar + 2*sqrt(Eboost*Estar)*cos(theta),
+//      cos(theta) uniformly sampled in [-1, 1].
+static const double P11B_ALPHA_PRIMARY_FRACTION = 1.0/3.0;
+static const double P11B_ALPHA_PRIMARY_ENERGY = 3.76*MeV;
+static const double P11B_ALPHA_SECONDARY_ESTAR = 1.515*MeV;
+static const double P11B_ALPHA_SECONDARY_EBOOST = 0.94*MeV;
 
 // -----------------------------------------------------------------------------
 // Optical constants

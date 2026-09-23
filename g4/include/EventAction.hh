@@ -35,9 +35,7 @@ public:
 
   void AddEdep(G4int primary_id, G4double edep);
   void AddScintPhotonGenerated(G4int primary_id);
-  void AddPhotonArrival(G4int primary_id,
-                        G4double time,
-                        const G4ThreeVector& position);
+  void AddPhotonArrival(G4int primary_id, G4double time, const G4ThreeVector& position);
 
   G4int GetNPrimary() const { return primary_photon_data_vec.size(); }
 

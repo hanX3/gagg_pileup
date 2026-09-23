@@ -33,3 +33,8 @@ add_custom_target(clean_build
   COMMAND ${CMAKE_COMMAND} -E echo "Removing all files under ${CMAKE_BINARY_DIR}"
   COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_BINARY_DIR}/*
 )
+
+# Also let the standard "make clean" remove the executable.
+set_directory_properties(PROPERTIES
+  ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_BINARY_DIR}/gagg"
+)

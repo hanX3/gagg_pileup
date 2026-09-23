@@ -8,6 +8,7 @@
 #include "Constants.hh"
 
 #include "Rtypes.h"
+#include "TString.h"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 // Internal particle category labels. ROOT output uses string fields instead of
@@ -21,19 +22,23 @@ enum PrimaryType
   kPrimaryOther   = 99
 };
 
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-// Internal representation of one optical photon hit on the virtual SiPM plane.
-//
-// This structure is used inside the simulation to keep the arrival time and
-// SiPM-plane position tied together during sorting.  ROOT output still uses
-// three parallel vector branches:
-//   *_arrival_t_ps[i], *_arrival_x_mm[i], *_arrival_y_mm[i]
-// for easier interactive analysis with TTree::Draw/Scan.
+// Internal container used to keep one optical-photon SiPM hit together while
+// sorting by arrival time. ROOT output is written to the separated vector
+// branches: *_t_ps, *_x_mm, and *_y_mm.
 struct OpticalPhotonHitData
 {
-  UInt_t t_ps = 0;
-  Float_t x_mm = 0.;
-  Float_t y_mm = 0.;
+  UInt_t t_ps;
+  Float_t x_mm;
+  Float_t y_mm;
+
+  void Clear()
+  {
+    t_ps = 0;
+    x_mm = 0.;
+    y_mm = 0.;
+  }
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -45,6 +50,8 @@ struct RunInfoData
   Float_t gagg_max_step_um;
   Float_t mylar_front_max_step_um;
   Float_t mylar_side_max_step_um;
+  TString macro_file;
+  TString source_config_tag;
 
   void Clear()
   {
@@ -54,6 +61,8 @@ struct RunInfoData
     gagg_max_step_um = DEFAULT_GAGG_MAX_STEP_UM;
     mylar_front_max_step_um = DEFAULT_MYLAR_FRONT_MAX_STEP_UM;
     mylar_side_max_step_um = DEFAULT_MYLAR_SIDE_MAX_STEP_UM;
+    macro_file = "";
+    source_config_tag = "";
   }
 };
 
@@ -64,14 +73,10 @@ struct WaveformEventData
   UInt_t n_primary;
   ULong64_t n_optical_photons_arrived_total;
   Float_t edep_total_MeV;
-
-  // ROOT output vectors.  The same index corresponds to the same optical photon.
+  std::vector<OpticalPhotonHitData> all_photon_arrival_hits;
   std::vector<UInt_t> all_photon_arrival_t_ps;
   std::vector<Float_t> all_photon_arrival_x_mm;
   std::vector<Float_t> all_photon_arrival_y_mm;
-
-  // Internal vector used to sort t/x/y as one object before filling ROOT.
-  std::vector<OpticalPhotonHitData> all_photon_arrival_hits;
 
   void Clear()
   {
@@ -79,10 +84,10 @@ struct WaveformEventData
     n_primary = 0;
     n_optical_photons_arrived_total = 0;
     edep_total_MeV = 0.;
+    all_photon_arrival_hits.clear();
     all_photon_arrival_t_ps.clear();
     all_photon_arrival_x_mm.clear();
     all_photon_arrival_y_mm.clear();
-    all_photon_arrival_hits.clear();
   }
 };
 
@@ -105,14 +110,10 @@ struct PrimaryPhotonData
   Float_t edep_total_MeV;
   UInt_t n_scint_photons_generated;
   UInt_t n_optical_photons_arrived;
-
-  // ROOT output vectors.  The same index corresponds to the same optical photon.
+  std::vector<OpticalPhotonHitData> photon_arrival_hits;
   std::vector<UInt_t> photon_arrival_t_ps;
   std::vector<Float_t> photon_arrival_x_mm;
   std::vector<Float_t> photon_arrival_y_mm;
-
-  // Internal vector used to sort t/x/y as one object before filling ROOT.
-  std::vector<OpticalPhotonHitData> photon_arrival_hits;
 
   void Clear()
   {
@@ -132,10 +133,10 @@ struct PrimaryPhotonData
     edep_total_MeV = 0.;
     n_scint_photons_generated = 0;
     n_optical_photons_arrived = 0;
+    photon_arrival_hits.clear();
     photon_arrival_t_ps.clear();
     photon_arrival_x_mm.clear();
     photon_arrival_y_mm.clear();
-    photon_arrival_hits.clear();
   }
 };
 
