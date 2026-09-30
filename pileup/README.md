@@ -99,3 +99,18 @@ python3 pileup/prepare.py --config pileup/configs/alpha_p11b_v2.json --name alph
 - 5 μs 保护区、统计量、时间分箱和光输出到 α 能量的标定仍需验证。尚未得到重建效率、漏检／误拆分／误合并、能量分辨率或可恢复计数率的结论。
 
 研究过程和实际验证记录保存在本地 `jupyter/Note.ipynb` 与 `jupyter/Research_Plan_20260921.ipynb`。数据索引见本地 `jupyter/Run_Catalog.ipynb`。源码可按完成阶段做本地 Git 提交；上传须由用户另行明确发起。
+
+## α 响应核验与能量标定
+
+[analysis/alpha_response.py](analysis/alpha_response.py) 从已完成的生产目录建立按 ROOT 划分的校准/验证/测试清单，逐文件核对生产 SHA256，只读取时间与必要标量分支。当前配置每档 30/20/50 窗；只处理 10⁵、10⁶ Hz 的校准/验证文件，保留最终测试波形。
+
+```bash
+# 从项目根目录执行；输出目录必须尚不存在。
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pileup.analysis.alpha_response \
+  --output jupyter/artifacts/alpha_response_new_run
+python3 -m unittest pileup.analysis.test_alpha_response -v
+```
+
+除已有读取依赖外需要 SciPy。脚本保存 5 μs 首光子对齐模板、绝对光输出、三个能标候选、按能区的独立验证误差、源码副本及运行记录。以实际冻结光产额表作能标的候选只验证当前仿真模型，不代表独立实验标定；超出校准范围的能量估计标为 NaN。
+
+`waveforms/` 中的 NPZ 仅含总计数、bin 宽与完整窗长；评分标签单独放在 `truth/`。本轮已完成 100 窗核验和 283/163 个校准/验证响应的分析，图表与输出保存在本地 `jupyter/Alpha_Response_Calibration.ipynb`。这是有标签响应校准与已知 K=1 自检，未知 K 的 pileup 重建仍待实现。该模块不会运行 G4 或修改原 ROOT；重跑时使用新结果目录。

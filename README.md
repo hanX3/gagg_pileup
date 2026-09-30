@@ -79,6 +79,8 @@ python3 plot_pileup_waveform.py ../data/20260624_16h28m34s.root --bin-width-ns 1
 
 单粒子比较示例与分析工具说明见 [分析目录说明](g4/analysis/README.md)。
 
+纯 α 响应核验与条件能标模块见 [pileup/analysis/alpha_response.py](pileup/analysis/alpha_response.py)，使用方法见 [pileup 说明](pileup/README.md#α-响应核验与能量标定)。首批 100 个校准/验证窗的检查、长尾模板及能标比较已完成，实际输出记录在本地 `jupyter/Alpha_Response_Calibration.ipynb`；未知脉冲数的重建仍待实现。
+
 ## ROOT 数据与运行记录
 
 | 树 | 每行含义 | 主要字段 |
