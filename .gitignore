@@ -29,6 +29,8 @@ cmake_install.cmake
 *.so
 
 # Python and platform metadata
+/.venv/
+/.cache/jupyter-classic/
 __pycache__/
 *.py[cod]
 *:Zone.Identifier

@@ -3,6 +3,7 @@
 
 #include "Constants.hh"
 #include "DataStructure.hh"
+#include "SiPMResponse.hh"
 #include <globals.hh>
 
 #include <fstream>
@@ -39,6 +40,7 @@ public:
 // primary photon
 public:
   void FillPrimaryPhotonTree(PrimaryPhotonData& data);
+  void FillSiPMEventTree(const sipm::Result& data);
 
 // private
 private:
@@ -47,6 +49,11 @@ private:
   RunInfoData run_info_data;
   WaveformEventData waveform_event_data;
   PrimaryPhotonData primary_photon_data;
+  sipm::Result sipm_data;
+  Bool_t sipm_enabled = false;
+  UInt_t sipm_schema_version = 1;
+  ULong64_t sipm_avalanche_base_seed = 0, sipm_readout_base_seed = 0;
+  std::string sipm_config_file, sipm_config_json, sipm_model_version, sipm_rng;
 
   G4String macro_file_name;
 
@@ -54,6 +61,7 @@ private:
   TTree* run_info_tree = nullptr;
   TTree* waveform_event_tree = nullptr;
   TTree* primary_photon_tree = nullptr;
+  TTree* sipm_tree = nullptr;
 
   char file_name[1024];
 };

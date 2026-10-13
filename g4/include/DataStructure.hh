@@ -26,18 +26,20 @@ enum PrimaryType
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 // Internal container used to keep one optical-photon SiPM hit together while
 // sorting by arrival time. ROOT output is written to the separated vector
-// branches: *_t_ps, *_x_mm, and *_y_mm.
+// branches: *_t_ps, *_x_mm, *_y_mm, and photon_energy_eV.
 struct OpticalPhotonHitData
 {
   UInt_t t_ps;
   Float_t x_mm;
   Float_t y_mm;
+  Float_t photon_energy_eV;
 
   void Clear()
   {
     t_ps = 0;
     x_mm = 0.;
     y_mm = 0.;
+    photon_energy_eV = 0.;
   }
 };
 
@@ -104,6 +106,7 @@ struct WaveformEventData
   std::vector<UInt_t> all_photon_arrival_t_ps;
   std::vector<Float_t> all_photon_arrival_x_mm;
   std::vector<Float_t> all_photon_arrival_y_mm;
+  std::vector<Float_t> photon_energy_eV;
 
   void Clear()
   {
@@ -115,6 +118,7 @@ struct WaveformEventData
     all_photon_arrival_t_ps.clear();
     all_photon_arrival_x_mm.clear();
     all_photon_arrival_y_mm.clear();
+    photon_energy_eV.clear();
   }
 };
 
@@ -141,6 +145,7 @@ struct PrimaryPhotonData
   std::vector<UInt_t> photon_arrival_t_ps;
   std::vector<Float_t> photon_arrival_x_mm;
   std::vector<Float_t> photon_arrival_y_mm;
+  std::vector<Float_t> photon_energy_eV;
 
   void Clear()
   {
@@ -164,6 +169,7 @@ struct PrimaryPhotonData
     photon_arrival_t_ps.clear();
     photon_arrival_x_mm.clear();
     photon_arrival_y_mm.clear();
+    photon_energy_eV.clear();
   }
 };
 

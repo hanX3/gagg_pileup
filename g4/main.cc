@@ -3,6 +3,7 @@
 #include "ActionInitialization.hh"
 #include "Constants.hh"
 #include "RunConfig.hh"
+#include "SiPMConfig.hh"
 
 #include "G4RunManagerFactory.hh"
 #include "G4UImanager.hh"
@@ -55,6 +56,7 @@ int main(int argc, char** argv)
 
     auto run_manager = G4RunManagerFactory::CreateRunManager(G4RunManagerType::SerialOnly);
     RunConfig::Instance();
+    SiPMConfig::Instance();
 
     auto detector = new DetectorConstruction();
     run_manager->SetUserInitialization(detector);

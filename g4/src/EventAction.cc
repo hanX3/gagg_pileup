@@ -1,12 +1,16 @@
 #include "EventAction.hh"
 #include "RootIO.hh"
 #include "RunConfig.hh"
+#include "SiPMConfig.hh"
+#include "SiPMDigitizer.hh"
+#include "G4DigiManager.hh"
 
 #include "G4Event.hh"
 #include "G4SystemOfUnits.hh"
 
 #include <algorithm>
 #include <cmath>
+#include <stdexcept>
 
 namespace
 {
@@ -21,20 +25,24 @@ namespace
   void FillOpticalPhotonHitBranches(const std::vector<OpticalPhotonHitData>& hits,
                                     std::vector<UInt_t>& t_ps,
                                     std::vector<Float_t>& x_mm,
-                                    std::vector<Float_t>& y_mm)
+                                    std::vector<Float_t>& y_mm,
+                                    std::vector<Float_t>& photon_energy_eV)
   {
     t_ps.clear();
     x_mm.clear();
     y_mm.clear();
+    photon_energy_eV.clear();
 
     t_ps.reserve(hits.size());
     x_mm.reserve(hits.size());
     y_mm.reserve(hits.size());
+    photon_energy_eV.reserve(hits.size());
 
     for(const auto& hit : hits){
       t_ps.push_back(hit.t_ps);
       x_mm.push_back(hit.x_mm);
       y_mm.push_back(hit.y_mm);
+      photon_energy_eV.push_back(hit.photon_energy_eV);
     }
   }
 }
@@ -66,8 +74,22 @@ void EventAction::EndOfEventAction(const G4Event*)
   FillOpticalPhotonHitBranches(waveform_event_data.all_photon_arrival_hits,
                                waveform_event_data.all_photon_arrival_t_ps,
                                waveform_event_data.all_photon_arrival_x_mm,
-                               waveform_event_data.all_photon_arrival_y_mm);
+                               waveform_event_data.all_photon_arrival_y_mm,
+                               waveform_event_data.photon_energy_eV);
   waveform_event_data.n_optical_photons_arrived_total = waveform_event_data.all_photon_arrival_t_ps.size();
+
+  if(SiPMConfig::Instance().Enabled()){
+    auto* manager = G4DigiManager::GetDMpointer();
+    auto* digitizer = dynamic_cast<SiPMDigitizer*>(manager->FindDigitizerModule(SiPMDigitizer::Name));
+    if(!digitizer) throw std::runtime_error("SiPM digitizer is not registered.");
+    digitizer->SetInput(waveform_event_data);
+    manager->Digitize(SiPMDigitizer::Name);
+    const auto id = manager->GetDigiCollectionID(SiPMDigitizer::Collection);
+    const auto* collection = dynamic_cast<const SiPMDigiCollection*>(manager->GetDigiCollection(id));
+    if(!collection || collection->entries() != 1)
+      throw std::runtime_error("SiPM digitization did not store exactly one waveform in the G4Event.");
+    if(root_io) root_io->FillSiPMEventTree((*collection)[0]->response);
+  }
 
   if(root_io){
     root_io->FillWaveformEventTree(waveform_event_data);
@@ -78,7 +100,8 @@ void EventAction::EndOfEventAction(const G4Event*)
     FillOpticalPhotonHitBranches(primary_data.photon_arrival_hits,
                                  primary_data.photon_arrival_t_ps,
                                  primary_data.photon_arrival_x_mm,
-                                 primary_data.photon_arrival_y_mm);
+                                 primary_data.photon_arrival_y_mm,
+                                 primary_data.photon_energy_eV);
     primary_data.n_optical_photons_arrived = primary_data.photon_arrival_t_ps.size();
 
     if(root_io){
@@ -155,7 +178,8 @@ void EventAction::AddScintPhotonGenerated(G4int primary_id)
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-void EventAction::AddPhotonArrival(G4int primary_id, G4double time, const G4ThreeVector& position)
+void EventAction::AddPhotonArrival(G4int primary_id, G4double time, const G4ThreeVector& position,
+                                  G4double photon_energy)
 {
   if(!IsValidPrimaryId(primary_id)){
     return;
@@ -169,6 +193,7 @@ void EventAction::AddPhotonArrival(G4int primary_id, G4double time, const G4Thre
   hit.t_ps = static_cast<UInt_t>(std::floor(time / ps));
   hit.x_mm = static_cast<Float_t>(position.x() / mm);
   hit.y_mm = static_cast<Float_t>(position.y() / mm);
+  hit.photon_energy_eV = static_cast<Float_t>(photon_energy / eV);
 
   waveform_event_data.all_photon_arrival_hits.push_back(hit);
   primary_photon_data_vec[primary_id].photon_arrival_hits.push_back(hit);

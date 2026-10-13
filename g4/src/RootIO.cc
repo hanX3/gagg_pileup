@@ -1,5 +1,6 @@
 #include "RootIO.hh"
 #include "RunConfig.hh"
+#include "SiPMConfig.hh"
 #include "PrimaryGeneratorAction.hh"
 #include "G4RunManager.hh"
 
@@ -159,6 +160,15 @@ void RootIO::OpenFile()
 {
   const auto& config = RunConfig::Instance();
   config.Validate();
+  auto& sensor = SiPMConfig::Instance();
+  sensor.Prepare(config.WindowPS()*0.001);
+  sipm_enabled = sensor.Enabled();
+  sipm_config_file = sensor.ResolvedFile();
+  sipm_config_json = sipm_enabled ? sensor.Model().json_text : "";
+  sipm_avalanche_base_seed = sipm_enabled ? sensor.AvalancheSeed() : 0;
+  sipm_readout_base_seed = sipm_enabled ? sensor.ReadoutSeed() : 0;
+  sipm_model_version = "gagg-native-sipm-v1";
+  sipm_rng = "std::mt19937_64; splitmix64 event/substream seeds; C++ standard distributions; independent of CLHEP";
   run_info_data.t_length_ps = config.WindowPS();
   run_info_data.analysis_start_ps = config.PreWindowPS();
   run_info_data.analysis_end_ps = config.WindowPS() - config.PostWindowPS();
@@ -220,6 +230,34 @@ void RootIO::OpenFile()
   run_info_tree->Branch("aim_at_gagg", &run_info_data.aim_at_gagg, "aim_at_gagg/O");
   run_info_tree->Branch("source_disk_radius_mm", &run_info_data.source_disk_radius_mm, "source_disk_radius_mm/D");
   run_info_tree->Branch("source_cone_half_angle_deg", &run_info_data.source_cone_half_angle_deg, "source_cone_half_angle_deg/D");
+  run_info_tree->Branch("sipm_enabled", &sipm_enabled, "sipm_enabled/O");
+  run_info_tree->Branch("sipm_schema_version", &sipm_schema_version, "sipm_schema_version/i");
+  run_info_tree->Branch("sipm_avalanche_base_seed", &sipm_avalanche_base_seed, "sipm_avalanche_base_seed/l");
+  run_info_tree->Branch("sipm_readout_base_seed", &sipm_readout_base_seed, "sipm_readout_base_seed/l");
+  run_info_tree->Branch("sipm_config_file", &sipm_config_file);
+  run_info_tree->Branch("sipm_config_json", &sipm_config_json);
+  run_info_tree->Branch("sipm_model_version", &sipm_model_version);
+  run_info_tree->Branch("sipm_rng", &sipm_rng);
+
+  sipm_tree = nullptr;
+  if(sipm_enabled){
+    sipm_tree = new TTree("SiPMEvent", "One G4 digitized waveform per event; device parameters and calibration status in RunInfo");
+#define SIPM_SCALAR(field, type) sipm_tree->Branch(#field, &sipm_data.field, #field "/" type)
+    SIPM_SCALAR(event_id,"i"); SIPM_SCALAR(avalanche_seed,"l"); SIPM_SCALAR(readout_seed,"l");
+    SIPM_SCALAR(n_input_photons,"l"); SIPM_SCALAR(n_outside_sensor,"l");
+    SIPM_SCALAR(n_delayed_photons_outside,"l"); SIPM_SCALAR(n_secondary_outside,"l"); SIPM_SCALAR(n_candidates,"l");
+    SIPM_SCALAR(n_photon_avalanches,"l"); SIPM_SCALAR(n_dark_avalanches,"l");
+    SIPM_SCALAR(n_crosstalk_avalanches,"l"); SIPM_SCALAR(n_afterpulse_avalanches,"l"); SIPM_SCALAR(n_clipped_samples,"l");
+    SIPM_SCALAR(charge_total_C,"D"); SIPM_SCALAR(charge_gate_C,"D"); SIPM_SCALAR(current_integral_C,"D");
+    SIPM_SCALAR(current_tail_C,"D"); SIPM_SCALAR(charge_balance_error_C,"D");
+#undef SIPM_SCALAR
+#define SIPM_VECTOR(field) sipm_tree->Branch(#field, &sipm_data.field)
+    SIPM_VECTOR(avalanche_time_ns); SIPM_VECTOR(avalanche_charge_C); SIPM_VECTOR(avalanche_recovery);
+    SIPM_VECTOR(avalanche_cell); SIPM_VECTOR(avalanche_kind); SIPM_VECTOR(avalanche_parent); SIPM_VECTOR(avalanche_photon_index);
+    SIPM_VECTOR(current_time_ns); SIPM_VECTOR(current_A); SIPM_VECTOR(sample_time_ns);
+    SIPM_VECTOR(signal_mV); SIPM_VECTOR(analog_mV); SIPM_VECTOR(adc_counts); SIPM_VECTOR(adc_clipped);
+#undef SIPM_VECTOR
+  }
 
   // waveform event
   waveform_event_tree = new TTree("WaveformEvent", "one entry is one independent waveform window; duration in RunInfo");
@@ -230,6 +268,7 @@ void RootIO::OpenFile()
   waveform_event_tree->Branch("all_photon_arrival_t_ps", &waveform_event_data.all_photon_arrival_t_ps);
   waveform_event_tree->Branch("all_photon_arrival_x_mm", &waveform_event_data.all_photon_arrival_x_mm);
   waveform_event_tree->Branch("all_photon_arrival_y_mm", &waveform_event_data.all_photon_arrival_y_mm);
+  waveform_event_tree->Branch("photon_energy_eV", &waveform_event_data.photon_energy_eV);
 
   // primary photon
   primary_photon_tree = new TTree("PrimaryPhoton", "one entry is one primary response");
@@ -251,6 +290,7 @@ void RootIO::OpenFile()
   primary_photon_tree->Branch("photon_arrival_t_ps", &primary_photon_data.photon_arrival_t_ps);
   primary_photon_tree->Branch("photon_arrival_x_mm", &primary_photon_data.photon_arrival_x_mm);
   primary_photon_tree->Branch("photon_arrival_y_mm", &primary_photon_data.photon_arrival_y_mm);
+  primary_photon_tree->Branch("photon_energy_eV", &primary_photon_data.photon_energy_eV);
 
   if(!run_info_tree || !waveform_event_tree || !primary_photon_tree){
     G4cout << "\n can't create ROOT trees" << G4endl;
@@ -282,6 +322,13 @@ void RootIO::FillPrimaryPhotonTree(PrimaryPhotonData& data)
   primary_photon_tree->Fill();
 }
 
+void RootIO::FillSiPMEventTree(const sipm::Result& data)
+{
+  if(!sipm_tree) throw std::runtime_error("SiPMEvent tree was not prepared for this run.");
+  sipm_data = data;
+  sipm_tree->Fill();
+}
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void RootIO::CloseFile()
 {
@@ -293,6 +340,7 @@ void RootIO::CloseFile()
   if(run_info_tree){ run_info_tree->Write(); }
   if(waveform_event_tree){ waveform_event_tree->Write(); }
   if(primary_photon_tree){ primary_photon_tree->Write(); }
+  if(sipm_tree){ sipm_tree->Write(); }
   root_file->Close();
 
   G4cout << "\n----> ROOT file is saved.\n" << G4endl;

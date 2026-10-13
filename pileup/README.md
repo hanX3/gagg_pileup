@@ -92,7 +92,7 @@ python3 pileup/prepare.py --config pileup/configs/alpha_p11b_v2.json --name alph
 
 ## 数据含义与当前限制
 
-- 完整波形是理想 SiPM 面的到达光子序列，没有 PDE、电子学卷积、采样噪声或饱和模型。
+- 400个冻结生产窗是理想 SiPM 面的到达光子序列。独立离线 SiPM 模块可另行施加 PDE、恢复、相关噪声及读出，原始光子 ROOT 保留；当前采用 S13360-6050PE 数据表配置，尚未完成实物标定。
 - 中央区的真值计数目前按**源发射时间**划分；将来评价算法时需明确输运时间偏移和匹配容差。
 - 检查报告暂将 `Edep > 0 且到达光子数 ≥ 20` 作为“有信号”的诊断定义，可通过 `--min-photons` 调整；这不是测量阈值、算法检出率或可恢复性的判断。
 - 真值树用于检查与后续评分。重建算法的输入应只有总波形及预先建立的响应模型，不提供真实粒子数、时间或能量。
@@ -114,3 +114,20 @@ python3 -m unittest pileup.analysis.test_alpha_response -v
 除已有读取依赖外需要 SciPy。脚本保存 5 μs 首光子对齐模板、绝对光输出、三个能标候选、按能区的独立验证误差、源码副本及运行记录。以实际冻结光产额表作能标的候选只验证当前仿真模型，不代表独立实验标定；超出校准范围的能量估计标为 NaN。
 
 `waveforms/` 中的 NPZ 仅含总计数、bin 宽与完整窗长；评分标签单独放在 `truth/`。本轮已完成 100 窗核验和 283/163 个校准/验证响应的分析，图表与输出保存在本地 `jupyter/Alpha_Response_Calibration.ipynb`。这是有标签响应校准与已知 K=1 自检，未知 K 的 pileup 重建仍待实现。该模块不会运行 G4 或修改原 ROOT；重跑时使用新结果目录。
+
+## 离线 SiPM 响应
+
+[analysis/sipm_response.py](analysis/sipm_response.py) 按完整窗处理逐微胞雪崩，[analysis/sipm_readout.py](analysis/sipm_readout.py) 生成电压与 ADC；[器件配置](../g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json) 统一使用 S13360-6050PE 的数据表典型值及注明的近似。采用实际响应后需重新建立模板和能标，原有光子计数标定不直接作为电荷标定。
+
+从项目根目录运行：
+
+```bash
+.venv/bin/python -m unittest pileup.analysis.test_sipm_response -v
+.venv/bin/python -m pileup.analysis.sipm_response \
+  g4/data/20261010_09h47m20s.root \
+  --config g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json \
+  --output jupyter/artifacts/sipm_new_run \
+  --seed 2610101011 --readout-seed 2610101012
+```
+
+输出目录必须尚不存在。输入接口、旧 ROOT 近似、概率定义、相关噪声、实测 SPE、采样孔径和削顶说明见 [SiPM 使用说明](../docs/sipm-response.md)。物理极限和单窗比较入口为 [validate_sipm_response.py](analysis/validate_sipm_response.py)；它使用真值选择单 α 来构造受控输入，输出明确标记，不进行盲分离或能谱重建。

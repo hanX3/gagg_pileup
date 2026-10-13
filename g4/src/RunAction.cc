@@ -1,6 +1,8 @@
 #include "RunAction.hh"
 #include "RootIO.hh"
 #include "DetectorConstruction.hh"
+#include "SiPMConfig.hh"
+#include <stdexcept>
 
 #include "G4Run.hh"
 
@@ -19,8 +21,10 @@ RunAction::~RunAction()
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-void RunAction::BeginOfRunAction(const G4Run*)
+void RunAction::BeginOfRunAction(const G4Run* run)
 {
+  if(SiPMConfig::Instance().Enabled() && run->GetNumberOfEventToBeProcessed() != 1)
+    throw std::runtime_error("Native SiPM runs require /run/beamOn 1: one independent window per ROOT file.");
   if(root_io){
     if(detector){
       root_io->SetStepLimits(detector->GetGaggMaxStep(),

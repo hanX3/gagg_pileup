@@ -1,0 +1,28 @@
+# Hamamatsu S13360-6050PE, 25 C, 3 V overvoltage; readout/recovery not unit-calibrated.
+# Run from g4/build: ./gagg ../macros/run_single_gamma_sipm.mac
+# One 20 us window, one central incident gamma. Seed selected from the fixed
+# 32-gamma validation sample for a visible pulse; not an efficiency sample.
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gagg/run/windowLength 20 us
+/gagg/run/preWindow 5 us
+/gagg/run/postWindow 5 us
+/gagg/run/seed 261010518
+/gagg/sipm/configFile ../configs/sipm_hamamatsu_s13360_6050pe_v2.json
+/gagg/sipm/seed 261010618
+/gagg/sipm/readoutSeed 261010718
+/gagg/sipm/enable true
+/gagg/step/setGaggMaxStep 1.0 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1.0 um
+/run/initialize
+/gagg/pileup/enable false
+/gagg/source/useDiskConeSource false
+/gun/particle gamma
+/gun/energy 661.657 keV
+/gun/position 0 0 0 mm
+/gun/direction 0 0 1
+/gun/time 5 us
+/run/beamOn 1

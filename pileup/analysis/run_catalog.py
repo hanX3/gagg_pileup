@@ -23,6 +23,21 @@ def collect(project):
         if data not in root_path.parents:
             continue
         records[root_path] = (record, path)
+    # Native single-particle campaigns keep multiple single-window runs in one
+    # manifest. Use each run's saved macro, never today's same-named macro.
+    for path in (project / 'jupyter/run_records').glob('sipm_native_*/manifest.json'):
+        campaign = json.loads(path.read_text())
+        for run in campaign.get('runs', []):
+            if not run.get('root'):
+                continue
+            root_path = (project / run['root']).resolve()
+            if data not in root_path.parents:
+                continue
+            record = {'status': 'completed' if run.get('returncode') == 0 else 'failed',
+                      'events': 1, 'config': {'window_us': campaign['window_ns'] / 1000},
+                      'seed': run['g4_seed'], 'macro_relative_path': run['macro'],
+                      'campaign_id': path.parent.name, 'single_particle': True}
+            records[root_path] = (record, path)
     files = {path.resolve() for path in data.rglob('*.root') if path.is_file()} | set(records)
     rows = []
     for path in sorted(files):
@@ -70,7 +85,10 @@ def collect(project):
                         row['alpha_injection_rate_Hz'] = rate
                     row['macro_path_in_RunInfo'] = value('macro_file')
                     row['primary_particles'] = root['PrimaryPhoton'].num_entries if 'PrimaryPhoton' in root else None
-                if not macro:
+                if record.get('single_particle'):
+                    row['alpha_injection_rate_Hz'] = None
+                    row['notes'] = '单粒子独立窗，无稳态注入率；实际宏、器件配置和种子见运行清单。'
+                elif not macro:
                     row['notes'] = '历史文件：未找到完整原始宏快照；RunInfo 中的路径不等于当前同名宏。'
                 elif row['waveform_events'] != 1:
                     row['notes'] = '调整前的多窗测试文件，保留为历史记录；当前生产要求一窗一文件。'

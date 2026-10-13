@@ -1,0 +1,14 @@
+# Analysis scripts and local Notebook execution.
+numpy
+matplotlib
+pandas
+scipy
+uproot>=5,<6
+awkward>=2,<3
+ipython
+ipykernel
+nbformat
+nbclient
+# Classic Notebook UI and server, in the same environment as the kernel.
+nbclassic>=1,<2
+jupyter-server>=2,<3

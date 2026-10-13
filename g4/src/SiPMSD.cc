@@ -37,14 +37,15 @@ G4bool SiPMSD::ProcessHits(G4Step* step, G4TouchableHistory*)
   auto pre_step_point = step->GetPreStepPoint();
   auto time = pre_step_point->GetGlobalTime();
   auto position = pre_step_point->GetPosition();
+  auto photon_energy = pre_step_point->GetKineticEnergy();
 
   auto event_action = (EventAction*)G4RunManager::GetRunManager()->GetUserEventAction();
   if(event_action){
-    event_action->AddPhotonArrival(info->GetPrimaryId(), time, position);
+    event_action->AddPhotonArrival(info->GetPrimaryId(), time, position, photon_energy);
   }
 
   // The first-version SiPM is a virtual absorbing sensitive layer.
-  // Once an optical photon enters it, the arrival time is recorded and the photon is killed.
+  // Record the photon's entry time, position and energy before killing its track.
   track->SetTrackStatus(fStopAndKill);
 
   return true;

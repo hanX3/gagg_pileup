@@ -7,6 +7,8 @@
 #include "PrimaryGeneratorAction.hh"
 #include "TrackingAction.hh"
 #include "SteppingAction.hh"
+#include "SiPMDigitizer.hh"
+#include "G4DigiManager.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 ActionInitialization::ActionInitialization(DetectorConstruction* det, ULong64_t seed, const G4String& macro)
@@ -20,6 +22,7 @@ ActionInitialization::~ActionInitialization()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void ActionInitialization::Build() const
 {
+  G4DigiManager::GetDMpointer()->AddNewModule(new SiPMDigitizer());
   auto root_io = new RootIO();
   root_io->SetRandomSeed(random_seed);
   root_io->SetMacroFile(macro_file_name);
