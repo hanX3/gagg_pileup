@@ -1,0 +1,137 @@
+ M .gitignore
+ M 11BH_alpha_spectra/make_p11b_alpha_spectrum.py
+ M 11BH_alpha_spectra/p11b_alpha_histogram.csv
+ M 11BH_alpha_spectra/p11b_alpha_spectrum_linear.png
+ M 11BH_alpha_spectra/p11b_alpha_spectrum_logy.png
+ M README.md
+ M analysis/hamamatsu_s13360.py
+ M analysis/single_particle_sipm.py
+ M analysis/sipm_waveform_comparison.py
+ M bremsstrahlung/brems_spectra.csv
+ M bremsstrahlung/brems_spectra_linear.png
+ M bremsstrahlung/brems_spectra_logy.png
+ M bremsstrahlung/make_brems_spectrum.py
+ M docs/literature-use.md
+ M docs/sipm-response.md
+ M g4/analysis/README.md
+ M g4/analysis/alpha_gamma_average_waveform.png
+ M g4/analysis/alpha_gamma_psd_2d.png
+ M g4/analysis/alpha_gamma_psd_ratio_2d.png
+ M g4/analysis/alpha_gamma_tail_total_2d.png
+ M g4/analysis/alpha_normalized_average_all_events.png
+ M g4/analysis/alpha_normalized_first10_waveforms.png
+ M g4/analysis/alpha_raw_first10_waveforms.png
+ M g4/analysis/compare_alpha_gamma.py
+ M g4/analysis/gagg_emission_spectrum.png
+ M g4/analysis/gamma_normalized_average_all_events.png
+ M g4/analysis/gamma_normalized_first10_waveforms.png
+ M g4/analysis/gamma_raw_first10_waveforms.png
+ M g4/analysis/plot_pileup_waveform.py
+ M g4/analysis/plot_waveforms.py
+ M g4/configs/sipm_hamamatsu_s13360_6050pe_v1.json
+ M g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+ M g4/include/RunConfig.hh
+ M g4/include/SiPMConfig.hh
+ M g4/include/SiPMDigitizer.hh
+ M g4/include/SiPMResponse.hh
+ M g4/macros/run_all_p11b_sources_pileup.mac
+ M g4/macros/run_all_pileup.mac
+ M g4/macros/run_alpha.mac
+ M g4/macros/run_alpha_p11b_pileup.mac
+ M g4/macros/run_brems_pileup.mac
+ M g4/macros/run_c12_capture_pileup.mac
+ M g4/macros/run_mixed_photon_pileup.mac
+ M g4/macros/run_single_alpha_sipm.mac
+ M g4/macros/run_single_gamma_sipm.mac
+ M g4/macros/vis_chargedgeantino.mac
+ M g4/main.cc
+ M g4/src/RunConfig.cc
+ M g4/src/SiPMConfig.cc
+ M g4/src/SiPMDigitizer.cc
+ M g4/src/SiPMResponse.cc
+ M g4/src/gagg_birks_yield_curves.inc
+ M g4/tests/test_sipm_response.cc
+ M pileup/README.md
+ M pileup/analysis/alpha_response.py
+ M pileup/analysis/check_run.py
+ M pileup/analysis/run_catalog.py
+ M pileup/analysis/sipm_readout.py
+ M pileup/analysis/sipm_response.py
+ M pileup/analysis/test_alpha_response.py
+ M pileup/analysis/test_sipm_response.py
+ M pileup/analysis/validate_sipm_response.py
+ M pileup/configs/alpha_p11b_v1.json
+ M pileup/configs/alpha_p11b_v2.json
+ M pileup/experiments/alpha_p11b_v1/README.md
+ M pileup/experiments/alpha_p11b_v1/analysis/check_run.py
+ M pileup/experiments/alpha_p11b_v1/bundle.json
+ M pileup/experiments/alpha_p11b_v1/config.json
+ M pileup/experiments/alpha_p11b_v1/environment_prepare.json
+ M pileup/experiments/alpha_p11b_v1/g4/include/RunConfig.hh
+ M pileup/experiments/alpha_p11b_v1/g4/macros/run_all_p11b_sources_pileup.mac
+ M pileup/experiments/alpha_p11b_v1/g4/macros/run_all_pileup.mac
+ M pileup/experiments/alpha_p11b_v1/g4/macros/run_alpha.mac
+ M pileup/experiments/alpha_p11b_v1/g4/macros/run_alpha_p11b_pileup.mac
+ M pileup/experiments/alpha_p11b_v1/g4/macros/run_brems_pileup.mac
+ M pileup/experiments/alpha_p11b_v1/g4/macros/run_c12_capture_pileup.mac
+ M pileup/experiments/alpha_p11b_v1/g4/macros/run_mixed_photon_pileup.mac
+ M pileup/experiments/alpha_p11b_v1/g4/macros/vis_chargedgeantino.mac
+ M pileup/experiments/alpha_p11b_v1/g4/main.cc
+ M pileup/experiments/alpha_p11b_v1/g4/src/RunConfig.cc
+ M pileup/experiments/alpha_p11b_v1/g4/src/gagg_birks_yield_curves.inc
+ M pileup/experiments/alpha_p11b_v1/macros/alpha_1e5Hz.mac
+ M pileup/experiments/alpha_p11b_v1/macros/alpha_1e6Hz.mac
+ M pileup/experiments/alpha_p11b_v1/macros/alpha_1e7Hz.mac
+ M pileup/experiments/alpha_p11b_v1/macros/alpha_1e8Hz.mac
+ M pileup/experiments/alpha_p11b_v1/run.py
+ M pileup/experiments/alpha_p11b_v1/source_changes.patch
+ M pileup/experiments/alpha_p11b_v2/README.md
+ M pileup/experiments/alpha_p11b_v2/analysis/check_run.py
+ M pileup/experiments/alpha_p11b_v2/bundle.json
+ M pileup/experiments/alpha_p11b_v2/config.json
+ M pileup/experiments/alpha_p11b_v2/environment_prepare.json
+ M pileup/experiments/alpha_p11b_v2/g4/include/RunConfig.hh
+ M pileup/experiments/alpha_p11b_v2/g4/macros/run_all_p11b_sources_pileup.mac
+ M pileup/experiments/alpha_p11b_v2/g4/macros/run_all_pileup.mac
+ M pileup/experiments/alpha_p11b_v2/g4/macros/run_alpha.mac
+ M pileup/experiments/alpha_p11b_v2/g4/macros/run_alpha_p11b_pileup.mac
+ M pileup/experiments/alpha_p11b_v2/g4/macros/run_brems_pileup.mac
+ M pileup/experiments/alpha_p11b_v2/g4/macros/run_c12_capture_pileup.mac
+ M pileup/experiments/alpha_p11b_v2/g4/macros/run_mixed_photon_pileup.mac
+ M pileup/experiments/alpha_p11b_v2/g4/macros/vis_chargedgeantino.mac
+ M pileup/experiments/alpha_p11b_v2/g4/main.cc
+ M pileup/experiments/alpha_p11b_v2/g4/src/RunConfig.cc
+ M pileup/experiments/alpha_p11b_v2/g4/src/gagg_birks_yield_curves.inc
+ M pileup/experiments/alpha_p11b_v2/macros/alpha_1e5Hz.mac
+ M pileup/experiments/alpha_p11b_v2/macros/alpha_1e6Hz.mac
+ M pileup/experiments/alpha_p11b_v2/macros/alpha_1e7Hz.mac
+ M pileup/experiments/alpha_p11b_v2/macros/alpha_1e8Hz.mac
+ M pileup/experiments/alpha_p11b_v2/run.py
+ M pileup/experiments/alpha_p11b_v2/source_changes.patch
+ M pileup/prepare.py
+ M pileup/submit_scan.py
+ M pileup/tools/__init__.py
+ M pileup/tools/run_experiment.py
+ M requirements-analysis.txt
+ M stopping_power/CMakeLists.txt
+ M stopping_power/alpha_gagg_stopping.csv
+ M stopping_power/electron_gagg_stopping.csv
+ M stopping_power/gagg_birks_yield_curves.csv
+ M stopping_power/gagg_birks_yield_curves.inc
+ M stopping_power/gagg_birks_yield_curves.png
+ M stopping_power/make_birks_yield_curves.py
+ M stopping_power/make_gagg_stopping_tables.cc
+ M stopping_power/o16_gagg_stopping.csv
+?? 01a12346-5cf5-7a41-84bf-2ed6537cca55-ubuntu
+?? 01a133e6-3029-7320-856f-f6dca7e65038-debian
+?? "11BH_alpha_spectra/make_p11b_alpha_spectrum.py\357\200\272Zone.Identifier"
+?? analysis/alpha_gamma_fit_window_scan.py
+?? analysis/alpha_gamma_waveform_fit.py
+?? "bremsstrahlung/make_brems_spectrum.py\357\200\272Zone.Identifier"
+?? pileup/analysis/alpha_rate_campaign.py
+?? pileup/experiments/alpha_s13360_rate_fit_20261013/
+?? "stopping_power/make_birks_yield_curves.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_birks_yield_curves_modified.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_birks_yield_curves_o16.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_gagg_stopping_tables_o16.cc\357\200\272Zone.Identifier"
+?? ubuntu

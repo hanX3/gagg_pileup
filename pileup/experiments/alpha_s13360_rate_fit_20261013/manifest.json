@@ -1,0 +1,745 @@
+{
+  "created": "2026-10-13T21:17:39.807981+08:00",
+  "git_head": "7e3034774d5bfcc905f6b9d2d258434d948c03d7",
+  "source_sha256": {
+    "source/g4/CMakeLists.txt": "13b62b8050c582761b6b652ebc2476a592dedf170393e07812999399c4c40914",
+    "source/g4/main.cc": "f02686d026c43c7700706c2a3f9dc15908c41dfdfacef7b4b08f7d577b10bc78",
+    "source/pileup/analysis/alpha_rate_campaign.py": "ce1d0224a744f4b6d2f5abed53d076143c5bb9cea843ea132055530794ca3f34",
+    "source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json": "0ba1ef9a6c158c6e275a059f003965ef0919098e222941e9bd924c2bb70b7636",
+    "source/g4/include/ActionInitialization.hh": "a7e35ce041d79815eb83328f06d4ff5c3a2edadf3abe13b19eea803a37080208",
+    "source/g4/include/Constants.hh": "f6700d25cfd4c425bce9cf57dd9524eaac51da6e684736bb17cac22400e41e96",
+    "source/g4/include/DataStructure.hh": "eca1847929f6793b019412e29f4b2e0c7ccc5a33aafb24b92bad8bf3c0f08140",
+    "source/g4/include/DetectorConstruction.hh": "a3f84708f60c078f4f3577e3d5d9d4de4f9ae57149dfdaa57ec4ea63eac789bc",
+    "source/g4/include/EventAction.hh": "86352c83da81ac176078f8798074391b46d648ac9d35628786db26f850d721ec",
+    "source/g4/include/PhysicsList.hh": "4e4783e48c89e2e5361fe29dd27f8125e35bbba17da0d7ff7ca41d6a462b003f",
+    "source/g4/include/PrimaryGeneratorAction.hh": "54c0a637284b9985c33c46a66779e9994885826ff8735aea94cd432636e1f281",
+    "source/g4/include/PrimaryInformation.hh": "7fe640243a512754ea12f60af42c11a1b93d6802d9854d18cfa89f02f93d3b17",
+    "source/g4/include/RootIO.hh": "4a1e04d4ca6bbcd9cf4d88a3b1aeb342b66ec03519433891b3a48d06d262ca1b",
+    "source/g4/include/RunAction.hh": "77e3f5f6164ad62f18fa9664321c63a435ada5d447cd33cc8117707ad35bb0b0",
+    "source/g4/include/RunConfig.hh": "2f5342b36bf5ed7dab8d7aa1b624934917c37c6a39f5e7db2671d1bc82c398b7",
+    "source/g4/include/SiPMConfig.hh": "64bc9037b660751edde9169bccc1c68f2c0a6e99db5e7772e57f2ca9752e2464",
+    "source/g4/include/SiPMDigitizer.hh": "e9fa1824a90f5c1e02b0cc7224d24a78560e19659fda5e5e9b57dbf40a38f842",
+    "source/g4/include/SiPMResponse.hh": "9522000dfbbffce5c97351996653d9ecf979af95dcf8404567396cbcb172246e",
+    "source/g4/include/SiPMSD.hh": "e8dce6f6d9304fde3c7a82ba52c6f3e3f716c5d05b08162425c42ae20e74e2da",
+    "source/g4/include/SteppingAction.hh": "5f7d73d48757fb435ba3869170e94307ca0161ecf412f581f73f6f4e48c239b3",
+    "source/g4/include/TrackInformation.hh": "bba47f3856a9dd442fba4170248d5c628f6bdaa026c4544b8be1b05e62ecd467",
+    "source/g4/include/TrackingAction.hh": "ceebb4665f6e100bddf2128ccf53a288b11b7a472eda0c6378e9bbacc5f97b4e",
+    "source/g4/src/ActionInitialization.cc": "1b81a2da4534c6fcd3c22fb2a433e878105e6d5278610076579dd384899e088a",
+    "source/g4/src/DetectorConstruction.cc": "d16448cfff82afdb27b6714908b74af8ccd597df52878553866857b59ff12cbd",
+    "source/g4/src/EventAction.cc": "980a64a275db822478899b2c8aee3fdc91c83e6960a904d68feed020f0217776",
+    "source/g4/src/gagg_birks_yield_curves.inc": "e1d223870d7ceb6ef14991e15c6c9fcc458faa680133a988446d5c5c34fe9ec5",
+    "source/g4/src/PhysicsList.cc": "ef158b1895ed739214417801cd9b1636d01582365709ab5ce9aef7376b362921",
+    "source/g4/src/PrimaryGeneratorAction.cc": "5399b3b78a84ac5528fec5d7b7f6bfd8fe0bcc61a714fad6b09d11639ad79e30",
+    "source/g4/src/PrimaryInformation.cc": "39873d04c929e5d868b9b8c2fd51c24fbf0651b38fa0319f470e1ebf50d8fa64",
+    "source/g4/src/RootIO.cc": "098d9f24ea5b2b1e498a126815658f4f76f9a4510302ea6453aea0c9e7426faa",
+    "source/g4/src/RunAction.cc": "e96c9962dc058cb5093274a7da9af36de68bbe8ff8ee87b9fa6c4d87a9718e20",
+    "source/g4/src/RunConfig.cc": "8e6aefef1e5e36d693e65ab2088466efa0c7a024a29e7f59bef29c526819340d",
+    "source/g4/src/SiPMConfig.cc": "7c5c9d94e00bece59b56c0d6409c60c1643d2d27e0e069872ecb3cf8d9b4947c",
+    "source/g4/src/SiPMDigitizer.cc": "c6fd11a8dedca93a1e535693e9b0bb87c002a9da65dea18fe72309b95b54f649",
+    "source/g4/src/SiPMResponse.cc": "c2226e528dab87e0a350251716c0b35b3a0f23543c25b9f64ce7ab6f72163274",
+    "source/g4/src/SiPMSD.cc": "c57156b0aadb894da3499b3550b17b29258c9e6410b2ec2ef29661ae338d5ce2",
+    "source/g4/src/SteppingAction.cc": "90dce28bbf05601ccfe6007217918c5c749163fbf6fd61eaea38e077a6d5dd38",
+    "source/g4/src/TrackInformation.cc": "d436e8e9c13b116d9bb4c4e6821cda94b1becbf2f8c37b7c3391f8b05ea8640e",
+    "source/g4/src/TrackingAction.cc": "fb1ce738f3e8a6ce8788bbbb227d57f773c338baa47adca4613b435651d1f7b9",
+    "source/g4/tests/test_sipm_response.cc": "5d6ac000dced311761f2bbb92925290d19ccd18629fac2bc0450ca408ff00c74"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "uproot": "5.7.7",
+    "awkward": "2.14.0",
+    "matplotlib": "3.11.2"
+  },
+  "purpose": "Pure alpha pilot for blind pulse number/time/charge reconstruction; no gamma background",
+  "source_model": "Current p-11B effective single-alpha spectrum; directed disk source radius 10 mm",
+  "rate_definition": "Source-injected alpha particles per second, not detected events or fusion reactions",
+  "max_parallel_processes": 1,
+  "runs": [
+    {
+      "label": "pilot_1e6",
+      "rate_hz": 1000000.0,
+      "seed": 261013500,
+      "sipm_seed": 261113500,
+      "readout_seed": 261213500,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/pilot_1e6.mac",
+      "macro_sha256": "19994e454c64f5d942496f9f7d5d44c9ec15482d88f60c9688f7fd584404bb41",
+      "root": "g4/data/20261013_21h23m16s.root",
+      "started": "2026-10-13T21:23:16.213055+08:00",
+      "status": "completed",
+      "elapsed_s": 7.515275952999218,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/pilot_1e6.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/pilot_1e6.log",
+      "root_sha256": "774ab04727bde3b84260b934a92e5c32f384086c29d4549186cdd59de09afc5b",
+      "root_bytes": 7627496
+    },
+    {
+      "label": "alpha_000100000_00",
+      "rate_hz": 100000,
+      "seed": 261014000,
+      "sipm_seed": 261114000,
+      "readout_seed": 261214000,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_00.mac",
+      "macro_sha256": "09748d59f7e3ebf1fb11094f5b9b4c039ca30b48df942797c211b886a1fc8f12",
+      "root": "g4/data/20261013_21h25m41s.root",
+      "started": "2026-10-13T21:25:41.522367+08:00",
+      "status": "completed",
+      "elapsed_s": 5.969478486000298,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_00.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_00.log",
+      "root_sha256": "40f6a80f8c50fbccc52bd03e43dabda9acc1cc1581a8d0839cef4a854b3e739a",
+      "root_bytes": 1791303
+    },
+    {
+      "label": "alpha_000100000_01",
+      "rate_hz": 100000,
+      "seed": 261014001,
+      "sipm_seed": 261114001,
+      "readout_seed": 261214001,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_01.mac",
+      "macro_sha256": "0cd2f5a1ca083e369b1d19b347688a1bd9c621394e690dbf40b757b4308e642d",
+      "root": "g4/data/20261013_21h25m47s.root",
+      "started": "2026-10-13T21:25:47.533173+08:00",
+      "status": "completed",
+      "elapsed_s": 6.386270836999756,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_01.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_01.log",
+      "root_sha256": "b9d7813aa9d3a1a710980915e9c0ccf997e3d0edd24e00e30c1b64c69085a542",
+      "root_bytes": 1448481
+    },
+    {
+      "label": "alpha_000100000_02",
+      "rate_hz": 100000,
+      "seed": 261014002,
+      "sipm_seed": 261114002,
+      "readout_seed": 261214002,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_02.mac",
+      "macro_sha256": "04a7d251ec14c6c53c80910f88a60ee32f0023c38d5edcea3498efe4af6b79ed",
+      "root": "g4/data/20261013_21h25m53s.root",
+      "started": "2026-10-13T21:25:53.942870+08:00",
+      "status": "completed",
+      "elapsed_s": 5.272400483001547,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_02.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_02.log",
+      "root_sha256": "fc38176466e63e288b0badd960cb7b92aeb4ed52c5a66206a78be841dfaba313",
+      "root_bytes": 1323050
+    },
+    {
+      "label": "alpha_000100000_03",
+      "rate_hz": 100000,
+      "seed": 261014003,
+      "sipm_seed": 261114003,
+      "readout_seed": 261214003,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_03.mac",
+      "macro_sha256": "5ed66df567e1212e3a2fca850055ab49839fa64f030bebe7dfa6df41a8653483",
+      "root": "g4/data/20261013_21h25m59s.root",
+      "started": "2026-10-13T21:25:59.242201+08:00",
+      "status": "completed",
+      "elapsed_s": 7.091233750998072,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_03.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_03.log",
+      "root_sha256": "ee1d2b8422ac66c58bcc612735a179d38bed154a0ab7a5e032ce905e6e8b98a4",
+      "root_bytes": 1609985
+    },
+    {
+      "label": "alpha_000100000_04",
+      "rate_hz": 100000,
+      "seed": 261014004,
+      "sipm_seed": 261114004,
+      "readout_seed": 261214004,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_04.mac",
+      "macro_sha256": "7f5d802f815ebafd68e380ff2bc9046397a791184983c0cb3ff5fe2eb4fd1460",
+      "root": "g4/data/20261013_21h26m06s.root",
+      "started": "2026-10-13T21:26:06.348355+08:00",
+      "status": "completed",
+      "elapsed_s": 2.40055542600021,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_04.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_04.log",
+      "root_sha256": "72fda63c177a423a212713544fbf21015a7a028d50b9a2844162a683d4f49dfd",
+      "root_bytes": 1391591
+    },
+    {
+      "label": "alpha_000100000_05",
+      "rate_hz": 100000,
+      "seed": 261014005,
+      "sipm_seed": 261114005,
+      "readout_seed": 261214005,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_05.mac",
+      "macro_sha256": "e65bea52798e595f800afb425763e431066db34fb59e22af70c51a3ca7d6b3c6",
+      "root": "g4/data/20261013_21h26m08s.root",
+      "started": "2026-10-13T21:26:08.785185+08:00",
+      "status": "completed",
+      "elapsed_s": 2.8315938060004555,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_05.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_05.log",
+      "root_sha256": "11071157d7fd4825914beaa82983541a5f240ae8f0d952f77333bceb467d044a",
+      "root_bytes": 1699087
+    },
+    {
+      "label": "alpha_000100000_06",
+      "rate_hz": 100000,
+      "seed": 261014006,
+      "sipm_seed": 261114006,
+      "readout_seed": 261214006,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_06.mac",
+      "macro_sha256": "fea69f48dacd5d80d727f159829e2ac227627fde7759ebaf331c94ceba23efa9",
+      "root": "g4/data/20261013_21h26m11s.root",
+      "started": "2026-10-13T21:26:11.630554+08:00",
+      "status": "completed",
+      "elapsed_s": 4.959988677001093,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_06.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_06.log",
+      "root_sha256": "35e91e39d4352136c9bc2c4653aa60a20d025df1c0a998c96d7eec8d9f12f4e9",
+      "root_bytes": 2441012
+    },
+    {
+      "label": "alpha_000100000_07",
+      "rate_hz": 100000,
+      "seed": 261014007,
+      "sipm_seed": 261114007,
+      "readout_seed": 261214007,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_07.mac",
+      "macro_sha256": "ed8925cc6e68ea7deb026b7d80c327dd10546b9e053dd0dab4e4adfcb342ad23",
+      "root": "g4/data/20261013_21h26m16s.root",
+      "started": "2026-10-13T21:26:16.608483+08:00",
+      "status": "completed",
+      "elapsed_s": 2.1363952060019074,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_07.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_07.log",
+      "root_sha256": "582e7b089718a61248e713737a411201b4c63110d68b866dc640eb070c2682b4",
+      "root_bytes": 1480956
+    },
+    {
+      "label": "alpha_000100000_08",
+      "rate_hz": 100000,
+      "seed": 261014008,
+      "sipm_seed": 261114008,
+      "readout_seed": 261214008,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_08.mac",
+      "macro_sha256": "433c3f42a373a983e00e354ccf69314eda8388c75dded115e9074befbab3e714",
+      "root": "g4/data/20261013_21h26m18s.root",
+      "started": "2026-10-13T21:26:18.766125+08:00",
+      "status": "completed",
+      "elapsed_s": 2.1409264120011358,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_08.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_08.log",
+      "root_sha256": "9abd502f9b6369a79b4ff06aea42dd5b7d2dc41c5798afb6efc57b872f4b11c0",
+      "root_bytes": 2291636
+    },
+    {
+      "label": "alpha_000100000_09",
+      "rate_hz": 100000,
+      "seed": 261014009,
+      "sipm_seed": 261114009,
+      "readout_seed": 261214009,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_09.mac",
+      "macro_sha256": "02efbc159496f506f68fe4738c19d997aa617e0db54af58fb5f656465e24f984",
+      "root": "g4/data/20261013_21h26m20s.root",
+      "started": "2026-10-13T21:26:20.923545+08:00",
+      "status": "completed",
+      "elapsed_s": 2.5602335689982283,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_09.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_09.log",
+      "root_sha256": "6d72192af08b77dfe72df1d72da53f388992615f295fdb3f1acf2bf8a01d993b",
+      "root_bytes": 1612730
+    },
+    {
+      "label": "alpha_000100000_10",
+      "rate_hz": 100000,
+      "seed": 261014010,
+      "sipm_seed": 261114010,
+      "readout_seed": 261214010,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_10.mac",
+      "macro_sha256": "92b38b54a80400ddf5cb2db48b1ea8dc75e605fd5e85cccd3f35880d37dfb25d",
+      "root": "g4/data/20261013_21h26m23s.root",
+      "started": "2026-10-13T21:26:23.502142+08:00",
+      "status": "completed",
+      "elapsed_s": 3.1827775790006854,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_10.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_10.log",
+      "root_sha256": "cc5de3fa38fd842a56f36389cecac7ebfa0be8d05c0307a878fee6c362cbd883",
+      "root_bytes": 2014764
+    },
+    {
+      "label": "alpha_000100000_11",
+      "rate_hz": 100000,
+      "seed": 261014011,
+      "sipm_seed": 261114011,
+      "readout_seed": 261214011,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_11.mac",
+      "macro_sha256": "ecd6971a4cb5d18923a9d32708a8d5209580dd1a7c3240bb211b3ddee727abd6",
+      "root": "g4/data/20261013_21h26m26s.root",
+      "started": "2026-10-13T21:26:26.705706+08:00",
+      "status": "completed",
+      "elapsed_s": 1.87409405300059,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_11.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_11.log",
+      "root_sha256": "65a4b1cd796ab0706b06d945470ecf32ebf3f23692353967fa15ab10670b8bd9",
+      "root_bytes": 904824
+    },
+    {
+      "label": "alpha_000100000_12",
+      "rate_hz": 100000,
+      "seed": 261014012,
+      "sipm_seed": 261114012,
+      "readout_seed": 261214012,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_12.mac",
+      "macro_sha256": "928efc8e928f6d3b5d1f3487dfcd5202c6b47263edc7a0ff59338f3b313ee2b5",
+      "root": "g4/data/20261013_21h26m28s.root",
+      "started": "2026-10-13T21:26:28.599116+08:00",
+      "status": "completed",
+      "elapsed_s": 3.013495551000233,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_12.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_12.log",
+      "root_sha256": "43d88ba9854e162b425fe9445e4214699dc52d929113ada7610c2a718b4c77fa",
+      "root_bytes": 895764
+    },
+    {
+      "label": "alpha_000100000_13",
+      "rate_hz": 100000,
+      "seed": 261014013,
+      "sipm_seed": 261114013,
+      "readout_seed": 261214013,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_13.mac",
+      "macro_sha256": "a838fdecac697ad233c9fa98d93e35b2aee11d02b32cffb6a081b8ee7ba9a12f",
+      "root": "g4/data/20261013_21h26m31s.root",
+      "started": "2026-10-13T21:26:31.625472+08:00",
+      "status": "completed",
+      "elapsed_s": 3.5149955220003903,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_13.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_13.log",
+      "root_sha256": "67519c1df17d9dd99578ed953458fe02dc40a72905a4102a9ec0ce7ea8ce3675",
+      "root_bytes": 1348658
+    },
+    {
+      "label": "alpha_000100000_14",
+      "rate_hz": 100000,
+      "seed": 261014014,
+      "sipm_seed": 261114014,
+      "readout_seed": 261214014,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_14.mac",
+      "macro_sha256": "09a510578233faff5d3998b5bc52222dd1fa7e91ca5e6e1ef65b7ef797eaec81",
+      "root": "g4/data/20261013_21h26m35s.root",
+      "started": "2026-10-13T21:26:35.157573+08:00",
+      "status": "completed",
+      "elapsed_s": 2.9803161309973802,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_14.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_14.log",
+      "root_sha256": "44f9f9c471f4da893e5df624e98ef06757cb18096d3f7b5768cb478f99f13647",
+      "root_bytes": 904634
+    },
+    {
+      "label": "alpha_000100000_15",
+      "rate_hz": 100000,
+      "seed": 261014015,
+      "sipm_seed": 261114015,
+      "readout_seed": 261214015,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_15.mac",
+      "macro_sha256": "8c425327a848fe1338ee76e68e49ec4873339cf21bb72601838cc1a4a6911495",
+      "root": "g4/data/20261013_21h26m38s.root",
+      "started": "2026-10-13T21:26:38.204039+08:00",
+      "status": "completed",
+      "elapsed_s": 5.830547931000183,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_15.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_15.log",
+      "root_sha256": "2659e97b5026cc8fc7380a1c91ebd1e67460ef7f513f21877073096f0bb62709",
+      "root_bytes": 1459984
+    },
+    {
+      "label": "alpha_001000000_00",
+      "rate_hz": 1000000,
+      "seed": 261014100,
+      "sipm_seed": 261114100,
+      "readout_seed": 261214100,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_00.mac",
+      "macro_sha256": "9b29555b94fa974a0b25e7e5d0eb8639fd39b755352b6571fc15a26bf8fabf70",
+      "root": "g4/data/20261013_21h26m44s.root",
+      "started": "2026-10-13T21:26:44.114576+08:00",
+      "status": "completed",
+      "elapsed_s": 11.371612405000633,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_00.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_00.log",
+      "root_sha256": "4a9a5bc26891a3e1c99dd81ad8c1679be25f9f79ce783154201f02a1809c5356",
+      "root_bytes": 12580521
+    },
+    {
+      "label": "alpha_001000000_01",
+      "rate_hz": 1000000,
+      "seed": 261014101,
+      "sipm_seed": 261114101,
+      "readout_seed": 261214101,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_01.mac",
+      "macro_sha256": "f9ddf16a2b68aa31e334a850a15d435dfa979d3a3b75c405693466037648dfe9",
+      "root": "g4/data/20261013_21h26m55s.root",
+      "started": "2026-10-13T21:26:55.525897+08:00",
+      "status": "completed",
+      "elapsed_s": 9.274950672999694,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_01.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_01.log",
+      "root_sha256": "d5d316cd69f839a4d77d7bc89da852677ac6017de95f3f36619390cbea34f3c9",
+      "root_bytes": 9454454
+    },
+    {
+      "label": "alpha_001000000_02",
+      "rate_hz": 1000000,
+      "seed": 261014102,
+      "sipm_seed": 261114102,
+      "readout_seed": 261214102,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_02.mac",
+      "macro_sha256": "ee4ecafa5cc407151848f010b3db79cc57c85bed314bd92205d3645e739d6565",
+      "root": "g4/data/20261013_21h27m04s.root",
+      "started": "2026-10-13T21:27:04.848613+08:00",
+      "status": "completed",
+      "elapsed_s": 8.31239620999986,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_02.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_02.log",
+      "root_sha256": "9d7cdff702d8fc8b23469846a892d07397ea61fb7dfc90128ad1ba70bc8546f3",
+      "root_bytes": 6047235
+    },
+    {
+      "label": "alpha_001000000_03",
+      "rate_hz": 1000000,
+      "seed": 261014103,
+      "sipm_seed": 261114103,
+      "readout_seed": 261214103,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_03.mac",
+      "macro_sha256": "dfe1b14f6bdb884da761e07330c0ab6d7973453c83bbdae170a9140914b594ca",
+      "root": "g4/data/20261013_21h27m13s.root",
+      "started": "2026-10-13T21:27:13.183096+08:00",
+      "status": "completed",
+      "elapsed_s": 11.912620528000843,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_03.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_03.log",
+      "root_sha256": "4b465394f4902cbc3676fcc21cf705d3d4d0c9f946ef556fcedb10607ef07cf0",
+      "root_bytes": 7258846
+    },
+    {
+      "label": "alpha_010000000_00",
+      "rate_hz": 10000000,
+      "seed": 261014200,
+      "sipm_seed": 261114200,
+      "readout_seed": 261214200,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_00.mac",
+      "macro_sha256": "5479f6c834f9e0ee1f3e3997ad13de7acf60fe6fa5bbca248de40aeee20089fd",
+      "root": "g4/data/20261013_21h27m25s.root",
+      "started": "2026-10-13T21:27:25.292412+08:00",
+      "status": "completed",
+      "elapsed_s": 34.192656074003025,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_00.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_00.log",
+      "root_sha256": "7d973fef53c7237f3800f7f0d177f7c5b4bf846ac8905d98400aa36df72d5ac2",
+      "root_bytes": 71868263
+    },
+    {
+      "label": "alpha_010000000_01",
+      "rate_hz": 10000000,
+      "seed": 261014201,
+      "sipm_seed": 261114201,
+      "readout_seed": 261214201,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_01.mac",
+      "macro_sha256": "d1605676ff85337bade7031c267e3ccd0cf14ee7ca83a9f724be257870fa858d",
+      "root": "g4/data/20261013_21h27m59s.root",
+      "started": "2026-10-13T21:27:59.617761+08:00",
+      "status": "completed",
+      "elapsed_s": 52.79908735699428,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_01.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_01.log",
+      "root_sha256": "f58a3ab5fd0ab6cbcc8b824367f7037ba648deceae8340d39d8738136db310cd",
+      "root_bytes": 78827037
+    },
+    {
+      "label": "alpha_010000000_02",
+      "rate_hz": 10000000,
+      "seed": 261014202,
+      "sipm_seed": 261114202,
+      "readout_seed": 261214202,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_02.mac",
+      "macro_sha256": "a0e4669129e15e110998d6b50dcc29fb8a355a389ad6a6bdb44bf9c625c1e7e7",
+      "root": "g4/data/20261013_21h28m52s.root",
+      "started": "2026-10-13T21:28:52.526462+08:00",
+      "status": "completed",
+      "elapsed_s": 34.66380750200187,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_02.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_02.log",
+      "root_sha256": "f3d4f3d0a22307450e26b88d314c6eac615a80bfbaeea12fb68744e6f2f96311",
+      "root_bytes": 73422660
+    },
+    {
+      "label": "alpha_100000000_00",
+      "rate_hz": 100000000,
+      "seed": 261014300,
+      "sipm_seed": 261114300,
+      "readout_seed": 261214300,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "macro": "pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_100000000_00.mac",
+      "macro_sha256": "0af41db28706d6d59206f5ea3e40570ba41d905bcfa802bceae0082f5906b892",
+      "root": "g4/data/20261013_21h29m27s.root",
+      "started": "2026-10-13T21:29:27.341495+08:00",
+      "status": "completed",
+      "elapsed_s": 287.42204460799985,
+      "returncode": 0,
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_100000000_00.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_s13360_rate_fit_20261013/build",
+      "log": "pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_100000000_00.log",
+      "root_sha256": "150f9ffa1be807bb732a31e636f68eb06116b8d37a6937829401652eb615537c",
+      "root_bytes": 743439566
+    }
+  ],
+  "binary_sha256": "84fd2cbf3fc33a3a005a07d166af51e52dbd9076432163c89bcb489a6648000c",
+  "pilot_validated": true,
+  "build": {
+    "command": "cmake -S source/g4 -B build -DCMAKE_BUILD_TYPE=Release -DGeant4_DIR=/opt/geant4/11.4.2/lib/cmake/Geant4 -DROOT_DIR=/opt/root/6.34.10/cmake; cmake --build build -j 2",
+    "geant4": "11.4.2",
+    "root": "6.34.10",
+    "compiler": "GNU 14.2.0",
+    "ctest_passed": true
+  }
+}
