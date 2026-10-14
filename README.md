@@ -2,7 +2,7 @@
 
 本项目使用 Geant4 模拟 GAGG(Ce) 中的能量沉积、闪烁发光及光子输运，记录到达虚拟 SiPM 的光子时间序列，再用 Python 分析波形。研究对象是 p–¹¹B 相关的 α 粒子、热轫致辐射背景和 ¹²C 俘获/退激 γ，目标是研究计数率升高时的随机堆积，以及 α 数量和能谱的恢复能力。
 
-Geant4 保留到达光子，并可通过 `G4VDigitizerModule` / `G4DigiManager` 在窗末生成 SiPM 雪崩、电流、电压和 ADC，保存到同一 ROOT 的 `SiPMEvent`。当前单粒子默认器件为滨松 **S13360-6050PE**（25°C、3 V 过压），采用数据表典型参数和近似读图 PDE；恢复时间使用同系列代理值，光耦合与读出仍需标定。[SiPM 响应说明](docs/sipm-response.md) 包含统一的原生与离线入口、逐项器件依据和验证结果。原有光子计数波形与数字化电压分别保留；已有分粒子波形来自仿真真值，自动盲重建算法仍待实现与评估。
+Geant4 保留到达光子，并可通过 `G4VDigitizerModule` / `G4DigiManager` 在窗末生成 SiPM 雪崩、电流、电压和 ADC，保存到同一 ROOT 的 `SiPMEvent`。当前单粒子默认器件为滨松 **S13360-6050PE**（25°C、3 V 过压），采用数据表典型参数和近似读图 PDE；恢复时间使用同系列代理值，光耦合与读出仍需标定。[SiPM 响应说明](docs/sipm-response.md) 包含统一的原生与离线入口、逐项器件依据和验证结果。原有光子计数波形与数字化电压分别保留；已有分粒子波形来自仿真真值。当前已加入纯 α 盲重建先导基线，拟合仅输入观测波形，真值单独用于评价；能量标定与独立样本评价仍待完成。
 
 ## 项目目录
 
@@ -10,6 +10,8 @@ Geant4 保留到达光子，并可通过 `G4VDigitizerModule` / `G4DigiManager` 
 | --- | --- |
 | [g4](g4/) | Geant4 工程，包含源码、宏、分析脚本和结果图。 |
 | [pileup](pileup/) | 纯 α 计数率实验：配置、可独立重跑的源码快照、运行器和数据检查。 |
+| [analysis](analysis/) | 单粒子 SiPM 分析、孤立 α/γ 波形拟合和拟合窗口扫描。 |
+| [tools](tools/) | 各系统独立 Python 环境、Notebook 启动及本机内核注册工具。 |
 | [11BH_alpha_spectra](11BH_alpha_spectra/) | 简化 p–¹¹B 单 α 能谱、生成脚本、CSV 和检查图。 |
 | [bremsstrahlung](bremsstrahlung/) | 参数化热轫致辐射光子谱、生成脚本、CSV 和检查图。 |
 | [stopping_power](stopping_power/) | 阻止本领表、Birks 光产额曲线和生成程序。 |
@@ -55,7 +57,7 @@ cd g4/build
 ./gagg ../macros/run_single_gamma_sipm.mac
 ```
 
-从项目根目录运行 `.venv/bin/python -m analysis.single_particle_sipm run --alpha 4 --gamma 32` 可保存固定样本及三组随机数对照、实际源码与宏、ROOT 索引、读出交叉检查和图。默认数字化关闭，原生 SiPM 运行启用后要求 `/run/beamOn 1`。具体参数、削顶标记与模型限制见 [原生数字化](docs/sipm-response.md#native-sipm)。 本次完整改动与实际结果另见本地独立笔记 [codex_SiPM_Digitization.ipynb](jupyter/codex_SiPM_Digitization.ipynb)。
+从项目根目录运行 `bash tools/run_gagg_python.sh -m analysis.single_particle_sipm run --alpha 4 --gamma 32` 可保存固定样本及三组随机数对照、实际源码与宏、ROOT 索引、读出交叉检查和图。默认数字化关闭，原生 SiPM 运行启用后要求 `/run/beamOn 1`。具体参数、削顶标记与模型限制见 [原生数字化](docs/sipm-response.md#native-sipm)。 本次完整改动与实际结果另见本地独立笔记 [codex_SiPM_Digitization.ipynb](jupyter/codex_SiPM_Digitization.ipynb)。
 
 ## 纯 α 堆积实验
 
@@ -73,45 +75,58 @@ cd g4/build
 
 当前生产采用 G4 串行、每个 ROOT 一个波形窗、最多 8 个独立任务。ROOT 统一存入 `g4/data/`，使用原有秒级文件名，任务启动至少间隔 1 秒。具体入口与运行记录见 [pileup 说明](pileup/README.md)。
 
-截至 2026-09-30，首轮四档各 100 个独立时间窗已全部完成并通过逐窗数据检查，生产 ROOT 合计约 54.27 GB。未知脉冲数的 pileup 重建尚未实现；下一步核验已有 α 模板及光输出—沉积能量标定，再建立纯 α 盲重建和计数率性能曲线。方法依据与适用条件见 [文献采用记录](docs/literature-use.md)；运行明细与研究计划在本地 Jupyter 笔记中维护。
+截至 2026-09-30，首轮四档各 100 个独立时间窗已全部完成并通过逐窗数据检查，生产 ROOT 合计约 54.27 GB。2026-10-13 另建 [S13360 纯 α 计数率先导实验](pileup/experiments/alpha_s13360_rate_fit_20261013/README.md)，保留源码、配置、宏、种子和运行清单；四档比较样本分别为 16、4、3、1 个独立窗，未使用首轮保留测试集。当前 [盲重建基线](pileup/analysis/alpha_pileup_fit.py) 估计脉冲数、到达时间和电荷，ADC 接触量程边界时拒绝整窗；这些小样本结果不构成最终能谱或实物性能验证。下一步仍需条件能量标定、模型失配与独立样本评价。方法依据与适用条件见 [文献采用记录](docs/literature-use.md)；运行明细与研究计划在本地 Jupyter 笔记中维护。
 
 ## 分析已有数据
 
-Python 分析及 Notebook 依赖见 [requirements-analysis.txt](requirements-analysis.txt)，包括 numpy、matplotlib、uproot、awkward、pandas、scipy 和 Notebook 执行组件。本机使用项目根目录的 `.venv/`，从项目根目录激活后运行分析：
+Python 分析及 Notebook 依赖见 [requirements-analysis.txt](requirements-analysis.txt)，包括 numpy、matplotlib、uproot、awkward、pandas、scipy 和 Notebook 执行组件。[requirements-analysis.lock.txt](requirements-analysis.lock.txt) 固定已验证的依赖版本；各系统分别安装对应的二进制包，不共享虚拟环境。环境工具保存在随仓库分发的 [tools](tools/) 中；`jupyter/` 下的研究笔记、图像和运行记录仍只在本地维护，GitHub 克隆不包含这些文件。
+
+项目位于共享文件夹时，**Debian 和 Fedora 各用本机用户目录中的环境**。目录按项目路径、发行版、架构和 Python 次版本区分，默认位于 `~/.local/share/gagg-pileup/envs/`，也支持本机 `XDG_DATA_HOME`。七本当前研究笔记统一选择 **GAGG pileup (本机环境)** 内核（`gagg-pileup`）。切换系统时，Notebook 与 ROOT 路径保持相对引用；Python、依赖、内核注册和临时连接文件留在本机。
+
+已接入项目内核的本机，日常继续使用原有 Notebook 启动入口，无需切换到项目目录：
 
 ```bash
-source .venv/bin/activate
-python -m unittest pileup.analysis.test_alpha_response -v
+bash ~/start_jupyter.sh
 ```
 
-需要补充 Python 依赖时执行 `python -m pip install -r requirements-analysis.txt`。新机器先用其 Python 的 venv/pip 组件创建虚拟环境。2026-10-09 的本机 Python 为 3.14.4，实际包版本及单窗 G4、历史 ROOT 读取和 Notebook 执行检查见本地 [环境记录](jupyter/run_records/environment_setup_20261009_170541/environment.json)。完整 Python 版本清单在同目录的 `requirements.freeze.txt`；已在 `.venv` 中注册 `GAGG pileup (.venv)` 内核。此次仅核验运行与数据接口，未验证新旧 Geant4 的物理响应一致性。此前读取环境为 Python 3.10.12、uproot 5.7.4、awkward 2.9.1、numpy 1.26.4、matplotlib 3.5.1，保留为历史结果的环境信息。
+本机入口先检查 GAGG 环境，自动准备依赖，并把 `gagg-pileup` 内核注册到原有 Notebook 环境，再按原设置打开 `/media/sf_works`。直接打开 `GAGG_pileup/jupyter/` 下的笔记，即可使用已保存的项目内核设置；原有其他内核仍可使用。环境可用时直接复用，首次使用、依赖清单更新或系统 Python 次版本变化时自动准备，无需提前执行 setup。首次准备需要下载依赖；系统需提供 Python 3 和 venv/ensurepip 组件。安装记录保存在 `jupyter/run_records/`，中断后可重试同一个本机启动入口。
 
-本机继续使用经典 Jupyter Notebook 界面，五本研究笔记统一选择 `GAGG pileup (.venv)` 内核。在项目根目录运行 `bash jupyter/start_gagg_jupyter.sh`，即可打开 SiPM 笔记的经典页面。启动器使用项目 `.venv` 中的 NbClassic、Jupyter Server 和计算内核；界面与分析依赖统一由 `requirements-analysis.txt` 安装。启动配置保存在本地 `jupyter/classic_notebook_config.json`。
-
-虚拟环境不能直接跨系统 Python 版本搬用。2026-10-13 当前系统为 Python 3.13.5，原 3.14.4 环境因缺少对应标准库而无法启动，已备份后重建。旧环境、原笔记与图像备份及本次验证记录位于本地 `jupyter/run_records/notebook_repair_20261013_112957/`。2026-10-09/10 的版本与验证记录描述当时的环境，继续保留用于追溯；旧 `.cache/jupyter-classic/` 组件不再是当前启动器的依赖。
-
-在新机器恢复环境时，先将失效的 `.venv` 移至独立备份目录，再从项目根目录执行下列命令。共享目录不支持符号链接时，预先创建普通 `lib64` 目录，并用 `--copies` 复制解释器：
+新机器只需在本机启动脚本执行 Jupyter 之前接入一次以下调用。`notebook_dir` 指向共享目录，`venv_dir` 指向该启动脚本原来使用的本机 Jupyter 环境；按该机器实际目录调整这两个变量。此后环境检查与注册由原脚本自动完成：
 
 ```bash
-mkdir -p .venv/lib64
-python3 -m venv --copies .venv
-.venv/bin/python -m pip install -r requirements-analysis.txt
-.venv/bin/python -m ipykernel install --prefix .venv --name gagg-pileup --display-name 'GAGG pileup (.venv)'
-bash jupyter/start_gagg_jupyter.sh
+gagg_environment="$notebook_dir/GAGG_pileup/tools/gagg_environment.py"
+if [[ -f "$gagg_environment" ]]; then
+    "${GAGG_BASE_PYTHON:-/usr/bin/python3}" "$gagg_environment" register --prefix "$venv_dir"
+fi
 ```
+
+2026-10-14 已接入当前 Fedora 上的 `~/start_jupyter.sh` 和 `~/software/jupyter/start_jupyter.sh`；原文件备份和实际启动验证见本地 [入口记录](jupyter/run_records/local_jupyter_entry_20261014_093600/local_server_checks.json)。旧的 `jupyter/gagg_environment.py` 入口继续转交给 `tools/`，保留现有启动方式。Debian 的本机脚本尚需切换系统后接入并实测。
+
+从项目根目录运行 `bash tools/start_gagg_jupyter.sh` 可独立启动经典 NbClassic 界面，也适用于没有原启动脚本的新机器。存在本地 SiPM 笔记时默认打开该笔记，否则显示项目文件列表。两种入口均可传入 `--no-browser`、`--ServerApp.port=8890` 等 Jupyter 参数。查看本机环境位置或执行分析脚本（分析入口同样会自动准备环境）：
+
+```bash
+python3 tools/gagg_environment.py info
+bash tools/run_gagg_python.sh -m unittest pileup.analysis.test_alpha_response -v
+```
+
+项目内备用启动器按脚本位置定位项目，允许从其他目录启动；分析脚本仍按各自说明选择工作目录。自定义解释器可设置本机 `GAGG_BASE_PYTHON`，自定义环境可设置本机 `GAGG_ENV_DIR`；自定义环境应放在本机文件系统中。本机入口保留原来的 Notebook 配置，备用 NbClassic 入口使用 [classic_notebook_config.json](tools/classic_notebook_config.json)，如存在本地 `jupyter/classic_notebook_config.json` 则优先使用它。
+
+共享 `.venv` 曾分别基于 Python 3.14.4 和 3.13.5 创建，切换系统后出现缺少标准库的内核启动错误；它不再是 Jupyter 默认入口。2026-10-09/10 与 2026-10-13 的环境记录仍按当时条件保留，用于追溯历史结果。2026-10-13 的旧环境和笔记备份位于 `jupyter/run_records/notebook_repair_20261013_112957/`；本次跨系统环境调整、原笔记和输出备份位于 `jupyter/run_records/notebook_repair_20261014_084256/`。本次只调整运行环境与笔记执行入口，不据此推断新旧 Geant4 的物理响应一致性。 本次已在 Fedora 44 / Python 3.14.3 实际执行七本 Notebook，35项分析测试及经典页面/内核检查通过；Debian目录选择已检查，实际执行待切换系统确认。[验证结果](jupyter/run_records/notebook_repair_20261014_084256/final_validation.json) 保留本次环境和逐本执行状态。
 
 取得对应 ROOT 数据后，从项目根目录运行：
 
 ```bash
 cd g4/analysis
-python3 plot_pileup_waveform.py ../data/20260624_16h28m34s.root --bin-width-ns 1.0
+bash ../../tools/run_gagg_python.sh plot_pileup_waveform.py ../data/20260624_16h28m34s.root --bin-width-ns 1.0
 ```
 
-脚本目前只画第一个 event，PNG 保存到启动命令所在目录。它会读取完整事件树，大文件分析需要预留内存。本机 uproot 默认文件读取曾出现等待，显式使用 `uproot.source.file.MemmapSource` 可读取。
+脚本只画第一个 event，PNG 保存到启动命令所在目录。它使用 `uproot.source.file.MemmapSource`，只加载首窗绘图需要的光子时间和粒子标签；不加载无关的位置、能量或后续窗光子数组。高计数率下绘制全部真值分量仍需预留内存。
 
 单粒子比较示例与分析工具说明见 [分析目录说明](g4/analysis/README.md)。
 
-纯 α 响应核验与条件能标模块见 [pileup/analysis/alpha_response.py](pileup/analysis/alpha_response.py)，使用方法见 [pileup 说明](pileup/README.md#α-响应核验与能量标定)。首批 100 个校准/验证窗的检查、长尾模板及能标比较已完成，实际输出记录在本地 `jupyter/Alpha_Response_Calibration.ipynb`；未知脉冲数的重建仍待实现。
+纯 α 响应核验与条件能标模块见 [pileup/analysis/alpha_response.py](pileup/analysis/alpha_response.py)，使用方法见 [pileup 说明](pileup/README.md#α-响应核验与能量标定)。首批 100 个校准/验证窗的检查、长尾模板及能标比较已完成，实际输出记录在本地 `jupyter/Alpha_Response_Calibration.ipynb`；当前电荷重建基线尚未完成与此条件能标的连接。
+
+孤立 α/γ 波形拟合与短窗口扫描分别见 [alpha_gamma_waveform_fit.py](analysis/alpha_gamma_waveform_fit.py) 和 [alpha_gamma_fit_window_scan.py](analysis/alpha_gamma_fit_window_scan.py)。默认示例需要另行提供对应 ROOT 和冻结运行记录；相关本地路径在模块中列明。两条孤立模拟波形只能展示模型行为，不能据此推断分类效率。
 
 离线 SiPM 数字化入口为 [sipm_response.py](pileup/analysis/sipm_response.py)，使用同一 [S13360-6050PE 配置](g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json)，当前示例、验证入口和笔记均采用该器件。用完整时间窗推进所有粒子共享的 pixel 状态，另存雪崩表、波形、种子、配置及源码记录；不修改输入 ROOT。命令、概率定义、实测单雪崩模板接口和限制见 [使用说明](docs/sipm-response.md)。历史无能量字段的 ROOT 仅在明确启用常数有效 PDE 近似时接受。
 
