@@ -20,3 +20,5 @@ python3 ../../../g4/analysis/compare_alpha_gamma.py ../../../g4/data/20260623_15
 上述 γ/α 源能量分别为 661.657 keV 和 5.486 MeV。旧 ROOT 记录窗为 1 μs；平均模板绘图到 1200 ns 不代表补回了窗外尾部。两份脚本分别采用首光子对齐和不作逐事件对齐的约定，调用前应核对。单一 α 源能量也不能替代完整的 Qα(E) 标定。
 
 本机 uproot 默认读取方式曾出现等待；需要时可显式打开 `uproot.open(path, handler=uproot.source.file.MemmapSource)` 后，将 PrimaryPhoton tree 交给模板计算函数。
+
+`plot_pileup_waveform.py` 已默认采用上述内存映射读取，并只加载首窗需要的光子时间与标签，避免将完整树的全部分支读入内存。它仍绘制该窗的全部已知 primary 真值分量。

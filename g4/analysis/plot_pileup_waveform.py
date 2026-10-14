@@ -52,6 +52,7 @@ import awkward as ak
 import matplotlib.pyplot as plt
 import numpy as np
 import uproot
+from uproot.source.file import MemmapSource
 
 
 def to_str(x):
@@ -129,10 +130,8 @@ def get_runinfo_window_ns(root_file):
             return None
 
         run_info = root_file["RunInfo"]
-        arrays = run_info.arrays(library="ak")
-
-        if "t_length_ps" in arrays.fields and len(arrays["t_length_ps"]) > 0:
-            return float(arrays["t_length_ps"][0]) / 1000.0
+        if "t_length_ps" in run_info and run_info.num_entries > 0:
+            return float(run_info["t_length_ps"].array(entry_stop=1, library="np")[0]) / 1000.0
     except Exception:
         return None
 
@@ -197,14 +196,21 @@ def plot_first_event(
     if not root_file.exists():
         raise FileNotFoundError(f"Input ROOT file not found: {root_file}")
 
-    with uproot.open(root_file) as root:
+    # Shared-folder reads use the same synchronous, memory-mapped path as the
+    # other project analyses. Only load branches actually used by this plot.
+    with uproot.open(
+        root_file, handler=MemmapSource, num_workers=1,
+        decompression_executor=uproot.TrivialExecutor(),
+        interpretation_executor=uproot.TrivialExecutor(),
+    ) as root:
         if "WaveformEvent" not in root:
             raise RuntimeError("Tree 'WaveformEvent' not found.")
         if "PrimaryPhoton" not in root:
             raise RuntimeError("Tree 'PrimaryPhoton' not found.")
 
-        waveform = root["WaveformEvent"].arrays(library="ak")
-        primary = root["PrimaryPhoton"].arrays(library="ak")
+        waveform = root["WaveformEvent"].arrays(
+            ["event_id", "all_photon_arrival_t_ps"], entry_stop=1, library="ak"
+        )
 
         if len(waveform["event_id"]) == 0:
             raise RuntimeError("WaveformEvent tree is empty.")
@@ -226,12 +232,21 @@ def plot_first_event(
         fig, ax = plt.subplots(figsize=(10, 6))
 
         # Plot the individual primary waveforms that belong to the first event.
-        p_event_ids = ak.to_numpy(primary["event_id"])
+        primary_tree = root["PrimaryPhoton"]
+        p_event_ids = primary_tree["event_id"].array(library="np")
         pidxs = np.where(p_event_ids == event_id)[0]
+        first_primary = int(pidxs[0]) if len(pidxs) else 0
+        last_primary = int(pidxs[-1]) + 1 if len(pidxs) else 0
+        branches = ["photon_arrival_t_ps"]
+        branches += [name for name in ("primary_particle_name", "primary_response_name")
+                     if name in primary_tree]
+        primary = primary_tree.arrays(
+            branches, entry_start=first_primary, entry_stop=last_primary, library="ak"
+        )
 
         used_labels = set()
 
-        for pidx in pidxs:
+        for pidx in pidxs - first_primary:
             times_ps = primary["photon_arrival_t_ps"][pidx]
             counts = make_histogram_from_ps(times_ps, edges_ns)
 
