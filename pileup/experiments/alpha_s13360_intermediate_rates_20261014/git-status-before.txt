@@ -1,0 +1,12 @@
+ M docs/literature-use.md
+?? 01a12346-5cf5-7a41-84bf-2ed6537cca55-ubuntu
+?? 01a133e6-3029-7320-856f-f6dca7e65038-debian
+?? "11BH_alpha_spectra/make_p11b_alpha_spectrum.py\357\200\272Zone.Identifier"
+?? "bremsstrahlung/make_brems_spectrum.py\357\200\272Zone.Identifier"
+?? pileup/analysis/pulse_duration_rate.py
+?? pileup/experiments/alpha_s13360_intermediate_rates_20261014/
+?? "stopping_power/make_birks_yield_curves.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_birks_yield_curves_modified.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_birks_yield_curves_o16.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_gagg_stopping_tables_o16.cc\357\200\272Zone.Identifier"
+?? ubuntu

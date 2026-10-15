@@ -1,0 +1,6 @@
+{
+  "reason": "Resolve exact time/x collisions with saved y/energy; reject any remaining ambiguity. Original frozen exporter retained in source/. Blind fitting code, configuration and physics unchanged.",
+  "files": {
+    "analysis_source/pileup/analysis/alpha_rate_data.py": "15b98614bae6a32c6b39a20eb972d15c8d137d7ac62b0310bb8988405af9eb0c"
+  }
+}

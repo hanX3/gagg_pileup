@@ -27,6 +27,19 @@ def photon_key(t,x):
     return (np.asarray(t,dtype=np.uint64)<<np.uint64(32))|np.asarray(x,dtype=np.float32).view(np.uint32).astype(np.uint64)
 
 
+def photon_full_key(t,x,y,energy):
+    """Exact saved photon record, including coordinates and energy float bits.
+
+    Rounded picosecond times and boundary coordinates can coincide for distinct
+    photons. Never break a remaining full-record tie using row order or truth.
+    """
+    key=np.empty(len(t),dtype=[('t_ps','<i8'),('x_bits','<u4'),('y_bits','<u4'),('energy_bits','<u4')])
+    key['t_ps']=np.asarray(t,dtype=np.int64)
+    for name,values in (('x_bits',x),('y_bits',y),('energy_bits',energy)):
+        key[name]=np.asarray(values,dtype=np.float32).view(np.uint32)
+    return key
+
+
 def export_window(root_path,output, *, expected=None):
     output=Path(output); output.mkdir(parents=True,exist_ok=True)
     root_path=Path(root_path); stem=root_path.stem
@@ -58,18 +71,28 @@ def export_window(root_path,output, *, expected=None):
         pt=ak.to_numpy(total['all_photon_arrival_t_ps'].array()[0])
         px=ak.to_numpy(total['all_photon_arrival_x_mm'].array()[0])
         keys=photon_key(pt,px);order=np.argsort(keys);sorted_keys=keys[order]
-        if len(keys)>1 and np.any(sorted_keys[1:]==sorted_keys[:-1]):
-            raise ValueError('Ambiguous photon key; need full xyz/energy matching before scoring')
+        collisions=int(np.count_nonzero(sorted_keys[1:]==sorted_keys[:-1]))
+        full_key=bool(collisions or np.any(pt<0) or np.any(pt>=2**32))
+        if full_key:
+            del keys,order,sorted_keys
+            py=ak.to_numpy(total['all_photon_arrival_y_mm'].array()[0])
+            pe=ak.to_numpy(total['photon_energy_eV'].array()[0])
+            keys=photon_full_key(pt,px,py,pe);del py,pe
+            order=np.argsort(keys);sorted_keys=keys[order]
+            if len(keys)>1 and np.any(sorted_keys[1:]==sorted_keys[:-1]):
+                raise ValueError('Ambiguous full photon record; ancestry cannot be assigned uniquely')
         del keys,pt,px
         owner=np.full(len(order),-1,dtype=np.int32)
         rows=[]
         branches=['primary_id','primary_particle_name','primary_energy_MeV','primary_time_ps',
                   'edep_total_MeV','photon_arrival_t_ps','photon_arrival_x_mm','photon_arrival_y_mm']
+        if full_key:branches.append('photon_energy_eV')
         for chunk in f['PrimaryPhoton'].iterate(branches,step_size='32 MB',library='ak'):
             for p in chunk:
                 assert str(p['primary_particle_name'])=='alpha'
                 tt=ak.to_numpy(p['photon_arrival_t_ps']);xx=ak.to_numpy(p['photon_arrival_x_mm']);yy=ak.to_numpy(p['photon_arrival_y_mm'])
-                k=photon_key(tt,xx);loc=np.searchsorted(sorted_keys,k)
+                k=photon_full_key(tt,xx,yy,ak.to_numpy(p['photon_energy_eV'])) if full_key else photon_key(tt,xx)
+                loc=np.searchsorted(sorted_keys,k)
                 assert np.all(loc<len(sorted_keys)) and np.array_equal(sorted_keys[loc],k)
                 assert np.all(owner[order[loc]]==-1)
                 owner[order[loc]]=len(rows)
@@ -108,6 +131,8 @@ def export_window(root_path,output, *, expected=None):
             clipped_samples=int(scalar('n_clipped_samples')),rail_samples=int(rails.sum()),
             charge_balance_error_C=float(scalar('charge_balance_error_C')),
             config=config,macro_contents=info['macro_contents'],
+            photon_key_mode='time_x_y_energy_exact_bits' if full_key else 'time_x_exact_bits',
+            photon_time_x_collisions=collisions,
             truth_definition='Realized charge in shared-cell pileup, with photon-descendant XT; excludes dark chains. Time is first active-plane photon, not source emission.')
         save(output/'metadata'/f'{stem}.json',meta)
         return meta

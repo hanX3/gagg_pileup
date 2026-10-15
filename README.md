@@ -75,7 +75,10 @@ cd g4/build
 
 当前生产采用 G4 串行、每个 ROOT 一个波形窗、最多 8 个独立任务。ROOT 统一存入 `g4/data/`，使用原有秒级文件名，任务启动至少间隔 1 秒。具体入口与运行记录见 [pileup 说明](pileup/README.md)。
 
-截至 2026-09-30，首轮四档各 100 个独立时间窗已全部完成并通过逐窗数据检查，生产 ROOT 合计约 54.27 GB。2026-10-13 另建 [S13360 纯 α 计数率先导实验](pileup/experiments/alpha_s13360_rate_fit_20261013/README.md)，保留源码、配置、宏、种子和运行清单；四档比较样本分别为 16、4、3、1 个独立窗，未使用首轮保留测试集。当前 [盲重建基线](pileup/analysis/alpha_pileup_fit.py) 估计脉冲数、到达时间和电荷，ADC 接触量程边界时拒绝整窗；这些小样本结果不构成最终能谱或实物性能验证。下一步仍需条件能量标定、模型失配与独立样本评价。方法依据与适用条件见 [文献采用记录](docs/literature-use.md)；运行明细与研究计划在本地 Jupyter 笔记中维护。
+截至 2026-09-30，首轮四档各 100 个独立时间窗已全部完成并通过逐窗数据检查，生产 ROOT 合计约 54.27 GB。2026-10-13 另建 [S13360 纯 α 计数率先导实验](pileup/experiments/alpha_s13360_rate_fit_20261013/README.md)，保留源码、配置、宏、种子和运行清单；四档比较样本分别为 16、4、3、1 个独立窗，未使用首轮保留测试集。2026-10-14 补充 20、40、60、80 MHz 各 3 窗，并按用户指定的“采集动态范围足够”前提，对全部 36 窗进行 [完整电压统一重分析](pileup/experiments/alpha_full_signal_20261014/README.md)。当前 [盲重建基线](pileup/analysis/alpha_pileup_fit.py) 从完整含噪电压估计脉冲数、到达时间和电荷；本轮不考虑 ADC 位数、量化和削顶，旧 ADC 整窗拒绝结果只作为历史记录。同日完成 [时序 CNN 与拟合的比较](pileup/experiments/alpha_ml_comparison_20261014/README.md)：26 窗训练、10 窗验证、17 个新种子测试窗，20–100 MHz 的事件恢复率改善，误检增加；另保存近邻/幅度外推失败及高率偶然时间匹配对照。完整过程记录在本地 [独立 ML Notebook](jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb)。这些小样本结果不构成最终能谱或实物性能验证。下一步仍需条件能量标定、模型失配与扩大独立样本评价。方法依据与适用条件见 [文献采用记录](docs/literature-use.md)；运行明细与研究计划在本地 Jupyter 笔记中维护。
+
+<a id="ml-multimethod-20261014"></a>
+同日扩展为[五种流程的共同测试](pileup/experiments/alpha_ml_multimethod_20261014/README.md)：新增U-Net、局部Transformer及CNN＋物理拟合，保留原CNN与盲拟合；两网络各训练2400步，22个新独立窗口覆盖八档源率，原17窗作回归。算法参数仅由验证集选择，完整电压输入和足够动态范围前提保持。不同率的改善并不一致，受控近邻、幅度外推失败及高密度偶然匹配均原样记录；详见[独立Notebook第二轮](jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014)和[采用记录L21](docs/literature-use.md#ml-multimethod-20261014)。
 
 ## 分析已有数据
 

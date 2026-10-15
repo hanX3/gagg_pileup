@@ -1,0 +1,99 @@
+{
+  "created": "2026-10-14T14:32:52.403024+08:00",
+  "status": "completed",
+  "purpose": "用户指定动态范围足够；全部窗口按完整电压盲拟合，不考虑 ADC 量程/量化",
+  "git_head": "81430ca5544f583bd733cbd4eee304124a1d6193",
+  "input_folders": [
+    "jupyter/artifacts/alpha_rate_fit_20261013_211541",
+    "jupyter/artifacts/alpha_intermediate_rates_20261014_114000"
+  ],
+  "input_summary_sha256": {
+    "jupyter/artifacts/alpha_rate_fit_20261013_211541/summary.json": "403b3f534906da1e47b78b3bbe13bdfee3fbd27c10f8193d8540eaa46745a043",
+    "jupyter/artifacts/alpha_intermediate_rates_20261014_114000/summary.json": "f10ee8f6925ef520eb25139a00924f9b2211bda6429aedcd543b3f0ed70ed924"
+  },
+  "source_sha256": {
+    "source/analysis/alpha_gamma_waveform_fit.py": "bb588bdab8c248161c974d2d43c494ebc97bf1227054e6ccd0a01d1cd44ed7f5",
+    "source/analysis/single_particle_sipm.py": "fc287ceab1413c2080f8ce2ec2002304d93f0fa0a4cdcb77e252a88f8ed7c569",
+    "source/pileup/analysis/alpha_full_signal_study.py": "60849896ca0b77d9a23f5aeb3bb09302bcaf1412d7c273f4d62628e48a488cb2",
+    "source/pileup/analysis/alpha_pileup_fit.py": "d2c9b8071720c7f112606eea0717a71e42bf3b5f12b45a021b1961bbe13250b8",
+    "source/pileup/analysis/alpha_rate_campaign.py": "ce1d0224a744f4b6d2f5abed53d076143c5bb9cea843ea132055530794ca3f34",
+    "source/pileup/analysis/sipm_readout.py": "aa19a0be943719ad2a6a9464359b4f217e49bb1cd0aa1335ce2b09ef9c096d5b",
+    "source/pileup/analysis/sipm_response.py": "93256cccb0ac32ed44c9763cd8e18aeb5e939a941a14ce70c29c806c469fc888"
+  },
+  "replay_sha256": "6815d3fd6fd316f05096d44ae6a05b293b546bdfeda9806e43bca933a44c97de",
+  "workers": 2,
+  "new_g4_runs": 0,
+  "output": "jupyter/artifacts/alpha_full_signal_20261014_143000",
+  "run_record": "jupyter/run_records/alpha_full_signal_20261014_143000",
+  "completed": "2026-10-14T15:03:06.142176+08:00",
+  "independent_windows": 36,
+  "result_sha256": {
+    "jupyter/artifacts/alpha_full_signal_20261014_143000/summary.json": "ce5a02b92769af683a0c5ad15a0f995d0bc938b7b4441324946769caade8437a",
+    "jupyter/artifacts/alpha_full_signal_20261014_143000/analysis_config.json": "89b28371690ff3df4886664faa34eb21b5d3c8b481103ae86d099e60dbf71c8d",
+    "jupyter/artifacts/alpha_full_signal_20261014_143000/controls.json": "3fddc7bcf6ec63451e20f19f3f40eb4421c4d49ba3ef354aa82298e9e875d162",
+    "jupyter/run_records/alpha_full_signal_20261014_143000/validation_results.json": "1541b14c62310c66048d6290e7b1602f50214da980abb2b9add3559e7f196889",
+    "jupyter/run_records/alpha_full_signal_20261014_143000/validation_delivery.json": "55e5b433bf8cbf08a4245067e94e93678a2a5e1a56ab71a57a5315ad9f1621f3",
+    "jupyter/artifacts/alpha_full_signal_20261014_143000/full_signal_rates.png": "5651a4c129845f3238df32dbdb5bbdfec1210349ab00b8d4e71177066339cb1f",
+    "jupyter/artifacts/alpha_full_signal_20261014_143000/full_signal_rates.pdf": "f0d97a7c5aa4cb20a5deb4f4d92f05b35af6cd3c5710405f29777ff003670c7a",
+    "jupyter/artifacts/alpha_full_signal_20261014_143000/full_signal_waveforms.png": "5af068f10ce25db16f3d447be3868b30b6e740670dafc6fbc6b93260652dd08b",
+    "jupyter/artifacts/alpha_full_signal_20261014_143000/full_signal_waveforms.pdf": "6d19c1ec26a508ed43a6f4a83e33ebba47ada0009eb6a97e200f718c7de955ae"
+  },
+  "results": [
+    {
+      "rate_hz": 100000,
+      "windows": 16,
+      "recovered_count": 10,
+      "target_count": 10,
+      "recovery_fraction": 1.0
+    },
+    {
+      "rate_hz": 1000000,
+      "windows": 4,
+      "recovered_count": 35,
+      "target_count": 36,
+      "recovery_fraction": 0.9722222222222222
+    },
+    {
+      "rate_hz": 10000000,
+      "windows": 3,
+      "recovered_count": 142,
+      "target_count": 204,
+      "recovery_fraction": 0.696078431372549
+    },
+    {
+      "rate_hz": 20000000,
+      "windows": 3,
+      "recovered_count": 152,
+      "target_count": 443,
+      "recovery_fraction": 0.3431151241534989
+    },
+    {
+      "rate_hz": 40000000,
+      "windows": 3,
+      "recovered_count": 140,
+      "target_count": 858,
+      "recovery_fraction": 0.16317016317016317
+    },
+    {
+      "rate_hz": 60000000,
+      "windows": 3,
+      "recovered_count": 119,
+      "target_count": 1223,
+      "recovery_fraction": 0.0973017170891251
+    },
+    {
+      "rate_hz": 80000000,
+      "windows": 3,
+      "recovered_count": 68,
+      "target_count": 1640,
+      "recovery_fraction": 0.041463414634146344
+    },
+    {
+      "rate_hz": 100000000,
+      "windows": 1,
+      "recovered_count": 23,
+      "target_count": 639,
+      "recovery_fraction": 0.03599374021909233
+    }
+  ]
+}

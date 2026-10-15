@@ -131,3 +131,37 @@ python3 -m unittest pileup.analysis.test_alpha_response -v
 ```
 
 输出目录必须尚不存在。输入接口、旧 ROOT 近似、概率定义、相关噪声、实测 SPE、采样孔径和削顶说明见 [SiPM 使用说明](../docs/sipm-response.md)。物理极限和单窗比较入口为 [validate_sipm_response.py](analysis/validate_sipm_response.py)；它使用真值选择单 α 来构造受控输入，输出明确标记，不进行盲分离或能谱重建。
+
+## 动态范围足够时的堆积恢复
+
+2026-10-14 用户明确本轮以采集动态范围足够、获得完整信号为前提，研究计数率和脉冲长度对拟合恢复的影响。[完整电压分析入口](analysis/alpha_full_signal_study.py) 对原四档和新增 20/40/60/80 MHz 的全部 36 个独立窗口，统一拟合保存的含噪 `analog_mV`。本轮忽略 ADC 量化，不使用端点码作整窗拒绝；保留原采样、电子学及实际 SiPM 状态。脉冲数、时间和电荷由总波形盲估计，真值只在拟合结束后评分。
+
+从项目根目录、用已有本地输入结果重算，输出目录须不存在：
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/gagg-full-signal-mpl \
+  bash tools/run_gagg_python.sh pileup/experiments/alpha_full_signal_20261014/replay.py \
+  --output jupyter/artifacts/alpha_full_signal_new_run --workers 2
+```
+
+[冻结源码与复现说明](experiments/alpha_full_signal_20261014/README.md) 保留本次输入清单和配置；[研究笔记第14节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014) 汇总恢复率、漏检/误拆分/误合并、条件电荷误差和脉宽关系。旧 `alpha_rate_study.py` 及其 ADC 结果保留用于重放历史研究口径；当前比较以完整电压结果为准。
+
+## 机器学习与拟合的实际比较（2026-10-14）
+
+[时序卷积网络](analysis/alpha_pileup_ml.py) 从完整含噪电压的固定标定特征，预测未知数量事件的时间和实际电荷。原36窗先按完整ROOT/全部种子分为26训练、10验证，再抽切片；另生成17个新种子窗口一次性测试，保留真实共享微胞状态。模型/全率阈值由验证集选定后冻结，测试不输入真值或源率。可选CPU PyTorch依赖见 [requirements-ml.txt](../requirements-ml.txt)，不作为基础Notebook环境的必需包。
+
+同一2214个q≥500 pe目标，以时间误差≤10 ns且电荷误差≤20%计成功，CNN恢复571个，原拟合296个；20–100 MHz提高恢复率并增加误检，10 MHz两者接近。高率每档仅一个新窗，时间打乱后仍存在偶然匹配；10 ns双脉冲及超训练电荷幅度的软件控制失败均保留，不能将结果解释为可靠解决全部高率pile-up。
+
+[独立Notebook](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb) 保存实际训练、控制、各率表/图、失败分解、耗时和限制；[冻结实验与重跑说明](experiments/alpha_ml_comparison_20261014/README.md) 提供源码、配置、划分、种子、宏和模型输入路径；[采用记录L20](../docs/literature-use.md#ml-pileup-comparison-20261014) 与该笔记对应。实现是项目自建小型CNN，含物理逆滤波特征，未宣称复现论文完整网络；输出电荷尚未连接沉积能量标定。
+
+<a id="ml-multimethod-20261014"></a>
+## U-Net、Transformer和CNN＋物理拟合（2026-10-14）
+
+新增两种网络和真正的CNN候选物理模板refit，沿用26训练/10验证ROOT及冻结响应，22个新种子测试窗统一比较五流程；旧17窗只作回归。U-Net第800步/0.75、Transformer第2400步/0.85及混合先验λ=0.1均由验证集选定。训练/测试保持实际共享微胞历史，推断只用完整电压，未知K、不用真值/源率。原CNN、原拟合及旧实验保留。
+
+[新冻结源码与重跑说明](experiments/alpha_ml_multimethod_20261014/README.md) · [实际表、图、误检和控制](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014) · [文献采用L21](../docs/literature-use.md#ml-multimethod-20261014)。小型项目架构没有宣称论文完整复现；高率每档两窗、100 MHz无同率验证、近邻和幅度外推失败，不构成实物/能谱或实时能力证明。
+
+<a id="ml-low-rates-20261015"></a>
+## 已有低率0.1、1、10 MHz的五方法复查（2026-10-15）
+
+新增[低率分析快照](experiments/alpha_ml_low_rate_20261015/README.md)，复用12个新测试低率窗和12个公开回归低率窗，分别报告，没有G4新增或模型调参。低率U-Net多数未成功来自电荷误差，检出与电荷合格已明确区分；10 MHz全148个阈上目标在W90内有邻居，仍有明显堆积。[同一本Notebook第11–14节](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015)保留原输出并新增失败图、长度关联、同目标配对及小样本敏感性；[采用汇总](../docs/literature-use.md#ml-low-rates-20261015)保留来源/审核范围和待验证条件。

@@ -127,10 +127,11 @@ def refit(t, values, initial_times, template, config):
 
 
 def fit_waveform(t_ns, voltage_mV, template, config=FitConfig(), *, rail_mask=None):
-    """Fit observed voltage only. Any ADC rail contact rejects the entire window.
+    """Fit the supplied total voltage without an intrinsic ADC range limit.
 
-    An independent unclipped analog fit is allowed as a simulation diagnostic,
-    but is never substituted for a clipped ADC result or its efficiency.
+    Passing rail_mask explicitly opts into the historical whole-record rejection
+    policy. Studies assuming adequate dynamic range supply complete sampled
+    voltage without that mask; clipped ADC values cannot recreate this input.
     """
     t,y=np.asarray(t_ns,float),np.asarray(voltage_mV,float)
     if t.ndim!=1 or y.shape!=t.shape or len(t)<10 or not np.isfinite(y).all():

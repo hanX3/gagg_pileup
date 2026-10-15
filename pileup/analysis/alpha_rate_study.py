@@ -1,7 +1,9 @@
-"""Reproducible analysis and plots for the pure-alpha count-rate pilot.
+"""Historical fixed-range ADC analysis of the pure-alpha count-rate pilot.
 
 Run from project root with BLAS threads limited to one. ROOT acquisition is a
 separate explicit command. This analysis never launches G4 or modifies a ROOT.
+For the current adequate-dynamic-range comparison, use alpha_full_signal_study;
+this historical entry retains the original whole-record ADC rejection policy.
 """
 from __future__ import annotations
 

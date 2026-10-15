@@ -1,0 +1,4 @@
+# Optional dependency for pileup.analysis.alpha_pileup_ml.
+# Install with the CPU index: --index-url https://download.pytorch.org/whl/cpu
+# Keep requirements-analysis.lock.txt for the shared Notebook base environment.
+torch==2.14.1

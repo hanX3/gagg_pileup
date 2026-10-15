@@ -1,6 +1,6 @@
 # Local research notes and agent configuration
 /AGENTS.md
-/jupyter/
+jupyter/
 *.ipynb
 .ipynb_checkpoints/
 /.agents/

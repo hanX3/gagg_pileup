@@ -38,6 +38,25 @@ def collect(project):
                       'seed': run['g4_seed'], 'macro_relative_path': run['macro'],
                       'campaign_id': path.parent.name, 'single_particle': True}
             records[root_path] = (record, path)
+    # Native rate/ML campaigns save one manifest with explicit checks and runs.
+    # Keep the saved macro and status, including a same-seed check's role.
+    for path in (project / 'pileup/experiments').glob('*/manifest.json'):
+        campaign = json.loads(path.read_text())
+        for role in ('checks', 'runs'):
+            for run in campaign.get(role, []):
+                if not run.get('root'):
+                    continue
+                root_path = (project / run['root']).resolve()
+                if data not in root_path.parents:
+                    continue
+                record = {'status': run.get('status', 'unknown'), 'events': 1,
+                          'config': {'window_us': run.get('window_us', campaign.get('window_us'))},
+                          'point': {'rate_hz': run.get('rate_hz')},
+                          'seed': run.get('seed'), 'macro_relative_path': run.get('macro'),
+                          'campaign_id': path.parent.name,
+                          'native_waveform_label': run.get('label', ''),
+                          'environment_check': role == 'checks'}
+                records[root_path] = (record, path)
     files = {path.resolve() for path in data.rglob('*.root') if path.is_file()} | set(records)
     rows = []
     for path in sorted(files):
@@ -94,6 +113,10 @@ def collect(project):
                     row['notes'] = '调整前的多窗测试文件，保留为历史记录；当前生产要求一窗一文件。'
                 else:
                     row['notes'] = '一窗一文件；宏和种子由本次实际运行清单记录。'
+                    if record.get('native_waveform_label'):
+                        row['notes'] += ' 标签：' + record['native_waveform_label'] + '。'
+                    if record.get('environment_check'):
+                        row['notes'] += ' 同种子环境对照，不计独立性能样本。'
             except Exception as error:
                 row['status'] = 'unreadable'
                 row['notes'] = f'{type(error).__name__}: {error}'

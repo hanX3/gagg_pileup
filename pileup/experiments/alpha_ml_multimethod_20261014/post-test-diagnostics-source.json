@@ -1,0 +1,17 @@
+{
+  "files": {
+    "source/pileup/analysis/alpha_ml_multimethod_diagnostics.py": "447bc3c1a46c46881b6e3b252c913ba77f759f389895798869033e77014370f6",
+    "replay_report.py": "7a264601fd8a1b670451d0328b5c5d958df46d75883c54c206c4c6806acab787"
+  },
+  "purpose": "Post-test voltage and fixed-region figures; no model or threshold selection",
+  "regions_ns": [
+    6000,
+    6600
+  ],
+  "rates_hz": [
+    20000000,
+    80000000
+  ],
+  "display_fix": "Shortened event-time panel title after visual inspection; numerical diagnostics unchanged",
+  "central_residual_note": "Added central RMS and guard-charge diagnostics after regression output inspection; core algorithms, weights and thresholds unchanged"
+}

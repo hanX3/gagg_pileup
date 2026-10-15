@@ -1,0 +1,32 @@
+{
+  "created": "2026-10-15T08:29:12.021000+08:00",
+  "user_scope": "Existing 0.1, 1, 10 MHz only",
+  "purpose": "Post-test low-rate failure, timing/charge, neighbour and small-sample analysis of five frozen methods",
+  "git_head": "81430ca5544f583bd733cbd4eee304124a1d6193",
+  "dirty_state": "jupyter/run_records/alpha_ml_low_rate_20261015_082901/git-status-before.txt",
+  "rates_hz": [
+    100000,
+    1000000,
+    10000000
+  ],
+  "new_g4_runs": 0,
+  "retraining": false,
+  "test_model_selection": false,
+  "reference_results": "jupyter/artifacts/alpha_ml_multimethod_20261014_180000",
+  "reference_experiment": "pileup/experiments/alpha_ml_multimethod_20261014",
+  "reference_analysis_source_sha256": "68051685a80024a3945654b94f37e9252eab85ee78836006de8a102356c6aac5",
+  "width_reference": "jupyter/artifacts/pulse_duration_rate_20261014_105829/summary.json",
+  "record": "jupyter/run_records/alpha_ml_low_rate_20261015_082901",
+  "output": "jupyter/artifacts/alpha_ml_low_rate_20261015_082901",
+  "environment": {
+    "python": "3.14.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43"
+  },
+  "source_sha256": {
+    "source/pileup/analysis/alpha_ml_low_rate.py": "03a047528069d5016e1d8be4a0c03374ba544a19c302341936d704d4e2350c7d",
+    "replay.py": "c7884ea49cc9b25d7840ed056f2e8e67982ad967199bfbcf837b6e6cf7dc0741"
+  },
+  "limits": "12 new low-rate ROOTs and 12 public regression ROOTs kept separate; native shared-cell histories preserved"
+}
