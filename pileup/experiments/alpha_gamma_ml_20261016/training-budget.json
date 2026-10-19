@@ -1,0 +1,25 @@
+{
+  "reason": "Native training-only smoke shows valid learning and CPU cost; choose a bounded first mixed benchmark before viewing any validation neural or fresh test performance",
+  "steps_each": 1600,
+  "batch_size": 8,
+  "architectures": [
+    "cnn",
+    "unet"
+  ],
+  "selection_checkpoints": [
+    1,
+    400,
+    800,
+    1200,
+    1600
+  ],
+  "seed_inputs": "Frozen training module",
+  "new_test_seen": false,
+  "smoke_only": true,
+  "threads_by_kind": {
+    "cnn": 2,
+    "unet": 1
+  },
+  "reserved_baseline_threads": 1,
+  "maximum_total_threads": 4
+}
