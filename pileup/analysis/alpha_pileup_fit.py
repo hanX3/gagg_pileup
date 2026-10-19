@@ -227,6 +227,6 @@ def score(fit, truth, gate_ns, *, tolerance_ns=10., charge_threshold_pe=500.):
                 recovered_count=int(np.sum(abs(dq)<=.20)),missed_count=int(target.sum())-len(matched),
                 unmatched_predictions=int(sum(bool(gate_pred[j]) and j not in used for j in range(m))),
                 merge_flags=merge,split_flags=split,time_errors_ns=dt.tolist(),
-                relative_charge_errors=dq.tolist(),matched_pairs=matched,
+                relative_charge_errors=dq.tolist(),matched_pairs=matched,all_matched_pairs=pairs,
                 target_indices=np.flatnonzero(target).tolist(),tolerance_ns=tolerance_ns,
                 duration_ns=float(gate_ns[1]-gate_ns[0]))

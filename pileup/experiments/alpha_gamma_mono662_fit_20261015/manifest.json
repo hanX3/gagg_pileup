@@ -1,0 +1,870 @@
+{
+  "created": "2026-10-15T09:23:42.912210+08:00",
+  "git_head": "f4c54d4f21a707206df0b44992c4f1efc62a81ac",
+  "purpose": "Blind fitting of unknown-count alpha/gamma total analog waveforms; labels only for scoring",
+  "gamma_model": "mono662",
+  "gamma_slot": "c12Capture",
+  "gamma_description": "661.657 keV independent photons; C12 slot repurposed in this frozen snapshot only",
+  "physical_modifications": [
+    {
+      "parameter": "C12_CAPTURE_GAMMA0_ENERGY",
+      "before_MeV": 16.1,
+      "after_MeV": 0.661657,
+      "reason": "User-requested monoenergetic gamma comparison"
+    },
+    {
+      "parameter": "C12_CAPTURE_GAMMA1_ENERGY",
+      "before_MeV": 11.7,
+      "after_MeV": 0.661657,
+      "reason": "User-requested monoenergetic gamma comparison"
+    },
+    {
+      "parameter": "C12_CAPTURE_GAMMA_STAR_ENERGY",
+      "before_MeV": 4.439,
+      "after_MeV": 0.661657,
+      "reason": "User-requested monoenergetic gamma comparison"
+    }
+  ],
+  "alpha_model": "Existing effective p–11B single-alpha spectrum",
+  "rate_definition": "Independent source-particle injection rates; neither detected event nor reaction rates",
+  "window_us": 20.0,
+  "gate_us": [
+    5.0,
+    15.0
+  ],
+  "max_parallel_processes": 2,
+  "checks_validated": true,
+  "planned_checks": [
+    {
+      "label": "mono662_preflight",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021000
+    }
+  ],
+  "planned_runs": [
+    {
+      "label": "mono662_alpha_01000000_00",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021100
+    },
+    {
+      "label": "mono662_alpha_01000000_01",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021101
+    },
+    {
+      "label": "mono662_alpha_01000000_02",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021102
+    },
+    {
+      "label": "mono662_alpha_01000000_03",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021103
+    },
+    {
+      "label": "mono662_alpha_01000000_04",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021104
+    },
+    {
+      "label": "mono662_alpha_01000000_05",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021105
+    },
+    {
+      "label": "mono662_alpha_01000000_06",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021106
+    },
+    {
+      "label": "mono662_alpha_01000000_07",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021107
+    },
+    {
+      "label": "mono662_alpha_10000000_00",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021120
+    },
+    {
+      "label": "mono662_alpha_10000000_01",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021121
+    },
+    {
+      "label": "mono662_alpha_10000000_02",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021122
+    },
+    {
+      "label": "mono662_alpha_10000000_03",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021123
+    },
+    {
+      "label": "mono662_alpha_10000000_04",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021124
+    },
+    {
+      "label": "mono662_alpha_10000000_05",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021125
+    },
+    {
+      "label": "mono662_alpha_10000000_06",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021126
+    },
+    {
+      "label": "mono662_alpha_10000000_07",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021127
+    }
+  ],
+  "checks": [
+    {
+      "label": "mono662_preflight",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021000,
+      "sipm_seed": 261121000,
+      "readout_seed": 261221000,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h39m02s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_preflight.mac",
+      "macro_sha256": "0f6922b84f48252da178f88b0d2f7084c9916829fec07ce7b3621b42c75ccd1e",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_preflight.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_preflight.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 6,
+      "started": "2026-10-15T09:39:02.034583+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 16.675972961005755,
+      "finished": "2026-10-15T09:39:18.692432+08:00",
+      "root_sha256": "fac3b941968c3615f7516398323a61b6f1d0ab1c50c6562694ca13348a8c3871",
+      "root_bytes": 11689285
+    }
+  ],
+  "runs": [
+    {
+      "label": "mono662_alpha_01000000_00",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021100,
+      "sipm_seed": 261121100,
+      "readout_seed": 261221100,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h43m22s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_00.mac",
+      "macro_sha256": "a850dbc8af16014ed5e67a7ff519c3bb5b7678ab7419a865cdd34433c140f60e",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_00.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_00.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 6,
+      "started": "2026-10-15T09:43:23.047181+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 25.648641292995308,
+      "finished": "2026-10-15T09:43:48.652973+08:00",
+      "root_sha256": "f2b1dab2337e3e17fa042c2d413a0fe5b4a2c326bf601ab261544f452b60f1ea",
+      "root_bytes": 11105306
+    },
+    {
+      "label": "mono662_alpha_01000000_01",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021101,
+      "sipm_seed": 261121101,
+      "readout_seed": 261221101,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h43m24s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_01.mac",
+      "macro_sha256": "9aca48479304b2dbfbb6f4945b1ecf217c72852c77a6d956f4af871149bbcca8",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_01.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_01.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 7,
+      "started": "2026-10-15T09:43:24.227974+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 27.12905444399803,
+      "finished": "2026-10-15T09:43:51.284851+08:00",
+      "root_sha256": "c21e07eba891e1043877f2626979f2e47cb1950c5c18abd378194b0009939752",
+      "root_bytes": 9377601
+    },
+    {
+      "label": "mono662_alpha_01000000_02",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021102,
+      "sipm_seed": 261121102,
+      "readout_seed": 261221102,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h43m53s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_02.mac",
+      "macro_sha256": "6057b399eb74a8cc1f99ca1e962a23e93be272dff875711cf41a004f8f31fc48",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_02.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_02.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 34,
+      "started": "2026-10-15T09:43:53.460558+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 22.867366945021786,
+      "finished": "2026-10-15T09:44:16.306319+08:00",
+      "root_sha256": "fa25e2f83c39bc5703d544e5ef9e326f7e741df8ef9439215cdb7be967b76249",
+      "root_bytes": 11697935
+    },
+    {
+      "label": "mono662_alpha_01000000_03",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021103,
+      "sipm_seed": 261121103,
+      "readout_seed": 261221103,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h43m54s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_03.mac",
+      "macro_sha256": "a7fc53c12bc9f6a4ec518da947659950b1bd4857a7e32572eee19d8acde7291c",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_03.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_03.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 35,
+      "started": "2026-10-15T09:43:54.656484+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 18.447780989983585,
+      "finished": "2026-10-15T09:44:13.060969+08:00",
+      "root_sha256": "829e29a7c9531f45cca09aa079d29bf90d100b169995b8859285f685073ccc13",
+      "root_bytes": 12368115
+    },
+    {
+      "label": "mono662_alpha_01000000_04",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021104,
+      "sipm_seed": 261121104,
+      "readout_seed": 261221104,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h44m16s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_04.mac",
+      "macro_sha256": "6e10285d967747466126c65a14194025a5b646b5af9f9be42e9bff6e255146ba",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_04.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_04.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 62,
+      "started": "2026-10-15T09:44:16.225040+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 40.65161914101918,
+      "finished": "2026-10-15T09:44:56.831047+08:00",
+      "root_sha256": "77f9b6e61a5206721c3c385ac681ddd5c2efdc4af476d7259c41791cfede9c15",
+      "root_bytes": 11317980
+    },
+    {
+      "label": "mono662_alpha_01000000_05",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021105,
+      "sipm_seed": 261121105,
+      "readout_seed": 261221105,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h44m20s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_05.mac",
+      "macro_sha256": "6cc1e26a7a5a4931af5d497ce8ec526596adca19d284f01174991079523d6f15",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_05.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_05.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 63,
+      "started": "2026-10-15T09:44:20.431549+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 61.950952303013764,
+      "finished": "2026-10-15T09:45:22.362253+08:00",
+      "root_sha256": "5c0d9d46a013605637c18e1c484b8539afb5299583c49f9ff967195afb525a2c",
+      "root_bytes": 11587224
+    },
+    {
+      "label": "mono662_alpha_01000000_06",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021106,
+      "sipm_seed": 261121106,
+      "readout_seed": 261221106,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h45m04s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_06.mac",
+      "macro_sha256": "afc6255d9f6870fd86f41a12bb4b94832f6a0b02e63d2c8efc38a9115d99bfb6",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_06.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_06.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 85,
+      "started": "2026-10-15T09:45:05.826850+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 39.70473258997663,
+      "finished": "2026-10-15T09:45:45.240539+08:00",
+      "root_sha256": "70fca951f638e2db4dd57863ebf8fe541844dd3a644eb44cc42c3ffe36225808",
+      "root_bytes": 12130228
+    },
+    {
+      "label": "mono662_alpha_01000000_07",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021107,
+      "sipm_seed": 261121107,
+      "readout_seed": 261221107,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h45m26s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_07.mac",
+      "macro_sha256": "b3af86ec721ef0c24f52d10969eaa601dcf639be2de2999a70f51206b8a5f0a7",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_01000000_07.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_01000000_07.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 99,
+      "started": "2026-10-15T09:45:26.240719+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 38.32307369902264,
+      "finished": "2026-10-15T09:46:04.550516+08:00",
+      "root_sha256": "6af18775b4e7da4966d91fa21a6e5eb38cb4088866a3b67b902fe24221973ff5",
+      "root_bytes": 10042436
+    },
+    {
+      "label": "mono662_alpha_10000000_00",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021120,
+      "sipm_seed": 261121120,
+      "readout_seed": 261221120,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_10h09m11s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_00_readback_replay1.mac",
+      "macro_sha256": "509b7de9aab18199c178f68d2f448feff8b5fec898e22004ba8a83f2056c9611",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_00_readback_replay1.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_00_readback_replay1.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 113,
+      "started": "2026-10-15T10:09:12.050515+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 158.49608970800182,
+      "finished": "2026-10-15T10:11:50.546497+08:00",
+      "root_sha256": "298c3e87e7b142ec717cdb9dda06d271cda1cbe7069a5c60a72a92008b2ef649",
+      "root_bytes": 80058596,
+      "attempt_label": "mono662_alpha_10000000_00_readback_replay1"
+    },
+    {
+      "label": "mono662_alpha_10000000_01",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021121,
+      "sipm_seed": 261121121,
+      "readout_seed": 261221121,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h46m08s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_01.mac",
+      "macro_sha256": "980d52f768d673a0030ad7e1fdd8acdbff7840ce03a77601044c52695641fc98",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_01.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_01.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 127,
+      "started": "2026-10-15T09:46:08.584864+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 131.95141231600428,
+      "finished": "2026-10-15T09:48:20.506584+08:00",
+      "root_sha256": "78b459ae1a075fd5a4e9a3f617d790f59326af120ca978731ff45c0b38b87732",
+      "root_bytes": 74936141
+    },
+    {
+      "label": "mono662_alpha_10000000_02",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021122,
+      "sipm_seed": 261121122,
+      "readout_seed": 261221122,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h48m30s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_02.mac",
+      "macro_sha256": "1097da56415ea1ce79142c6f4ced222c3919194803ec6c09ad00ee1a3e55695a",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_02.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_02.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 146,
+      "started": "2026-10-15T09:48:30.121224+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 66.98719412801438,
+      "finished": "2026-10-15T09:49:37.085561+08:00",
+      "root_sha256": "bd96f9781431fd2e6a95df36012c54d1f547dab54e7b3c5f3633baebff151e22",
+      "root_bytes": 90944534
+    },
+    {
+      "label": "mono662_alpha_10000000_03",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021123,
+      "sipm_seed": 261121123,
+      "readout_seed": 261221123,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h48m31s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_03.mac",
+      "macro_sha256": "43df7795dc05236bafe56d5d5d9cef0eed00bae5d13892884a0b7fe1e61322fe",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_03.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_03.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 147,
+      "started": "2026-10-15T09:48:31.739477+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 53.43870696699014,
+      "finished": "2026-10-15T09:49:25.150338+08:00",
+      "root_sha256": "10ceb1b0bc3f2f6323c81e65786cc8104a6c6662880a93ca4727d92ce52fcecb",
+      "root_bytes": 75441066
+    },
+    {
+      "label": "mono662_alpha_10000000_04",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021124,
+      "sipm_seed": 261121124,
+      "readout_seed": 261221124,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h49m37s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_04.mac",
+      "macro_sha256": "12a6eebf998dece389715d91834398e0c4a5ca336de524eef93a1e9342c68d83",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_04.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_04.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 174,
+      "started": "2026-10-15T09:49:37.068025+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 39.54300101098488,
+      "finished": "2026-10-15T09:50:16.603765+08:00",
+      "root_sha256": "19ad50704381142862031ca43ac68cc302e542f270aa15dd4efd74129e193e13",
+      "root_bytes": 85921967
+    },
+    {
+      "label": "mono662_alpha_10000000_05",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021125,
+      "sipm_seed": 261121125,
+      "readout_seed": 261221125,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h49m45s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_05.mac",
+      "macro_sha256": "d710aa878e7e467063af504bf5d42842f103bddde0f432253fc741eff86df567",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_05.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_05.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 183,
+      "started": "2026-10-15T09:49:45.211661+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 36.88154566497542,
+      "finished": "2026-10-15T09:50:22.085976+08:00",
+      "root_sha256": "4338d69f65aeda00da5d360892d8b19e90082c97d11ed86daa0d8b495d4d5f1b",
+      "root_bytes": 78214837
+    },
+    {
+      "label": "mono662_alpha_10000000_06",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021126,
+      "sipm_seed": 261121126,
+      "readout_seed": 261221126,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h50m26s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_06.mac",
+      "macro_sha256": "3fe6c4dc4d9e1121a5e8fbd3b03705c2268f5d0819d80326b59fbec0658c5f19",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_06.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_06.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 202,
+      "started": "2026-10-15T09:50:26.490909+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 119.16986602998804,
+      "finished": "2026-10-15T09:52:25.650204+08:00",
+      "root_sha256": "125f7dc8644deb6d0eb687ca11021b9c6298c7bff940bc0bbef6fbbef747b7b6",
+      "root_bytes": 75391983
+    },
+    {
+      "label": "mono662_alpha_10000000_07",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021127,
+      "sipm_seed": 261121127,
+      "readout_seed": 261221127,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h50m28s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_07.mac",
+      "macro_sha256": "74d0730c1d13e2985baae5447e4fc61afdb0bdad237c5636c07edf9510b8d42d",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_07.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_07.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 211,
+      "started": "2026-10-15T09:50:28.053020+08:00",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 108.81983063498046,
+      "finished": "2026-10-15T09:52:16.858754+08:00",
+      "root_sha256": "32692d9ba34d5f82cf10052a4fc013757b999d88ff32bb63213aac8f7779c9b0",
+      "root_bytes": 78832815
+    }
+  ],
+  "environment": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "uproot": "5.7.7",
+    "awkward": "2.14.0",
+    "matplotlib": "3.11.2",
+    "python": "3.14.3",
+    "platform": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+    "geant4": "11.4.2",
+    "root": "6.40.04",
+    "g4_dataset_environment": {
+      "G4NEUTRONHPDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4NDL4.7.1",
+      "G4LEDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4EMLOW8.8",
+      "G4LEVELGAMMADATA": "/opt/geant4/11.4.2/share/Geant4/data/PhotonEvaporation6.1.2",
+      "G4RADIOACTIVEDATA": "/opt/geant4/11.4.2/share/Geant4/data/RadioactiveDecay6.1.2",
+      "G4PARTICLEXSDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4PARTICLEXS4.2",
+      "G4PIIDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4PII1.3",
+      "G4REALSURFACEDATA": "/opt/geant4/11.4.2/share/Geant4/data/RealSurface2.2",
+      "G4SAIDXSDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4SAIDDATA2.0",
+      "G4ABLADATA": "/opt/geant4/11.4.2/share/Geant4/data/G4ABLA3.3",
+      "G4INCLDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4INCL1.3",
+      "G4ENSDFSTATEDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4ENSDFSTATE3.0",
+      "G4CHANNELINGDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4CHANNELING2.0",
+      "G4PARTICLEHPDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4TENDL1.4",
+      "G4NUDEXLIBDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4NUDEXLIB1.0",
+      "G4URRPTDATA": "/opt/geant4/11.4.2/share/Geant4/data/G4URRPT1.1"
+    }
+  },
+  "source_sha256": {
+    "source/g4/CMakeLists.txt": "13b62b8050c582761b6b652ebc2476a592dedf170393e07812999399c4c40914",
+    "source/g4/main.cc": "f02686d026c43c7700706c2a3f9dc15908c41dfdfacef7b4b08f7d577b10bc78",
+    "source/pileup/analysis/alpha_gamma_campaign.py": "aa185c11cac990c305385a444be7d6b995f0d8b2a43ab26b00ee1cb29e58d0ae",
+    "source/pileup/analysis/alpha_rate_campaign.py": "ce1d0224a744f4b6d2f5abed53d076143c5bb9cea843ea132055530794ca3f34",
+    "source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json": "e499d0abae465cfe4472927448a40efca0189c333f5c14c03dd46328e7685544",
+    "source/g4/include/ActionInitialization.hh": "a7e35ce041d79815eb83328f06d4ff5c3a2edadf3abe13b19eea803a37080208",
+    "source/g4/include/Constants.hh": "526246285bdce92ccf304685e93e6cfecdcbc61e2525c350422d06b25dcdaf73",
+    "source/g4/include/DataStructure.hh": "eca1847929f6793b019412e29f4b2e0c7ccc5a33aafb24b92bad8bf3c0f08140",
+    "source/g4/include/DetectorConstruction.hh": "a3f84708f60c078f4f3577e3d5d9d4de4f9ae57149dfdaa57ec4ea63eac789bc",
+    "source/g4/include/EventAction.hh": "86352c83da81ac176078f8798074391b46d648ac9d35628786db26f850d721ec",
+    "source/g4/include/PhysicsList.hh": "4e4783e48c89e2e5361fe29dd27f8125e35bbba17da0d7ff7ca41d6a462b003f",
+    "source/g4/include/PrimaryGeneratorAction.hh": "54c0a637284b9985c33c46a66779e9994885826ff8735aea94cd432636e1f281",
+    "source/g4/include/PrimaryInformation.hh": "7fe640243a512754ea12f60af42c11a1b93d6802d9854d18cfa89f02f93d3b17",
+    "source/g4/include/RootIO.hh": "4a1e04d4ca6bbcd9cf4d88a3b1aeb342b66ec03519433891b3a48d06d262ca1b",
+    "source/g4/include/RunAction.hh": "77e3f5f6164ad62f18fa9664321c63a435ada5d447cd33cc8117707ad35bb0b0",
+    "source/g4/include/RunConfig.hh": "2f5342b36bf5ed7dab8d7aa1b624934917c37c6a39f5e7db2671d1bc82c398b7",
+    "source/g4/include/SiPMConfig.hh": "64bc9037b660751edde9169bccc1c68f2c0a6e99db5e7772e57f2ca9752e2464",
+    "source/g4/include/SiPMDigitizer.hh": "e9fa1824a90f5c1e02b0cc7224d24a78560e19659fda5e5e9b57dbf40a38f842",
+    "source/g4/include/SiPMResponse.hh": "9522000dfbbffce5c97351996653d9ecf979af95dcf8404567396cbcb172246e",
+    "source/g4/include/SiPMSD.hh": "e8dce6f6d9304fde3c7a82ba52c6f3e3f716c5d05b08162425c42ae20e74e2da",
+    "source/g4/include/SteppingAction.hh": "5f7d73d48757fb435ba3869170e94307ca0161ecf412f581f73f6f4e48c239b3",
+    "source/g4/include/TrackInformation.hh": "bba47f3856a9dd442fba4170248d5c628f6bdaa026c4544b8be1b05e62ecd467",
+    "source/g4/include/TrackingAction.hh": "ceebb4665f6e100bddf2128ccf53a288b11b7a472eda0c6378e9bbacc5f97b4e",
+    "source/g4/src/ActionInitialization.cc": "1b81a2da4534c6fcd3c22fb2a433e878105e6d5278610076579dd384899e088a",
+    "source/g4/src/DetectorConstruction.cc": "d16448cfff82afdb27b6714908b74af8ccd597df52878553866857b59ff12cbd",
+    "source/g4/src/EventAction.cc": "980a64a275db822478899b2c8aee3fdc91c83e6960a904d68feed020f0217776",
+    "source/g4/src/gagg_birks_yield_curves.inc": "e1d223870d7ceb6ef14991e15c6c9fcc458faa680133a988446d5c5c34fe9ec5",
+    "source/g4/src/PhysicsList.cc": "ef158b1895ed739214417801cd9b1636d01582365709ab5ce9aef7376b362921",
+    "source/g4/src/PrimaryGeneratorAction.cc": "72a0dee6ef95a058f53d6afa86d2da6022a80828037c99e5f52f7818cfeb9698",
+    "source/g4/src/PrimaryInformation.cc": "39873d04c929e5d868b9b8c2fd51c24fbf0651b38fa0319f470e1ebf50d8fa64",
+    "source/g4/src/RootIO.cc": "098d9f24ea5b2b1e498a126815658f4f76f9a4510302ea6453aea0c9e7426faa",
+    "source/g4/src/RunAction.cc": "e96c9962dc058cb5093274a7da9af36de68bbe8ff8ee87b9fa6c4d87a9718e20",
+    "source/g4/src/RunConfig.cc": "8e6aefef1e5e36d693e65ab2088466efa0c7a024a29e7f59bef29c526819340d",
+    "source/g4/src/SiPMConfig.cc": "7c5c9d94e00bece59b56c0d6409c60c1643d2d27e0e069872ecb3cf8d9b4947c",
+    "source/g4/src/SiPMDigitizer.cc": "c6fd11a8dedca93a1e535693e9b0bb87c002a9da65dea18fe72309b95b54f649",
+    "source/g4/src/SiPMResponse.cc": "c2226e528dab87e0a350251716c0b35b3a0f23543c25b9f64ce7ab6f72163274",
+    "source/g4/src/SiPMSD.cc": "c57156b0aadb894da3499b3550b17b29258c9e6410b2ec2ef29661ae338d5ce2",
+    "source/g4/src/SteppingAction.cc": "90dce28bbf05601ccfe6007217918c5c749163fbf6fd61eaea38e077a6d5dd38",
+    "source/g4/src/TrackInformation.cc": "d436e8e9c13b116d9bb4c4e6821cda94b1becbf2f8c37b7c3391f8b05ea8640e",
+    "source/g4/src/TrackingAction.cc": "fb1ce738f3e8a6ce8788bbbb227d57f773c338baa47adca4613b435651d1f7b9",
+    "source/g4/tests/test_sipm_response.cc": "5d6ac000dced311761f2bbb92925290d19ccd18629fac2bc0450ca408ff00c74"
+  },
+  "input_policy": "Complete analog_mV including sample aperture/electronic noise; adequate ADC range assumed",
+  "binary_sha256": "dafae2461d9308084decb6ed31182dc4238e8f3f6730eeccc80b31baa9d476f1",
+  "build_command": "cmake --build pileup/experiments/alpha_gamma_mono662_fit_20261015/build --parallel 2",
+  "check_validation": "jupyter/artifacts/alpha_gamma_fit_20261015_093500/preflight_mono662/window-results.json",
+  "checks_used_for_performance": false,
+  "total_concurrent_g4_process_limit_across_both_variants": 4,
+  "read_error_runs": [
+    {
+      "label": "mono662_alpha_10000000_00",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "gamma_model": "mono662",
+      "seed": 261021120,
+      "sipm_seed": 261121120,
+      "readout_seed": 261221120,
+      "window_us": 20.0,
+      "gate_us": [
+        5.0,
+        15.0
+      ],
+      "root": "g4/data/20261015_09h45m53s.root",
+      "macro": "pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_00.mac",
+      "macro_sha256": "73fe2d5e5f210a7be566ecdb918aeb39840618473bfee2ee33430206d92b6074",
+      "log": "pileup/experiments/alpha_gamma_mono662_fit_20261015/logs/mono662_alpha_10000000_00.log",
+      "command": [
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/build/gagg",
+        "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/macros/mono662_alpha_10000000_00.mac"
+      ],
+      "cwd": "pileup/experiments/alpha_gamma_mono662_fit_20261015/build",
+      "pid": 113,
+      "started": "2026-10-15T09:45:53.923679+08:00",
+      "status": "failed_readback",
+      "returncode": 0,
+      "elapsed_s": 64.40905268199276,
+      "finished": "2026-10-15T09:46:58.211029+08:00",
+      "root_sha256": "90053e444ed389f444d729613044033d7e36843411442a44e40010e2f625f5d2",
+      "root_bytes": 80058617,
+      "readback_error": "ROOT and uproot zlib error -5 on SiPMEvent/avalanche_charge_C; original output preserved"
+    }
+  ],
+  "readback_replay_validation": {
+    "identical_seeds": true,
+    "unchanged_physics": true,
+    "readable_arrays_bitwise_equal": [
+      "WaveformEvent/event_id",
+      "WaveformEvent/n_primary",
+      "WaveformEvent/n_optical_photons_arrived_total",
+      "WaveformEvent/edep_total_MeV",
+      "WaveformEvent/all_photon_arrival_t_ps",
+      "WaveformEvent/all_photon_arrival_x_mm",
+      "WaveformEvent/all_photon_arrival_y_mm",
+      "WaveformEvent/photon_energy_eV",
+      "PrimaryPhoton/event_id",
+      "PrimaryPhoton/primary_id",
+      "PrimaryPhoton/primary_particle_name",
+      "PrimaryPhoton/primary_response_name",
+      "PrimaryPhoton/primary_energy_MeV",
+      "PrimaryPhoton/primary_time_ps",
+      "PrimaryPhoton/primary_x_mm",
+      "PrimaryPhoton/primary_y_mm",
+      "PrimaryPhoton/primary_z_mm",
+      "PrimaryPhoton/primary_px",
+      "PrimaryPhoton/primary_py",
+      "PrimaryPhoton/primary_pz",
+      "PrimaryPhoton/edep_total_MeV",
+      "PrimaryPhoton/n_scint_photons_generated",
+      "PrimaryPhoton/n_optical_photons_arrived",
+      "PrimaryPhoton/photon_arrival_t_ps",
+      "PrimaryPhoton/photon_arrival_x_mm",
+      "PrimaryPhoton/photon_arrival_y_mm",
+      "PrimaryPhoton/photon_energy_eV",
+      "SiPMEvent/event_id",
+      "SiPMEvent/avalanche_seed",
+      "SiPMEvent/readout_seed",
+      "SiPMEvent/n_input_photons",
+      "SiPMEvent/n_outside_sensor",
+      "SiPMEvent/n_delayed_photons_outside",
+      "SiPMEvent/n_secondary_outside",
+      "SiPMEvent/n_candidates",
+      "SiPMEvent/n_photon_avalanches",
+      "SiPMEvent/n_dark_avalanches",
+      "SiPMEvent/n_crosstalk_avalanches",
+      "SiPMEvent/n_afterpulse_avalanches",
+      "SiPMEvent/n_clipped_samples",
+      "SiPMEvent/charge_total_C",
+      "SiPMEvent/charge_gate_C",
+      "SiPMEvent/current_integral_C",
+      "SiPMEvent/current_tail_C",
+      "SiPMEvent/charge_balance_error_C",
+      "SiPMEvent/avalanche_time_ns",
+      "SiPMEvent/avalanche_recovery",
+      "SiPMEvent/avalanche_cell",
+      "SiPMEvent/avalanche_kind",
+      "SiPMEvent/avalanche_parent",
+      "SiPMEvent/avalanche_photon_index",
+      "SiPMEvent/current_time_ns",
+      "SiPMEvent/current_A",
+      "SiPMEvent/sample_time_ns",
+      "SiPMEvent/signal_mV",
+      "SiPMEvent/analog_mV",
+      "SiPMEvent/adc_counts",
+      "SiPMEvent/adc_clipped"
+    ],
+    "replay_charge_matches_recovery_exactly": true,
+    "original_root": "g4/data/20261015_09h45m53s.root",
+    "replacement_root": "g4/data/20261015_10h09m11s.root"
+  }
+}

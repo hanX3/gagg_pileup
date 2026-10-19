@@ -1,0 +1,1884 @@
+diff --git a/.gitignore b/.gitignore
+old mode 100644
+new mode 100755
+diff --git a/11BH_alpha_spectra/make_p11b_alpha_spectrum.py b/11BH_alpha_spectra/make_p11b_alpha_spectrum.py
+old mode 100644
+new mode 100755
+diff --git a/11BH_alpha_spectra/p11b_alpha_histogram.csv b/11BH_alpha_spectra/p11b_alpha_histogram.csv
+old mode 100644
+new mode 100755
+diff --git a/11BH_alpha_spectra/p11b_alpha_spectrum_linear.png b/11BH_alpha_spectra/p11b_alpha_spectrum_linear.png
+old mode 100644
+new mode 100755
+diff --git a/11BH_alpha_spectra/p11b_alpha_spectrum_logy.png b/11BH_alpha_spectra/p11b_alpha_spectrum_logy.png
+old mode 100644
+new mode 100755
+diff --git a/README.md b/README.md
+old mode 100644
+new mode 100755
+diff --git a/analysis/alpha_gamma_fit_window_scan.py b/analysis/alpha_gamma_fit_window_scan.py
+old mode 100644
+new mode 100755
+diff --git a/analysis/alpha_gamma_waveform_fit.py b/analysis/alpha_gamma_waveform_fit.py
+old mode 100644
+new mode 100755
+diff --git a/analysis/hamamatsu_s13360.py b/analysis/hamamatsu_s13360.py
+old mode 100644
+new mode 100755
+diff --git a/analysis/single_particle_sipm.py b/analysis/single_particle_sipm.py
+old mode 100644
+new mode 100755
+diff --git a/analysis/sipm_waveform_comparison.py b/analysis/sipm_waveform_comparison.py
+old mode 100644
+new mode 100755
+diff --git a/bremsstrahlung/brems_spectra.csv b/bremsstrahlung/brems_spectra.csv
+old mode 100644
+new mode 100755
+diff --git a/bremsstrahlung/brems_spectra_linear.png b/bremsstrahlung/brems_spectra_linear.png
+old mode 100644
+new mode 100755
+diff --git a/bremsstrahlung/brems_spectra_logy.png b/bremsstrahlung/brems_spectra_logy.png
+old mode 100644
+new mode 100755
+diff --git a/bremsstrahlung/make_brems_spectrum.py b/bremsstrahlung/make_brems_spectrum.py
+old mode 100644
+new mode 100755
+diff --git a/docs/literature-use.md b/docs/literature-use.md
+old mode 100644
+new mode 100755
+diff --git a/docs/sipm-response.md b/docs/sipm-response.md
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/README.md b/g4/analysis/README.md
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/alpha_gamma_average_waveform.png b/g4/analysis/alpha_gamma_average_waveform.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/alpha_gamma_psd_2d.png b/g4/analysis/alpha_gamma_psd_2d.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/alpha_gamma_psd_ratio_2d.png b/g4/analysis/alpha_gamma_psd_ratio_2d.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/alpha_gamma_tail_total_2d.png b/g4/analysis/alpha_gamma_tail_total_2d.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/alpha_normalized_average_all_events.png b/g4/analysis/alpha_normalized_average_all_events.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/alpha_normalized_first10_waveforms.png b/g4/analysis/alpha_normalized_first10_waveforms.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/alpha_raw_first10_waveforms.png b/g4/analysis/alpha_raw_first10_waveforms.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/compare_alpha_gamma.py b/g4/analysis/compare_alpha_gamma.py
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/gagg_emission_spectrum.png b/g4/analysis/gagg_emission_spectrum.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/gamma_normalized_average_all_events.png b/g4/analysis/gamma_normalized_average_all_events.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/gamma_normalized_first10_waveforms.png b/g4/analysis/gamma_normalized_first10_waveforms.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/gamma_raw_first10_waveforms.png b/g4/analysis/gamma_raw_first10_waveforms.png
+old mode 100644
+new mode 100755
+diff --git a/g4/analysis/plot_waveforms.py b/g4/analysis/plot_waveforms.py
+old mode 100644
+new mode 100755
+diff --git a/g4/configs/sipm_hamamatsu_s13360_6050pe_v1.json b/g4/configs/sipm_hamamatsu_s13360_6050pe_v1.json
+old mode 100644
+new mode 100755
+diff --git a/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json b/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+old mode 100644
+new mode 100755
+diff --git a/g4/include/RunConfig.hh b/g4/include/RunConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/g4/include/SiPMConfig.hh b/g4/include/SiPMConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/g4/include/SiPMDigitizer.hh b/g4/include/SiPMDigitizer.hh
+old mode 100644
+new mode 100755
+diff --git a/g4/include/SiPMResponse.hh b/g4/include/SiPMResponse.hh
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_all_p11b_sources_pileup.mac b/g4/macros/run_all_p11b_sources_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_all_pileup.mac b/g4/macros/run_all_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_alpha.mac b/g4/macros/run_alpha.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_alpha_p11b_pileup.mac b/g4/macros/run_alpha_p11b_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_brems_pileup.mac b/g4/macros/run_brems_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_c12_capture_pileup.mac b/g4/macros/run_c12_capture_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_mixed_photon_pileup.mac b/g4/macros/run_mixed_photon_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_single_alpha_sipm.mac b/g4/macros/run_single_alpha_sipm.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/run_single_gamma_sipm.mac b/g4/macros/run_single_gamma_sipm.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/macros/vis_chargedgeantino.mac b/g4/macros/vis_chargedgeantino.mac
+old mode 100644
+new mode 100755
+diff --git a/g4/main.cc b/g4/main.cc
+old mode 100644
+new mode 100755
+diff --git a/g4/src/RunConfig.cc b/g4/src/RunConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/g4/src/SiPMConfig.cc b/g4/src/SiPMConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/g4/src/SiPMDigitizer.cc b/g4/src/SiPMDigitizer.cc
+old mode 100644
+new mode 100755
+diff --git a/g4/src/SiPMResponse.cc b/g4/src/SiPMResponse.cc
+old mode 100644
+new mode 100755
+diff --git a/g4/src/gagg_birks_yield_curves.inc b/g4/src/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/g4/tests/test_sipm_response.cc b/g4/tests/test_sipm_response.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/README.md b/pileup/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_full_signal_study.py b/pileup/analysis/alpha_full_signal_study.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_ml_low_rate.py b/pileup/analysis/alpha_ml_low_rate.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_ml_models.py b/pileup/analysis/alpha_ml_models.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_ml_multimethod.py b/pileup/analysis/alpha_ml_multimethod.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_ml_multimethod_diagnostics.py b/pileup/analysis/alpha_ml_multimethod_diagnostics.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_ml_multimethod_report.py b/pileup/analysis/alpha_ml_multimethod_report.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_ml_report.py b/pileup/analysis/alpha_ml_report.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_pileup_fit.py b/pileup/analysis/alpha_pileup_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_pileup_hybrid.py b/pileup/analysis/alpha_pileup_hybrid.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_pileup_ml.py b/pileup/analysis/alpha_pileup_ml.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_rate_campaign.py b/pileup/analysis/alpha_rate_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_rate_data.py b/pileup/analysis/alpha_rate_data.py
+old mode 100644
+new mode 100755
+index f9b326b..8d8d10a
+--- a/pileup/analysis/alpha_rate_data.py
++++ b/pileup/analysis/alpha_rate_data.py
+@@ -40,7 +40,7 @@ def photon_full_key(t,x,y,energy):
+     return key
+ 
+ 
+-def export_window(root_path,output, *, expected=None):
++def export_window(root_path,output, *, expected=None, allowed_particles=('alpha',)):
+     output=Path(output); output.mkdir(parents=True,exist_ok=True)
+     root_path=Path(root_path); stem=root_path.stem
+     for name in ('waveforms','truth','metadata'):(output/name).mkdir(exist_ok=True)
+@@ -53,7 +53,11 @@ def export_window(root_path,output, *, expected=None):
+         if expected:
+             assert info['random_seed']==expected['seed']
+             assert info['alpha_p11b_rate_hz']==expected['rate_hz']
+-            assert not info['brems_enabled'] and not info['c12_capture_enabled']
++            if set(allowed_particles)=={'alpha'}:
++                assert not info['brems_enabled'] and not info['c12_capture_enabled']
++            if 'gamma_rate_hz' in expected:
++                slot='brems' if expected['gamma_model']=='brems' else 'c12_capture'
++                assert info[f'{slot}_rate_hz']==expected['gamma_rate_hz']
+         config=json.loads(info['sipm_config_json'])
+         s=f['SiPMEvent'].arrays(library='ak',how=dict)
+         av=lambda k:ak.to_numpy(s[k][0])
+@@ -89,7 +93,9 @@ def export_window(root_path,output, *, expected=None):
+         if full_key:branches.append('photon_energy_eV')
+         for chunk in f['PrimaryPhoton'].iterate(branches,step_size='32 MB',library='ak'):
+             for p in chunk:
+-                assert str(p['primary_particle_name'])=='alpha'
++                particle=str(p['primary_particle_name'])
++                if particle not in allowed_particles:
++                    raise ValueError(f'Unexpected primary particle {particle}')
+                 tt=ak.to_numpy(p['photon_arrival_t_ps']);xx=ak.to_numpy(p['photon_arrival_x_mm']);yy=ak.to_numpy(p['photon_arrival_y_mm'])
+                 k=photon_full_key(tt,xx,yy,ak.to_numpy(p['photon_energy_eV'])) if full_key else photon_key(tt,xx)
+                 loc=np.searchsorted(sorted_keys,k)
+@@ -97,7 +103,8 @@ def export_window(root_path,output, *, expected=None):
+                 assert np.all(owner[order[loc]]==-1)
+                 owner[order[loc]]=len(rows)
+                 inside=(xx>=config['sensor']['x_min_mm'])&(xx<config['sensor']['x_max_mm'])&(yy>=config['sensor']['y_min_mm'])&(yy<config['sensor']['y_max_mm'])
+-                rows.append(dict(primary_id=int(p['primary_id']),emission_ns=float(p['primary_time_ps'])/1000,
++                rows.append(dict(primary_id=int(p['primary_id']),particle_name=particle,
++                    emission_ns=float(p['primary_time_ps'])/1000,
+                     first_active_ns=float(tt[inside].min())/1000 if inside.any() else np.nan,
+                     source_energy_MeV=float(p['primary_energy_MeV']),edep_MeV=float(p['edep_total_MeV']),
+                     active_photons=int(inside.sum())))
+@@ -119,12 +126,15 @@ def export_window(root_path,output, *, expected=None):
+         assert np.isclose(q.sum()+dark_q,charge.sum()/q0,rtol=1e-11,atol=1e-6)
+         data={k:np.asarray([x[k] for x in rows]) for k in rows[0]} if rows else {
+             k:np.array([]) for k in ('primary_id','emission_ns','first_active_ns','source_energy_MeV','edep_MeV','active_photons')}
++        if not rows:data['particle_name']=np.array([],dtype='<U5')
+         data['charge_pe']=q
+         # Actual waveform and avalanche ancestry are evaluation-only quantities.
+         np.savez_compressed(output/'truth'/f'{stem}.npz',**data,signal_mV=av('signal_mV'),
+             avalanche_time_ns=at,avalanche_charge_C=charge,avalanche_owner=parents)
+         meta=dict(root=str(root_path),root_sha256=digest(root_path),seed=int(info['random_seed']),
+-            rate_hz=float(info['alpha_p11b_rate_hz']),gate_ns=[info['analysis_start_ps']/1000,info['analysis_end_ps']/1000],
++            rate_hz=float(info['alpha_p11b_rate_hz']),
++            source_rates_hz={k:float(info[f'{k}_rate_hz']) for k in ('alpha_p11b','brems','c12_capture')},
++            gate_ns=[info['analysis_start_ps']/1000,info['analysis_end_ps']/1000],
+             duration_ns=info['t_length_ps']/1000,primaries=len(rows),
+             photons=int(scalar('n_input_photons')),avalanche_count=len(kind),
+             charge_pe=float(charge.sum()/q0),dark_charge_pe=dark_q,
+diff --git a/pileup/analysis/alpha_rate_study.py b/pileup/analysis/alpha_rate_study.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/alpha_response.py b/pileup/analysis/alpha_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/check_run.py b/pileup/analysis/check_run.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/pulse_duration_rate.py b/pileup/analysis/pulse_duration_rate.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/run_catalog.py b/pileup/analysis/run_catalog.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/sipm_readout.py b/pileup/analysis/sipm_readout.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/sipm_response.py b/pileup/analysis/sipm_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/test_alpha_ml_multimethod.py b/pileup/analysis/test_alpha_ml_multimethod.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/test_alpha_pileup_ml.py b/pileup/analysis/test_alpha_pileup_ml.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/test_alpha_rate_data.py b/pileup/analysis/test_alpha_rate_data.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/test_alpha_response.py b/pileup/analysis/test_alpha_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/test_sipm_response.py b/pileup/analysis/test_sipm_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/analysis/validate_sipm_response.py b/pileup/analysis/validate_sipm_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/configs/alpha_p11b_v1.json b/pileup/configs/alpha_p11b_v1.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/configs/alpha_p11b_v2.json b/pileup/configs/alpha_p11b_v2.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/README.md b/pileup/experiments/alpha_full_signal_20261014/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/manifest.json b/pileup/experiments/alpha_full_signal_20261014/manifest.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/replay.py b/pileup/experiments/alpha_full_signal_20261014/replay.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/source/analysis/alpha_gamma_waveform_fit.py b/pileup/experiments/alpha_full_signal_20261014/source/analysis/alpha_gamma_waveform_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/source/analysis/single_particle_sipm.py b/pileup/experiments/alpha_full_signal_20261014/source/analysis/single_particle_sipm.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/alpha_full_signal_study.py b/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/alpha_full_signal_study.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/alpha_pileup_fit.py b/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/alpha_pileup_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/alpha_rate_campaign.py b/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/alpha_rate_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/sipm_readout.py b/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/sipm_readout.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/sipm_response.py b/pileup/experiments/alpha_full_signal_20261014/source/pileup/analysis/sipm_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/README.md b/pileup/experiments/alpha_ml_comparison_20261014/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/analysis-source.json b/pileup/experiments/alpha_ml_comparison_20261014/analysis-source.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/calibration-settings.json b/pileup/experiments/alpha_ml_comparison_20261014/calibration-settings.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/data-split.json b/pileup/experiments/alpha_ml_comparison_20261014/data-split.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/dependency-requirements.txt b/pileup/experiments/alpha_ml_comparison_20261014/dependency-requirements.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/export_tests.py b/pileup/experiments/alpha_ml_comparison_20261014/export_tests.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/check_pilot_1e6.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/check_pilot_1e6.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/check_pilot_1e6.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/check_pilot_1e6.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_01.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_01.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_02.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_02.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_02.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_03.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_03.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_03.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_03.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_04.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_04.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_04.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_04.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_05.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_05.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_05.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_05.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_06.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_06.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_06.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_06.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_07.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_07.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_07.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_000100000_07.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_01.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_01.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_001000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_01.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_01.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_010000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_020000000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_020000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_020000000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_020000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_040000000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_040000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_040000000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_040000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_060000000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_060000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_060000000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_060000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_080000000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_080000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_080000000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_080000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_100000000_00.log b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_100000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_100000000_00.time.txt b/pileup/experiments/alpha_ml_comparison_20261014/logs/test_alpha_100000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/check_pilot_1e6.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/check_pilot_1e6.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_01.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_02.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_03.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_03.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_04.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_04.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_05.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_05.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_06.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_06.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_07.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_000100000_07.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_001000000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_001000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_001000000_01.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_001000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_010000000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_010000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_010000000_01.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_010000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_020000000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_020000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_040000000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_040000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_060000000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_060000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_080000000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_080000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_100000000_00.mac b/pileup/experiments/alpha_ml_comparison_20261014/macros/test_alpha_100000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/manifest.json b/pileup/experiments/alpha_ml_comparison_20261014/manifest.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/replay.py b/pileup/experiments/alpha_ml_comparison_20261014/replay.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/run_campaign.py b/pileup/experiments/alpha_ml_comparison_20261014/run_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/analysis/alpha_gamma_waveform_fit.py b/pileup/experiments/alpha_ml_comparison_20261014/source/analysis/alpha_gamma_waveform_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/analysis/single_particle_sipm.py b/pileup/experiments/alpha_ml_comparison_20261014/source/analysis/single_particle_sipm.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/CMakeLists.txt b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/CMakeLists.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/ActionInitialization.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/ActionInitialization.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/Constants.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/Constants.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/DataStructure.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/DataStructure.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/DetectorConstruction.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/DetectorConstruction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/EventAction.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/EventAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/PhysicsList.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/PhysicsList.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/PrimaryGeneratorAction.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/PrimaryGeneratorAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/PrimaryInformation.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/PrimaryInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/RootIO.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/RootIO.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/RunAction.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/RunAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/RunConfig.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/RunConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMConfig.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMDigitizer.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMDigitizer.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMResponse.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMResponse.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMSD.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SiPMSD.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SteppingAction.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/SteppingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/TrackInformation.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/TrackInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/TrackingAction.hh b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/include/TrackingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/main.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/main.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/ActionInitialization.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/ActionInitialization.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/DetectorConstruction.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/DetectorConstruction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/EventAction.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/EventAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/PhysicsList.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/PhysicsList.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/PrimaryGeneratorAction.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/PrimaryGeneratorAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/PrimaryInformation.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/PrimaryInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/RootIO.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/RootIO.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/RunAction.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/RunAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/RunConfig.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/RunConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMConfig.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMDigitizer.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMDigitizer.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMResponse.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMResponse.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMSD.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SiPMSD.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SteppingAction.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/SteppingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/TrackInformation.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/TrackInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/TrackingAction.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/TrackingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/gagg_birks_yield_curves.inc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/src/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/g4/tests/test_sipm_response.cc b/pileup/experiments/alpha_ml_comparison_20261014/source/g4/tests/test_sipm_response.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_full_signal_study.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_full_signal_study.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_ml_report.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_ml_report.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_pileup_fit.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_pileup_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_pileup_ml.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_pileup_ml.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_rate_campaign.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_rate_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_rate_data.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/alpha_rate_data.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/sipm_readout.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/sipm_readout.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/sipm_response.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/sipm_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/test_alpha_pileup_ml.py b/pileup/experiments/alpha_ml_comparison_20261014/source/pileup/analysis/test_alpha_pileup_ml.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_low_rate_20261015/README.md b/pileup/experiments/alpha_ml_low_rate_20261015/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_low_rate_20261015/manifest.json b/pileup/experiments/alpha_ml_low_rate_20261015/manifest.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_low_rate_20261015/replay.py b/pileup/experiments/alpha_ml_low_rate_20261015/replay.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_low_rate_20261015/source/pileup/analysis/alpha_ml_low_rate.py b/pileup/experiments/alpha_ml_low_rate_20261015/source/pileup/analysis/alpha_ml_low_rate.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/README.md b/pileup/experiments/alpha_ml_multimethod_20261014/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/analysis-source.json b/pileup/experiments/alpha_ml_multimethod_20261014/analysis-source.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/calibration-settings.json b/pileup/experiments/alpha_ml_multimethod_20261014/calibration-settings.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/data-split.json b/pileup/experiments/alpha_ml_multimethod_20261014/data-split.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/dependency-requirements.txt b/pileup/experiments/alpha_ml_multimethod_20261014/dependency-requirements.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/export_tests.py b/pileup/experiments/alpha_ml_multimethod_20261014/export_tests.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/check_pilot_1e6.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/check_pilot_1e6.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/check_pilot_1e6.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/check_pilot_1e6.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_00.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_00.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_02.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_02.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_02.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_03.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_03.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_03.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_03.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_04.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_04.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_04.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_04.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_05.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_05.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_05.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_05.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_06.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_06.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_06.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_06.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_07.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_07.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_07.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_000100000_07.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_00.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_00.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_001000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_00.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_00.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_010000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_00.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_00.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_020000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_00.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_00.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_040000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_00.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_00.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_060000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_00_retry.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_00_retry.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_00_retry.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_00_retry.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_080000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_00.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_00.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_01.log b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_01.time.txt b/pileup/experiments/alpha_ml_multimethod_20261014/logs/test2_alpha_100000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/check_pilot_1e6.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/check_pilot_1e6.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_02.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_03.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_03.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_04.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_04.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_05.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_05.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_06.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_06.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_07.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_000100000_07.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_001000000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_001000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_001000000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_001000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_010000000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_010000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_010000000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_010000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_020000000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_020000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_020000000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_020000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_040000000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_040000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_040000000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_040000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_060000000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_060000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_060000000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_060000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_080000000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_080000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_080000000_00_retry.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_080000000_00_retry.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_080000000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_080000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_100000000_00.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_100000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_100000000_01.mac b/pileup/experiments/alpha_ml_multimethod_20261014/macros/test2_alpha_100000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/manifest.json b/pileup/experiments/alpha_ml_multimethod_20261014/manifest.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/post-test-diagnostics-source.json b/pileup/experiments/alpha_ml_multimethod_20261014/post-test-diagnostics-source.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/replay.py b/pileup/experiments/alpha_ml_multimethod_20261014/replay.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/replay_report.py b/pileup/experiments/alpha_ml_multimethod_20261014/replay_report.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/run_campaign.py b/pileup/experiments/alpha_ml_multimethod_20261014/run_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/analysis/alpha_gamma_waveform_fit.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/analysis/alpha_gamma_waveform_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/analysis/single_particle_sipm.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/analysis/single_particle_sipm.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/CMakeLists.txt b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/CMakeLists.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/ActionInitialization.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/ActionInitialization.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/Constants.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/Constants.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/DataStructure.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/DataStructure.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/DetectorConstruction.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/DetectorConstruction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/EventAction.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/EventAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/PhysicsList.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/PhysicsList.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/PrimaryGeneratorAction.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/PrimaryGeneratorAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/PrimaryInformation.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/PrimaryInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/RootIO.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/RootIO.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/RunAction.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/RunAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/RunConfig.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/RunConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMConfig.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMDigitizer.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMDigitizer.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMResponse.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMResponse.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMSD.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SiPMSD.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SteppingAction.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/SteppingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/TrackInformation.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/TrackInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/TrackingAction.hh b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/include/TrackingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/main.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/main.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/ActionInitialization.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/ActionInitialization.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/DetectorConstruction.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/DetectorConstruction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/EventAction.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/EventAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/PhysicsList.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/PhysicsList.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/PrimaryGeneratorAction.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/PrimaryGeneratorAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/PrimaryInformation.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/PrimaryInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/RootIO.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/RootIO.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/RunAction.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/RunAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/RunConfig.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/RunConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMConfig.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMDigitizer.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMDigitizer.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMResponse.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMResponse.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMSD.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SiPMSD.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SteppingAction.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/SteppingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/TrackInformation.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/TrackInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/TrackingAction.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/TrackingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/gagg_birks_yield_curves.inc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/src/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/tests/test_sipm_response.cc b/pileup/experiments/alpha_ml_multimethod_20261014/source/g4/tests/test_sipm_response.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_full_signal_study.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_full_signal_study.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_models.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_models.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_multimethod.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_multimethod.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_multimethod_diagnostics.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_multimethod_diagnostics.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_multimethod_report.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_multimethod_report.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_report.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_ml_report.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_pileup_fit.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_pileup_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_pileup_hybrid.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_pileup_hybrid.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_pileup_ml.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_pileup_ml.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_rate_campaign.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_rate_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_rate_data.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/alpha_rate_data.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/sipm_readout.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/sipm_readout.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/sipm_response.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/sipm_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/test_alpha_ml_multimethod.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/test_alpha_ml_multimethod.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/test_alpha_pileup_ml.py b/pileup/experiments/alpha_ml_multimethod_20261014/source/pileup/analysis/test_alpha_pileup_ml.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/README.md b/pileup/experiments/alpha_p11b_v1/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/analysis/check_run.py b/pileup/experiments/alpha_p11b_v1/analysis/check_run.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/bundle.json b/pileup/experiments/alpha_p11b_v1/bundle.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/config.json b/pileup/experiments/alpha_p11b_v1/config.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/environment_prepare.json b/pileup/experiments/alpha_p11b_v1/environment_prepare.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/include/RunConfig.hh b/pileup/experiments/alpha_p11b_v1/g4/include/RunConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/run_all_p11b_sources_pileup.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/run_all_p11b_sources_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/run_all_pileup.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/run_all_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/run_alpha.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/run_alpha.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/run_alpha_p11b_pileup.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/run_alpha_p11b_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/run_brems_pileup.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/run_brems_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/run_c12_capture_pileup.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/run_c12_capture_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/run_mixed_photon_pileup.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/run_mixed_photon_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/macros/vis_chargedgeantino.mac b/pileup/experiments/alpha_p11b_v1/g4/macros/vis_chargedgeantino.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/main.cc b/pileup/experiments/alpha_p11b_v1/g4/main.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/src/RunConfig.cc b/pileup/experiments/alpha_p11b_v1/g4/src/RunConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/g4/src/gagg_birks_yield_curves.inc b/pileup/experiments/alpha_p11b_v1/g4/src/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/macros/alpha_1e5Hz.mac b/pileup/experiments/alpha_p11b_v1/macros/alpha_1e5Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/macros/alpha_1e6Hz.mac b/pileup/experiments/alpha_p11b_v1/macros/alpha_1e6Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/macros/alpha_1e7Hz.mac b/pileup/experiments/alpha_p11b_v1/macros/alpha_1e7Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/macros/alpha_1e8Hz.mac b/pileup/experiments/alpha_p11b_v1/macros/alpha_1e8Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/run.py b/pileup/experiments/alpha_p11b_v1/run.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v1/source_changes.patch b/pileup/experiments/alpha_p11b_v1/source_changes.patch
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/README.md b/pileup/experiments/alpha_p11b_v2/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/analysis/check_run.py b/pileup/experiments/alpha_p11b_v2/analysis/check_run.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/bundle.json b/pileup/experiments/alpha_p11b_v2/bundle.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/config.json b/pileup/experiments/alpha_p11b_v2/config.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/environment_prepare.json b/pileup/experiments/alpha_p11b_v2/environment_prepare.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/include/RunConfig.hh b/pileup/experiments/alpha_p11b_v2/g4/include/RunConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/run_all_p11b_sources_pileup.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/run_all_p11b_sources_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/run_all_pileup.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/run_all_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/run_alpha.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/run_alpha.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/run_alpha_p11b_pileup.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/run_alpha_p11b_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/run_brems_pileup.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/run_brems_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/run_c12_capture_pileup.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/run_c12_capture_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/run_mixed_photon_pileup.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/run_mixed_photon_pileup.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/macros/vis_chargedgeantino.mac b/pileup/experiments/alpha_p11b_v2/g4/macros/vis_chargedgeantino.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/main.cc b/pileup/experiments/alpha_p11b_v2/g4/main.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/src/RunConfig.cc b/pileup/experiments/alpha_p11b_v2/g4/src/RunConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/g4/src/gagg_birks_yield_curves.inc b/pileup/experiments/alpha_p11b_v2/g4/src/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/macros/alpha_1e5Hz.mac b/pileup/experiments/alpha_p11b_v2/macros/alpha_1e5Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/macros/alpha_1e6Hz.mac b/pileup/experiments/alpha_p11b_v2/macros/alpha_1e6Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/macros/alpha_1e7Hz.mac b/pileup/experiments/alpha_p11b_v2/macros/alpha_1e7Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/macros/alpha_1e8Hz.mac b/pileup/experiments/alpha_p11b_v2/macros/alpha_1e8Hz.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/run.py b/pileup/experiments/alpha_p11b_v2/run.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_p11b_v2/source_changes.patch b/pileup/experiments/alpha_p11b_v2/source_changes.patch
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/README.md b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/analysis-source.json b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/analysis-source.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/analysis_source/pileup/analysis/alpha_rate_data.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/analysis_source/pileup/analysis/alpha_rate_data.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/analyze.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/analyze.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/git-status-before.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/git-status-before.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_00.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_00.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_01.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_01.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_02.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_02.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_020000000_02.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_00.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_00.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_01.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_01.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_02.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_02.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_040000000_02.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_00.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_00.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_01.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_01.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_02.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_02.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_060000000_02.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_00.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_00.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_01.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_01.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_01.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_02.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_02.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/alpha_080000000_02.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_alpha_010000000_00.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_alpha_010000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_alpha_010000000_00.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_alpha_010000000_00.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_pilot_1e6.log b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_pilot_1e6.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_pilot_1e6.time.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/logs/check_pilot_1e6.time.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_020000000_00.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_020000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_020000000_01.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_020000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_020000000_02.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_020000000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_040000000_00.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_040000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_040000000_01.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_040000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_040000000_02.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_040000000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_060000000_00.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_060000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_060000000_01.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_060000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_060000000_02.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_060000000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_080000000_00.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_080000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_080000000_01.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_080000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_080000000_02.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/alpha_080000000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/check_alpha_010000000_00.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/check_alpha_010000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/check_pilot_1e6.mac b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/macros/check_pilot_1e6.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/manifest.json b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/manifest.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/plot_results.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/plot_results.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/replay.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/replay.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/run_campaign.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/run_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source-changes.patch b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source-changes.patch
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/analysis/alpha_gamma_waveform_fit.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/analysis/alpha_gamma_waveform_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/analysis/single_particle_sipm.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/analysis/single_particle_sipm.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/CMakeLists.txt b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/CMakeLists.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/ActionInitialization.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/ActionInitialization.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/Constants.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/Constants.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/DataStructure.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/DataStructure.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/DetectorConstruction.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/DetectorConstruction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/EventAction.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/EventAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/PhysicsList.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/PhysicsList.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/PrimaryGeneratorAction.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/PrimaryGeneratorAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/PrimaryInformation.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/PrimaryInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/RootIO.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/RootIO.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/RunAction.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/RunAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/RunConfig.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/RunConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMConfig.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMDigitizer.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMDigitizer.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMResponse.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMResponse.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMSD.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SiPMSD.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SteppingAction.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/SteppingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/TrackInformation.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/TrackInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/TrackingAction.hh b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/include/TrackingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/main.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/main.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/ActionInitialization.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/ActionInitialization.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/DetectorConstruction.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/DetectorConstruction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/EventAction.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/EventAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/PhysicsList.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/PhysicsList.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/PrimaryGeneratorAction.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/PrimaryGeneratorAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/PrimaryInformation.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/PrimaryInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/RootIO.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/RootIO.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/RunAction.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/RunAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/RunConfig.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/RunConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMConfig.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMDigitizer.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMDigitizer.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMResponse.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMResponse.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMSD.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SiPMSD.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SteppingAction.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/SteppingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/TrackInformation.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/TrackInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/TrackingAction.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/TrackingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/gagg_birks_yield_curves.inc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/src/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/tests/test_sipm_response.cc b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/g4/tests/test_sipm_response.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_pileup_fit.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_pileup_fit.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_rate_campaign.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_rate_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_rate_data.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_rate_data.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_rate_study.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/alpha_rate_study.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/sipm_readout.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/sipm_readout.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/sipm_response.py b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/source/pileup/analysis/sipm_response.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/README.md b/pileup/experiments/alpha_s13360_rate_fit_20261013/README.md
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/git-status-before.txt b/pileup/experiments/alpha_s13360_rate_fit_20261013/git-status-before.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_00.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_01.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_02.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_03.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_03.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_04.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_04.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_05.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_05.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_06.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_06.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_07.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_07.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_08.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_08.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_09.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_09.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_10.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_10.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_11.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_11.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_12.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_12.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_13.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_13.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_14.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_14.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_15.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_000100000_15.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_00.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_01.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_02.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_03.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_001000000_03.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_00.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_01.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_01.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_02.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_010000000_02.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_100000000_00.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/alpha_100000000_00.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/pilot_1e6.log b/pileup/experiments/alpha_s13360_rate_fit_20261013/logs/pilot_1e6.log
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_00.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_01.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_02.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_03.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_03.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_04.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_04.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_05.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_05.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_06.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_06.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_07.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_07.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_08.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_08.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_09.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_09.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_10.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_10.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_11.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_11.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_12.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_12.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_13.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_13.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_14.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_14.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_15.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_000100000_15.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_00.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_01.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_02.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_03.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_001000000_03.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_00.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_01.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_01.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_02.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_010000000_02.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_100000000_00.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/alpha_100000000_00.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/pilot_1e6.mac b/pileup/experiments/alpha_s13360_rate_fit_20261013/macros/pilot_1e6.mac
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/manifest.json b/pileup/experiments/alpha_s13360_rate_fit_20261013/manifest.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/replay.py b/pileup/experiments/alpha_s13360_rate_fit_20261013/replay.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source-changes.patch b/pileup/experiments/alpha_s13360_rate_fit_20261013/source-changes.patch
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/CMakeLists.txt b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/CMakeLists.txt
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/ActionInitialization.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/ActionInitialization.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/Constants.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/Constants.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/DataStructure.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/DataStructure.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/DetectorConstruction.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/DetectorConstruction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/EventAction.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/EventAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/PhysicsList.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/PhysicsList.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/PrimaryGeneratorAction.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/PrimaryGeneratorAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/PrimaryInformation.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/PrimaryInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/RootIO.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/RootIO.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/RunAction.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/RunAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/RunConfig.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/RunConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMConfig.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMConfig.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMDigitizer.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMDigitizer.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMResponse.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMResponse.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMSD.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SiPMSD.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SteppingAction.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/SteppingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/TrackInformation.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/TrackInformation.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/TrackingAction.hh b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/include/TrackingAction.hh
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/main.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/main.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/ActionInitialization.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/ActionInitialization.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/DetectorConstruction.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/DetectorConstruction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/EventAction.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/EventAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/PhysicsList.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/PhysicsList.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/PrimaryGeneratorAction.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/PrimaryGeneratorAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/PrimaryInformation.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/PrimaryInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/RootIO.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/RootIO.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/RunAction.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/RunAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/RunConfig.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/RunConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMConfig.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMConfig.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMDigitizer.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMDigitizer.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMResponse.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMResponse.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMSD.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SiPMSD.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SteppingAction.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/SteppingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/TrackInformation.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/TrackInformation.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/TrackingAction.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/TrackingAction.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/gagg_birks_yield_curves.inc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/src/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/tests/test_sipm_response.cc b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/g4/tests/test_sipm_response.cc
+old mode 100644
+new mode 100755
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/source/pileup/analysis/alpha_rate_campaign.py b/pileup/experiments/alpha_s13360_rate_fit_20261013/source/pileup/analysis/alpha_rate_campaign.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/prepare.py b/pileup/prepare.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/submit_scan.py b/pileup/submit_scan.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/tools/__init__.py b/pileup/tools/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/pileup/tools/run_experiment.py b/pileup/tools/run_experiment.py
+old mode 100644
+new mode 100755
+diff --git a/requirements-analysis.lock.txt b/requirements-analysis.lock.txt
+old mode 100644
+new mode 100755
+diff --git a/requirements-analysis.txt b/requirements-analysis.txt
+old mode 100644
+new mode 100755
+diff --git a/requirements-ml.txt b/requirements-ml.txt
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/CMakeLists.txt b/stopping_power/CMakeLists.txt
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/alpha_gagg_stopping.csv b/stopping_power/alpha_gagg_stopping.csv
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/electron_gagg_stopping.csv b/stopping_power/electron_gagg_stopping.csv
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/gagg_birks_yield_curves.csv b/stopping_power/gagg_birks_yield_curves.csv
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/gagg_birks_yield_curves.inc b/stopping_power/gagg_birks_yield_curves.inc
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/gagg_birks_yield_curves.png b/stopping_power/gagg_birks_yield_curves.png
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/make_birks_yield_curves.py b/stopping_power/make_birks_yield_curves.py
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/make_gagg_stopping_tables.cc b/stopping_power/make_gagg_stopping_tables.cc
+old mode 100644
+new mode 100755
+diff --git a/stopping_power/o16_gagg_stopping.csv b/stopping_power/o16_gagg_stopping.csv
+old mode 100644
+new mode 100755
+diff --git a/tools/classic_notebook_config.json b/tools/classic_notebook_config.json
+old mode 100644
+new mode 100755
+diff --git a/tools/gagg_environment.py b/tools/gagg_environment.py
+old mode 100644
+new mode 100755
+diff --git a/tools/run_gagg_python.sh b/tools/run_gagg_python.sh
+old mode 100644
+new mode 100755
+diff --git a/tools/setup_gagg_environment.sh b/tools/setup_gagg_environment.sh
+old mode 100644
+new mode 100755
+diff --git a/tools/start_gagg_jupyter.sh b/tools/start_gagg_jupyter.sh
+old mode 100644
+new mode 100755

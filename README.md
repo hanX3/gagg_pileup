@@ -9,7 +9,7 @@ Geant4 保留到达光子，并可通过 `G4VDigitizerModule` / `G4DigiManager` 
 | 目录 | 内容 |
 | --- | --- |
 | [g4](g4/) | Geant4 工程，包含源码、宏、分析脚本和结果图。 |
-| [pileup](pileup/) | 纯 α 计数率实验：配置、可独立重跑的源码快照、运行器和数据检查。 |
+| [pileup](pileup/) | 纯 α 与 α/γ 混合计数率实验：配置、可独立重跑的源码快照、运行器和数据检查。 |
 | [analysis](analysis/) | 单粒子 SiPM 分析、孤立 α/γ 波形拟合和拟合窗口扫描。 |
 | [tools](tools/) | 各系统独立 Python 环境、Notebook 启动及本机内核注册工具。 |
 | [11BH_alpha_spectra](11BH_alpha_spectra/) | 简化 p–¹¹B 单 α 能谱、生成脚本、CSV 和检查图。 |
@@ -79,6 +79,18 @@ cd g4/build
 
 <a id="ml-multimethod-20261014"></a>
 同日扩展为[五种流程的共同测试](pileup/experiments/alpha_ml_multimethod_20261014/README.md)：新增U-Net、局部Transformer及CNN＋物理拟合，保留原CNN与盲拟合；两网络各训练2400步，22个新独立窗口覆盖八档源率，原17窗作回归。算法参数仅由验证集选择，完整电压输入和足够动态范围前提保持。不同率的改善并不一致，受控近邻、幅度外推失败及高密度偶然匹配均原样记录；详见[独立Notebook第二轮](jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014)和[采用记录L21](docs/literature-use.md#ml-multimethod-20261014)。
+
+<a id="alpha-gamma-mixed-20261015"></a>
+2026-10-15 新增 [α/轫致辐射 γ](pileup/experiments/alpha_gamma_brems_fit_20261015/README.md) 与 [α/661.657 keV γ](pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md) 的盲拟合：α 注入 1/10 MHz、γ 均为 10 MHz，各条件 8 个独立原生共享微胞窗口。拟合未知脉冲数、时刻、电荷和类型，保持完整含噪电压输入；另有147次空/单/双脉冲控制。以下恢复要求真值Q≥500 p.e.、时间误差≤10 ns、类型正确及电荷误差≤20%，不是能量分辨率。
+
+| γ 来源 | α 注入率 / MHz | α 完整恢复 | γ 完整恢复 |
+| --- | ---: | ---: | ---: |
+| 轫致辐射谱 | 1 | 44/64（68.8%） | 2/30（6.7%） |
+| 轫致辐射谱 | 10 | 270/571（47.3%） | 3/42（7.1%） |
+| 661.657 keV | 1 | 49/58（84.5%） | 29/32（90.6%） |
+| 661.657 keV | 10 | 282/605（46.6%） | 12/31（38.7%） |
+
+详细的检出/分型、α样本纯度、漏检及误拆分/误合并、条件电荷误差和偶然匹配对照见本地 [新 Notebook](jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)。固定模板仅来自两条旧孤立示例，结果受阈下信号和模型失配影响，不能推出通用最大计数率。采用依据与待验证事项见 [L22](docs/literature-use.md#alpha-gamma-mixed-20261015)。
 
 ## 分析已有数据
 

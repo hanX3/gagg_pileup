@@ -1,0 +1,29 @@
+# Independent alpha + mono662 gamma sources; C12 slot is mono662 only in that snapshot.
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gagg/run/windowLength 20 us
+/gagg/run/preWindow 5 us
+/gagg/run/postWindow 5 us
+/gagg/run/seed 261021123
+/gagg/run/outputFile /media/sf_works/GAGG_pileup/g4/data/20261015_09h48m31s.root
+/gagg/sipm/configFile /media/sf_works/GAGG_pileup/pileup/experiments/alpha_gamma_mono662_fit_20261015/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+/gagg/sipm/seed 261121123
+/gagg/sipm/readoutSeed 261221123
+/gagg/sipm/enable true
+/gagg/step/setGaggMaxStep 1 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1 um
+/run/initialize
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+/gagg/source/diskRadius 10 mm
+/gagg/pileup/enable true
+/gagg/source/brems/enable false
+/gagg/source/brems/rateHz 0
+/gagg/source/c12Capture/enable true
+/gagg/source/c12Capture/rateHz 10000000
+/gagg/source/alphaP11B/enable true
+/gagg/source/alphaP11B/rateHz 10000000
+/run/beamOn 1

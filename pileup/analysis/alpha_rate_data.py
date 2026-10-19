@@ -40,12 +40,25 @@ def photon_full_key(t,x,y,energy):
     return key
 
 
-def export_window(root_path,output, *, expected=None):
+def export_window(root_path,output, *, expected=None, allowed_particles=('alpha',)):
     output=Path(output); output.mkdir(parents=True,exist_ok=True)
     root_path=Path(root_path); stem=root_path.stem
     for name in ('waveforms','truth','metadata'):(output/name).mkdir(exist_ok=True)
     if (output/'metadata'/f'{stem}.json').exists():
-        return json.loads((output/'metadata'/f'{stem}.json').read_text())
+        cached=json.loads((output/'metadata'/f'{stem}.json').read_text())
+        with np.load(output/'truth'/f'{stem}.npz') as truth:
+            if 'particle_name' in truth:
+                unexpected=set(np.unique(truth['particle_name']))-set(allowed_particles)
+                if unexpected:raise ValueError(f'Unexpected cached primary particles: {unexpected}')
+            elif set(allowed_particles)!={'alpha'}:
+                raise ValueError('Legacy export has no particle labels; use a new mixed-export directory')
+        if expected:
+            assert cached['seed']==expected['seed'] and cached['rate_hz']==expected['rate_hz']
+            if 'root_sha256' in expected:assert cached['root_sha256']==expected['root_sha256']
+            if 'gamma_rate_hz' in expected:
+                slot='brems' if expected['gamma_model']=='brems' else 'c12_capture'
+                assert cached['source_rates_hz'][slot]==expected['gamma_rate_hz']
+        return cached
     with open_root(root_path) as f:
         assert all(f[k].num_entries==1 for k in ('RunInfo','WaveformEvent','SiPMEvent'))
         info=ak.to_list(f['RunInfo'].arrays())[0]
@@ -53,7 +66,11 @@ def export_window(root_path,output, *, expected=None):
         if expected:
             assert info['random_seed']==expected['seed']
             assert info['alpha_p11b_rate_hz']==expected['rate_hz']
-            assert not info['brems_enabled'] and not info['c12_capture_enabled']
+            if set(allowed_particles)=={'alpha'}:
+                assert not info['brems_enabled'] and not info['c12_capture_enabled']
+            if 'gamma_rate_hz' in expected:
+                slot='brems' if expected['gamma_model']=='brems' else 'c12_capture'
+                assert info[f'{slot}_rate_hz']==expected['gamma_rate_hz']
         config=json.loads(info['sipm_config_json'])
         s=f['SiPMEvent'].arrays(library='ak',how=dict)
         av=lambda k:ak.to_numpy(s[k][0])
@@ -89,7 +106,9 @@ def export_window(root_path,output, *, expected=None):
         if full_key:branches.append('photon_energy_eV')
         for chunk in f['PrimaryPhoton'].iterate(branches,step_size='32 MB',library='ak'):
             for p in chunk:
-                assert str(p['primary_particle_name'])=='alpha'
+                particle=str(p['primary_particle_name'])
+                if particle not in allowed_particles:
+                    raise ValueError(f'Unexpected primary particle {particle}')
                 tt=ak.to_numpy(p['photon_arrival_t_ps']);xx=ak.to_numpy(p['photon_arrival_x_mm']);yy=ak.to_numpy(p['photon_arrival_y_mm'])
                 k=photon_full_key(tt,xx,yy,ak.to_numpy(p['photon_energy_eV'])) if full_key else photon_key(tt,xx)
                 loc=np.searchsorted(sorted_keys,k)
@@ -97,7 +116,8 @@ def export_window(root_path,output, *, expected=None):
                 assert np.all(owner[order[loc]]==-1)
                 owner[order[loc]]=len(rows)
                 inside=(xx>=config['sensor']['x_min_mm'])&(xx<config['sensor']['x_max_mm'])&(yy>=config['sensor']['y_min_mm'])&(yy<config['sensor']['y_max_mm'])
-                rows.append(dict(primary_id=int(p['primary_id']),emission_ns=float(p['primary_time_ps'])/1000,
+                rows.append(dict(primary_id=int(p['primary_id']),particle_name=particle,
+                    emission_ns=float(p['primary_time_ps'])/1000,
                     first_active_ns=float(tt[inside].min())/1000 if inside.any() else np.nan,
                     source_energy_MeV=float(p['primary_energy_MeV']),edep_MeV=float(p['edep_total_MeV']),
                     active_photons=int(inside.sum())))
@@ -119,12 +139,15 @@ def export_window(root_path,output, *, expected=None):
         assert np.isclose(q.sum()+dark_q,charge.sum()/q0,rtol=1e-11,atol=1e-6)
         data={k:np.asarray([x[k] for x in rows]) for k in rows[0]} if rows else {
             k:np.array([]) for k in ('primary_id','emission_ns','first_active_ns','source_energy_MeV','edep_MeV','active_photons')}
+        if not rows:data['particle_name']=np.array([],dtype='<U5')
         data['charge_pe']=q
         # Actual waveform and avalanche ancestry are evaluation-only quantities.
         np.savez_compressed(output/'truth'/f'{stem}.npz',**data,signal_mV=av('signal_mV'),
             avalanche_time_ns=at,avalanche_charge_C=charge,avalanche_owner=parents)
         meta=dict(root=str(root_path),root_sha256=digest(root_path),seed=int(info['random_seed']),
-            rate_hz=float(info['alpha_p11b_rate_hz']),gate_ns=[info['analysis_start_ps']/1000,info['analysis_end_ps']/1000],
+            rate_hz=float(info['alpha_p11b_rate_hz']),
+            source_rates_hz={k:float(info[f'{k}_rate_hz']) for k in ('alpha_p11b','brems','c12_capture')},
+            gate_ns=[info['analysis_start_ps']/1000,info['analysis_end_ps']/1000],
             duration_ns=info['t_length_ps']/1000,primaries=len(rows),
             photons=int(scalar('n_input_photons')),avalanche_count=len(kind),
             charge_pe=float(charge.sum()/q0),dark_charge_pe=dark_q,

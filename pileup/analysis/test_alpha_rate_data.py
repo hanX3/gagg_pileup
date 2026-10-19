@@ -1,8 +1,11 @@
 """Regressions for photon ancestry collisions in dense pileup records."""
 import unittest
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import numpy as np
 
-from pileup.analysis.alpha_rate_data import photon_key, photon_full_key
+from pileup.analysis.alpha_rate_data import photon_key, photon_full_key, export_window
 
 
 class PhotonKeyTests(unittest.TestCase):
@@ -28,6 +31,25 @@ class PhotonKeyTests(unittest.TestCase):
     def test_identical_records_remain_ambiguous(self):
         keys = photon_full_key([1, 1], [2, 2], [3, 3], [4, 4])
         self.assertEqual(len(np.unique(keys)), 1)
+
+    def test_mixed_cache_cannot_bypass_alpha_only_policy(self):
+        with TemporaryDirectory() as directory:
+            output=Path(directory)
+            for name in ('metadata','truth'):(output/name).mkdir()
+            (output/'metadata/window.json').write_text(json.dumps({'seed':1,'rate_hz':1e6}))
+            np.savez(output/'truth/window.npz',particle_name=['alpha','gamma'])
+            with self.assertRaisesRegex(ValueError,'Unexpected cached'):
+                export_window('window.root',output)
+            self.assertEqual(export_window('window.root',output,allowed_particles=('alpha','gamma'))['seed'],1)
+
+    def test_cached_seed_still_checked(self):
+        with TemporaryDirectory() as directory:
+            output=Path(directory)
+            for name in ('metadata','truth'):(output/name).mkdir()
+            (output/'metadata/window.json').write_text(json.dumps({'seed':1,'rate_hz':1e6}))
+            np.savez(output/'truth/window.npz',particle_name=['alpha'])
+            with self.assertRaises(AssertionError):
+                export_window('window.root',output,expected={'seed':2,'rate_hz':1e6})
 
 
 if __name__ == '__main__':
