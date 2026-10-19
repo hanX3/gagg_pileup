@@ -1,0 +1,82 @@
+{
+  "templates": {
+    "alpha": {
+      "slow_fraction": 0.7414997984399583,
+      "tau_fast_ns": 95.0,
+      "tau_slow_ns": 351.0,
+      "area_per_peak_mV_ns": 284.59107089741536,
+      "readout": {
+        "model": "double_exponential",
+        "internal_dt_ns": 0.25,
+        "sample_period_ns": 2.0,
+        "aperture_ns": 0.5,
+        "rise_ns": 2.0,
+        "decay_ns": 20.0,
+        "transimpedance_ohm": 50.0,
+        "lowpass_ns": 2.0,
+        "baseline_mV": 10.0,
+        "noise_rms_mV": 0.1,
+        "adc_bits": 12,
+        "adc_min_mV": 0.0,
+        "adc_max_mV": 1000.0,
+        "template_csv": null,
+        "max_internal_bins": 5000000
+      },
+      "interpolation_ns": 0.25,
+      "support_ns": 6000.0
+    },
+    "gamma": {
+      "slow_fraction": 0.20473191192272483,
+      "tau_fast_ns": 95.0,
+      "tau_slow_ns": 351.0,
+      "area_per_peak_mV_ns": 167.21873131402293,
+      "readout": {
+        "model": "double_exponential",
+        "internal_dt_ns": 0.25,
+        "sample_period_ns": 2.0,
+        "aperture_ns": 0.5,
+        "rise_ns": 2.0,
+        "decay_ns": 20.0,
+        "transimpedance_ohm": 50.0,
+        "lowpass_ns": 2.0,
+        "baseline_mV": 10.0,
+        "noise_rms_mV": 0.1,
+        "adc_bits": 12,
+        "adc_min_mV": 0.0,
+        "adc_max_mV": 1000.0,
+        "template_csv": null,
+        "max_internal_bins": 5000000
+      },
+      "interpolation_ns": 0.25,
+      "support_ns": 6000.0
+    }
+  },
+  "fit_config": {
+    "baseline_mV": 10.0,
+    "min_charge_pe": 500.0,
+    "area_per_pe_mV_ns": 13.618501389,
+    "deconvolution_sigma_ns": 8.0,
+    "deconvolution_ridge_fraction": 0.0001,
+    "candidate_fraction": 0.65,
+    "min_separation_ns": 8.0,
+    "time_refine_ns": 20.0,
+    "max_passes": 6,
+    "residual_rounds": 1,
+    "max_candidates": 500
+  },
+  "calibration": "jupyter/artifacts/alpha_gamma_fit_20261013_165844/summary.json",
+  "calibration_sha256": "07cc8d83f268d94acf6b277b5e8a24af639835d26ee8faa6d343d92b9a4d11cb",
+  "calibration_roots": {
+    "alpha": "g4/data/20261013_09h58m53s.root",
+    "gamma": "g4/data/20261013_09h59m09s.root"
+  },
+  "input_field": "analog_mV",
+  "fit_truth_inputs": [],
+  "dynamic_range_assumption": "Adequate range; use complete noisy analog samples, no clipping/quantization",
+  "scoring": {
+    "time_tolerance_ns": 10.0,
+    "relative_charge_tolerance": 0.2,
+    "charge_threshold_pe": 500.0
+  },
+  "calibration_limit": "Two isolated illustrative calibration events; not independently calibrated physical PSD performance"
+}

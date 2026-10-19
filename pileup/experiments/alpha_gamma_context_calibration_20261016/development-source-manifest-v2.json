@@ -1,0 +1,14 @@
+{
+  "created": "2026-10-16T11:38:16.225442+08:00",
+  "files": {
+    "development-source-v2/pileup/analysis/alpha_gamma_context_calibration.py": "968f1121702bbadcb603028329ddee19072690a2b167206f23cdd27671848c8e",
+    "development-source-v2/pileup/analysis/alpha_gamma_context_campaign.py": "171a87469a09e4753189b89efedc65de1736297047c08594a7555b2a9c71da44",
+    "development-source-v2/pileup/analysis/alpha_gamma_context_fit.py": "c5791e1ad279cd23abf6b16bd47243bab34412dc0a7e0664532dd8c00f3d3010",
+    "development-source-v2/pileup/analysis/alpha_gamma_context_report.py": "1389ba9f955e1435d994764d63b1cb924e2b2ada40626edd475cfef28de90131",
+    "development-source-v2/pileup/analysis/alpha_gamma_context_study.py": "dd0171b047676fe8687de4712c435829c69aee553d4563fdb4e1fd9669d68d81",
+    "development-source-v2/pileup/analysis/alpha_gamma_shape_profile.py": "382a26397e13a5ea0c12f288e60576b54cb7ae38b6dd1cb90ba48064672c2838",
+    "development-source-v2/pileup/analysis/test_alpha_gamma_context_fit.py": "63e1456b15c9fb12d330116f0b91c227e3de9f0a880b505c3d1221a362678fdc"
+  },
+  "changes": "Resolve dependency hashes from actual imported modules, remove inherited old calibration input hashes, require calibration convergence, add reports. No fitting algorithm change.",
+  "preceding_use": "v1 used only for pilot shape extraction; no candidate scoring or new calibrated model yet"
+}

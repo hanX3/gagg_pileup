@@ -1,0 +1,12 @@
+{
+  "created": "2026-10-16T11:30:27.818926+08:00",
+  "files": {
+    "development-source-v1/pileup/analysis/alpha_gamma_context_calibration.py": "5ddbc45f2dc2f785a14b32abf61fd66ba1eecd1d824c11d6b64172a037ec980e",
+    "development-source-v1/pileup/analysis/alpha_gamma_context_campaign.py": "171a87469a09e4753189b89efedc65de1736297047c08594a7555b2a9c71da44",
+    "development-source-v1/pileup/analysis/alpha_gamma_context_fit.py": "c5791e1ad279cd23abf6b16bd47243bab34412dc0a7e0664532dd8c00f3d3010",
+    "development-source-v1/pileup/analysis/alpha_gamma_context_study.py": "2661ae0c9c507abc5cf7b06ed6b5018a229c1a4a0564ab44ac28b49e957b9215",
+    "development-source-v1/pileup/analysis/alpha_gamma_shape_profile.py": "382a26397e13a5ea0c12f288e60576b54cb7ae38b6dd1cb90ba48064672c2838",
+    "development-source-v1/pileup/analysis/test_alpha_gamma_context_fit.py": "2cee740326bf0950894062d85f6d2a7db55ed85565f135e776d0a51161e8573d"
+  },
+  "rule": "Use only independent calibration labels and previously disclosed mixed development windows; fresh test not generated"
+}

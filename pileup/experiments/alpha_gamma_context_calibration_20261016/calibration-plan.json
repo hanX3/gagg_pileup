@@ -1,0 +1,4566 @@
+{
+  "created": "2026-10-16T11:27:46.112206+08:00",
+  "plans": [
+    {
+      "label": "calibration_single_alpha_1.5_0_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061000
+    },
+    {
+      "label": "calibration_single_alpha_1.5_0_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061001
+    },
+    {
+      "label": "calibration_single_alpha_1.5_0_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061002
+    },
+    {
+      "label": "calibration_single_alpha_1.5_4_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061003
+    },
+    {
+      "label": "calibration_single_alpha_1.5_4_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061004
+    },
+    {
+      "label": "calibration_single_alpha_1.5_4_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061005
+    },
+    {
+      "label": "calibration_single_alpha_1.5_4_4_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061006
+    },
+    {
+      "label": "calibration_single_alpha_1.5_4_4_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061007
+    },
+    {
+      "label": "calibration_single_alpha_1.5_4_4_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061008
+    },
+    {
+      "label": "calibration_single_alpha_1.8_0_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061009
+    },
+    {
+      "label": "calibration_single_alpha_1.8_0_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061010
+    },
+    {
+      "label": "calibration_single_alpha_1.8_0_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061011
+    },
+    {
+      "label": "calibration_single_alpha_1.8_4_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061012
+    },
+    {
+      "label": "calibration_single_alpha_1.8_4_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061013
+    },
+    {
+      "label": "calibration_single_alpha_1.8_4_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061014
+    },
+    {
+      "label": "calibration_single_alpha_1.8_4_4_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061015
+    },
+    {
+      "label": "calibration_single_alpha_1.8_4_4_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061016
+    },
+    {
+      "label": "calibration_single_alpha_1.8_4_4_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061017
+    },
+    {
+      "label": "calibration_single_alpha_2.5_0_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061018
+    },
+    {
+      "label": "calibration_single_alpha_2.5_0_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061019
+    },
+    {
+      "label": "calibration_single_alpha_2.5_0_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061020
+    },
+    {
+      "label": "calibration_single_alpha_2.5_4_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061021
+    },
+    {
+      "label": "calibration_single_alpha_2.5_4_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061022
+    },
+    {
+      "label": "calibration_single_alpha_2.5_4_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061023
+    },
+    {
+      "label": "calibration_single_alpha_2.5_4_4_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061024
+    },
+    {
+      "label": "calibration_single_alpha_2.5_4_4_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061025
+    },
+    {
+      "label": "calibration_single_alpha_2.5_4_4_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061026
+    },
+    {
+      "label": "calibration_single_alpha_5.486_0_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061027
+    },
+    {
+      "label": "calibration_single_alpha_5.486_0_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061028
+    },
+    {
+      "label": "calibration_single_alpha_5.486_0_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061029
+    },
+    {
+      "label": "calibration_single_alpha_5.486_4_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061030
+    },
+    {
+      "label": "calibration_single_alpha_5.486_4_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061031
+    },
+    {
+      "label": "calibration_single_alpha_5.486_4_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061032
+    },
+    {
+      "label": "calibration_single_alpha_5.486_4_4_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061033
+    },
+    {
+      "label": "calibration_single_alpha_5.486_4_4_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061034
+    },
+    {
+      "label": "calibration_single_alpha_5.486_4_4_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061035
+    },
+    {
+      "label": "calibration_single_alpha_8_0_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061036
+    },
+    {
+      "label": "calibration_single_alpha_8_0_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061037
+    },
+    {
+      "label": "calibration_single_alpha_8_0_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061038
+    },
+    {
+      "label": "calibration_single_alpha_8_4_0_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061039
+    },
+    {
+      "label": "calibration_single_alpha_8_4_0_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061040
+    },
+    {
+      "label": "calibration_single_alpha_8_4_0_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061041
+    },
+    {
+      "label": "calibration_single_alpha_8_4_4_00",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061042
+    },
+    {
+      "label": "calibration_single_alpha_8_4_4_01",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061043
+    },
+    {
+      "label": "calibration_single_alpha_8_4_4_02",
+      "role": "calibration_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061044
+    },
+    {
+      "label": "calibration_single_gamma_0.1_0_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061045
+    },
+    {
+      "label": "calibration_single_gamma_0.1_0_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061046
+    },
+    {
+      "label": "calibration_single_gamma_0.1_0_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061047
+    },
+    {
+      "label": "calibration_single_gamma_0.1_0_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061048
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061049
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061050
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061051
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061052
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_4_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061053
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_4_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061054
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_4_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061055
+    },
+    {
+      "label": "calibration_single_gamma_0.1_4_4_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061056
+    },
+    {
+      "label": "calibration_single_gamma_0.2_0_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061057
+    },
+    {
+      "label": "calibration_single_gamma_0.2_0_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061058
+    },
+    {
+      "label": "calibration_single_gamma_0.2_0_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061059
+    },
+    {
+      "label": "calibration_single_gamma_0.2_0_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061060
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061061
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061062
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061063
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061064
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_4_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061065
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_4_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061066
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_4_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061067
+    },
+    {
+      "label": "calibration_single_gamma_0.2_4_4_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061068
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_0_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061069
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_0_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061070
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_0_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061071
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_0_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061072
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061073
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061074
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061075
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061076
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_4_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061077
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_4_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061078
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_4_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061079
+    },
+    {
+      "label": "calibration_single_gamma_0.661657_4_4_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061080
+    },
+    {
+      "label": "calibration_single_gamma_1.5_0_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061081
+    },
+    {
+      "label": "calibration_single_gamma_1.5_0_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061082
+    },
+    {
+      "label": "calibration_single_gamma_1.5_0_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061083
+    },
+    {
+      "label": "calibration_single_gamma_1.5_0_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061084
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_0_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061085
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_0_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061086
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_0_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061087
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_0_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061088
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_4_00",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061089
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_4_01",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061090
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_4_02",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061091
+    },
+    {
+      "label": "calibration_single_gamma_1.5_4_4_03",
+      "role": "calibration_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061092
+    },
+    {
+      "label": "validation_single_alpha_1.5_0_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061093
+    },
+    {
+      "label": "validation_single_alpha_1.5_4_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061094
+    },
+    {
+      "label": "validation_single_alpha_1.5_4_4_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061095
+    },
+    {
+      "label": "validation_single_alpha_1.8_0_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061096
+    },
+    {
+      "label": "validation_single_alpha_1.8_4_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061097
+    },
+    {
+      "label": "validation_single_alpha_1.8_4_4_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061098
+    },
+    {
+      "label": "validation_single_alpha_2.5_0_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061099
+    },
+    {
+      "label": "validation_single_alpha_2.5_4_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061100
+    },
+    {
+      "label": "validation_single_alpha_2.5_4_4_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061101
+    },
+    {
+      "label": "validation_single_alpha_5.486_0_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061102
+    },
+    {
+      "label": "validation_single_alpha_5.486_4_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061103
+    },
+    {
+      "label": "validation_single_alpha_5.486_4_4_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061104
+    },
+    {
+      "label": "validation_single_alpha_8_0_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061105
+    },
+    {
+      "label": "validation_single_alpha_8_4_0_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061106
+    },
+    {
+      "label": "validation_single_alpha_8_4_4_00",
+      "role": "validation_single",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061107
+    },
+    {
+      "label": "validation_single_gamma_0.1_0_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061108
+    },
+    {
+      "label": "validation_single_gamma_0.1_4_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061109
+    },
+    {
+      "label": "validation_single_gamma_0.1_4_4_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.1,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061110
+    },
+    {
+      "label": "validation_single_gamma_0.2_0_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061111
+    },
+    {
+      "label": "validation_single_gamma_0.2_4_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061112
+    },
+    {
+      "label": "validation_single_gamma_0.2_4_4_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.2,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061113
+    },
+    {
+      "label": "validation_single_gamma_0.661657_0_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061114
+    },
+    {
+      "label": "validation_single_gamma_0.661657_4_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061115
+    },
+    {
+      "label": "validation_single_gamma_0.661657_4_4_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061116
+    },
+    {
+      "label": "validation_single_gamma_1.5_0_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        0,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061117
+    },
+    {
+      "label": "validation_single_gamma_1.5_4_0_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        0,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061118
+    },
+    {
+      "label": "validation_single_gamma_1.5_4_4_00",
+      "role": "validation_single",
+      "particle": "gamma",
+      "energy_MeV": 1.5,
+      "position_mm": [
+        4,
+        4,
+        0
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061119
+    },
+    {
+      "label": "calibration_history_alpha_alpha_30_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5030.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061120
+    },
+    {
+      "label": "calibration_history_alpha_alpha_30_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5030.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061121
+    },
+    {
+      "label": "calibration_history_alpha_gamma_30_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5030.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061122
+    },
+    {
+      "label": "calibration_history_alpha_gamma_30_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5030.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061123
+    },
+    {
+      "label": "calibration_history_gamma_alpha_30_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5030.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061124
+    },
+    {
+      "label": "calibration_history_gamma_gamma_30_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5030.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061125
+    },
+    {
+      "label": "calibration_history_alpha_alpha_30_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5030.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061126
+    },
+    {
+      "label": "calibration_history_alpha_alpha_30_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5030.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061127
+    },
+    {
+      "label": "calibration_history_alpha_gamma_30_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5030.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061128
+    },
+    {
+      "label": "calibration_history_alpha_gamma_30_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5030.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061129
+    },
+    {
+      "label": "calibration_history_gamma_alpha_30_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5030.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061130
+    },
+    {
+      "label": "calibration_history_gamma_gamma_30_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 30.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5030.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061131
+    },
+    {
+      "label": "calibration_history_alpha_alpha_100_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5100.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061132
+    },
+    {
+      "label": "calibration_history_alpha_alpha_100_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5100.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061133
+    },
+    {
+      "label": "calibration_history_alpha_gamma_100_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5100.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061134
+    },
+    {
+      "label": "calibration_history_alpha_gamma_100_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5100.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061135
+    },
+    {
+      "label": "calibration_history_gamma_alpha_100_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5100.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061136
+    },
+    {
+      "label": "calibration_history_gamma_gamma_100_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5100.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061137
+    },
+    {
+      "label": "calibration_history_alpha_alpha_100_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5100.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061138
+    },
+    {
+      "label": "calibration_history_alpha_alpha_100_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5100.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061139
+    },
+    {
+      "label": "calibration_history_alpha_gamma_100_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5100.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061140
+    },
+    {
+      "label": "calibration_history_alpha_gamma_100_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5100.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061141
+    },
+    {
+      "label": "calibration_history_gamma_alpha_100_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5100.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061142
+    },
+    {
+      "label": "calibration_history_gamma_gamma_100_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 100.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5100.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061143
+    },
+    {
+      "label": "calibration_history_alpha_alpha_300_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5300.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061144
+    },
+    {
+      "label": "calibration_history_alpha_alpha_300_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5300.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061145
+    },
+    {
+      "label": "calibration_history_alpha_gamma_300_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5300.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061146
+    },
+    {
+      "label": "calibration_history_alpha_gamma_300_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5300.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061147
+    },
+    {
+      "label": "calibration_history_gamma_alpha_300_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5300.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061148
+    },
+    {
+      "label": "calibration_history_gamma_gamma_300_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5300.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061149
+    },
+    {
+      "label": "calibration_history_alpha_alpha_300_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5300.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061150
+    },
+    {
+      "label": "calibration_history_alpha_alpha_300_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5300.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061151
+    },
+    {
+      "label": "calibration_history_alpha_gamma_300_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5300.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061152
+    },
+    {
+      "label": "calibration_history_alpha_gamma_300_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5300.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061153
+    },
+    {
+      "label": "calibration_history_gamma_alpha_300_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5300.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061154
+    },
+    {
+      "label": "calibration_history_gamma_gamma_300_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 300.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5300.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061155
+    },
+    {
+      "label": "calibration_history_alpha_alpha_1000_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 6000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061156
+    },
+    {
+      "label": "calibration_history_alpha_alpha_1000_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 6000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061157
+    },
+    {
+      "label": "calibration_history_alpha_gamma_1000_0_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 6000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061158
+    },
+    {
+      "label": "calibration_history_alpha_gamma_1000_0_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 6000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061159
+    },
+    {
+      "label": "calibration_history_gamma_alpha_1000_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 6000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061160
+    },
+    {
+      "label": "calibration_history_gamma_gamma_1000_0_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 6000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061161
+    },
+    {
+      "label": "calibration_history_alpha_alpha_1000_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 6000.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061162
+    },
+    {
+      "label": "calibration_history_alpha_alpha_1000_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 6000.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061163
+    },
+    {
+      "label": "calibration_history_alpha_gamma_1000_4_00",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 6000.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061164
+    },
+    {
+      "label": "calibration_history_alpha_gamma_1000_4_01",
+      "role": "calibration_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 6000.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061165
+    },
+    {
+      "label": "calibration_history_gamma_alpha_1000_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 6000.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061166
+    },
+    {
+      "label": "calibration_history_gamma_gamma_1000_4_00",
+      "role": "calibration_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 1000.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 6000.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061167
+    },
+    {
+      "label": "validation_history_alpha_alpha_60_0_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5060.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061168
+    },
+    {
+      "label": "validation_history_alpha_gamma_60_0_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5060.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061169
+    },
+    {
+      "label": "validation_history_gamma_alpha_60_0_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5060.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061170
+    },
+    {
+      "label": "validation_history_gamma_gamma_60_0_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5060.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061171
+    },
+    {
+      "label": "validation_history_alpha_alpha_60_4_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5060.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061172
+    },
+    {
+      "label": "validation_history_alpha_gamma_60_4_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5060.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061173
+    },
+    {
+      "label": "validation_history_gamma_alpha_60_4_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5060.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061174
+    },
+    {
+      "label": "validation_history_gamma_gamma_60_4_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 60.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5060.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061175
+    },
+    {
+      "label": "validation_history_alpha_alpha_200_0_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5200.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061176
+    },
+    {
+      "label": "validation_history_alpha_gamma_200_0_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5200.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061177
+    },
+    {
+      "label": "validation_history_gamma_alpha_200_0_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5200.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061178
+    },
+    {
+      "label": "validation_history_gamma_gamma_200_0_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5200.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061179
+    },
+    {
+      "label": "validation_history_alpha_alpha_200_4_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5200.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061180
+    },
+    {
+      "label": "validation_history_alpha_gamma_200_4_00",
+      "role": "validation_history",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "alpha",
+          "energy_MeV": 5.486,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5200.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061181
+    },
+    {
+      "label": "validation_history_gamma_alpha_200_4_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "alpha",
+          "energy_MeV": 1.8,
+          "time_ns": 5200.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061182
+    },
+    {
+      "label": "validation_history_gamma_gamma_200_4_00",
+      "role": "validation_history",
+      "particle": "gamma",
+      "energy_MeV": 0.661657,
+      "gap_ns": 200.0,
+      "schedule": [
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.661657,
+          "time_ns": 5000.0,
+          "position_mm": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "particle": "gamma",
+          "energy_MeV": 0.2,
+          "time_ns": 5200.0,
+          "position_mm": [
+            4,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "gamma_model": "brems",
+      "rate_hz": 0,
+      "gamma_rate_hz": 0,
+      "seed": 261061183
+    }
+  ],
+  "pilot_validation_sha256": "61df24af1b7aa1774418e604291429c1f03f01af4e0a8e35cc15e79b821435f5",
+  "analysis_choices": [
+    "expanded mean calibration with unchanged V3 algorithm/noise",
+    "charge/history-conditioned shape with 0.5 and 1 residual-RMS scales"
+  ],
+  "history_feature": "Mean observed pre-onset voltage in [-24,-4) ns; unknown position is never a fit input",
+  "selection": "Equal-class/equal-condition full F1 on four disclosed old development windows; isolated/controlled validation separate",
+  "test_plan": "16 fresh mixed windows (4 per gamma/rate condition) after freezing model and parameters",
+  "new_physics": false
+}

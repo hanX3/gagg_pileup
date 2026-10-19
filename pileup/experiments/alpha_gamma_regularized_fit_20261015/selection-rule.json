@@ -1,0 +1,15 @@
+{
+  "penalties": [
+    3.0,
+    8.0
+  ],
+  "fit_stride": 2,
+  "rule": "Select maximum mean per-class full-recovery F1 on four independent validation_mixed windows; tie choose larger penalty. Full-recovery F1 = 2*correct_time_type_charge / (truth_targets + reported_predictions_of_class). Empty-denominator groups omitted. validation_single serves separate safety/diagnostic evidence; test_mixed remains unopened until frozen.",
+  "report_threshold_pe": 500.0,
+  "time_tolerance_ns": 10.0,
+  "charge_tolerance": 0.2,
+  "calibration_roles": [
+    "calibration"
+  ],
+  "test_tuning": false
+}

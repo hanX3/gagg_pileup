@@ -1,0 +1,18 @@
+{
+  "files": {
+    "pileup/analysis/alpha_gamma_profile_report.py": "354746c38891b356f63002c7e78abf3aeb302196f0ac9c08780cf98f988f2b13",
+    "jupyter/run_records/alpha_gamma_profile_fit_20261016/final_checks.py": "2fe769bc44cada5c9914fa2deb96efad8014a96ad1d035d738fec3ec1242aa84",
+    "jupyter/run_records/alpha_gamma_profile_fit_20261016/freeze_and_prepare.py": "5d6c98fae6e2fc18c5f23b51b5c2a2bfe89bd3685f985cf5cfded971cac33836",
+    "jupyter/run_records/alpha_gamma_profile_fit_20261016/run_controls.py": "3f29a0c4c0e507a192fc2666c2a1bd475f3a96846056223f276e1e362f98cf86",
+    "jupyter/run_records/alpha_gamma_profile_fit_20261016/update_notebooks.py": "eb4f9699275d671b94d0725eebaa7e3680d53e6b66c9e0539e29f944ce5be177",
+    "jupyter/run_records/alpha_gamma_profile_fit_20261016/validate_results.py": "644b91860bb13815e554d45c611abcf1e44d65033b5547ebeca4a8957397af10",
+    "jupyter/run_records/alpha_gamma_profile_fit_20261016/write_documents.py": "5c03e60eb5eca6970cbb56b9df92cfc087df82db877e4ab772df2f99c7e0473e",
+    "jupyter/run_records/alpha_gamma_profile_fit_20261016/write_optimizer_diagnostic.py": "5ee79fc516701968a449b9d0413b8d2b5b169bca2867ad4a834be9f63c6a20c3",
+    "pileup/experiments/alpha_gamma_profile_fit_20261016/run_test_pipeline.py": "71ac4f0f93012c69962279a46a5918d4de78639aaf36236d63680e149ce04307",
+    "pileup/experiments/alpha_gamma_profile_fit_20261016/README.md": "5b29eae515e4bcaa31fec0e788db67b84607f1a7495dc1208eb6e8e83df76a13",
+    "docs/literature-use.md": "223567bef0c755fec21e2dbc4b1d4345c8bf829b1974854ec3e8a14ac5610198",
+    "jupyter/artifacts/alpha_gamma_profile_fit_20261016/optimizer-status.json": "8016a0f19b4a4c768fb4158d4b61ef7ac6b5084c752e3067d1eea56c249cf0f5"
+  },
+  "status": "Reporting and validation only; frozen scientific code not modified",
+  "assessment_sha256": "a6cc8e6688debe6b19e9075cc52eed91b9e5e08435d67b84cc0cd1e93b5ffe08"
+}

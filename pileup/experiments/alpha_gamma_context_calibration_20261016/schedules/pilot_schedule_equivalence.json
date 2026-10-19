@@ -1,0 +1,19 @@
+{
+  "primaries": [
+    {
+      "particle": "alpha",
+      "energy_MeV": 1.8,
+      "time_ns": 5000.0,
+      "position_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "direction": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  ]
+}

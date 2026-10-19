@@ -1,0 +1,30 @@
+{
+  "created": "2026-10-16T13:02:29.182893+08:00",
+  "files": {
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/check_pilot_and_plan.py": "f5faf4b2645cbf2e5d9e9d9f7fef0e96a8f73b2055223999322797b4defa3f12",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/describe_calibration.py": "b12af1f70020e399c581119e3db9f4046f7856d2f1430369a3ad8ee1ecf5dc1b",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/final_checks.py": "b4e455e63e1462f3a914cf0be6c9c8dd5464525ada2a5bb49a337248b1a2bd3a",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/freeze_fit_and_tests.py": "91da8b985e4c789a26748a1ad57c7fe63fd5cb3f3b9b28851534b8650c9118af",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/install_binary.py": "c77bd62653ab5ad78437e16ece23548788196151e2d7edbacc64a8507d592cc0",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/pool_calibration.py": "09e0d1e238504b1e2fb574ddaa1a8440dc260b63c7511effe52e8b8b1f0b4965",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/postprocess_when_ready.py": "dd5ed7e92554c97fb98cee2deda21890f415bc132d8ad17d03157a395e210b7e",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/prepare.py": "5646460200d30935051973561a5e266111ba7b25d71c6278c89f2b57621aa78d",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/run_calibration_analysis.py": "d625db6ead21df034ee2fb4b959c42cca6a4777d09e3cd17b72c7c9bd99c7422",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/run_calibration_analysis_initial.py": "c9a74e8365f6c226f191a3663580ae823e8a458e6d53d9c96a1fa96227dd88e8",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/run_frozen_test.py": "6cbdebe73e6c65625ac8b9ef0c1e2a6b383685898a44a24fe785672ba590c2ef",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/run_frozen_unit_tests.py": "1c2a072bf1ea74ed000f2386c7141d6e9f44ac9c7a5f61f5290cfa0f8dbc6cfc",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/run_native_calibration.py": "8cc338ff9b05b1bfb7c88544c6f351215624fdd88522d5f4586e9d3f9c007675",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/run_native_validation.py": "d947539e7af317de90dab9777a6765eae2db475aedcf9ec9ef5793443bdf0e66",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/snapshot_development.py": "0c8065f2aaf8e6139f85ed0beea24b4373628ae94685c38fb342dc239b65c634",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/snapshot_development_v2.py": "f1492fde431fade3456a86ee83f865026c9ece52fb7dc412787baaa6b3b0c8e7",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/update_notebooks.py": "35edbd5faddb798bc4fa420c6536b0344512c33dfc96db30ec107bcfc4be1772",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/validate_results.py": "6d72f1b9ecf867b23b75a37b81fbcf6fd6aea7dce100386861c22ebaa2ed9755",
+    "jupyter/run_records/alpha_gamma_context_calibration_20261016/write_documents.py": "3082254257e71d544592f8c539eea7f60f3a5a17c64e2556be599034a8325288",
+    "pileup/experiments/alpha_gamma_context_calibration_20261016/postprocessing-source/pileup/analysis/alpha_gamma_context_diagnostics.py": "230a59ad47ec7c93478f9915d8aa9ce9302616121ccee14184704a47dd3bf504",
+    "pileup/experiments/alpha_gamma_context_calibration_20261016/run_diagnostics.py": "39c2b1bb8b56b0e8e838757f2d5f15cbce6afd861187818da8a49e36cc0cb125",
+    "pileup/experiments/alpha_gamma_context_calibration_20261016/README.md": "22ee245a442eb312a9977861cf97cad909d3e69597a1021999ade74d8e7ad470",
+    "docs/literature-use.md": "f5ab71025f9753a2777eb3bd2eb67dbe904ec6ffe3d864e4f304c5fdb842e6d2"
+  },
+  "libraries_read_only": true,
+  "remote_uploaded": false
+}

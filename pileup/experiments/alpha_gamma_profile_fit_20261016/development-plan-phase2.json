@@ -1,0 +1,17 @@
+{
+  "created": "2026-10-16T10:06:48.152403+08:00",
+  "reason": "Unconstrained global profiling lowered residual but reduced alpha recovery; compare retained pilot times and a readout covariance",
+  "variants": [
+    "profile_ar1_fixed",
+    "profile_shot_fixed",
+    "profile_shot"
+  ],
+  "training_and_validation": "Same disclosed 4 development windows; no new test opened",
+  "source_sha256": {
+    "alpha_gamma_physical_oracle.py": "ab07217c4500bf4dd9602dcd71ce24ce2055f913b3920ab6ff3f960f999c1539",
+    "alpha_gamma_profile_fit.py": "272c685641f7cec66e54d04092b9c16db2081afba7f4fb7a449198ad6f7f5aed",
+    "alpha_gamma_profile_study.py": "96e3d11aeed373004a0082f619208bdf790baa8dab418d208c6d1370c5f4900f",
+    "alpha_gamma_shape_diagnostic.py": "8bf289be7b118234c1cf1616810564a28768afd6ced3fb0b7da943083811998a",
+    "alpha_gamma_shot_covariance.py": "9a1dcc5dfba5297a7f85698a5970996edbf7ab14774631a2d72543e19611f6bc"
+  }
+}

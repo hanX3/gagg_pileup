@@ -1,0 +1,14 @@
+{
+  "created": "2026-10-16T10:36:46.417882+08:00",
+  "source_sha256": "71ac4f0f93012c69962279a46a5918d4de78639aaf36236d63680e149ce04307",
+  "selected_config": {
+    "sigma_scale": 0.5,
+    "fraction_bound_sigma": 3.0,
+    "pilot_charge_floor_pe": 250.0,
+    "passes": 3,
+    "pair_distance_ns": 250.0,
+    "fit_stride": 2
+  },
+  "calibration_sha256": "c43b159200363399e69a867c75232ac2edb9524e7ba84e821533add7782ff966",
+  "truth_opened_after_both_fits": true
+}

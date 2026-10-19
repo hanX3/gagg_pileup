@@ -1,0 +1,11 @@
+{
+  "created": "2026-10-16T12:00:32.043110+08:00",
+  "reason": "Only 8 of 48 new isolated gamma injections have realized Q >= 50 pe; the predeclared fitter requires at least 12 usable isolated examples per class.",
+  "action": "Pool all 56 previous independently labelled calibration windows, including zeros, with all new calibration. No validation or test labels used.",
+  "legacy_experiment": "pileup/experiments/alpha_gamma_regularized_fit_20261015",
+  "legacy_role": "calibration",
+  "legacy_usable_alpha": 16,
+  "legacy_usable_gamma": 13,
+  "selection_rule_unchanged": true,
+  "fresh_tests_generated": false
+}

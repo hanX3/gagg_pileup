@@ -1,0 +1,382 @@
+diff --git a/README.md b/README.md
+index b63086b..095a3df 100644
+--- a/README.md
++++ b/README.md
+@@ -9,7 +9,7 @@ Geant4 保留到达光子，并可通过 `G4VDigitizerModule` / `G4DigiManager`
+ | 目录 | 内容 |
+ | --- | --- |
+ | [g4](g4/) | Geant4 工程，包含源码、宏、分析脚本和结果图。 |
+-| [pileup](pileup/) | 纯 α 计数率实验：配置、可独立重跑的源码快照、运行器和数据检查。 |
++| [pileup](pileup/) | 纯 α 与 α/γ 混合计数率实验：配置、可独立重跑的源码快照、运行器和数据检查。 |
+ | [analysis](analysis/) | 单粒子 SiPM 分析、孤立 α/γ 波形拟合和拟合窗口扫描。 |
+ | [tools](tools/) | 各系统独立 Python 环境、Notebook 启动及本机内核注册工具。 |
+ | [11BH_alpha_spectra](11BH_alpha_spectra/) | 简化 p–¹¹B 单 α 能谱、生成脚本、CSV 和检查图。 |
+@@ -80,6 +80,20 @@ cd g4/build
+ <a id="ml-multimethod-20261014"></a>
+ 同日扩展为[五种流程的共同测试](pileup/experiments/alpha_ml_multimethod_20261014/README.md)：新增U-Net、局部Transformer及CNN＋物理拟合，保留原CNN与盲拟合；两网络各训练2400步，22个新独立窗口覆盖八档源率，原17窗作回归。算法参数仅由验证集选择，完整电压输入和足够动态范围前提保持。不同率的改善并不一致，受控近邻、幅度外推失败及高密度偶然匹配均原样记录；详见[独立Notebook第二轮](jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014)和[采用记录L21](docs/literature-use.md#ml-multimethod-20261014)。
+ 
++<a id="alpha-gamma-mixed-20261015"></a>
++2026-10-15 新增 [α/轫致辐射 γ](pileup/experiments/alpha_gamma_brems_fit_20261015/README.md) 与 [α/661.657 keV γ](pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md) 的盲拟合：α 注入 1/10 MHz、γ 均为 10 MHz，各条件 8 个独立原生共享微胞窗口。拟合未知脉冲数、时刻、电荷和类型，保持完整含噪电压输入；另有147次空/单/双脉冲控制。以下恢复要求真值Q≥500 p.e.、时间误差≤10 ns、类型正确及电荷误差≤20%，不是能量分辨率。
++
++| γ 来源 | α 注入率 / MHz | α 完整恢复 | γ 完整恢复 |
++| --- | ---: | ---: | ---: |
++| 轫致辐射谱 | 1 | 44/64（68.8%） | 2/30（6.7%） |
++| 轫致辐射谱 | 10 | 270/571（47.3%） | 3/42（7.1%） |
++| 661.657 keV | 1 | 49/58（84.5%） | 29/32（90.6%） |
++| 661.657 keV | 10 | 282/605（46.6%） | 12/31（38.7%） |
++
++详细的检出/分型、α样本纯度、漏检及误拆分/误合并、条件电荷误差和偶然匹配对照见本地 [新 Notebook](jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)。固定模板仅来自两条旧孤立示例，结果受阈下信号和模型失配影响，不能推出通用最大计数率。采用依据与待验证事项见 [L22](docs/literature-use.md#alpha-gamma-mixed-20261015)。
++
++2026-10-15–16 实施 [独立标定与稀疏加权拟合](pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md)：另生成56个标定、18个单粒子开发检查、4个混合验证及8个冻结后测试窗，加入电荷相关模板、固定相关噪声权重、稀疏选择与无L1幅度重拟合，并保留弱分量。相同新测试窗中，α源10 MHz时，α完整恢复在轫致辐射背景下由81/153增至97/153，在单能γ背景下由69/155增至91/155；α源1 MHz时两种背景均退步，γ未稳定改善。额外预测53→19、漏检60→61、误合并标志24→31，不能称为全面提高。实际结果、失败控制、纯度和条件电荷误差见 [Notebook第13节](jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)及 [L24](docs/literature-use.md#alpha-gamma-regularized-20261015)；每条件仅两窗，尚无占用依赖标定、沉积能谱或实物验证。
++
+ ## 分析已有数据
+ 
+ Python 分析及 Notebook 依赖见 [requirements-analysis.txt](requirements-analysis.txt)，包括 numpy、matplotlib、uproot、awkward、pandas、scipy 和 Notebook 执行组件。[requirements-analysis.lock.txt](requirements-analysis.lock.txt) 固定已验证的依赖版本；各系统分别安装对应的二进制包，不共享虚拟环境。环境工具保存在随仓库分发的 [tools](tools/) 中；`jupyter/` 下的研究笔记、图像和运行记录仍只在本地维护，GitHub 克隆不包含这些文件。
+diff --git a/docs/literature-use.md b/docs/literature-use.md
+index a979da2..dd0183e 100644
+--- a/docs/literature-use.md
++++ b/docs/literature-use.md
+@@ -318,12 +318,99 @@
+ 
+ **证据和边界**：[同一本Notebook第11–14节](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015)保存条件电荷/时间P16/50/84、全部漏检/额外预测/合并拆分、同目标配对、原生失败图及逐窗敏感性；[检查](../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/validation.json)覆盖24低率窗五方法原评分、哈希和计数分解。快照及重跑见[后续实验](../pileup/experiments/alpha_ml_low_rate_20261015/README.md)。没有新增论文结论、改变Regadío待审核或Wang第549项的限定范围；共享库只读，已有文献器件/采样/噪声条件不能直接移植为GAGG低率性能。尚未沉积能量标定或实物泛化；本轮未模拟低于0.1 MHz。
+ 
++<a id="alpha-gamma-mixed-20261015"></a>
++### L22：2026-10-15——α/γ 原生混合波形的拟合先导
++
++**已有依据与审核状态**：只读复用 L14–L16 的 Kobayashi 2012（GAGG/PMT 平均 α/γ 形状）、Marrone 2002（液闪/PMT 形状拟合、实测 γ 波形软件叠加）及相关 SiPM 卷积笔记，完整出处、页码与适用条件见 [既有采用记录](#psd-fit-use-20261013)。共享库的 AI 草稿待人工审核状态保持。没有文献证据可把这些装置下的性能直接视为当前 GAGG/S13360 混合逐事件准确度。
++
++**本项目假设与实现**：两条旧孤立模拟电压固定 α/γ 慢分量权重 0.7414998/0.2047319，快/慢常数95/351 ns，加同一读出核；未知K、时刻、电荷、类型，双模板反卷积给候选，非负最小二乘及近邻离散类型/连续时刻联合搜索。算法在理想空/单/双脉冲控制中修正，正式标签只作评价。有限局部搜索不保证全局最优。另存的矩阵缩减加速试验未达到完整流程的严格数值一致性容差，没有混入正式统计。
++
++**实际输入**：两个独立冻结实验，各自16个新正式20 μs窗，α有效p–¹¹B源注入1/10 MHz、γ注入10 MHz，中央[5,15) μs，每条件8窗。γ分别为原有轫致辐射exp(−E/100 keV)/E（10 keV–5 MeV）与661.657 keV单能源；后者仅在独立快照改写C12源槽三条能量和响应标签，不是C12俘获谱。S13360-6050PE v2，完整窗共享微胞状态，2 ns采样、0.5 ns孔径、0.1 mV电子噪声。使用完整analog电压，遵循动态范围充足前提。
++
++**本次计算结果（不是文献性能）**：完整恢复定义为真值Q≥500 p.e.、一对一类型无关时间匹配≤10 ns、类型正确、电荷误差≤20%。γ注入率均为10 MHz。
++
++| γ 来源 | α 注入率 / MHz | α 完整恢复 | γ 完整恢复 |
++| --- | ---: | ---: | ---: |
++| 轫致辐射谱 | 1 | 44/64（68.8%） | 2/30（6.7%） |
++| 轫致辐射谱 | 10 | 270/571（47.3%） | 3/42（7.1%） |
++| 661.657 keV | 1 | 49/58（84.5%） | 29/32（90.6%） |
++| 661.657 keV | 10 | 282/605（46.6%） | 12/31（38.7%） |
++
++同时保存检出率、条件分型率、选择纯度、条件电荷/时间误差、未匹配候选、邻接图误拆分/误合并及按独立完整窗bootstrap区间。147次理想控制的孤立18/18成功；双脉冲中的逐脉冲恢复在10 ns为32/36，20–1000 ns各36/36（每档18个双脉冲波形），严格同时受算法8 ns最小间隔限制；不含光子和微胞涨落，不能视为真实分辨时间。五个时间平移对照用于检查高密度偶然匹配，不作为p值或直接效率修正。
++
++**失配诊断与限制**：不计入正式统计的轫致辐射预检查窗中，用真值扣除阈下γ的线性电压，保留实际共享恢复电荷、暗链与噪声，α完整恢复6/10→9/10、γ仍1/4。该单窗辅助诊断支持弱γ干扰α，但不能解释全部分型错误，也不是盲处理或降低γ率的重模拟。电荷是实际单胞等效量，未建立两类沉积能量条件标定，不能称为能量分辨率或能谱已恢复。样本量与模板标定均有限。
++
++**可追溯记录**：[新Notebook](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)、[轫致辐射实验](../pileup/experiments/alpha_gamma_brems_fit_20261015/README.md)、[单能γ实验](../pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md)。保留36个新ROOT，两个写入失败原文件同种子重放后排除；正式分母仍32窗。全部有效文件进行各树/分支读取、宏/种子/哈希核验。未修改共享文献库。
++
++**待验证**：扩大独立窗；建立同器件、不同沉积能量和位置/微胞占用下的独立模板与条件电荷能量标定；扫描α/γ率比；比较连续慢分量与弱背景模型。若需新文献精读或入库，仍在papers项目处理。
++
++<a id="alpha-gamma-failure-diagnosis-20261015"></a>
++**2026-10-15 失败机制补查与改进方向**：正式32窗中，α源1 MHz时，轫致辐射/单能γ的非零电荷率分别8.600/0.650 MHz，而不是相同的10 MHz探测率；轫致辐射30个过阈值γ中25个已时间匹配，其中22个被判α。其阈下γ占该类总电荷78.1%（α源10 MHz时70.0%），最终只保留大分量的模型存在明显解释缺口。新真值辅助诊断只用两条预检查波形：给定全部非零粒子的时刻与类型、保留小分量并从原电压拟合幅度，轫致辐射窗α/γ完整恢复由盲拟合6/10、1/4变为10/10、3/4。该结果使用真值，不是盲恢复成绩或严格物理上限。放松类型为同一时刻的双模板连续系数后，残差2.821→2.645 mV，α却变为5/10，支持“残差更小不保证分型正确”的本次计算结论。原来的弱γ真值扣除实验仍单独保留。
++
++改进顺序为：分开内部建模阈值与报告阈值，联合描述弱γ并约束复杂度；使用独立孤立样本标定模板分布和信号相关噪声；再比较混合样本CNN初值＋物理联合拟合。保持500 p.e./10 ns/20%评价，同时检查纯度、漏检、假候选、误拆分/合并及电荷偏差，阈值拒判须同时报告效率。此次建议为项目待验证方案，不能从辅助真值实验承诺盲算法增益。
++
++文献依据据既有精读：[Tamagawa等2015完整笔记](../../papers/sources/2015_Tamagawa_NIMA_Alpha-gamma-pulse-shape-discrimination-in-Gd3Al2Ga3O12-GAGG-Ce3%2B-crystal-scintillator-using-shape-indicator.md)，PDF2–4，GAGG/R6233K PMT、500 MHz/2048 ns、选定能窗的平均模板SI及低能误判边界，[出版社/DOI](https://doi.org/10.1016/j.nima.2015.05.052)；[Marrone等2002完整笔记](../../papers/sources/2002_Marrone_NIMA_Pulse-shape-analysis-of-liquid-scintillators-for-neutron-studies.md)，PDF3–4、6–7，NE213/C6D6液闪/PMT标定形状拟合及堆积，[出版社/DOI](https://doi.org/10.1016/S0168-9002(02)01063-X)。本轮核对出版社题录与DOI，未重新全文或PDF精读，AI待审核状态及已有局部采用意见保持。以上文献没有证明当前GAGG/S13360多MHz原生混合流的性能。
++
++详细过程：[现有Notebook第10节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-failure-diagnosis-20261015)；[诊断结果](../jupyter/artifacts/alpha_gamma_fit_20261015_093500/oracle_diagnostic/preflight-onset-types.json)；[可复用诊断模块](../pileup/analysis/alpha_gamma_oracle_diagnostic.py)。原有25个Notebook单元及输出保留，新段落记录实际计算与方案边界。
++
++<a id="alpha-gamma-weakfit-pilot-20261015"></a>
++**随后实际尝试的盲改进及负结果**：新增[内部门槛与报告门槛分离实现](../pileup/analysis/alpha_gamma_weakfit.py)，弱分量保留在完整电压模型中，输出/评价仍为500 p.e./10 ns/20%。拟合只输入波形和固定标定。两条预检查窗的三次探索中，轫致辐射原始α6/10、γ1/4；内部200 p.e.变为9/10、0/4，内部100 p.e.变为5/10、1/4。单能γ原始α5/7、γ4/6；内部100 p.e.变为1/7、5/6。其γ选择纯度同时从5/5变为5/10，说明只看该类恢复增加会掩盖α泄漏。残差均降低，却未取得同时稳定改善，故不替换原基线、不扩大到32窗宣传新准确度。这些是小样本探索，不是独立性能检验。
++
++当前证据支持下一步同时做弱分量复杂度约束、独立模板/噪声标定与分型置信度，而非单独继续降低门槛。尚未实现正则背景或混合CNN。新控制确认小分量进入模型却不进入过阈值报告，5项既有混合拟合测试与3份保存模型重构检查通过。[Notebook第11节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-weakfit-pilot-20261015)保留波形、残差、效率、纯度、假候选及运行时间；[结果索引](../jupyter/artifacts/alpha_gamma_fit_20261015_093500/weakfit_pilot/summary.json)。没有修改文献结论或共享库。
++
++
++<a id="pileup-fit-optimization-literature-20261015"></a>
++### L23：2026-10-15——面向混合α/γ的拟合优化文献
++
++**问题与实际证据**：L22的三次低内部门槛盲试验降低了残差，却未稳定同时改善α/γ恢复与纯度。本次按`paper-search`只读共享库，复用完整精读笔记并定点核5篇原文；没有修改拟合器、启动新仿真或宣称准确度提高。完整题录、笔记/PDF链接、原页位置、仪器/噪声/计数率条件和优先级见[现有Notebook第12节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#pileup-fit-optimization-literature-20261015)及[证据记录](../jupyter/run_records/pileup_fit_literature_20261015/evidence.json)。
++
++**采用的方法原则与限制**：
++
++- [Zhang等2024](../../papers/sources/2024_Zhang_NIMA_Development-of-a-pile-up-pulse-recovery-algorithm-for-the-LaBr3-detector.md)，[DOI](https://doi.org/10.1016/j.nima.2024.169273)，本轮PDF3–4、实际看PDF3图2–3/§3.2：幅度相关模板及残差补峰，明确模板失配可制造假脉冲。LaBr3/PMT、500 MHz及同模板合成条件保留；当前已有残差补峰，新增重点是独立模板分布与接受准则，不直接移植10 ns/60 Mcps性能。
++- [Lopatin等2012](../../papers/sources/2012_Lopatin_IEEE_Pileup-attenuation-for-spectroscopic-signals-using-a-sparse-reconstruction.md)，5页会议论文，DOI未独立核；本轮PDF3原图/式(4)–(6)：较强LASSO选起点、较弱LASSO估能量，原式没有非负约束且式(5)条件冲突。借鉴两阶段原则；非负/分组候选、离散类型比较和NNLS减偏是本项目拟议改写，不是原文完整复现。HPGe实测谱缺完整采样/率参数，不据此给GAGG上限。
++- [Fixsen等2004](../../papers/sources/2004_Fixsen_NIMA_Pulse-estimation-in-nonlinear-detectors-with-nonstationary-noise.md)，[DOI](https://doi.org/10.1016/j.nima.2003.11.313)，本轮PDF2原图/式(1)：独立标定均值与完整协方差，逆协方差加权。仅TES非线性/非平稳噪声模型验证，不是GAGG混合恢复证据；协方差随参数变化时，完整高斯似然还需log det项，协方差正则化及共享微胞相关性须本项目验证。
++- [Luo等2018](../../papers/sources/2018_Luo_NIMA_Pulse-pile-up-identification-and-reconstruction-for-liquid-scintillator-based-neutron-detectors.md)，[DOI](https://doi.org/10.1016/j.nima.2018.03.078)，本轮PDF4文字：液闪n/γ四组合重建仅作联合类型模型先例；当前已实现近邻四组合。原判据为有符号差求和后取绝对值，可能抵消，不直接作为本项目似然；受控双脉冲结果不推广至随机高重数。
++- [Novak与Vencelj2009](../../papers/sources/2009_Novak_TNS_Gauss-Seidel-Iterative-Method-as-a-Real-Time-Pile-Up-Solver-of-Scintillation-Pulses.md)，[DOI](https://doi.org/10.1109/TNS.2009.2030725)，本轮PDF2–3文字：已知可靠时刻、固定线性形状下用局部小系统解幅度。可借鉴缓存、局部块及暖启动；不解决漏候选/错类型，求解核吞吐不当完整恢复性能。
++
++**项目下一步（待实现）**：独立原生孤立/空窗的模板与噪声标定 → 加权稀疏/复杂度候选选择 → 保留受约束弱分量并减小幅度收缩 → 类型/数量模型比较与置信度 → 局部求解加速。这个组合是项目方案，不是五篇论文共同验证的算法；保留500 p.e./10 ns/20%及完整电压口径，报告效率、纯度、漏失、误拆分/合并和电荷误差，能量分辨率另需标定。当前32窗已公开分析，新方法须使用独立标定/验证并冻结后另留测试；真值不进入盲推断。
++
++**审核及核验范围**：五篇仍为AI草稿待人工审核；global-review B23-024/B23-052的原式与同模板验证限制保留，其他论文的限定认可不转移。有限网页题录核对没有补足Lopatin的可读出版社DOI证据；未下载新论文。原页文字/图像、共享来源SHA256与验证记录保存在本地jupyter。Trigano2015和Kafaee/Goodarzi2020仅查到引文/队列线索，列为待补原件，未把书目关系当已核算法依据。共享库未写入。
++
++
++<a id="alpha-gamma-regularized-20261015"></a>
++### L24：2026-10-15–16——独立标定、稀疏加权与条件减偏的实际实现
++
++**采用范围**：落实L23中Zhang2024的幅度相关模板方向、Lopatin2012的选择/估计两阶段原则、Fixsen2004的独立均值/噪声标定；近邻四类型模型比较沿用已有实现。所有来源、原页与装置条件见[L23](#pileup-fit-optimization-literature-20261015)及其Notebook链接，五篇的AI草稿待人工审核状态不变。本轮没有新增文献结论或修改共享库，也没有使用Lopatin式(5)的歧义条件。本实现是项目改写，不是原论文完整复现，性能均为项目模拟计算。
++
++**数据与模型**：另建[冻结实验](../pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md)，56个原生孤立标定窗、18个单粒子开发检查窗、4个混合选参窗、8个冻结后新测试窗。保留两个父实验的G4物理、S13360-6050PE v2、2 ns采样/0.5 ns孔径/0.1 mV噪声与完整共享微胞历史；没有按测试改变物理参数。盲拟合只输入完整含噪电压和冻结参数，真值只在标定/评价中使用。保持用户指定的足够动态范围。
++
++**由旧值到新值**：原固定α/γ慢分量0.741500/0.204732，改为在95/351 ns基函数上的独立 `f(Q)=a+b log(Q/1000 p.e.)`；α(a,b)=(0.680950,0.032393)、γ=(0.243212,0.004669)，时延分别−1.9104/−0.3973 ns。56个入射标定事件中仅16个α与13个γ达到Q≥50 p.e.，Q覆盖1545.6–16860.2和256.9–1996.7 p.e.，范围外形状夹住而电荷不夹住。独立残差给出基线方差0.0100869 mV²、信号方差系数0.614075 mV、2 ns相关系数0.899770。中心单粒子不足以标定位置/占用依赖，模板失配也进入残差，不能把全部残差方差称作本征统计噪声。
++
++**算法与验证集选择**：标准化α/γ字典列的非负L1选候选，条件无L1 NNLS减小幅度收缩，保留弱分量，局部时间/类型与近邻四组合重拟合。候选80 p.e.，报告500 p.e.；原2 ns发现、4 ns拟合、2 ns保存模型。候选权重使用80 ns平滑电压，最终协方差由纯电压初步模型产生后固定，是可行加权最小二乘而非完整参数相关似然。λ=3/8只在4个混合验证窗选择，预声明的宏平均完整恢复F1为0.59490/0.47698，选λ=3后于2026-10-15 17:14:52 +08:00冻结，晚于此才生成测试。没有完整后验、拒判或全局最优保证；形状在每轮内固定，条件减偏不保证最终电荷严格无偏。
++
++**同一新测试样本的结果**：α源1/10 MHz，γ源均10 MHz；中央[5,15) μs，真值Q≥500 p.e.、一对一时间匹配≤10 ns、类型正确、电荷误差≤20%。电荷为实际完全恢复单胞等效量，不是沉积能量。
++
++| γ 来源 | α源 / MHz | α完整恢复：旧 → 新 | γ完整恢复：旧 → 新 |
++| --- | ---: | --- | --- |
++| 轫致辐射 | 1 | 14/16 → 11/16 | 4/14 → 3/14 |
++| 轫致辐射 | 10 | 81/153 → 97/153 | 1/11 → 1/11 |
++| 661.657 keV | 1 | 15/16 → 13/16 | 1/2 → 2/2 |
++| 661.657 keV | 10 | 69/155 → 91/155 | 1/2 → 0/2 |
++
++额外预测53→19、漏检60→61、误拆分标志0→0、误合并标志24→31。高率α改善伴随低率退步、γ不稳定，某些条件的电荷偏差/标准差变差；每条件仅2窗，单能γ每档仅2个目标，不能定义稳定效率或最大率。旧基线只替换带KKT检查的等价线性NNLS缩减，非线性方法不变；单窗与原直接NNLS回查的数量、类别、配对和恢复数一致，但不承诺所有局部搜索逐位一致。原32窗统计与本轮分开。
++
++**保留的失败**：首版权重给噪声下行涨落过高权，单粒子开发检查λ=3只有α2/8、γ1/3恢复且额外13；改后8/8、3/3、额外0，与旧基线相同。开发集已用于修正，不当独立测试。40次同模板双脉冲检查中，2/4 ns网格恢复计数相同；每网格10/20/40/80/200 ns分别为0/8、2/8、8/8、8/8、6/8，含10/20 ns漏候选与200 ns γα局部错解。该控制没有光子/微胞涨落，不能宣称40 ns实物分辨能力。
++
++**追溯与待验证**：已有Notebook[第13节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)记录全过程、纯度、完整条件误差、固定区间图和逐目标配对。86个ROOT全树/分支、宏/种子/哈希与冻结时序核验，16次测试拟合共同重评分、8个新方法模型重构、一窗只波形重放和13项检查见[验证记录](../jupyter/run_records/alpha_gamma_regularized_20261015/validation.json)。8次L1成功终止只说明满足优化器停止规则，最大投影梯度0.15813（λ=3）仍高于严格1e−5梯度容差；候选选择不是已证实的精确最优解。尚未消融各改动、完成γ位置/占用标定、分型概率校准、沉积能标或实物验证。下一步在新实验验证求解精度、受约束残差增峰、单/双模型竞争与多初值，处理控制中已见的漏候选/局部解；不得以本次已读测试再选参。
++
+ ## 新文献整理需求待办
+ 
+ 下列是后续定点核验或文献整理需求；共享库的修改在 `papers` 项目中处理。本轮未使用存在歧义的公式实现算法，因此不以重新全文精读作为启动项目响应检查的前提。
+ 
+ | 发现日期 | 当前问题与已有来源 | 缺少的公式、参数或证据 | 需回查的原文位置／新增整理内容 | 状态 |
+ | --- | --- | --- | --- | --- |
++| 2026-10-15 | L23，两阶段/迭代稀疏重建的期刊方法 | Trigano/Gildin/Sepulcre2015（DOI线索10.1109/LSP.2015.2406911）及Kafaee/Goodarzi2020（TNS67,858–862；DOI未核）的独立原文/完整笔记 | 当前只有他文引文；后者已有共享队列键Kafaee-Goodarzi-2020-TNS67-858。需要时在papers项目核同身份原件并安排精读，不由本项目修改队列 | 书目线索，未读原文；不作为已验证性能证据 |
++| 2026-10-15 | L23，模板、噪声与模型选择 | 同GAGG/SiPM的独立模板散布/协方差，弱分量复杂度、非规则增峰检验及类型不确定性 | Zhang PDF3–4、Lopatin PDF3、Fixsen PDF2已定点核；具体实现缺口与L01/L03待办合并追踪。收缩/带状协方差和减偏NNLS由项目独立验证，不冒充原文算法 | 方法设计已记录；尚无新拟合性能结果 |
+ | 2026-10-14 | L19，ML／AI pileup候选 | 未知K事件输出、分量损失／尺度／排序、GAGG训练标签与独立ROOT划分；代码／权重／数据许可与真实泛化 | 优先定点核SAEFit、Regadío U-Net及Morad实现，按需要在papers项目安排新精读；本项目另建同条件空／单／双及多事件基准 | 文献检索完成；L20/L21已实施CNN、U-Net、Transformer、CNN＋物理拟合共同模拟先导，论文完整架构及实物泛化未验证 |
+ | 2026-09-30 | L01，残差增峰与幅度相关模板 | 式 5 局部坐标；噪声权重、增峰显著性、复杂度及终止规则的完整实现 | Zhang PDF2–4、式 4–5及方法段；若原文未给出，后续按需查看作者代码并记录版本，不把自选参数当文献参数 | 待实现前定点核验；本轮采用方法方向 |
+ | 2026-09-30 | L02，模型选择与假拆分 | p 值阈值、平滑后相关噪声及拟合区间边界；合成与真实噪声差别 | Adrich PDF2–5，方法、图 6；未给出项由项目独立验证集校准 | 待核；不影响先作单脉冲失配检查 |
+diff --git a/pileup/analysis/alpha_pileup_fit.py b/pileup/analysis/alpha_pileup_fit.py
+index dc69da1..49e23f8 100644
+--- a/pileup/analysis/alpha_pileup_fit.py
++++ b/pileup/analysis/alpha_pileup_fit.py
+@@ -227,6 +227,6 @@ def score(fit, truth, gate_ns, *, tolerance_ns=10., charge_threshold_pe=500.):
+                 recovered_count=int(np.sum(abs(dq)<=.20)),missed_count=int(target.sum())-len(matched),
+                 unmatched_predictions=int(sum(bool(gate_pred[j]) and j not in used for j in range(m))),
+                 merge_flags=merge,split_flags=split,time_errors_ns=dt.tolist(),
+-                relative_charge_errors=dq.tolist(),matched_pairs=matched,
++                relative_charge_errors=dq.tolist(),matched_pairs=matched,all_matched_pairs=pairs,
+                 target_indices=np.flatnonzero(target).tolist(),tolerance_ns=tolerance_ns,
+                 duration_ns=float(gate_ns[1]-gate_ns[0]))
+diff --git a/pileup/analysis/alpha_rate_data.py b/pileup/analysis/alpha_rate_data.py
+index f9b326b..7257337 100644
+--- a/pileup/analysis/alpha_rate_data.py
++++ b/pileup/analysis/alpha_rate_data.py
+@@ -40,12 +40,25 @@ def photon_full_key(t,x,y,energy):
+     return key
+ 
+ 
+-def export_window(root_path,output, *, expected=None):
++def export_window(root_path,output, *, expected=None, allowed_particles=('alpha',)):
+     output=Path(output); output.mkdir(parents=True,exist_ok=True)
+     root_path=Path(root_path); stem=root_path.stem
+     for name in ('waveforms','truth','metadata'):(output/name).mkdir(exist_ok=True)
+     if (output/'metadata'/f'{stem}.json').exists():
+-        return json.loads((output/'metadata'/f'{stem}.json').read_text())
++        cached=json.loads((output/'metadata'/f'{stem}.json').read_text())
++        with np.load(output/'truth'/f'{stem}.npz') as truth:
++            if 'particle_name' in truth:
++                unexpected=set(np.unique(truth['particle_name']))-set(allowed_particles)
++                if unexpected:raise ValueError(f'Unexpected cached primary particles: {unexpected}')
++            elif set(allowed_particles)!={'alpha'}:
++                raise ValueError('Legacy export has no particle labels; use a new mixed-export directory')
++        if expected:
++            assert cached['seed']==expected['seed'] and cached['rate_hz']==expected['rate_hz']
++            if 'root_sha256' in expected:assert cached['root_sha256']==expected['root_sha256']
++            if 'gamma_rate_hz' in expected:
++                slot='brems' if expected['gamma_model']=='brems' else 'c12_capture'
++                assert cached['source_rates_hz'][slot]==expected['gamma_rate_hz']
++        return cached
+     with open_root(root_path) as f:
+         assert all(f[k].num_entries==1 for k in ('RunInfo','WaveformEvent','SiPMEvent'))
+         info=ak.to_list(f['RunInfo'].arrays())[0]
+@@ -53,7 +66,11 @@ def export_window(root_path,output, *, expected=None):
+         if expected:
+             assert info['random_seed']==expected['seed']
+             assert info['alpha_p11b_rate_hz']==expected['rate_hz']
+-            assert not info['brems_enabled'] and not info['c12_capture_enabled']
++            if set(allowed_particles)=={'alpha'}:
++                assert not info['brems_enabled'] and not info['c12_capture_enabled']
++            if 'gamma_rate_hz' in expected:
++                slot='brems' if expected['gamma_model']=='brems' else 'c12_capture'
++                assert info[f'{slot}_rate_hz']==expected['gamma_rate_hz']
+         config=json.loads(info['sipm_config_json'])
+         s=f['SiPMEvent'].arrays(library='ak',how=dict)
+         av=lambda k:ak.to_numpy(s[k][0])
+@@ -89,7 +106,9 @@ def export_window(root_path,output, *, expected=None):
+         if full_key:branches.append('photon_energy_eV')
+         for chunk in f['PrimaryPhoton'].iterate(branches,step_size='32 MB',library='ak'):
+             for p in chunk:
+-                assert str(p['primary_particle_name'])=='alpha'
++                particle=str(p['primary_particle_name'])
++                if particle not in allowed_particles:
++                    raise ValueError(f'Unexpected primary particle {particle}')
+                 tt=ak.to_numpy(p['photon_arrival_t_ps']);xx=ak.to_numpy(p['photon_arrival_x_mm']);yy=ak.to_numpy(p['photon_arrival_y_mm'])
+                 k=photon_full_key(tt,xx,yy,ak.to_numpy(p['photon_energy_eV'])) if full_key else photon_key(tt,xx)
+                 loc=np.searchsorted(sorted_keys,k)
+@@ -97,7 +116,8 @@ def export_window(root_path,output, *, expected=None):
+                 assert np.all(owner[order[loc]]==-1)
+                 owner[order[loc]]=len(rows)
+                 inside=(xx>=config['sensor']['x_min_mm'])&(xx<config['sensor']['x_max_mm'])&(yy>=config['sensor']['y_min_mm'])&(yy<config['sensor']['y_max_mm'])
+-                rows.append(dict(primary_id=int(p['primary_id']),emission_ns=float(p['primary_time_ps'])/1000,
++                rows.append(dict(primary_id=int(p['primary_id']),particle_name=particle,
++                    emission_ns=float(p['primary_time_ps'])/1000,
+                     first_active_ns=float(tt[inside].min())/1000 if inside.any() else np.nan,
+                     source_energy_MeV=float(p['primary_energy_MeV']),edep_MeV=float(p['edep_total_MeV']),
+                     active_photons=int(inside.sum())))
+@@ -119,12 +139,15 @@ def export_window(root_path,output, *, expected=None):
+         assert np.isclose(q.sum()+dark_q,charge.sum()/q0,rtol=1e-11,atol=1e-6)
+         data={k:np.asarray([x[k] for x in rows]) for k in rows[0]} if rows else {
+             k:np.array([]) for k in ('primary_id','emission_ns','first_active_ns','source_energy_MeV','edep_MeV','active_photons')}
++        if not rows:data['particle_name']=np.array([],dtype='<U5')
+         data['charge_pe']=q
+         # Actual waveform and avalanche ancestry are evaluation-only quantities.
+         np.savez_compressed(output/'truth'/f'{stem}.npz',**data,signal_mV=av('signal_mV'),
+             avalanche_time_ns=at,avalanche_charge_C=charge,avalanche_owner=parents)
+         meta=dict(root=str(root_path),root_sha256=digest(root_path),seed=int(info['random_seed']),
+-            rate_hz=float(info['alpha_p11b_rate_hz']),gate_ns=[info['analysis_start_ps']/1000,info['analysis_end_ps']/1000],
++            rate_hz=float(info['alpha_p11b_rate_hz']),
++            source_rates_hz={k:float(info[f'{k}_rate_hz']) for k in ('alpha_p11b','brems','c12_capture')},
++            gate_ns=[info['analysis_start_ps']/1000,info['analysis_end_ps']/1000],
+             duration_ns=info['t_length_ps']/1000,primaries=len(rows),
+             photons=int(scalar('n_input_photons')),avalanche_count=len(kind),
+             charge_pe=float(charge.sum()/q0),dark_charge_pe=dark_q,
+diff --git a/pileup/analysis/run_catalog.py b/pileup/analysis/run_catalog.py
+index a1ff81a..b4c6617 100644
+--- a/pileup/analysis/run_catalog.py
++++ b/pileup/analysis/run_catalog.py
+@@ -5,12 +5,14 @@ import uproot
+ from uproot.source.file import MemmapSource
+ 
+ 
+-def collect(project):
++def collect(project, *, only_roots=None, campaign_manifests=None):
+     project = Path(project).resolve()
+     data = project / 'g4/data'
+     records = {}
+-    paths = list((project / 'pileup/experiments').glob('*/runs/*/*/manifest.json'))
+-    paths += list((project / 'pileup/results/submissions').glob('*/runs/*/*/manifest.json'))
++    paths = []
++    if campaign_manifests is None:
++        paths = list((project / 'pileup/experiments').glob('*/runs/*/*/manifest.json'))
++        paths += list((project / 'pileup/results/submissions').glob('*/runs/*/*/manifest.json'))
+     for path in paths:
+         record = json.loads(path.read_text())
+         if record.get('status') == 'deleted':
+@@ -25,7 +27,9 @@ def collect(project):
+         records[root_path] = (record, path)
+     # Native single-particle campaigns keep multiple single-window runs in one
+     # manifest. Use each run's saved macro, never today's same-named macro.
+-    for path in (project / 'jupyter/run_records').glob('sipm_native_*/manifest.json'):
++    native_paths = ((project / 'jupyter/run_records').glob('sipm_native_*/manifest.json')
++                    if campaign_manifests is None else [])
++    for path in native_paths:
+         campaign = json.loads(path.read_text())
+         for run in campaign.get('runs', []):
+             if not run.get('root'):
+@@ -40,9 +44,11 @@ def collect(project):
+             records[root_path] = (record, path)
+     # Native rate/ML campaigns save one manifest with explicit checks and runs.
+     # Keep the saved macro and status, including a same-seed check's role.
+-    for path in (project / 'pileup/experiments').glob('*/manifest.json'):
++    campaign_paths = ((project / 'pileup/experiments').glob('*/manifest.json') if campaign_manifests is None
++                      else [project / path for path in campaign_manifests])
++    for path in campaign_paths:
+         campaign = json.loads(path.read_text())
+-        for role in ('checks', 'runs'):
++        for role in ('checks', 'runs', 'read_error_runs'):
+             for run in campaign.get(role, []):
+                 if not run.get('root'):
+                     continue
+@@ -55,9 +61,14 @@ def collect(project):
+                           'seed': run.get('seed'), 'macro_relative_path': run.get('macro'),
+                           'campaign_id': path.parent.name,
+                           'native_waveform_label': run.get('label', ''),
+-                          'environment_check': role == 'checks'}
++                          'gamma_model': run.get('gamma_model', campaign.get('gamma_model')),
++                          'gamma_injection_rate_Hz': run.get('gamma_rate_hz'),
++                          'single_particle': 'particle' in run,
++                          'preflight_check': bool(run.get('preflight')) or (role == 'checks' and bool(campaign.get('gamma_model'))),
++                          'environment_check': role == 'checks' and not campaign.get('gamma_model')}
+                 records[root_path] = (record, path)
+-    files = {path.resolve() for path in data.rglob('*.root') if path.is_file()} | set(records)
++    files = ({path.resolve() for path in data.rglob('*.root') if path.is_file()} | set(records)
++             if only_roots is None else {(project / path).resolve() for path in only_roots})
+     rows = []
+     for path in sorted(files):
+         record, manifest = records.get(path, ({}, None))
+@@ -69,6 +80,8 @@ def collect(project):
+                'size_MiB': round(path.stat().st_size / 1024**2, 3) if path.is_file() else None,
+                'waveform_events': record.get('events'), 'window_us': record.get('config', {}).get('window_us'),
+                'alpha_injection_rate_Hz': record.get('point', {}).get('rate_hz'),
++               'gamma_injection_rate_Hz': record.get('gamma_injection_rate_Hz'),
++               'gamma_model': record.get('gamma_model'),
+                'seed': record.get('seed'), 'macro_file': macro,
+                'manifest': str(manifest.relative_to(project)) if manifest else None,
+                'submission_id': record.get('submission_id'), 'macro_path_in_RunInfo': None,
+@@ -76,8 +89,10 @@ def collect(project):
+                'notes': ''}
+         if state in ('running', 'validating'):
+             row['notes'] = '运行或检查中；只读运行清单，不读取正在写入的 ROOT。'
+-        elif state in ('failed', 'interrupted'):
++        elif state in ('failed', 'interrupted', 'failed_readback'):
+             row['notes'] = '失败或中断输出，未作为完整数据使用；保留供追溯。'
++            if state == 'failed_readback':
++                row['notes'] = 'ROOT写出/解压核验失败；保留原文件，同种子重放记录见运行清单，不计独立样本。'
+         else:
+             try:
+                 with uproot.open(path, handler=MemmapSource) as root:
+@@ -106,6 +121,7 @@ def collect(project):
+                     row['primary_particles'] = root['PrimaryPhoton'].num_entries if 'PrimaryPhoton' in root else None
+                 if record.get('single_particle'):
+                     row['alpha_injection_rate_Hz'] = None
++                    row['gamma_injection_rate_Hz'] = None
+                     row['notes'] = '单粒子独立窗，无稳态注入率；实际宏、器件配置和种子见运行清单。'
+                 elif not macro:
+                     row['notes'] = '历史文件：未找到完整原始宏快照；RunInfo 中的路径不等于当前同名宏。'
+@@ -117,6 +133,12 @@ def collect(project):
+                         row['notes'] += ' 标签：' + record['native_waveform_label'] + '。'
+                     if record.get('environment_check'):
+                         row['notes'] += ' 同种子环境对照，不计独立性能样本。'
++                    if record.get('preflight_check'):
++                        row['notes'] += ' 混合源小样本检查，不计独立性能样本。'
++                    if record.get('gamma_model') == 'mono662':
++                        row['notes'] += ' γ为661.657 keV；该独立快照借用C12源槽，不是C12俘获谱。'
++                    elif record.get('gamma_model') == 'brems':
++                        row['notes'] += ' γ使用冻结的轫致辐射谱；α/γ源注入率分别记录。'
+             except Exception as error:
+                 row['status'] = 'unreadable'
+                 row['notes'] = f'{type(error).__name__}: {error}'
+diff --git a/pileup/analysis/test_alpha_rate_data.py b/pileup/analysis/test_alpha_rate_data.py
+index 985721c..f6a8942 100644
+--- a/pileup/analysis/test_alpha_rate_data.py
++++ b/pileup/analysis/test_alpha_rate_data.py
+@@ -1,8 +1,11 @@
+ """Regressions for photon ancestry collisions in dense pileup records."""
+ import unittest
++import json
++from pathlib import Path
++from tempfile import TemporaryDirectory
+ import numpy as np
+ 
+-from pileup.analysis.alpha_rate_data import photon_key, photon_full_key
++from pileup.analysis.alpha_rate_data import photon_key, photon_full_key, export_window
+ 
+ 
+ class PhotonKeyTests(unittest.TestCase):
+@@ -29,6 +32,25 @@ class PhotonKeyTests(unittest.TestCase):
+         keys = photon_full_key([1, 1], [2, 2], [3, 3], [4, 4])
+         self.assertEqual(len(np.unique(keys)), 1)
+ 
++    def test_mixed_cache_cannot_bypass_alpha_only_policy(self):
++        with TemporaryDirectory() as directory:
++            output=Path(directory)
++            for name in ('metadata','truth'):(output/name).mkdir()
++            (output/'metadata/window.json').write_text(json.dumps({'seed':1,'rate_hz':1e6}))
++            np.savez(output/'truth/window.npz',particle_name=['alpha','gamma'])
++            with self.assertRaisesRegex(ValueError,'Unexpected cached'):
++                export_window('window.root',output)
++            self.assertEqual(export_window('window.root',output,allowed_particles=('alpha','gamma'))['seed'],1)
++
++    def test_cached_seed_still_checked(self):
++        with TemporaryDirectory() as directory:
++            output=Path(directory)
++            for name in ('metadata','truth'):(output/name).mkdir()
++            (output/'metadata/window.json').write_text(json.dumps({'seed':1,'rate_hz':1e6}))
++            np.savez(output/'truth/window.npz',particle_name=['alpha'])
++            with self.assertRaises(AssertionError):
++                export_window('window.root',output,expected={'seed':2,'rate_hz':1e6})
++
+ 
+ if __name__ == '__main__':
+     unittest.main()

@@ -1,0 +1,23 @@
+{
+  "created": "2026-10-16T10:22:18.263927+08:00",
+  "data": "same four validation_mixed development windows, unchanged isolated calibration; no test opened",
+  "reason": "Negative free-profile, covariance and leading-jump trials; test class-internal shape mismatch using independent isolated-calibration RMS",
+  "variants": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "center": "unchanged charge-dependent isolated calibration",
+  "rms": {
+    "alpha": 0.02016836135337695,
+    "gamma": 0.048706660793191324
+  },
+  "bounds": "center +/- 3 * scaled RMS, clipped to [.02,.98]",
+  "penalty": "(Q * (f-center) / (scaled_RMS * max(pilotQ,250 pe)))^2",
+  "selection": "same equal weight over alpha/gamma and four conditions full-F1; do not promote a lower score",
+  "caveat": "RMS combines shot noise and calibration fit variation; this is empirical regularization, not an independent prior or calibrated posterior",
+  "source_sha256": {
+    "alpha_gamma_shape_profile.py": "0e9b940d1a679efece2900802de7eb794d9642d4e8d283a3e6cfed747e050697",
+    "alpha_gamma_shape_study.py": "2aded4de0850f67c4d48dd00335d55e7562afc1a9b1a7d54431edc8775079bf4"
+  }
+}

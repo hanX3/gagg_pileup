@@ -1,0 +1,5 @@
+{
+  "stage": "Post-test reporting only; frozen scientific source unchanged",
+  "source": "pileup/analysis/alpha_gamma_regularized_report.py",
+  "sha256": "316a3c34a29b495e8a02470350869707d74c4f9f90adbe2d288a5526ac783cc1"
+}

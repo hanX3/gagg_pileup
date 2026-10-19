@@ -1,0 +1,17 @@
+{
+  "created": "2026-10-16T10:12:14.070084+08:00",
+  "reason": "Global profile can redistribute poorly determined charges; stabilize pilot leading-rate jumps without fixing class",
+  "scales": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "absolute_scale_pe_per_ns": 0.5,
+  "fixed_pilot_times": true,
+  "selection": "Same equal-class/condition development F1; preserve all failed variants; no new test used",
+  "source_sha256": {
+    "alpha_gamma_profile_fit.py": "272c685641f7cec66e54d04092b9c16db2081afba7f4fb7a449198ad6f7f5aed",
+    "alpha_gamma_stable_profile.py": "764900ab92cfed824cef4fc88120903ea8392d6184d756db205dadd1ff617de8",
+    "alpha_gamma_stable_study.py": "c475183014aea48b0826d00488ca481a4ea9f5721916165c1f5104eb9a05dd52"
+  }
+}

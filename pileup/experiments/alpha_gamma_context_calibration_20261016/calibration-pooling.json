@@ -1,0 +1,11 @@
+{
+  "created": "2026-10-16T12:04:06.732165+08:00",
+  "reason": "New thin-crystal gamma scan yielded only a small usable sample; reuse all previous independently labelled calibration before model selection or fresh tests",
+  "old_windows": 56,
+  "new_windows": 141,
+  "training_windows": 197,
+  "observations_sha256": "8199663fffc8b9627f038f98db2fe94ee4c21ae77c7e23ac77c7ed1124bfad74",
+  "all_old_cases_retained": true,
+  "validation_or_test_used": false,
+  "position_weighting": "Pool the planned calibration sample with capped charge weights. Old samples are central; this is not an exact uniform-position population average."
+}

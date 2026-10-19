@@ -1,0 +1,988 @@
+{
+  "created": "2026-10-15T16:52:01.153445+08:00",
+  "readout": {
+    "model": "double_exponential",
+    "internal_dt_ns": 0.25,
+    "sample_period_ns": 2.0,
+    "aperture_ns": 0.5,
+    "rise_ns": 2.0,
+    "decay_ns": 20.0,
+    "transimpedance_ohm": 50.0,
+    "lowpass_ns": 2.0,
+    "baseline_mV": 10.0,
+    "noise_rms_mV": 0.1,
+    "adc_bits": 12,
+    "adc_min_mV": 0.0,
+    "adc_max_mV": 1000.0,
+    "template_csv": null,
+    "max_internal_bins": 5000000
+  },
+  "area_per_pe_mV_ns": 13.618501389,
+  "baseline_mV": 10.0,
+  "classes": {
+    "alpha": {
+      "slow_intercept": 0.680950270763331,
+      "slow_log_slope": 0.03239327351487803,
+      "delay_ns": -1.91040423893105,
+      "charge_range_pe": [
+        1545.6296394414144,
+        16860.17307227368
+      ],
+      "used_samples": 16,
+      "rms_fraction_residual": 0.02016836135337695
+    },
+    "gamma": {
+      "slow_intercept": 0.24321157288626835,
+      "slow_log_slope": 0.004668590422709211,
+      "delay_ns": -0.39732624346897993,
+      "charge_range_pe": [
+        256.9052357339736,
+        1996.743014188588
+      ],
+      "used_samples": 13,
+      "rms_fraction_residual": 0.048706660793191324
+    }
+  },
+  "source_roles": [
+    "calibration"
+  ],
+  "isolated_rows": [
+    {
+      "root": "g4/data/20261015_16h42m58s.root",
+      "seed": 261030000,
+      "particle": "alpha",
+      "source_energy_MeV": 2.0,
+      "charge_pe": 1621.7718470799755,
+      "first_active_ns": 5025.512,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.6999200623603518,
+      "delay_ns": -0.3734311312617403,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h42m59s.root",
+      "seed": 261030012,
+      "particle": "alpha",
+      "source_energy_MeV": 8.0,
+      "charge_pe": 16674.95365299744,
+      "first_active_ns": 5012.765,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.794246535758211,
+      "delay_ns": -2.5149880461757186,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h43m01s.root",
+      "seed": 261030024,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h43m02s.root",
+      "seed": 261030040,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h46m22s.root",
+      "seed": 261030001,
+      "particle": "alpha",
+      "source_energy_MeV": 2.0,
+      "charge_pe": 1641.2952281183198,
+      "first_active_ns": 5025.579,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.6977343323529543,
+      "delay_ns": -1.0708728330055373,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m24s.root",
+      "seed": 261030002,
+      "particle": "alpha",
+      "source_energy_MeV": 2.0,
+      "charge_pe": 1545.6296394414144,
+      "first_active_ns": 5025.544,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7344387718018565,
+      "delay_ns": -0.7936262866383514,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m25s.root",
+      "seed": 261030003,
+      "particle": "alpha",
+      "source_energy_MeV": 2.0,
+      "charge_pe": 1555.964569161371,
+      "first_active_ns": 5025.51,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7411803488964944,
+      "delay_ns": -1.3291840036456268,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m26s.root",
+      "seed": 261030004,
+      "particle": "alpha",
+      "source_energy_MeV": 3.5,
+      "charge_pe": 5171.950804091947,
+      "first_active_ns": 5019.279,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7023024073471752,
+      "delay_ns": -2.2790004504946273,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m33s.root",
+      "seed": 261030005,
+      "particle": "alpha",
+      "source_energy_MeV": 3.5,
+      "charge_pe": 5119.018564193552,
+      "first_active_ns": 5019.265,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7245514498663032,
+      "delay_ns": -2.00768298801875,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m36s.root",
+      "seed": 261030006,
+      "particle": "alpha",
+      "source_energy_MeV": 3.5,
+      "charge_pe": 5096.968001183599,
+      "first_active_ns": 5019.291,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7125668785263805,
+      "delay_ns": -1.6006125313652697,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m41s.root",
+      "seed": 261030007,
+      "particle": "alpha",
+      "source_energy_MeV": 3.5,
+      "charge_pe": 5058.41166363413,
+      "first_active_ns": 5019.315,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7394719744038241,
+      "delay_ns": -1.6943320227081913,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m43s.root",
+      "seed": 261030008,
+      "particle": "alpha",
+      "source_energy_MeV": 5.486,
+      "charge_pe": 10018.806670325155,
+      "first_active_ns": 5015.404,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7487192522809549,
+      "delay_ns": -1.571470904446772,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m51s.root",
+      "seed": 261030009,
+      "particle": "alpha",
+      "source_energy_MeV": 5.486,
+      "charge_pe": 10115.126177750117,
+      "first_active_ns": 5015.408,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7461511652217196,
+      "delay_ns": -1.8039088405117651,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m53s.root",
+      "seed": 261030010,
+      "particle": "alpha",
+      "source_energy_MeV": 5.486,
+      "charge_pe": 9995.143095834965,
+      "first_active_ns": 5015.399,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7560097621596505,
+      "delay_ns": -1.7355072168245085,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h46m57s.root",
+      "seed": 261030011,
+      "particle": "alpha",
+      "source_energy_MeV": 5.486,
+      "charge_pe": 10242.46705063721,
+      "first_active_ns": 5015.398,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7403906278846235,
+      "delay_ns": -1.210158117731165,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m01s.root",
+      "seed": 261030013,
+      "particle": "alpha",
+      "source_energy_MeV": 8.0,
+      "charge_pe": 16817.246979200492,
+      "first_active_ns": 5012.765,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7844920816958275,
+      "delay_ns": -2.9015112212614844,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m12s.root",
+      "seed": 261030014,
+      "particle": "alpha",
+      "source_energy_MeV": 8.0,
+      "charge_pe": 16800.09908232073,
+      "first_active_ns": 5012.759,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7781326563025223,
+      "delay_ns": -2.7209294200688063,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m13s.root",
+      "seed": 261030015,
+      "particle": "alpha",
+      "source_energy_MeV": 8.0,
+      "charge_pe": 16860.17307227368,
+      "first_active_ns": 5012.76,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.7860730099573167,
+      "delay_ns": -2.510004558280581,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m15s.root",
+      "seed": 261030016,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 520.9367710853547,
+      "first_active_ns": 5000.963,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.30388444350902827,
+      "delay_ns": -0.6086856518483892,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m19s.root",
+      "seed": 261030017,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 530.073905049023,
+      "first_active_ns": 5000.954,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.26198593472364373,
+      "delay_ns": 1.0273827287213995,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m32s.root",
+      "seed": 261030018,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 507.2169583567224,
+      "first_active_ns": 5001.108,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.20547879187245235,
+      "delay_ns": 1.0207345125379756,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m33s.root",
+      "seed": 261030019,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 470.1680354507922,
+      "first_active_ns": 5000.987,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.16040209425816,
+      "delay_ns": -0.7683923342960344,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m34s.root",
+      "seed": 261030020,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 489.0984515174201,
+      "first_active_ns": 5000.87,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.24807568804404687,
+      "delay_ns": 0.486735949628378,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m36s.root",
+      "seed": 261030021,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 256.9052357339736,
+      "first_active_ns": 5000.936,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.24846998281236007,
+      "delay_ns": -1.4910386905414514,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m49s.root",
+      "seed": 261030022,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h47m50s.root",
+      "seed": 261030023,
+      "particle": "gamma",
+      "source_energy_MeV": 0.05,
+      "charge_pe": 493.3461408242459,
+      "first_active_ns": 5000.898,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.32141780232321354,
+      "delay_ns": 2.0670342894449254,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m51s.root",
+      "seed": 261030025,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 1064.943317448937,
+      "first_active_ns": 5000.864,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.24903060489530074,
+      "delay_ns": 0.37310171837487055,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m53s.root",
+      "seed": 261030026,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 1068.7726740602152,
+      "first_active_ns": 5000.909,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.15383622502544914,
+      "delay_ns": -0.3234520662658185,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h47m57s.root",
+      "seed": 261030027,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h47m59s.root",
+      "seed": 261030028,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 1026.2219893749832,
+      "first_active_ns": 5000.86,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.2793301902231738,
+      "delay_ns": -1.6101066119187228,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h48m00s.root",
+      "seed": 261030029,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 987.9405466241964,
+      "first_active_ns": 5000.892,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.19967861582839072,
+      "delay_ns": -1.0900160463203468,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h48m01s.root",
+      "seed": 261030030,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 1041.1320181281374,
+      "first_active_ns": 5000.872,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.26098786166754606,
+      "delay_ns": -1.0058692186128204,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h48m02s.root",
+      "seed": 261030031,
+      "particle": "gamma",
+      "source_energy_MeV": 0.1,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m04s.root",
+      "seed": 261030032,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m05s.root",
+      "seed": 261030033,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m07s.root",
+      "seed": 261030034,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m08s.root",
+      "seed": 261030035,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 1996.743014188588,
+      "first_active_ns": 5000.861,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": true,
+      "slow_fraction": 0.26675264926693487,
+      "delay_ns": -0.8450643688896063,
+      "solver_success": true
+    },
+    {
+      "root": "g4/data/20261015_16h48m09s.root",
+      "seed": 261030036,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m11s.root",
+      "seed": 261030037,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m12s.root",
+      "seed": 261030038,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m13s.root",
+      "seed": 261030039,
+      "particle": "gamma",
+      "source_energy_MeV": 0.2,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m15s.root",
+      "seed": 261030041,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m16s.root",
+      "seed": 261030042,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m18s.root",
+      "seed": 261030043,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m19s.root",
+      "seed": 261030044,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m20s.root",
+      "seed": 261030045,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m22s.root",
+      "seed": 261030046,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m23s.root",
+      "seed": 261030047,
+      "particle": "gamma",
+      "source_energy_MeV": 0.661657,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m26s.root",
+      "seed": 261030048,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m27s.root",
+      "seed": 261030049,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m28s.root",
+      "seed": 261030050,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m30s.root",
+      "seed": 261030051,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m32s.root",
+      "seed": 261030052,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m33s.root",
+      "seed": 261030053,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m34s.root",
+      "seed": 261030054,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    },
+    {
+      "root": "g4/data/20261015_16h48m36s.root",
+      "seed": 261030055,
+      "particle": "gamma",
+      "source_energy_MeV": 1.5,
+      "charge_pe": 0.0,
+      "first_active_ns": null,
+      "role": "independent isolated calibration; truth used only to calibrate",
+      "used": false
+    }
+  ],
+  "model": "Calibrated log-charge-dependent slow fraction, fixed 95/351 ns basis and mean onset delay",
+  "physics_changed": false,
+  "extrapolation": "Clamp shape charge to calibration range; charge estimate itself not clamped",
+  "baseline_policy": "Known 10 mV electronics setting; variance estimated from independent pre-source samples",
+  "limitations": [
+    "Central single-particle calibration only; no position/occupancy calibration",
+    "AR(1) and variance proportional to observed signal are approximations",
+    "Charge means realized full-cell equivalent pe, not deposited energy"
+  ],
+  "noise": {
+    "baseline_variance_mV2": 0.010086888535434182,
+    "variance_per_mV": 0.6140754218831209,
+    "shot_rho_at_2ns": 0.899769634545772,
+    "estimated_from": "Population-template residuals of calibration events, 0–2000 ns after first active photon",
+    "covariance": "Heteroscedastic AR(1) factor; fixed weights from smoothed observed voltage per fit"
+  },
+  "manifest_sha256": "24a0958799e410004f5dec6365bbdd469c7b3058fd8d1184bef7357dbc7efab5",
+  "waveform_sha256": {
+    "20261015_16h42m58s": "ccf23ad9fd9a4ef6ea430826d51753c0879736a120ab22c8d79489edc9245599",
+    "20261015_16h42m59s": "54288b68cc6efcd489dfc62288d312100c2d66e6458e885f6bcb1a6bbfeab671",
+    "20261015_16h43m01s": "810a0d57d735babdfa0edea44adae22f13ec55b4c217621a88a4909b78464701",
+    "20261015_16h43m02s": "24fb28f2f84788f9b3dd0e2e70c7a3a02afdf2a8f19f2d64ca822b9b72eca07c",
+    "20261015_16h46m22s": "5eb480ddff4ead9b600a300a2d28693e79dafc418ea9fa0b00bd7d2b81070875",
+    "20261015_16h46m24s": "cecd22941fbeee783e30b26ef26c89f6e2b8d206a49ec8d9b90a5e6391c6b4a4",
+    "20261015_16h46m25s": "08d52a56a7cbf65f315aedef9a39e67fa2082a755c7cd5a3261681ecf877b591",
+    "20261015_16h46m26s": "01b12f21dd5c2d7fa9c7d3522e4185e9802733712480a8491f427052bccc4cf4",
+    "20261015_16h46m33s": "ca85de95c44d1238f05d2e3dd0bba82fb548a89f8ea13519b0431cc7cf43ac73",
+    "20261015_16h46m36s": "2312e794260004bc24707cf601fc1cc408adca128618d4295b3c021c556a7d0f",
+    "20261015_16h46m41s": "05e2f0dfbfd99f18d2f24dd468057ce49e04f336bddc253aed11da5f81b102f3",
+    "20261015_16h46m43s": "99805c31c5663b09a9cac72165aecfcd56caef49facffdcaaa50bdba3059a6d9",
+    "20261015_16h46m51s": "12cca77c201224d8de08c92903e58f1176862dca9c2c7071c0c546d0a0004973",
+    "20261015_16h46m53s": "9b2a664ec1ae854818c37d519ab4d0dda47989279b84d80a8f24f9b20191b70d",
+    "20261015_16h46m57s": "5ff7ff6e0bc637526efc6267cf01136f74d9288d2ee40f61909c63fb36f18550",
+    "20261015_16h47m01s": "770d2a8771a691c7b5769b871fa541fd63ae5f827c38a5b85bbe411b9e9f8e2a",
+    "20261015_16h47m12s": "1b652d32ce73d0bf0dac0c71109c1732edcd1cca02a16656547bf4ce94f4d0bf",
+    "20261015_16h47m13s": "57575ad9ebaca601d13de1c470ad02566829f96ab9cafb1fb81bf618cf742fa0",
+    "20261015_16h47m15s": "a93a9b7a0b31b0ccfb54ba8af64ffc48c693d1cc7c860039087a56d5e2dcec97",
+    "20261015_16h47m19s": "cdc06d39f230e0c3b16616801f20aa86e8f0f543e2b503224dcaf2768f69733a",
+    "20261015_16h47m32s": "a17169f551c0059400e2027da77e3b5b420238bc728968256f2286a46da8d0e2",
+    "20261015_16h47m33s": "d433998719b3c432709e3b452dadfb95b423ddb42ec26b957fd6bd5ebe8fe6fa",
+    "20261015_16h47m34s": "64a434a4a3c728e8536c512cfe29a8b95f52a1c1f33aeae459754d8154559cdb",
+    "20261015_16h47m36s": "307506e751a34021b198a305c1da1e672579e8890435c00da6ff7c22593f30d8",
+    "20261015_16h47m49s": "7c28c55c475438f0fbe66b637d5e6caa902916aac80cddeaaec859c0960dd5de",
+    "20261015_16h47m50s": "35fdc8c2ec3559daee11ebec501f6af329c7fad9412755a9348314d2a44774cf",
+    "20261015_16h47m51s": "85cce500eb6b8280b20e02f2ce78cf53b834b6679a5f1fbf2ed05e1cd7f70008",
+    "20261015_16h47m53s": "5a44079b241bf842526678a65f0ffc53620c5ffbabb48a626702ea4cad812749",
+    "20261015_16h47m57s": "48bad9df69084bba422ab19ec5d25d09dda934f8bc5007d80e94de22fc0dbb52",
+    "20261015_16h47m59s": "1c9f144c19d89e2839d8f35850d3e20b1bd18b4bcaa781af82080d6bd7d7d503",
+    "20261015_16h48m00s": "709619e69f6706d908d7501ea8cf3819d0ec24abadd59d30ba34665c8b92e659",
+    "20261015_16h48m01s": "d30690e6e0fb67a06b8c07a1c8e577fa7107872ea8f6bb232af91a1261535766",
+    "20261015_16h48m02s": "369438d9aa92a83cc74d87dcb6188472c98fd8df1fbc2009f248c715671081f8",
+    "20261015_16h48m04s": "e2bda13fb8fd25c85a5a53d2a8ad0b5c972d7012730d29bc6fd3bc9417093480",
+    "20261015_16h48m05s": "7b91c917c4c52085a4d42877af5a9b2eae565b4ab894671ff53466c31fe38468",
+    "20261015_16h48m07s": "67cfb4d743af5b91921b184f4852448a001f38a628b0cd0ada7719d5814be81d",
+    "20261015_16h48m08s": "21d2356102f5dc598e6610c05cdcc6c1f0f9369b43ac9e8e65bcbb4af9bc41d3",
+    "20261015_16h48m09s": "759ac8ee2e34a48f966871690a2f7d80fdc88b1eafc8aaa82830f04701b2597e",
+    "20261015_16h48m11s": "51bfd8bacf5a0266154e293266b7ef82bdb5324d6a2a0e352dc3573caa482bd7",
+    "20261015_16h48m12s": "cbd92b360d2bc7113504d4fe1f84630d1aa2e2c27d2d08611f4027280a10160f",
+    "20261015_16h48m13s": "421faaad034948e90a60936cc1db495808ce52f186642de557f109fb8bfe8e55",
+    "20261015_16h48m15s": "d12a2f16998dbbdefa5ad602d331934a281a238ad06eae0a6c176091d09e1de6",
+    "20261015_16h48m16s": "8861127249e28d9e57a19aaa403831b8cda7c9e1c3bc0b2a22c49e80b0512d62",
+    "20261015_16h48m18s": "e55f9d45531d9f83381919788246addb1288ea196eb2aff068e07e64e944ece6",
+    "20261015_16h48m19s": "e8cdbfb7d1801b2b18230636f679f736994824939b0d00abd55d056f4fd36223",
+    "20261015_16h48m20s": "01a217e89bf0db084f805ef106276908b57a73a92537e7556196ef4a8aeabffd",
+    "20261015_16h48m22s": "5eea35c06fb53dd5d330b87522a0dae7726537c87bcdfc39fad38df58e0c82c9",
+    "20261015_16h48m23s": "178fd60274e38c2c7f1d85a798ee04fa736c22ba749c95a20114a34b3159e374",
+    "20261015_16h48m26s": "ba84be6d8e2d8d8bc7a758e062cba38d4f4c057daddfe3458b008e11c1f81065",
+    "20261015_16h48m27s": "ff09499ed934b443d1ac49bbce8e7fb3a4eb7ea6c719e47ddc4fccd856f2608f",
+    "20261015_16h48m28s": "653651d6ffed645080fdfc4af655248e3d23067d5e266166935a9959050bbb58",
+    "20261015_16h48m30s": "255bac656d54e17919f95cd265417e9f6946b46c79ba461fd6f127414d84e4db",
+    "20261015_16h48m32s": "3224c0ac69ede41c38be25eaf590560e21f397ec46a01797dd943ce38f37e52e",
+    "20261015_16h48m33s": "f9ffc3f3d512c5d59f8898d82a529ba497255450dab7400d9567f7c066e6d421",
+    "20261015_16h48m34s": "1e9dbd20ec3af2f36f84b03027b2497031b1261d8026a15367f9a3baedbe66b1",
+    "20261015_16h48m36s": "d5ac3e2dbb95d80c922bcd5b6c9859df02b2c5d0787495c22d8a8ab7e5f7e5ed"
+  },
+  "truth_sha256": {
+    "20261015_16h42m58s": "f38bc775f691f00520e5186ca06634d1c411016469f7e0e169ffcaad226b7ba2",
+    "20261015_16h42m59s": "0426333c4a7bf4732e8f3ca7c0c5ebd5a689d50ab40a476421a26b8606876306",
+    "20261015_16h43m01s": "6d300db943c35d0f4003a197e93cc31321f2b97a54916d6522a9a2b576732b0b",
+    "20261015_16h43m02s": "f8e143da9ec64bbcac419b9fecd1ebae1f4b2e322c4fdc157bd9035d90a9b03b",
+    "20261015_16h46m22s": "5c66bd0070afefe2742e4c39dcfdbcfab7bb2da75cb71c949554dc3d0b003ac5",
+    "20261015_16h46m24s": "68a9c789a744cc8f80b1ad200be0532e3d0797cfc5dc365127780834259d529f",
+    "20261015_16h46m25s": "793d495382b7cceff8bd7ed13293ff26738ecbd184f61973bf5ac62c7e13dae4",
+    "20261015_16h46m26s": "2a0bb4f251b19b76460872f7488dbd4badeca39ec5836ddecb0f1611337a6dc9",
+    "20261015_16h46m33s": "95aac22a0cd2a36d040e72c102003f1c68664df45d6e62d13ab2284da0ddf29a",
+    "20261015_16h46m36s": "6b0add7c4a23aad28ec9664be70ca68c3a3167578c0fedbbae361ed3872ffa10",
+    "20261015_16h46m41s": "c4e710620e408a7e9ff1d44922457b51e19d2afb31d16ccdc6b2ecc7776798d3",
+    "20261015_16h46m43s": "241e0f35fc681f3d054a67c12ca037861a3a7dc40ce4c8f88686db0c7283afa3",
+    "20261015_16h46m51s": "88f2d17573203d9707fd45a717ea26233d2b75ce8a941ac8da3a3dd12bd3dd0e",
+    "20261015_16h46m53s": "09764428851d9ea8eefa1cc0df342e1e1c48f4fe0f4ea75d5fb5268170707a4d",
+    "20261015_16h46m57s": "b9135ef355e343ef122ede0d9e29a11154a43874d23a8a813c0d0f683b4cf308",
+    "20261015_16h47m01s": "02fb2c363f98396d8e2491ca943fa822ef5940cd03f4eb7bbb7aa5c6fcb759ae",
+    "20261015_16h47m12s": "f102c28a285fde833ce31018e1965ee99881c77efd172328774a8261826e5cf4",
+    "20261015_16h47m13s": "738343d63c72dcac5d305f386aec0177bf2385ab1937cb8dbc091cc424f8e79b",
+    "20261015_16h47m15s": "9c464ea43f4a8f0e1b29ed165221e98ea7166f0cf3ca3abd3d7827f7e573446e",
+    "20261015_16h47m19s": "7907575453526f748730550276afde52b76f2d5cdc984809a6023f6c29744065",
+    "20261015_16h47m32s": "a81614339b05aac4967c52ce04e364c7bb53895945b0ab684bf55fdf04a58721",
+    "20261015_16h47m33s": "98c8bac4142c56501ee78aaf34dd1ad0b55bbc6dcbeda6046ccb23adc3e081ad",
+    "20261015_16h47m34s": "70c0e59a90d10df4da7cd90fe6cbac726dbf0e2ba716375719f3693498080cb3",
+    "20261015_16h47m36s": "05d5cb6b2ad65db468ee02ea11bb387fde662cf12c27bedf1f660560865769a6",
+    "20261015_16h47m49s": "c1769dc865af7d98fd7a3bfcddf000b12a1f659e95b3aca725f147ce40fcc2a9",
+    "20261015_16h47m50s": "dda6f8457cf6ce6aecfa7c0160ce4ed60122645042a64c05eaa256c818759e4e",
+    "20261015_16h47m51s": "5d89313023f67f9283417cea8b1599df2814e32c7d9f25f826643e25e7ea3406",
+    "20261015_16h47m53s": "c8c8ca3af53c209642438271a609b3b0deb500357c5d73a10b34a7eec463e1b7",
+    "20261015_16h47m57s": "a5d8a18bd0065d81b40d5504491c36dd4c1cb23403d3a64c6fc43c95880d0b47",
+    "20261015_16h47m59s": "37cdca5aae0283506fba2a5c2c51aed9818adc905a61568891da72b0f8a2ac78",
+    "20261015_16h48m00s": "ffe6c397ba741b231eb53dd5e3076f7e332bc07c70f2517ab33e48295af350d1",
+    "20261015_16h48m01s": "eccb5019c1f56f2cc29ba803dc17f69940e15cfb02004c69adc53dc0c945fee0",
+    "20261015_16h48m02s": "45505a94b9431b6651978b5ad60d47eb8111ffee332befddc7282ae788714b90",
+    "20261015_16h48m04s": "11ddf97e78ed18cd98b2751808475f14a8aecb5a59ce5e655c2dbd55401bf0ca",
+    "20261015_16h48m05s": "afb299af0eb269c9261942f8fef5e4cb0d1f7c2c1222da54ec4be9e1e1ff048b",
+    "20261015_16h48m07s": "4491959d699f47fd19e293f306720fc04229d9c31fbe0b49b3ab1bff191a5087",
+    "20261015_16h48m08s": "ac3995d5c182221ca873d4e8a2986074c53aff751acecaaaedf8d22b80243c71",
+    "20261015_16h48m09s": "945556da7327d0858e958fc4e1b5f44774b9dc9dea3e7cb113d802d492606599",
+    "20261015_16h48m11s": "5a9b8bee5731cc70322c14ebc9fb359fc02044f248a393c0a72422c7ff7c6e11",
+    "20261015_16h48m12s": "a96ecb1358024d2e3a085cb0ad9e647804d889e6ffe0a32581b39b9297d64f36",
+    "20261015_16h48m13s": "f62a98ab16cbb98efb5f8716cebd916b59a4f7c728a75c0bd15c407e6581eccd",
+    "20261015_16h48m15s": "73c61273d2cf64017b3ea6e6f0f4d9e5bc0f8a02638c7f5fc05e05caf19d30ce",
+    "20261015_16h48m16s": "d8237c75f9f37f885d201c7c7eb6008d31ebe17b764fd99c07761eb9198e022d",
+    "20261015_16h48m18s": "83ed224ca797bfe0a9478ea323842ba930c5648ba2061e52b5e0c0a3b6aa74df",
+    "20261015_16h48m19s": "e5b472148e30b9cadc7fb4f989e25af9719c1c95b21a47c6090f068e3a192d20",
+    "20261015_16h48m20s": "84237ffbdea80814b6f7adb2380a3d5cbacfdc4d36729dd335515cdff6d0e792",
+    "20261015_16h48m22s": "b66f76209fce52e072200fdf6f7a8c52ddf7edee0f265c00a8fb2726580a50d5",
+    "20261015_16h48m23s": "1f40bdbc1f6bca874b23aefe610d23b9d9db3da9b55a8d8a264003fcf3c4cdf8",
+    "20261015_16h48m26s": "804fcb6994cd36b3a57d3d282982e74508b4ffff485d3c1cf422deb026f9d336",
+    "20261015_16h48m27s": "708f918dd62a611b0002927a235445cf0dc6e39f3ba671edd4fc8621152fe568",
+    "20261015_16h48m28s": "721e46ae86c42dd4af47b8b3a0c2ef6c91fc9fc27acb0b363d783000be8f7a2a",
+    "20261015_16h48m30s": "c46500ce1896284a52c89aeeb4561daf79065ed26c7f6055c956a5c67e7458df",
+    "20261015_16h48m32s": "505d844199202d0d25cc735f26045297acd29a118a312f2344a2bef9faa33087",
+    "20261015_16h48m33s": "f59a9644791378c18b2790f67fecc11a67838c82d1d4b5990e265b4c1b949a64",
+    "20261015_16h48m34s": "fe14f0861b1dfcb746b089406b9fa596fb0104432c0ac0ad63897e2ea3da4ef4",
+    "20261015_16h48m36s": "4c8ecce50a3446175d96ae38453ab82717c93b340b5124b79af2bfee38c7bb13"
+  },
+  "parent_calibration_sha256": "c43b159200363399e69a867c75232ac2edb9524e7ba84e821533add7782ff966",
+  "physical_noise": {
+    "excess_variance_scale": 2.0779641830455358,
+    "spe_support_ns": 240.0,
+    "quadrature": 12,
+    "calibrated_samples": 29,
+    "data": [
+      {
+        "root": "g4/data/20261015_16h42m58s.root",
+        "waveform_sha256": "ccf23ad9fd9a4ef6ea430826d51753c0879736a120ab22c8d79489edc9245599",
+        "truth_sha256": "f38bc775f691f00520e5186ca06634d1c411016469f7e0e169ffcaad226b7ba2"
+      },
+      {
+        "root": "g4/data/20261015_16h42m59s.root",
+        "waveform_sha256": "54288b68cc6efcd489dfc62288d312100c2d66e6458e885f6bcb1a6bbfeab671",
+        "truth_sha256": "0426333c4a7bf4732e8f3ca7c0c5ebd5a689d50ab40a476421a26b8606876306"
+      },
+      {
+        "root": "g4/data/20261015_16h46m22s.root",
+        "waveform_sha256": "5eb480ddff4ead9b600a300a2d28693e79dafc418ea9fa0b00bd7d2b81070875",
+        "truth_sha256": "5c66bd0070afefe2742e4c39dcfdbcfab7bb2da75cb71c949554dc3d0b003ac5"
+      },
+      {
+        "root": "g4/data/20261015_16h46m24s.root",
+        "waveform_sha256": "cecd22941fbeee783e30b26ef26c89f6e2b8d206a49ec8d9b90a5e6391c6b4a4",
+        "truth_sha256": "68a9c789a744cc8f80b1ad200be0532e3d0797cfc5dc365127780834259d529f"
+      },
+      {
+        "root": "g4/data/20261015_16h46m25s.root",
+        "waveform_sha256": "08d52a56a7cbf65f315aedef9a39e67fa2082a755c7cd5a3261681ecf877b591",
+        "truth_sha256": "793d495382b7cceff8bd7ed13293ff26738ecbd184f61973bf5ac62c7e13dae4"
+      },
+      {
+        "root": "g4/data/20261015_16h46m26s.root",
+        "waveform_sha256": "01b12f21dd5c2d7fa9c7d3522e4185e9802733712480a8491f427052bccc4cf4",
+        "truth_sha256": "2a0bb4f251b19b76460872f7488dbd4badeca39ec5836ddecb0f1611337a6dc9"
+      },
+      {
+        "root": "g4/data/20261015_16h46m33s.root",
+        "waveform_sha256": "ca85de95c44d1238f05d2e3dd0bba82fb548a89f8ea13519b0431cc7cf43ac73",
+        "truth_sha256": "95aac22a0cd2a36d040e72c102003f1c68664df45d6e62d13ab2284da0ddf29a"
+      },
+      {
+        "root": "g4/data/20261015_16h46m36s.root",
+        "waveform_sha256": "2312e794260004bc24707cf601fc1cc408adca128618d4295b3c021c556a7d0f",
+        "truth_sha256": "6b0add7c4a23aad28ec9664be70ca68c3a3167578c0fedbbae361ed3872ffa10"
+      },
+      {
+        "root": "g4/data/20261015_16h46m41s.root",
+        "waveform_sha256": "05e2f0dfbfd99f18d2f24dd468057ce49e04f336bddc253aed11da5f81b102f3",
+        "truth_sha256": "c4e710620e408a7e9ff1d44922457b51e19d2afb31d16ccdc6b2ecc7776798d3"
+      },
+      {
+        "root": "g4/data/20261015_16h46m43s.root",
+        "waveform_sha256": "99805c31c5663b09a9cac72165aecfcd56caef49facffdcaaa50bdba3059a6d9",
+        "truth_sha256": "241e0f35fc681f3d054a67c12ca037861a3a7dc40ce4c8f88686db0c7283afa3"
+      },
+      {
+        "root": "g4/data/20261015_16h46m51s.root",
+        "waveform_sha256": "12cca77c201224d8de08c92903e58f1176862dca9c2c7071c0c546d0a0004973",
+        "truth_sha256": "88f2d17573203d9707fd45a717ea26233d2b75ce8a941ac8da3a3dd12bd3dd0e"
+      },
+      {
+        "root": "g4/data/20261015_16h46m53s.root",
+        "waveform_sha256": "9b2a664ec1ae854818c37d519ab4d0dda47989279b84d80a8f24f9b20191b70d",
+        "truth_sha256": "09764428851d9ea8eefa1cc0df342e1e1c48f4fe0f4ea75d5fb5268170707a4d"
+      },
+      {
+        "root": "g4/data/20261015_16h46m57s.root",
+        "waveform_sha256": "5ff7ff6e0bc637526efc6267cf01136f74d9288d2ee40f61909c63fb36f18550",
+        "truth_sha256": "b9135ef355e343ef122ede0d9e29a11154a43874d23a8a813c0d0f683b4cf308"
+      },
+      {
+        "root": "g4/data/20261015_16h47m01s.root",
+        "waveform_sha256": "770d2a8771a691c7b5769b871fa541fd63ae5f827c38a5b85bbe411b9e9f8e2a",
+        "truth_sha256": "02fb2c363f98396d8e2491ca943fa822ef5940cd03f4eb7bbb7aa5c6fcb759ae"
+      },
+      {
+        "root": "g4/data/20261015_16h47m12s.root",
+        "waveform_sha256": "1b652d32ce73d0bf0dac0c71109c1732edcd1cca02a16656547bf4ce94f4d0bf",
+        "truth_sha256": "f102c28a285fde833ce31018e1965ee99881c77efd172328774a8261826e5cf4"
+      },
+      {
+        "root": "g4/data/20261015_16h47m13s.root",
+        "waveform_sha256": "57575ad9ebaca601d13de1c470ad02566829f96ab9cafb1fb81bf618cf742fa0",
+        "truth_sha256": "738343d63c72dcac5d305f386aec0177bf2385ab1937cb8dbc091cc424f8e79b"
+      },
+      {
+        "root": "g4/data/20261015_16h47m15s.root",
+        "waveform_sha256": "a93a9b7a0b31b0ccfb54ba8af64ffc48c693d1cc7c860039087a56d5e2dcec97",
+        "truth_sha256": "9c464ea43f4a8f0e1b29ed165221e98ea7166f0cf3ca3abd3d7827f7e573446e"
+      },
+      {
+        "root": "g4/data/20261015_16h47m19s.root",
+        "waveform_sha256": "cdc06d39f230e0c3b16616801f20aa86e8f0f543e2b503224dcaf2768f69733a",
+        "truth_sha256": "7907575453526f748730550276afde52b76f2d5cdc984809a6023f6c29744065"
+      },
+      {
+        "root": "g4/data/20261015_16h47m32s.root",
+        "waveform_sha256": "a17169f551c0059400e2027da77e3b5b420238bc728968256f2286a46da8d0e2",
+        "truth_sha256": "a81614339b05aac4967c52ce04e364c7bb53895945b0ab684bf55fdf04a58721"
+      },
+      {
+        "root": "g4/data/20261015_16h47m33s.root",
+        "waveform_sha256": "d433998719b3c432709e3b452dadfb95b423ddb42ec26b957fd6bd5ebe8fe6fa",
+        "truth_sha256": "98c8bac4142c56501ee78aaf34dd1ad0b55bbc6dcbeda6046ccb23adc3e081ad"
+      },
+      {
+        "root": "g4/data/20261015_16h47m34s.root",
+        "waveform_sha256": "64a434a4a3c728e8536c512cfe29a8b95f52a1c1f33aeae459754d8154559cdb",
+        "truth_sha256": "70c0e59a90d10df4da7cd90fe6cbac726dbf0e2ba716375719f3693498080cb3"
+      },
+      {
+        "root": "g4/data/20261015_16h47m36s.root",
+        "waveform_sha256": "307506e751a34021b198a305c1da1e672579e8890435c00da6ff7c22593f30d8",
+        "truth_sha256": "05d5cb6b2ad65db468ee02ea11bb387fde662cf12c27bedf1f660560865769a6"
+      },
+      {
+        "root": "g4/data/20261015_16h47m50s.root",
+        "waveform_sha256": "35fdc8c2ec3559daee11ebec501f6af329c7fad9412755a9348314d2a44774cf",
+        "truth_sha256": "dda6f8457cf6ce6aecfa7c0160ce4ed60122645042a64c05eaa256c818759e4e"
+      },
+      {
+        "root": "g4/data/20261015_16h47m51s.root",
+        "waveform_sha256": "85cce500eb6b8280b20e02f2ce78cf53b834b6679a5f1fbf2ed05e1cd7f70008",
+        "truth_sha256": "5d89313023f67f9283417cea8b1599df2814e32c7d9f25f826643e25e7ea3406"
+      },
+      {
+        "root": "g4/data/20261015_16h47m53s.root",
+        "waveform_sha256": "5a44079b241bf842526678a65f0ffc53620c5ffbabb48a626702ea4cad812749",
+        "truth_sha256": "c8c8ca3af53c209642438271a609b3b0deb500357c5d73a10b34a7eec463e1b7"
+      },
+      {
+        "root": "g4/data/20261015_16h47m59s.root",
+        "waveform_sha256": "1c9f144c19d89e2839d8f35850d3e20b1bd18b4bcaa781af82080d6bd7d7d503",
+        "truth_sha256": "37cdca5aae0283506fba2a5c2c51aed9818adc905a61568891da72b0f8a2ac78"
+      },
+      {
+        "root": "g4/data/20261015_16h48m00s.root",
+        "waveform_sha256": "709619e69f6706d908d7501ea8cf3819d0ec24abadd59d30ba34665c8b92e659",
+        "truth_sha256": "ffe6c397ba741b231eb53dd5e3076f7e332bc07c70f2517ab33e48295af350d1"
+      },
+      {
+        "root": "g4/data/20261015_16h48m01s.root",
+        "waveform_sha256": "d30690e6e0fb67a06b8c07a1c8e577fa7107872ea8f6bb232af91a1261535766",
+        "truth_sha256": "eccb5019c1f56f2cc29ba803dc17f69940e15cfb02004c69adc53dc0c945fee0"
+      },
+      {
+        "root": "g4/data/20261015_16h48m08s.root",
+        "waveform_sha256": "21d2356102f5dc598e6610c05cdcc6c1f0f9369b43ac9e8e65bcbb4af9bc41d3",
+        "truth_sha256": "ac3995d5c182221ca873d4e8a2986074c53aff751acecaaaedf8d22b80243c71"
+      }
+    ],
+    "source_sha256": "9a1dcc5dfba5297a7f85698a5970996edbf7ab14774631a2d72543e19611f6bc",
+    "approximation": "Fixed independent charge-arrival covariance through the linear readout; one isolated-calibrated variance multiplier",
+    "truth_use": "Independent isolated calibration only; blind covariance uses voltage-derived pilot parameters"
+  }
+}

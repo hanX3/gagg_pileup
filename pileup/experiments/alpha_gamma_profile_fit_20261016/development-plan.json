@@ -1,0 +1,16 @@
+{
+  "created": "2026-10-16T09:51:18.335056+08:00",
+  "objective": "Equal priority for alpha and gamma event recovery; test whole-record profile fitting and covariance ablation",
+  "development_parent": "pileup/experiments/alpha_gamma_regularized_fit_20261015",
+  "development_role": "validation_mixed",
+  "validation_single_role": "validation_single",
+  "variants": [
+    "ar1",
+    "diagonal",
+    "uniform"
+  ],
+  "fit_stride": 2,
+  "selection": "Mean of class/condition full-recovery F1; retain per-class failures; no new test until freezing",
+  "physical_parameters_changed": false,
+  "test_used_for_selection": false
+}

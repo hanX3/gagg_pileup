@@ -1,0 +1,12 @@
+{
+  "purpose": "Both alpha and gamma event recovery and purity matter equally",
+  "addition_cost_candidates": [
+    1.0,
+    9.0
+  ],
+  "fixed_selection_penalty": 3.0,
+  "selection": "Mean full-recovery F1 over particle class and the four old validation conditions; never tune on old or new tests",
+  "promotion_gate": "Better macro full F1 than preceding regularized fit on development validation before generating another native test campaign",
+  "old_test_role": "Not used for parameter selection; already-public regression only",
+  "calibration": "Frozen 20261015 isolated calibration unchanged"
+}

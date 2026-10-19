@@ -1,0 +1,129 @@
+{
+  "rows": [
+    {
+      "label": "pilot_alpha_1.2_0_0",
+      "charge_pe": [
+        40.000000000000014
+      ],
+      "edep_MeV": [
+        0.007642475422471762
+      ],
+      "elapsed_s": 43.27955975300574
+    },
+    {
+      "label": "pilot_alpha_1.5_0_0",
+      "charge_pe": [
+        511.8840974828945
+      ],
+      "edep_MeV": [
+        0.1424320489168167
+      ],
+      "elapsed_s": 46.048702728992794
+    },
+    {
+      "label": "pilot_alpha_1.8_0_0",
+      "charge_pe": [
+        1038.1157406295758
+      ],
+      "edep_MeV": [
+        0.4654861092567444
+      ],
+      "elapsed_s": 46.57308577799995
+    },
+    {
+      "label": "pilot_alpha_2_0_0",
+      "charge_pe": [
+        1616.764523044202
+      ],
+      "edep_MeV": [
+        0.7641462683677673
+      ],
+      "elapsed_s": 46.527120603001094
+    },
+    {
+      "label": "pilot_alpha_1.8_4_0",
+      "charge_pe": [
+        306.9259239065518
+      ],
+      "edep_MeV": [
+        0.47940486669540405
+      ],
+      "elapsed_s": 49.209776845993474
+    },
+    {
+      "label": "pilot_alpha_1.8_4_4",
+      "charge_pe": [
+        155.42344733765017
+      ],
+      "edep_MeV": [
+        0.4533144235610962
+      ],
+      "elapsed_s": 52.8787559090124
+    },
+    {
+      "label": "pilot_history_alpha",
+      "charge_pe": [
+        10025.821546207806,
+        997.6635288049619
+      ],
+      "edep_MeV": [
+        4.941832065582275,
+        0.45117074251174927
+      ],
+      "elapsed_s": 65.34733519499423
+    },
+    {
+      "label": "pilot_history_gamma",
+      "charge_pe": [
+        9998.587999669626,
+        0.0
+      ],
+      "edep_MeV": [
+        4.906146049499512,
+        0.0
+      ],
+      "elapsed_s": 57.62642172499909
+    },
+    {
+      "label": "pilot_schedule_equivalence",
+      "charge_pe": [
+        1038.1157406295758
+      ],
+      "edep_MeV": [
+        0.4654861092567444
+      ],
+      "elapsed_s": 36.71125729900086
+    }
+  ],
+  "schedule_equals_gun_bitwise": true,
+  "checked": "All exported waveform and truth arrays; exact schedules, seeds and macro contents",
+  "input_sha256": {
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h24m55s.json": "731573d367600d2ea73f6227ae3037004be517584b8b47f149e1bfccc266c7b1",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h24m56s.json": "ac25fbedf7badc5362ac783720827682d5b53156166e86970fe0e7af58b7d933",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h24m58s.json": "927c32b5f1b78baa37ff2d9fadd2bd17e02004c5e2c4fb61cda557239583eb85",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h24m59s.json": "da77b49cf29188ea3eb10375dbd1e1683bdbe52189263ace25cb2cd46e363bb9",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h25m50s.json": "5a0a340279c90cbed15c228cf05446c114a6668d5cf128d26f205e625251b05d",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h25m51s.json": "23dcfb4631641b00bd836eac6e268d946dbaa0546211bad6f0d047c3524828f8",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h25m53s.json": "a157d55865e9a784986280d7487d16d1e03f5ffb2f72f211fedc86c8b147dc2b",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h25m54s.json": "9bd81159f99541ff4c82c7104f42239a38b819b28ad79a4f03a0c0e37deed55e",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/metadata/20261016_11h26m44s.json": "17befdce87edbf218df27bcc7ac4f942bfa77380f13e9cfed3938d75c73c6317",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h24m55s.npz": "7e34dffa3fc9273ad4c9a80d7fa1ef585c5cd197c7fad66bacf35d8b12664fa0",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h24m56s.npz": "48aa81db8cb26a62915e4764ced4e2b55442962d0621a4593726469b613b7e47",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h24m58s.npz": "dc831b885a6916866a5476feb449af4e9ab12dd566c6c0e87274a9ea537bdd2d",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h24m59s.npz": "9584f562242ce86c07479d2b7eb85ac09057687dec5d8b9ea97d4a181974bc73",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h25m50s.npz": "eb258e4aa01c8538bac688807be61f1ca05a5678137cdf498adc521ee50dbf23",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h25m51s.npz": "72788f162f425313b5a1ce55d8595cc8acd7fab1bb8babd80a089430b6099468",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h25m53s.npz": "518c988e97f0586f8f309afce2f32daec28b18d2e02d8c37260f827c43c0ef25",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h25m54s.npz": "1819ab439865ba6269098417dd61674fee05f3793bd363432f46e5399b6d69ea",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/truth/20261016_11h26m44s.npz": "dc831b885a6916866a5476feb449af4e9ab12dd566c6c0e87274a9ea537bdd2d",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h24m55s.npz": "0d7e1aed78bc4c594fc00ea429c98b2a0a65ee03e92d165385f9c8603607f641",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h24m56s.npz": "235d2cc4f5182b97418e37221f81143e0bdc5e16dbcf4b914a48f47e037905a3",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h24m58s.npz": "0ca2baeb5951a2d9e2487fae83ecc064d3880320b8d2411241a1907ed9666963",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h24m59s.npz": "3f8227b8655efb6f91f5e58fad0377a6ed74d599e0861a2e2be1b34dab8bf659",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h25m50s.npz": "10d25a978e24dedf9f2a4c9669ff8dcc5f13a4af6e0e9f0e2377824b053323dd",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h25m51s.npz": "79453edc580bad311f1268346f95e8c028e60bb4cc9e33c63f5d0450ccd52e4a",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h25m53s.npz": "a9126b413fd4861eaa1ea8571440cd75676fb8cd468edea5deb55e8be952c397",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h25m54s.npz": "8a439355de6215a8b869c7df15f15b2180f426719fe1f612c10b15fd7eeba521",
+    "jupyter/artifacts/alpha_gamma_context_calibration_20261016/inputs/waveforms/20261016_11h26m44s.npz": "0ca2baeb5951a2d9e2487fae83ecc064d3880320b8d2411241a1907ed9666963"
+  }
+}
