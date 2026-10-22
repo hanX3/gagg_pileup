@@ -1,0 +1,424 @@
+{
+  "planned_runs": [
+    {
+      "label": "component_000100000_00",
+      "rate_hz": 100000,
+      "seed": 262042000,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_01",
+      "rate_hz": 100000,
+      "seed": 262042001,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_02",
+      "rate_hz": 100000,
+      "seed": 262042002,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_03",
+      "rate_hz": 100000,
+      "seed": 262042003,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_04",
+      "rate_hz": 100000,
+      "seed": 262042004,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_05",
+      "rate_hz": 100000,
+      "seed": 262042005,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_06",
+      "rate_hz": 100000,
+      "seed": 262042006,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_07",
+      "rate_hz": 100000,
+      "seed": 262042007,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_001000000_00",
+      "rate_hz": 1000000,
+      "seed": 262042008,
+      "role": "new_test",
+      "preflight": true
+    },
+    {
+      "label": "component_001000000_01",
+      "rate_hz": 1000000,
+      "seed": 262042009,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_001000000_02",
+      "rate_hz": 1000000,
+      "seed": 262042010,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_010000000_00",
+      "rate_hz": 10000000,
+      "seed": 262042011,
+      "role": "new_test",
+      "preflight": true
+    },
+    {
+      "label": "component_010000000_01",
+      "rate_hz": 10000000,
+      "seed": 262042012,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_020000000_00",
+      "rate_hz": 20000000,
+      "seed": 262042013,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_020000000_01",
+      "rate_hz": 20000000,
+      "seed": 262042014,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_040000000_00",
+      "rate_hz": 40000000,
+      "seed": 262042015,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_040000000_01",
+      "rate_hz": 40000000,
+      "seed": 262042016,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_060000000_00",
+      "rate_hz": 60000000,
+      "seed": 262042017,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_060000000_01",
+      "rate_hz": 60000000,
+      "seed": 262042018,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_080000000_00",
+      "rate_hz": 80000000,
+      "seed": 262042019,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_080000000_01",
+      "rate_hz": 80000000,
+      "seed": 262042020,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_100000000_00",
+      "rate_hz": 100000000,
+      "seed": 262042021,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_100000000_01",
+      "rate_hz": 100000000,
+      "seed": 262042022,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_08",
+      "rate_hz": 100000,
+      "seed": 262042023,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_09",
+      "rate_hz": 100000,
+      "seed": 262042024,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_10",
+      "rate_hz": 100000,
+      "seed": 262042025,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_11",
+      "rate_hz": 100000,
+      "seed": 262042026,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_12",
+      "rate_hz": 100000,
+      "seed": 262042027,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_13",
+      "rate_hz": 100000,
+      "seed": 262042028,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_14",
+      "rate_hz": 100000,
+      "seed": 262042029,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_15",
+      "rate_hz": 100000,
+      "seed": 262042030,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_16",
+      "rate_hz": 100000,
+      "seed": 262042031,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_17",
+      "rate_hz": 100000,
+      "seed": 262042032,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_18",
+      "rate_hz": 100000,
+      "seed": 262042033,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_19",
+      "rate_hz": 100000,
+      "seed": 262042034,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_20",
+      "rate_hz": 100000,
+      "seed": 262042035,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_21",
+      "rate_hz": 100000,
+      "seed": 262042036,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_22",
+      "rate_hz": 100000,
+      "seed": 262042037,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_23",
+      "rate_hz": 100000,
+      "seed": 262042038,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_24",
+      "rate_hz": 100000,
+      "seed": 262042039,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_25",
+      "rate_hz": 100000,
+      "seed": 262042040,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_26",
+      "rate_hz": 100000,
+      "seed": 262042041,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_27",
+      "rate_hz": 100000,
+      "seed": 262042042,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_28",
+      "rate_hz": 100000,
+      "seed": 262042043,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_29",
+      "rate_hz": 100000,
+      "seed": 262042044,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_30",
+      "rate_hz": 100000,
+      "seed": 262042045,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_31",
+      "rate_hz": 100000,
+      "seed": 262042046,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_32",
+      "rate_hz": 100000,
+      "seed": 262042047,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_33",
+      "rate_hz": 100000,
+      "seed": 262042048,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_34",
+      "rate_hz": 100000,
+      "seed": 262042049,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_35",
+      "rate_hz": 100000,
+      "seed": 262042050,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_36",
+      "rate_hz": 100000,
+      "seed": 262042051,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_37",
+      "rate_hz": 100000,
+      "seed": 262042052,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_38",
+      "rate_hz": 100000,
+      "seed": 262042053,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_000100000_39",
+      "rate_hz": 100000,
+      "seed": 262042054,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_001000000_03",
+      "rate_hz": 1000000,
+      "seed": 262042055,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_001000000_04",
+      "rate_hz": 1000000,
+      "seed": 262042056,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_001000000_05",
+      "rate_hz": 1000000,
+      "seed": 262042057,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_001000000_06",
+      "rate_hz": 1000000,
+      "seed": 262042058,
+      "role": "new_test",
+      "preflight": false
+    },
+    {
+      "label": "component_001000000_07",
+      "rate_hz": 1000000,
+      "seed": 262042059,
+      "role": "new_test",
+      "preflight": false
+    }
+  ]
+}

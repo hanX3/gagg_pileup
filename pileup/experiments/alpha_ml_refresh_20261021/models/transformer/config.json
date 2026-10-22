@@ -1,0 +1,35 @@
+{
+  "architecture": "transformer",
+  "parameters": 30731,
+  "steps": 2400,
+  "batch_size": 16,
+  "seed": 2610141620,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": 5.0,
+  "cpu_threads": 2,
+  "features": "Same fixed five voltage-derived features as original CNN",
+  "crop_samples": 1024,
+  "core_samples": 500,
+  "left_guard_samples": 262,
+  "inference": "Sliding 1024-point windows, emit each central 500-point core once; no absolute time/rate/truth inputs",
+  "loss": "Identical weighted soft BCE + 2x masked log-charge Huber + 0.5x time offset Huber",
+  "split_sha256": "e722749f1f681049c336d57f8c443e7adbda2fcca38b58432a7b19a2241abe16",
+  "calibration_sha256": "89b28371690ff3df4886664faa34eb21b5d3c8b481103ae86d099e60dbf71c8d",
+  "model_selection": "Validation-only macro charge-qualified F1; global threshold grid .15..85",
+  "environment": {
+    "python": "3.14.3",
+    "torch": "2.14.1+cpu",
+    "numpy": "2.5.4"
+  },
+  "sources": {
+    "alpha_ml_multimethod.py": "1363658616675689ea615fe8334cf3e8c660d9b49d3337b56f6eb11b83958142",
+    "alpha_ml_models.py": "12718966858647824e2c4dfe1d2e1d6b6cca7313ed8a6084c91eb09541ec5351",
+    "alpha_pileup_hybrid.py": "8f5476e44b2e3acfa19d4cc7c761cf792959405ea49618ca391bcb5672f9d653",
+    "alpha_pileup_ml.py": "1dcf7984ff7b28d76e60afcdbd0ffe8150b9ff0a5d28009cc529170453116989",
+    "alpha_pileup_fit.py": "d2c9b8071720c7f112606eea0717a71e42bf3b5f12b45a021b1961bbe13250b8",
+    "alpha_full_signal_study.py": "60849896ca0b77d9a23f5aeb3bb09302bcaf1412d7c273f4d62628e48a488cb2"
+  },
+  "paper_reproduction": false
+}

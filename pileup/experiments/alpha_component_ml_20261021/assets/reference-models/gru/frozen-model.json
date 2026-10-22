@@ -1,0 +1,12 @@
+{
+  "frozen_at": "2026-10-20T21:59:03.497318+08:00",
+  "weights_sha256": "d836a32b7229fcb7f781e36b8dd4fba5cb9e8623725306d1e604d6822df1c8d5",
+  "config_sha256": "17be8b8656698110be9e6d5149d8029038641d3b8463d7e93084836801ef225c",
+  "split_sha256": "1c83e14dd7c48fa3ce4e459ee04616a03959df2cfdc1c1cacac492a3ec93b1ec",
+  "threshold": 0.85,
+  "step": 2400,
+  "validation_objective": 0.5197830057014327,
+  "training_seconds": 327.5276451540012,
+  "parameters": 7435,
+  "source_sha256": "a9cefb97d5db0e71e220829bc59d6096ad6dab5d5a853122af1e1935d2783907"
+}

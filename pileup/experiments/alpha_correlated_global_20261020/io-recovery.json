@@ -1,0 +1,73 @@
+{
+  "created": "2026-10-21T09:05:22.616048+08:00",
+  "purpose": "Scoring-only exact recovery of unreadable redundant photon fields; faster equivalent lookup",
+  "frozen_inference_changed": false,
+  "physics_changed": false,
+  "healthy_equivalence_checks": [
+    {
+      "root": "g4/data/20261021_08h26m48s.root",
+      "arrays_bitwise_equal": {
+        "waveforms": 4,
+        "truth": 12
+      },
+      "metadata_equal_except_io_provenance": true,
+      "join": "original_exact_record_join",
+      "seconds": 0.7209538860042812,
+      "branch_recovery": {}
+    },
+    {
+      "root": "g4/data/20261021_08h25m10s.root",
+      "arrays_bitwise_equal": {
+        "waveforms": 4,
+        "truth": 12
+      },
+      "metadata_equal_except_io_provenance": true,
+      "join": "original_exact_record_join",
+      "seconds": 3.957506006001495,
+      "branch_recovery": {}
+    },
+    {
+      "root": "g4/data/20261021_08h27m40s.root",
+      "arrays_bitwise_equal": {
+        "waveforms": 4,
+        "truth": 12
+      },
+      "metadata_equal_except_io_provenance": true,
+      "join": "unique_hash_lookup_plus_exact_full_record_check",
+      "seconds": 33.82821045699529,
+      "branch_recovery": {}
+    }
+  ],
+  "failed_root": "g4/data/20261021_08h37m30s.root",
+  "recovery": {
+    "original_error": "error('Error -5 while decompressing data: incomplete or truncated stream')",
+    "failures": {
+      "WaveformEvent/all_photon_arrival_x_mm": "error('Error -5 while decompressing data: incomplete or truncated stream')"
+    },
+    "common_exact_fields": [
+      "time",
+      "y",
+      "energy"
+    ],
+    "global_photons": 16534845,
+    "primary_photons": 16534845,
+    "unique_lookup_keys": true,
+    "full_stored_common_fields_equal": true,
+    "one_to_one_complete_coverage": true,
+    "recovered_global_fields": [
+      "all_photon_arrival_x_mm"
+    ],
+    "recovered_primary_fields": [],
+    "inference_or_model_inputs_used": false
+  },
+  "source_sha256": {
+    "pileup/analysis/alpha_rate_data_hashed.py": "f9dfb658c7225c8ca1052df182bb22f907aaa1c7485022ebacf0ad76eb175fe6",
+    "pileup/analysis/root_redundant_photon_fields.py": "42c1accd0674520ab9efa0cb585e0468d09c59d54062f5dc5be48668274314f9",
+    "jupyter/run_records/alpha_correlated_global_20261020/validate_io_recovery.py": "14a8444ba2bd09fa0e90d81b9503b1d7e812d87002f0d139de8587f1d56b7477"
+  },
+  "snapshot_sha256": {
+    "pileup/experiments/alpha_correlated_global_20261020/io-source/pileup/analysis/alpha_rate_data_hashed.py": "f9dfb658c7225c8ca1052df182bb22f907aaa1c7485022ebacf0ad76eb175fe6",
+    "pileup/experiments/alpha_correlated_global_20261020/io-source/pileup/analysis/root_redundant_photon_fields.py": "42c1accd0674520ab9efa0cb585e0468d09c59d54062f5dc5be48668274314f9",
+    "pileup/experiments/alpha_correlated_global_20261020/io-source/jupyter/run_records/alpha_correlated_global_20261020/validate_io_recovery.py": "14a8444ba2bd09fa0e90d81b9503b1d7e812d87002f0d139de8587f1d56b7477"
+  }
+}

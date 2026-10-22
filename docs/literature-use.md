@@ -757,3 +757,253 @@ Rosado2019（10.1109/JSEN.2019.2938018，PDF2–5、7）及Klanner2024（10.1016
 
 
 **2026-10-20笔记整体复核与整理**：Notebook0002将当前结论、三批独立样本和评价定义前置，区分两事件长窗稳定性、原生实现电荷精度、有效电压τ及匹配均值对照；把第9节旧待实施计划更新为第10–12节已完成／尚未完成状态，精简重复解释，修正条件均值和约束逆矩阵公式排版。全部32个代码单元、保存输出与17个固定图号保持。此次仅整理展示，不新增拟合、仿真、文献采用或科学性能结论。
+
+
+<a id="pure-alpha-fit-methods-20261020"></a>
+### L39：2026-10-20——纯α盲拟合的算法核对与方法升级依据
+
+**问题与记录**：用户针对0003询问如何在拟合方法上提高事件恢复、是否均为blind。完整复核与候选方案追加至[Notebook0003第16节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#pure-alpha-fit-methods-20261020)，不修改原71个单元、计算或图像。主结果为已知α/独立固定双τ模板下的未知K/t/Q重建；图12-2(a)使用已知K=2及到达时间，须明确属于条件分析。
+
+**实际实现**：`alpha_pileup_fit.py`已有逆滤波候选、全窗非负幅度联立、初值±12 ns内循环调时、≤64候选时的联合非线性优化、一轮残差补峰、8 ns合并和500 p.e.输出阈值；未加权残差。第14节改用完整含噪电压，仍沿用基线，真值在推断后才打开评分。本轮不把工程门槛或低残差当物理分辨率/正确K的证明。
+
+**只读证据与审核范围**：复用L01–L03、L23–L26及现有完整来源，定点提取Adrich PDF2–3、Zhang PDF3–4、Lopatin PDF3–4、Fixsen PDF2–3；实际看Adrich PDF2和Lopatin PDF3，其他两篇本轮为定点文字回查。B23归并无新增科学确认，四篇AI待审状态不变；没有联网或修改共享库。真实来源、哈希和本轮证据层级见[结构化记录](../jupyter/run_records/pure_alpha_fit_literature_20261020_170045/sources.json)。
+
+- **单/双模型比较**：[Adrich与Zychor2021笔记](../../papers/sources/2021_Adrich_NIMA_Least-squares-fitting-algorithm-for-peak-pile-up-correction-in-gamma-ray-spectroscopy.md)、[原文](../../papers/raw/2021_Adrich_NIMA_Least-squares-fitting-algorithm-for-peak-pile-up-correction-in-gamma-ray-spectroscopy.pdf)、[DOI](https://doi.org/10.1016/j.nima.2020.164962)，PDF2式1–2/流程；LaBr₃/PMT、约80 kcps实测，采样/噪声/接受阈值缺项。可借鉴主动试拆隐藏双脉冲；p值不是模型后验，不能移植间隔效率。
+- **条件模板与残差增峰**：[Zhang等2024笔记](../../papers/sources/2024_Zhang_NIMA_Development-of-a-pile-up-pulse-recovery-algorithm-for-the-LaBr3-detector.md)、[原文](../../papers/raw/2024_Zhang_NIMA_Development-of-a-pile-up-pulse-recovery-algorithm-for-the-LaBr3-detector.pdf)、[DOI](https://doi.org/10.1016/j.nima.2024.169273)，PDF3–4/图2–4；LaBr₃/R6233、500 MHz，同模板σ=7道三幅度模拟，率10⁶–10⁸ s⁻¹。GAGG须独立标定；式5局部坐标和接受准则缺口保留。
+- **两阶段稀疏**：[Lopatin等2012笔记](../../papers/sources/2012_Lopatin_IEEE_Pileup-attenuation-for-spectroscopic-signals-using-a-sparse-reconstruction.md)、[原文](../../papers/raw/2012_Lopatin_IEEE_Pileup-attenuation-for-spectroscopic-signals-using-a-sparse-reconstruction.pdf)，PDF3式4–6/算法1；会议论文、DOI未核，HPGe/Cs-Am实测率/采样缺项。选点与估能分开；项目可用无L1非负幅度重拟合，但不称原文逐式复现。式5同下标冲突继续保留。
+- **完整协方差加权**：[Fixsen等2004笔记](../../papers/sources/2004_Fixsen_NIMA_Pulse-estimation-in-nonlinear-detectors-with-nonstationary-noise.md)、[原文](../../papers/raw/2004_Fixsen_NIMA_Pulse-estimation-in-nonlinear-detectors-with-nonstationary-noise.pdf)、[DOI](https://doi.org/10.1016/j.nima.2003.11.313)，PDF2式1–2；TES、0.5–5 eV模型、每能量5000次，采样/噪声配置不完整且未验证逐事件pileup。只采用标定均值/协方差的思想，不当PCA或包含logdet的完整似然。
+
+**待验证**：优先在0003纯α中对照局部K增删/拆并、多初值联合重拟合与独立空/单样本校准的复杂度代价；再消融稀疏候选、阈下干扰分量、相关噪声和条件形状。保持双τ结构和无真值盲输入。混合任务已有相关实现，但不能替代纯α独立同条件验证。当前36窗均已检视，仅作回归；冻结后留新测试。保持完整动态范围及500 p.e./10 ns/20%口径，同时报告漏检、额外预测、误拆分/合并、电荷/时间误差。本轮没有修改拟合器、生成新ROOT或取得性能提升证据；不将建议写为已验证结果。
+
+
+<a id="pure-alpha-local-model-selection-20261020"></a>
+### L40：2026-10-20——纯α局部脉冲数搜索的实际实现与独立测试
+
+落实[L39](#pure-alpha-fit-methods-20261020)的主动拆峰、局部K比较与多初值联合时间/非负电荷重拟合；保持95/351 ns和原慢权重，完整含噪电压输入，无K/t/Q或源率真值输入。以独立48个单α窗最大拆峰SSE收益/Q标定代价系数0.07574128，24个开发单α及三个已公开1/10/40 MHz窗选择factor=1，于2026-10-20T17:34:07.113436+08:00冻结后生成23个新原生测试窗。四篇文献条件/审核边界沿用L39；局部搜索/代价不是原论文逐式复现或校准的统计检验。
+
+八档源率0.1/1/10/20/40/60/80/100 MHz分别8/3/2/2/2/2/2/2窗，20 μs/窗、中央10 μs。原生共享微胞、2 ns采样、0.1 mV噪声不变；Q≥500 p.e.、±10 ns和±20%完整恢复。逐率结果、额外预测、漏检及条件电荷误差见[Notebook0003第17节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#pure-alpha-local-model-selection-20261020)及[完整结果](../jupyter/artifacts/alpha_local_model_selection_20261020/test-summary.json)。非均衡曝光合计4215个目标，原→新完整恢复476→691、额外预测246→284、漏检2413→2071；不能替代逐率结果或窄区间推断。
+
+另有174条匹配均值软件控制，仅电子白噪声，不当实物时间分辨率。保留开发首版源码及26个完成结果；局部列更新在冻结前通过五项数值检查。新[实验快照](../pileup/experiments/alpha_local_model_selection_20261020/README.md)含实际C++/配置/二进制身份、Python源码、宏和种子；[验证记录](../jupyter/run_records/alpha_local_model_selection_20261020/validation.json)核对冻结时序、ROOT/宏/RunInfo、46组重评分/模型及原Notebook输出。未改变物理、做GLS/条件形状消融或完成沉积能标；每个高率仅2窗，局部搜索不保证全局最优，低残差不等于正确事件数。
+
+100 MHz首次因处理候选数保护上限10000000而中止，保留两份不完整ROOT/日志；在独立alpha_local_capacity_20261020快照仅将计算上限提高至30000000，以相同1 MHz种子的16数组逐项一致验证后重试原计划种子。此工程容量调整不改变物理/读出概率或冻结拟合参数，验证重放不计入测试分母；已知失败不混入恢复率。
+
+一份100 MHz ROOT的主光子时间分支无法解压；以WaveformEvent的冗余时间及唯一的x/y/能量浮点位精确一对一连接恢复评分字段，要求覆盖全部光子。另一完整100 MHz文件的16数组等价验证及恢复前后4个总波形数组相同见[恢复验证](../jupyter/run_records/alpha_local_model_selection_20261020/redundant-time-validation.json)。原ROOT保留且该原分支仍不可直接读取，评分重导出使用保存的适配器；盲拟合输入、源码及参数不变。
+
+
+<a id="new-pileup-literature-p11-p12-20261020"></a>
+### L41：2026-10-20——新增P11/P12文献对盲堆积恢复的适用性复核
+
+**请求与范围**：用户要求查看新增文献。索引P11新增11篇、P12新增15篇；另有补充材料/手册并入既有来源。按当前0003盲纯α拟合问题完整回读10篇来源笔记，定点回查7篇14页PDF文字，实际看Cleland PDF8、Mohammadian PDF3、Kim PDF6、Zhao PDF3；其余16篇只作索引筛选，未声称重读26篇原文。记录追加到[Notebook0003第18节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#new-pileup-literature-p11-p12-20261020)；[完整证据](../jupyter/run_records/new_pileup_literature_20261020_211656/review.json)、[路径/哈希及页码](../jupyter/run_records/new_pileup_literature_20261020_211656/collection.json)。共享库只读，无联网/下载/入库操作。
+
+**审核范围**：10篇均为AI草稿待人工审核，无新增科学确认。已回查global-review第668–670项原答复“1—3均认可”：Molina2026仅拒绝工程证据；Ma2022/Kim2026仅条件化谱计数变化；El-Tokhy2021仅方法参考且定量保留。它们是另4篇的限定采用，不扩为整篇、事件恢复证明或对本轮10篇的认可。Molina拒绝标志不作为解堆积输出。
+
+**证据与本项目判断（数值均为作者报告/已有笔记，不是本轮新计算）**：
+
+- **W. E. Cleland等1994**：*Signal processing considerations for liquid ionization calorimeters in a high rate environment*；W. E. Cleland、E. G. Stern；[笔记](../../papers/sources/1994_Cleland_NIMA_Signal-processing-considerations-for-liquid-ionization-calorimeters-in-a-high-rate-environment.md)、[原文](../../papers/raw/1994_Cleland_NIMA_Signal-processing-considerations-for-liquid-ionization-calorimeters-in-a-high-rate-environment.pdf)、[DOI](https://doi.org/10.1016/0168-9002(94)91332-3)。PDF7–9，式21–44、图4。SSC液氩量能器设计；约400 ns漂移、16 ns束团间隔，已知脉形；串联热噪声与堆积背景协方差；理论与Monte Carlo，非GAGG实测。 用完整协方差逆矩阵加权；一阶时间线性化下，最优滤波与加权χ²拟合相等。 主要抑制目标束团之外的随机堆积背景，没有恢复未知K个事件；最优性只属于给定模板/协方差及线性无偏约束。 项目判断：优先方法依据；多事件扩展和实际收益待本项目验证。 DOI仅据本地题录，未独立外核。
+
+- **M. Nakhostin等2010**：*A digital method for separation and reconstruction of pile-up events in germanium detectors*；M. Nakhostin、Zs. Podolyak、P. H. Regan、P. M. Walker；[笔记](../../papers/sources/2010_Nakhostin_RSI_A-digital-method-for-separation-and-reconstruction-of-pile-up-events-in-germanium-detectors.md)、[原文](../../papers/raw/2010_Nakhostin_RSI_A-digital-method-for-separation-and-reconstruction-of-pile-up-events-in-germanium-detectors.pdf)、[DOI](https://doi.org/10.1063/1.3499241)。PDF3–5，式1–2、图2–7；本轮定点文字回查PDF4。同轴Ge/Cs-137；75 MHz、14 bit，约14 μs记录；慢成形2.4 μs、快速定时支路40 ns。实测单脉冲人工叠加及约100 kHz下硬件拒绝器漏过的事件；噪声幅度未报。 两个起点由CFD估计后固定，双分量拟合只估幅度；典型600/200 keV对严格大于250 ns的扫描点幅度误差小于1%。 起点是由波形估计，不是真值；幅度拟合条件于K=2及已估时刻。不是未知多事件盲恢复率，250 ns点不满足上述精度，也不是GAGG最短窗。 项目判断：定时/电荷误差分解的诊断依据；不直接移植成形常数或250 ns。
+
+- **Hong-Quan Huang等2017**：*Estimation method for parameters of overlapping nuclear pulse signal*；Hong-Quan Huang、Xiao-Feng Yang、Wei-Cheng Ding、Fang Fang；[笔记](../../papers/sources/2017_Huang_NST_Estimation-method-for-parameters-of-overlapping-nuclear-pulse-signal.md)、[原文](../../papers/raw/2017_Huang_NST_Estimation-method-for-parameters-of-overlapping-nuclear-pulse-signal.pdf)、[DOI](https://doi.org/10.1007/s41365-016-0161-z)。PDF3–5式10–16/流程，PDF5–7表1–4，PDF8结论；本轮回查PDF3、8。Sallen–Key数值二/四脉冲；200 MHz、5 ns；共同输入τ=100 ns，白噪声标准差5 counts；二脉冲另测共同τ在95–105 ns；预设到时，无真实随机到达率。 把整段重叠波形的幅度、到时、共享形状参数编码为染色体，以无权残差搜索。 实例按已知二/四分量编码；逐减M并取最小残差的选阶没有复杂度惩罚/盲计数验证；没有全局最优证明、完整随机流能谱或实时结果。 项目判断：值得做小规模全局搜索对照，回答是否主要困于局部极小值；不直接全窗高维GA。
+
+- **Mohammad-Reza Mohammadian-Behbahani等2023**：*Non-iterative pulse tail extrapolation algorithms for correcting nuclear pulse pile-up*；Mohammad-Reza Mohammadian-Behbahani；[笔记](../../papers/sources/2023_Mohammadian-Behbahani_NET_Non-iterative-pulse-tail-extrapolation-algorithms-for-correcting-nuclear-pulse-pile-up.md)、[原文](../../papers/raw/2023_Mohammadian-Behbahani_NET_Non-iterative-pulse-tail-extrapolation-algorithms-for-correcting-nuclear-pulse-pile-up.pdf)、[DOI](https://doi.org/10.1016/j.net.2023.08.011)。PDF3式3–5/图4，PDF6表2–4。2×2英寸NaI(Tl)/PMT成形器输出，24 MHz、典型宽约15 μs；Cs源距80/20 cm两组约1 s离线波形；真实输入率/噪声强度未报；保留前峰至下一起点之间干净尾段的后半。 在策略1高堆积数据中NIM 17.95 s、默认MATLAB单指数NLS 1020.10 s，约57倍；两者校正谱相近。 约57倍是该实现/单指数尾窗下的离线比，不是恢复准确度或对当前NNLS的速度比。式3反向累加与式4–5的符号/有限尾端常数不自洽，未获作者澄清；近上升沿重叠缺干净尾段。 项目判断：作为速度与窗口失配的证据；目前不优先直接实现原印NIM。
+
+- **Alberto Regadío等2024**：*Three topologies of deep neural networks for pulse height extraction*；Alberto Regadío、J. Ignacio García Tejedor、Luis Esteban、Sebastián Sánchez-Prieto；[笔记](../../papers/sources/2024_Regadio_ARI_Three-topologies-of-deep-neural-networks-for-pulse-height-extraction.md)、[原文](../../papers/raw/2024_Regadio_ARI_Three-topologies-of-deep-neural-networks-for-pulse-height-extraction.pdf)、[DOI](https://doi.org/10.1016/j.apradiso.2023.111137)。PDF3式1–3，PDF7表1；PDF8–10图14–19据既有笔记。固定CR–RC差指数1/0.1 μs，20 MHz、1024点；归一均匀幅度、白/布朗噪声及裁剪模拟；率与时间轴原印不一致，不能换算为可信MHz上限。 输出幅度冲激序列；MMSE取整段标签统一平移k=0…5后的最小MSE。表1中GRU 9569参数、CNN 3274305参数，MMSE分别0.48/0.30×10^-4；MSE指标下排序不同。 不是相同参数/计算预算比较；损失不等于事件效率/真实能谱分辨率。5×50 ns=250 ns是允许标签延迟的换算，非最小峰距；不能在评分时用真值逐事件重新对齐。 项目判断：补充ML基准与损失消融的依据；不是已经证明可恢复当前40–100 MHz。
+
+- **W. Kim等2023**：*Optimizing deep learning-based piled-up pulse height correction method for high radiation-field application*；W. Kim、K. Ko、S. Lee、J. Park、G. Song、K. Lim、G. Cho；[笔记](../../papers/sources/2023_Kim_JINST_Optimizing-deep-learning-based-piled-up-pulse-height-correction-method-for-high-radiation-field-application.md)、[原文](../../papers/raw/2023_Kim_JINST_Optimizing-deep-learning-based-piled-up-pulse-height-correction-method-for-high-radiation-field-application.pdf)、[DOI](https://doi.org/10.1088/1748-0221/18/12/C12002)。PDF6式2.1–2.2/窗口，PDF8表2；最终窗口/表3见PDF9，据既有笔记。1.5×1.5英寸LaBr3，500 MS/s、2 ns/点；百万实测单脉冲合成1–10分量；训练PTP 16–80 ns；噪声随实测单脉冲携入，未单列SNR/真实连续输入率。 表2最短4 bins=8 ns，检峰计数比50.10%→52.50%；12 bins=24 ns为100%，16 bins=32 ns降至96.44%，并非单调。最终CNN12_16/DNN16_16均16点=32 ns，但这是候选峰附近脉高回归窗口。 RR是检出峰数/真峰总数，缺一对一匹配及假阳性统计；式2.2实际为相对误差形式、无1−，与约99%且越高越好的accuracy表述冲突。漏检峰不能由单脉高回归自动找回。 项目判断：优先用于评价设计及候选消融；不以99%作为我们的事件恢复目标已获文献保证。
+
+- **Guang Zhao等2024**：*Peak finding algorithm for cluster counting with domain adaptation*；Guang Zhao、Linghui Wu、Francesco Grancagnolo、Nicola De Filippis、Mingyi Dong、Shengsen Sun；[笔记](../../papers/sources/2024_Zhao_CPC_Peak-finding-algorithm-for-cluster-counting-with-domain-adaptation.md)、[原文](../../papers/raw/2024_Zhao_CPC_Peak-finding-algorithm-for-cluster-counting-with-domain-adaptation.pdf)、[DOI](https://doi.org/10.1016/j.cpc.2024.109208)。PDF3式1–3/图3，PDF4图4–6/表1。He/isobutane漂移室电子峰，1 GS/s、12 bit、15-bin归一片段；伪域噪声10%→20%、上升2→4 ns，另有180 GeV/c μ子实测；无GAGG/电荷回归。 伪数据目标域AUC由直接迁移0.878升至半监督0.912，ideal为0.926；利用高置信CWT正例及低幅弱负例对齐域。 AUC不是逐事件恢复效率；实测无逐峰真值。逐片段标准差归一丢失幅度尺度；式2–3源/目标索引待核；样本划分和超参缺失。 项目判断：保留迁移方向，后置于同模型盲恢复与可验证失配测试。
+
+- **Qiuyi Wang等2026**：*Adaptive nuclear pulse processing method with dual-model architecture*；Qiuyi Wang、Hongquan Huang、Zhiyong Lan、Xingke Ma；[笔记](../../papers/sources/2026_Wang_RDTM_Adaptive-nuclear-pulse-processing-method-with-dual-model-architecture.md)、[原文](../../papers/raw/2026_Wang_RDTM_Adaptive-nuclear-pulse-processing-method-with-dual-model-architecture.pdf)、[DOI](https://doi.org/10.1007/s41605-025-00606-9)。PDF10–16，式24–25、表2–4，图16–17见PDF17–19；本轮仅完整既有笔记。单个三指数响应的理想归零截断/S–K成形模拟，5 ns/点；辨参1500点、修复500点；A=300 mV附近、白噪声σ=5（单位不全）；未给实测率。 CNN-LSTM辨参后按漂移选择BiLSTM修复分支；15%/25%漂移算例匹配模型较固定模型好。 third-order是三个响应指数，不是三事件；Δ≥30%丢弃。15%/25%算例预设已识别参数，不是端到端全漂移保证；无未知K事件分离。 项目判断：模型失配辅助资料；不作为当前恢复率提升证据。
+
+- **唐琳等2023**：*Truncated pulse height estimator based on an improved UNet model / 基于改进UNet模型的截断脉冲高度估计器*；唐琳、周爽、廖先莉、刘泽、李波；[笔记](../../papers/sources/2023_Tang_NuclTech_Truncated-pulse-height-estimator-based-on-an-improved-UNet-model.md)、[原文](../../papers/raw/2023_Tang_NuclTech_Truncated-pulse-height-estimator-based-on-an-improved-UNet-model.pdf)、[DOI](https://doi.org/10.11889/j.0253-3219.2023.hjs.46.110505)。PDF3–7，式1–6、图3–7、表1–2；本轮仅完整既有笔记。FAST SDD/X射线、开关复位/CR输出；正文20 MHz/50 ns与另处50 MHz冲突；合成128点，最短示例20点；噪声加于阶跃，实测8组离线。 UNet-LSTM示例20脉冲平均相对误差2.31%；全部200验证序列2.18%；实测8组均值2.36%为作者报告。 截断比例不是截断深度；合成结果来自验证集，实测参考高度来源不清；没有随机堆积检出/误拆分/恢复能谱或最短窗扫描。 项目判断：短窗/截断问题的边界资料；不是目前双τ盲解堆积方法的直接替代。
+
+- **P. Windischhofer等2023**：*Passive quenching, signal shapes, and space charge effects in SPADs and SiPMs*；P. Windischhofer、W. Riegler；[笔记](../../papers/sources/2023_Windischhofer_NIMA_Passive-quenching,-signal-shapes,-and-space-charge-effects-in-SPADs-and-SiPMs.md)、[原文](../../papers/raw/2023_Windischhofer_NIMA_Passive-quenching,-signal-shapes,-and-space-charge-effects-in-SPADs-and-SiPMs.pdf)、[DOI](https://doi.org/10.1016/j.nima.2022.167627)。PDF3–8，式6–29、图4–9；本轮仅完整既有笔记。硅SPAD一维/1.5维解析与MC；厚0.5 μm、直径10 μm、约16 fF/200 kΩ算例；没有多胞/前端完整响应或pile-up率验证。 近击穿线性化、大雪崩、绝热且快速放电忽略恢复等条件下得到两倍电压摆幅；皮秒淬灭与RqCd恢复时间不同。 不是本项目S13360的独立参数测量，也不含完整共享微胞占用/串扰/前端；不能据此把单胞电荷乘2或发光寿命改成皮秒。 项目判断：保留物理模型边界，当前参数不变。
+
+**下一步候选，尚未实现**：先在0003的现有双τ/局部K搜索中对照完整相关残差加权，固定同候选/开发校准后比较；若C依赖拟合参数，应保留高斯近似的logdet且不能称普通NNLS已精确解完整似然。用少量K=1/2/3受控局部的遗传/群体搜索判断局部极小值影响，多种子/相近计算预算；不是全局最优证书。GRU/允许延迟的损失可作补充消融，保留事件定时和候选召回；现有CNN/U-Net/Transformer/物理重拟合不重复算新实现。域适应、漂移修复后置；非迭代单指数尾法不替换GAGG双发光衰减。保持完整动态范围与无真值主推断，真K/时刻只作标注oracle。
+
+**待办/缺口**：NIM积分方向/离散边界、Kim accuracy定义/峰匹配、Regadío率与时间轴、Zhao索引/弱标签与划分、真实响应/相关涨落标定；需新开发/冻结后独立测试，已公开23窗不再作未见测试。保留Q≥500 p.e./±10 ns/±20%、漏检/额外预测/误拆误并、电荷偏差与宽度及时间平移负对照，Q不当沉积能量。新精读/库维护留在papers项目按独立授权处理。本轮没有训练、拟合、生成ROOT、改变物理参数或取得新的恢复性能；原Notebook88单元与图输出保持。
+
+<a id="alpha-correlated-global-gru-20261021"></a>
+## L42. 相关残差加权、局部种群搜索与轻量GRU的实际对照（2026-10-21）
+
+**研究问题与采用依据**：实施L41提出的三个方向，沿用其定点原文证据及审核边界，不重复整理精读报告。Cleland/Stern（1994，PDF7–9式21–44、图4；DOI `10.1016/0168-9002(94)91332-3`仅本地题录）启发全协方差权重，其液氩/已知模板结论不等于未知K恢复；Huang等（2017，PDF3、8及原笔记表1–4，DOI `10.1007/s41365-016-0161-z`）启发有预算种群搜索，但原文没有全局最优证书或完整随机流未知K验证；Regadío等（2024，PDF3/7、原笔记PDF8–10，DOI `10.1016/j.apradiso.2023.111137`）启发GRU对照，本轮未复现CR–RC模型或允许标签延迟的MMSE。三篇的完整sources路径和适用条件沿用L41；均保持AI草稿/待人工审核，既有其他论文的审核认可不转移。
+
+**本项目假设和实现**：固定95/351 ns双发光衰减、慢分量0.740174；纯p–¹¹B有效单α谱，无γ。源注入率0.1–100 MHz，不是探测/反应率。原生共享微胞20 μs、2 ns完整模拟电压，中央[5,15) μs评分，动态范围充分，无ADC整窗拒绝。
+
+采用经验$C_{ij}=s_i s_j\rho^{|i-j|}+\sigma_e^2\delta_{ij}$、$s_i^2=v_d+\eta\max(\mu_{pilot,i},0)$。C由原始观测pilot整窗固定，不读真值/源率，不随候选K/时间/Q改变，logdet因此为常数。innovation白化后非负幅度变量投影，局部边缘协方差提出方案、全记录固定C接受。K增删代价在单粒子标定重新定标，并非χ²显著性；与旧SSE差异不能只归于C一项。对角WLS为非对角相关项的消融。
+
+48个已知单α标定中33窗有观测候选，得σe=0.1 mV、vd=0 mV²、η=0.7976401192 mV、ρ=0.9819124013。vd落在回归非负边界，原生2 MHz暗计数仍开；残差包含模板失配，非真实微观SiPM协方差。白化后相邻相关0.403、二阶矩1.353，保留模型不充分的证据。24个单α及1/10/40 MHz三个开发窗按预定误报/F1规则在0.5/1/2中均选0.5；没有在新测试上重选C或K代价。
+
+局部DE＋SLSQP每窗最多12次DE，预算分布于采集时间；盲流水线实际提出一/二分量，已知K=2/3诊断单列，未声称未知K三分量全局恢复。GRU 7435参数，原CNN的26训练/10验证ROOT、五特征与损失、2400步/batch16；第2400步、阈值0.85由旧验证选择，训练327.5秒。架构/种子不同，非等训练墙钟；离线滑动窗口，不宣称实时硬件延迟。
+
+原划分的100 MHz仅1个训练ROOT、无同率验证，最高验证率为80 MHz；100 MHz结果按外推报告，没有利用新测试重选阈值。
+
+**新计算结果**：共同冻结`2026-10-21T08:24:47.916277+08:00`后生成23个新ROOT，与标定/开发、神经训练/验证及已公开测试身份/种子隔离。0.1/1/10/20/40/60/80/100 MHz各8/3/2/2/2/2/2/2窗。目标Q≥500 pe，时间≤10 ns且Q相对误差≤20%才完整恢复。Q为实际祖先归属雪崩等效电荷，不是沉积能量。
+
+| 方法 | 完整恢复/目标 | 漏检（无时间匹配） | 额外输出 | 合并/拆分标志 |
+|---|---:|---:|---:|---:|
+| 原始SSE | 486/4333 | 2480 | 253 | 871/0 |
+| 局部K-SSE | 726/4333 | 2118 | 282 | 978/7 |
+| 对角WLS | 776/4333 | 2043 | 269 | 1010/4 |
+| 相关GLS | 636/4333 | 2243 | 114 | 962/1 |
+| GLS＋局部DE | 635/4333 | 2244 | 116 | 962/1 |
+| 旧CNN | 1038/4333 | 1448 | 604 | 960/113 |
+| 轻量GRU | 982/4333 | 1837 | 199 | 1006/38 |
+
+
+同一批23个新原生窗中，旧局部K、对角WLS、相关GLS、GLS＋局部DE、旧CNN和轻量GRU的完整恢复数依次为726、776、636、635、1038、982（共同目标4333个）。这是非均衡曝光总计，逐率结果及额外输出须同时阅读。 条件Q偏差/标准差、时间误差、逐真值ID新增/损失事件、墙钟在同一本笔记中；并发任务影响墙钟，不作严格硬件吞吐比较。100 MHz实际/五种循环错位平均完整匹配为：局部K-SSE 4.73% / 2.79%；相关GLS 3.49% / 2.31%；GLS＋局部DE 3.35% / 2.33%；旧CNN 17.60% / 10.09%；轻量GRU 15.93% / 7.04%。错位保留输出数量/电荷，不是精确FDR、无偏效率校正或真实性能上限。
+
+216个匹配模板盲软件窗含白/独立相关噪声的空/单/双脉冲，双间隔4/8/12/20/40/80/200 ns、比0.125–4，各2次；没有原生光子/共享微胞涨落，不用于宣称探测器分离极限。36个已知K条件诊断中DE在33/36降低目标；K=2全部分量完整恢复1/18→13/18，评估次数944→4163；K=3全部分量完整恢复1/18→7/18，评估次数1515→6174。DE额外评估，且K已知，不进入盲效率表。
+
+**追加相同工作量/多随机种子对照**：在查看上述粗初值诊断后，另存新协议/源码SHA，再生成36个新的合成噪声案例，每例3个优化种子。已知K及固定触发区域，两策略均含同三组粗初值，严格各500次实际白化NNLS变量投影评估；一方随机多初值SLSQP，另一方将公共初值后的剩余预算70%给DE、再抛光和重启填满。K=2：随机多初值SLSQP 36/54，DE混合44/54；K=3：随机多初值SLSQP 20/54，DE混合26/54。每K为18噪声×3优化种子，54次不当54个独立噪声样本；不等于严格相同墙钟，非法时间向量的开销另记。补充只比较已知K条件精度，没有改变原生拟合/阈值、训练、种子或测试评价。结果在optimizer-budget-controls.json，源码另存supplemental-search-source。单元检查以独立调用计数核验实际profile预算、返回目标及固定种子复现。
+
+**记录与验证**：本地 `jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb` 第19节、固定图19-1至19-5，原94单元/图输出不变；原生索引同步本地Run_Catalog。实现位于 `pileup/analysis/alpha_correlated_*.py`，实际源/宏/二进制/标定/权重快照和无需Git切换的重跑入口在 `pileup/experiments/alpha_correlated_global_20261020/`。结果与独立验证分别位于本地 `jupyter/artifacts/alpha_correlated_global_20261020/` 和 `jupyter/run_records/alpha_correlated_global_20261020/`。
+
+**I/O故障单独记录**：19个G4任务全部正常结束后，60 MHz第二个ROOT的全局光子x分支解压失败。由另一份PrimaryPhoton记录按共同时间/y/能量完整值唯一一对一映射16,534,845条记录恢复重复x字段，原ROOT不改写，4个电压数组逐位不变。新增适配只用于评分导出，缺唯一键/双份字段均坏/覆盖不足即拒绝；6项恢复/拒绝测试通过。checked hash加速导出在正常0.1/10/40 MHz的48个数组上与原导出器逐位相同。I/O源码/验证另存io-source及io-recovery.json，不追写原推断冻结；原种子、物理和拟合均不改变，剩余四个预定80/100 MHz由2进程继续、生成后顺序导出。23个预定窗口全部保留，不因算法表现换种子或删测试。
+
+通过6项针对性数值检查、白化快慢核及完整拟合逐位等价；重新计算161份保存评分、69个模型/加权代价和祖先电荷守恒，核验新旧源码SHA、冻结时序/间隔和数据隔离，复读0.1/10/100 MHz实际ROOT，禁用NumPy文件加载的冷盲拟合及冻结源码新路径复跑。原ROOT保留，读取使用SHA相同普通本机字节副本，无临时链接。
+
+**限制与待办**：高率每档仅2短窗、低率目标少；相关模型不足、固定均值模板/局部K预算、电荷选择效应和高密度偶然匹配仍存在。原pilot初始候选>500则退出、局部新增最多160，属于计算预算，不是物理上限；本批初始候选保护触发0/23窗，状态逐窗保留。不宣布最高可用率/通用最小间隔/沉积能谱分辨率；free-τ最短窗及α/γ混合不由本节回答。后续需在新开发协议研究更符合原生涨落的C及未知K候选/联合搜索，再冻结并另作独立测试；这轮测试已公开，不能继续用来选参。NIM、Kim accuracy、Regadío率轴等L41原文缺口仍待文献库独立维护，本轮未改papers。
+
+<a id="alpha-ml-refresh-20261021"></a>
+### L43：2026-10-21——纯α机器学习与当前WLS重新比较
+
+**采用依据与边界**：沿用L21的Regadío2021/Wang2025架构方向及L40–L42的局部K、相关噪声与GRU来源。共享库只读，原器件、采样、噪声、计数率和人工审核范围均保留；没有新精读或将其他装置的性能移植为GAGG能力。新混合设计是本项目针对旧候选缺失、电荷先验和边缘外推的待验证假设，不是论文已证明的组合算法。
+
+**原值→本轮实现**：旧CNN＋物理采用CNN候选、神经电荷惩罚λ=0.1、±6 ns调整和8 ns最终合并；本轮保留旧流程作对照，另实现观测pilot＋CNN候选并集、取消神经电荷幅度惩罚、采用当前WLS的±24 ns局部调整／3 ns分量间隔及残差增峰、拆分、合并、删除。CNN的262点边缘上下文只约束神经候选，完整电压、保护区与物理pilot边缘分量仍参加拟合。250 p.e.候选门沿用旧混合，报告门500 p.e.。原观测pilot固定经验方差，K代价和预算继承独立标定／开发选择；未根据本轮测试再选参。这些改变作为整体实验，没有单项消融。
+
+**数据与实际运行**：CNN、U-Net、Transformer、GRU的权重和阈值不变，没有重训。原26训练／10验证ROOT保持分离；10验证窗只诊断。已有23个公开窗口、4333个目标作共同复评，不是第二批独立重复。源码／配置／权重冻结后生成16个新确认ROOT，八档源注入率0.1/1/10/20/40/60/80/100 MHz为8/2/1/1/1/1/1/1窗。纯p–¹¹B有效单α谱、固定95/351 ns、共享微胞、20 μs记录、2 ns采样、中央[5,15) μs评分；完整模拟电压与充分动态范围前提保持，未改物理参数或ADC政策。
+
+**本项目新确认结果**：共同目标为实际雪崩等效电荷Q≥500 p.e.，时间±10 ns最大基数一对一匹配且Q相对误差≤20%。Q不是沉积能量。
+
+| 方法 | 完整恢复/目标 | 无时间匹配漏检 | 已匹配电荷失败 | 额外输出 |
+| --- | ---: | ---: | ---: | ---: |
+| 原SSE | 258/2098 | 1178 | 662 | 104 |
+| 当前WLS | 419/2098 | 943 | 736 | 112 |
+| CNN | 518/2098 | 673 | 907 | 270 |
+| U-Net | 524/2098 | 791 | 783 | 214 |
+| Transformer | 459/2098 | 823 | 816 | 107 |
+| GRU | 472/2098 | 868 | 758 | 83 |
+| 旧CNN＋物理 | 513/2098 | 695 | 890 | 216 |
+| 新CNN＋残差WLS | 446/2098 | 865 | 787 | 133 |
+
+
+**判断**：完整恢复增加伴随额外输出增加，属于取舍，未达到两项同时改善；不据此自动替换默认方法。相对旧混合，完整恢复513→446，额外输出216→133。总计受高率事件主导；逐率、漏检、条件Q偏差与宽度、误合并／误拆分标志和循环时间错位共同报告。额外输出可能源于阈下信号或错误拆分，不直接等同“此处完全无信号”。
+
+**实际验证与溯源**：461份保存评分重算、265个模型重构，16个实际ROOT的RunInfo／宏／三个种子及冻结后时序核对；原权重和推断源码不变，训练／验证／公开／新确认身份隔离。原pilot方差与新混合的logdet最大差0。66个匹配均值模板软件控制、8幅全窗全部分量求和、3项新模块检查、禁止评分真值读取的盲预检查及冻结源码8方法冷复跑通过。候选总预算触发0窗，pilot失败0窗；预算不是物理上限。原Notebook14个代码单元与十幅图保留，新过程位于本地`jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb`第15–21节，ROOT和实际宏另记Run_Catalog。
+
+来源：[新冻结实验](../pileup/experiments/alpha_ml_refresh_20261021/README.md)、[全部实际表](../jupyter/artifacts/alpha_ml_refresh_20261021/report-tables.json)、[检查](../jupyter/artifacts/alpha_ml_refresh_20261021/validation.json)。推断副本可独立重跑到新输出目录，无须Git回退；本地模型／数据依赖仍须保留。
+
+**限制与后续**：高率每档仅一窗、低率目标少，100 MHz没有同率神经验证；移位重复不是新ROOT，条件电荷宽度不是能量分辨率。没有背景／形状失配、free-τ最短窗、实物或通用最高可用率结论。后续训练、候选或损失修改使用开发／验证数据另定协议，并留新测试；不在这16窗上反复挑参数。新文献整理仍由papers库另行维护，本项目不修改该库。
+
+<a id="alpha-ml-literature-20261021"></a>
+### L44：2026-10-21——更适合逐事件解堆积的机器学习方法复核
+
+**问题、检索与核验层级**：围绕0004的漏检、电荷分配失败和额外输出，只读共享库。依AGENTS/index、vocabulary/topic-index/review-index及三份优先主题页定位；复用只读knowledge_index检索、rg补查来源题名与正文。回读下列五篇完整来源笔记，定点提取S1 PDF4–7、S2 PDF3、S3 PDF10–11；实际看S1 PDF4/6和S2 PDF3原页。S4/S5本轮未回查PDF。没有联网、下载、训练、仿真或改写papers，未递归精读引文；其他数值明确据既有精读笔记。页码从本地PDF第1页计。
+
+**已有人工意见**：回查global-review第555项原答复，只认可Lin2026的表征／识别／计数用途，并保留面积代理标签；不是逐事件t/Q恢复认可。另核第668项，Molina2026仅限NaI(Tl)–SiPM堆积拒绝工程证据，不作为分解算法。S1/S2/S4/S5仍AI草稿待审，没有新增用户科学确认。
+
+**文献依据、条件与实际采用范围**：
+
+- **S1：Bashir Sadeghi; Dustin Scriven; Aaron Chester; Ronald Fox; Sean Liddick; Giordano Cerizza，2026（2025在线）**。*A machine learning framework for accurate and robust analysis of radiation detector pulses*。[笔记](../../papers/sources/2026_Sadeghi_NIMA_A-machine-learning-framework-for-accurate-and-robust-analysis-of-radiation-detector-pulses.md)、[原文](../../papers/raw/2026_Sadeghi_NIMA_A-machine-learning-framework-for-accurate-and-robust-analysis-of-radiation-detector-pulses.pdf)、[DOI](https://doi.org/10.1016/j.nima.2025.170971)。PDF4式9–12、图4；PDF5式13/数据；PDF6表2；PDF7§4.6.5。条件：CeBr3 50×50×3 mm³/H13700 PMT；250 MSPS、4 ns、250点/1000 ns；实测单脉冲及同一单脉冲缩放/平移合成双脉冲；未给独立连续输入率和完整噪声强度。结论：联合分类、参数化响应和自编码重建；训练使用已知两个分量。表2分量ASNR 20.20/20.32 dB vs LMFit 13.67/12.75 dB，整体ASNR 21.94 vs 22.28 dB；Δt RMSE 0.71 vs 27.06 SP，1 SP=4 ns。真实175双脉冲无独立分量真值。 项目采用：采用分量监督与整体/分量指标分开的设计依据；未知K、多重数原生共享微胞推广为本项目待验证方案。待核：真实逐分量真值、未知K≥3、同波形副本相关、LMFit设置、噪声与输入率、式12符号异文及公开代码版本。
+
+- **S2：Alberto Regadío; Luis Esteban; Sebastián Sánchez-Prieto，2021**。*Unfolding using deep learning and its application on pulse height analysis and pile-up management*。[笔记](../../papers/sources/2021_Regadio_NIMA_Unfolding-using-deep-learning-and-its-application-on-pulse-height-analysis-and-pile-up-management.md)、[原文](../../papers/raw/2021_Regadio_NIMA_Unfolding-using-deep-learning-and-its-application-on-pulse-height-analysis-and-pile-up-management.pdf)、[DOI](https://doi.org/10.1016/j.nima.2021.165403)。PDF3图2–3；采样/训练条件据既有笔记PDF2，模拟检出据PDF6表1。条件：模拟CR–RC 1/0.1 μs、50 MHz/20 ns、成形前白噪声；训练到达率说明10⁴–2×10⁵ s⁻¹，表1为10⁴–4×10⁴ s⁻¹；另有NaI/前放/2 μs成形实测谱，无真实高率检出分母。结论：一维U-Net含中央LSTM，输出幅度承载的短事件序列；当前本项目U-Net没有该LSTM。模拟97.5%仅表1噪声0.10/4×10⁴ s⁻¹条件，不是实测MHz恢复率。 项目采用：多尺度卷积与时序瓶颈的结构候选；U-Net–GRU为本项目替代设计，不是原文复现。待核：dense线性/图中ReLU三层异文，20 ns/图5采样异文、检出误报及真实高率验证缺口。
+
+- **S3：Congyu Lin; Xiaoying Zheng; Tom Trigano; Dima Bykhovsky; Yongxin Zhu; Li Tian，2026**。*Spectroscopic Pulse Embeddings by Contrastive Learning from Unlabeled Data for Pile-Up Analysis*。[笔记](../../papers/sources/2026_Lin_Sensors_Spectroscopic-Pulse-Embeddings-by-Contrastive-Learning-from-Unlabeled-Data-for-Pile-Up-Analysis.md)、[原文](../../papers/raw/2026_Lin_Sensors_Spectroscopic-Pulse-Embeddings-by-Contrastive-Learning-from-Unlabeled-Data-for-Pile-Up-Analysis.pdf)、[DOI](https://doi.org/10.3390/s26072138)。本轮PDF10–11图7/式11–15；结果与限制据既有笔记PDF13、17、20–24、29。条件：SSRF Vortex-ME4 SDD/复位CSA，16 bit/250 MHz，64点聚集段、SNR 26.2 dB，80/450 kcps与1 Mcps；真实未标注预训练+模拟标签；NSCL CeBr3/PMT数据另训，实测单脉冲合成。结论：真实波形对比预训练后做堆积分类及聚集段多重数；没有逐事件t/Q回归。既有笔记表5 Cu 1 Mcps总体98.65%，表4峰堆积子集85.73%，不作事件恢复率。 项目采用：实测少标签/模拟到实测的后续训练策略，后置于当前同模型分量恢复。待核：面积代理标签和批次隔离、InfoNCE掩码/分母、64点边界、图表异文、真实逐事件真值。
+
+- **S4：J. M. Deltoro et al.（其余17位作者见原笔记首页），2025**。*Reconstruction of pile-up events using a one-dimensional convolutional autoencoder for the NEDA detector array*。[笔记](../../papers/sources/2025_Deltoro_NST_Reconstruction-of-pile-up-events-using-a-one-dimensional-convolutional-autoencoder-for-the-NEDA-detector-array.md)、[原文](../../papers/raw/2025_Deltoro_NST_Reconstruction-of-pile-up-events-using-a-one-dimensional-convolutional-autoencoder-for-the-NEDA-detector-array.pdf)、[DOI](https://doi.org/10.1007/s41365-024-01606-y)。据既有精读笔记PDF4图3、PDF5–6数据与式2、PDF7表1–2、PDF7–8图10；本轮未回查PDF。条件：NEDA EJ301/PMT；250 MHz、14 bit；真实单脉冲合成n–γ/γ–n对，12–160 ns、150–7000 ADC；CC标签，无TOF；未给连续随机到达率。结论：共享编码器+两个按到达顺序输出的波形解码器；相关系数0.988与γ/n标签保持84.7%/83.3%并存。 项目采用：分量波形监督的旁证及评价反例，不选作高率未知K主方案。待核：固定双异类脉冲、训练/测试母波形隔离、PSD标签、表文成功率及分母、真实高率多重堆积。
+
+- **S5：Junhyeok Kim; Byoungil Jeon; Jisung Hwang; Gyohyeok Song; Myungkook Moon; Gyuseong Cho，2023**。*Pulse height estimation and pulse shape discrimination in pile-up neutron and gamma ray signals from an organic scintillation detector using multi-task learning*。[笔记](../../papers/sources/2023_Kim_ARI_Pulse-height-estimation-and-pulse-shape-discrimination-in-pile-up-neutron-and-gamma-ray-signals-from-an-organic-scintillation-detector-using-multi-task-learning.md)、[原文](../../papers/raw/2023_Kim_ARI_Pulse-height-estimation-and-pulse-shape-discrimination-in-pile-up-neutron-and-gamma-ray-signals-from-an-organic-scintillation-detector-using-multi-task-learning.pdf)、[DOI](https://doi.org/10.1016/j.apradiso.2023.110880)。据既有精读笔记PDF3–4图4–5/损失、PDF6表2–3、PDF7表5；本轮未回查PDF。条件：2英寸stilbene/H7195 PMT，250 MS/s、12 bit、248点；已寻峰附近16点+梯度；合成12–80 ns、1–9重，真实源最高28943 cps；传统CC标签。结论：共享特征的高度/PSD多任务回归依赖先寻峰。MT非所有指标更好，九重分类60.22% vs ST 63.84%；Acc.H/Recall公式与文字存在异文。 项目采用：多任务不保证检出与电荷同时改善；当前三输出头已是多任务，不能把新增多任务名称当新方法。待核：漏检寻峰分母、标签/母波形隔离、任务权重、accuracy及recall定义、高率真实未知K评价。
+
+**本项目判断与拟议路线，不是新计算结果**：新确认2098目标中CNN完整恢复518、已匹配Q失败907、漏检673；原训练已使用事件／logQ／时间三头，因此再以“多任务”为名不构成新方法。优先检验SAEFit式分量监督和训练中的参数化物理解码；以现有GRU作结构对照，分别消融分量损失、U-Net–LSTM/GRU瓶颈与训练Q覆盖。原论文的固定单／双输出不直接搬进未知K主表；事件序列或有限槽位／存在性推广为项目假设，容量、近邻及重复输出单列。本轮未找到这些推广在当前GAGG条件的直接文献证明。
+
+原生祖先分量只作训练／评价，推理不读K、到时、Q真值或源率；按完整ROOT／种子先划分。继续固定95/351 ns双发光衰减，充分动态范围前提不变；共享微胞分量不能当独立低率模板随意叠加，均值物理解码失配须检查。Q为雪崩等效电荷，未转沉积能量；阈下α和暗计数仍进入波形模型。Lin式对比预训练后置于实测少标签／域迁移，不把其分类准确率当本项目事件恢复率。
+
+**待验证和文献整理待办**：新的开发／验证协议分别比较损失与结构，多训练种子；控制间隔／幅比／Q外推，再测八档原生流。在相近额外输出预算下比较完整恢复，同时报告Q偏差／宽度、漏检、误拆分／误合并和循环错位诊断。高率按独立ROOT统计；已公开23窗和新16窗现均已查看，之后只作开发诊断／回归，另留冻结后测试。补100 MHz训练／验证覆盖及跨率对照。SAEFit式12符号和代码版本、原噪声／输入率与未知K扩展，Regadío架构／时间异文，以及Lin对比掩码和代理标签等缺口，若需澄清应在papers库另立维护任务，本项目不改该库。未把缺口写成已完成性能改进。
+
+记录保存在本地 `jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb` 第22节；[来源、页码与哈希](../jupyter/run_records/paper_search_ml_20261021_141317/evidence.json)。旧33个代码单元和23幅图保留，本轮仅增加研究文字与目录入口，不改变推断和评分。
+
+<a id="alpha-component-ml-20261021"></a>
+### L45：2026-10-21——分量监督物理解码与U-Net–GRU的实际实现和独立比较
+
+**采用依据与范围**：沿用L44的Sadeghi/SAEFit（DOI `10.1016/j.nima.2025.170971`，既有定点PDF4–7式9–13/表2）与Regadío2021（DOI `10.1016/j.nima.2021.165403`，PDF3图2–3）设计启发。前者为CeBr3/PMT单/合成双脉冲，后者主要为CR–RC模拟及NaI谱学；原噪声/采样/率和人工审核边界仍按L44。共享库只读，本轮没有新精读或更新其审核。此处为项目改编，不把论文分类率或分量ASNR移植为GAGG效率。
+
+**原值→新实现**：保留原GRU、原事件BCE＋2logQ Huber＋0.5时间Huber，另实现固定95/351 ns双发光衰减及已标定电子学的可微物理解码。新增项为实际原生祖先分量误差（权重1）与这些分量的条件求和误差（权重0.1），在训练真值最近bin计算，支持[-16,1200] ns、2 ns采样；它不是完整含暗电压的无监督重建，也没有更改最终密集事件表示/8 ns候选峰选择。相同bin多事件仅从新增项排除，原目标和测试不排除。实际雪崩保留共享微胞历史，只重放线性电子学，不把独立低率分量随意叠加。
+
+新增U-Net–GRU为多尺度与时序结构的整体对照，未单独区分两者贡献。四方案各两个种子、2400步/batch16；同结构/同种子配对初始权重、采样、数据和优化器。7435/159315参数不当作等计算量比较。49训练/26验证按完整ROOT划分：旧26/10保留角色，已公开23测试转训练、16确认转验证；不再称它们新测试。每400步及第1步以验证逐率宏电荷合格F1在预声明阈值网格选检查点；另按配对GRU的验证额外输出预算选阈值，新测试不保证相等。
+
+**新数据与物理条件**：全部权重/阈值/源码/测试计划冻结后生成60个新ROOT，0.1/1/10/20/40/60/80/100 MHz各40/8/2/2/2/2/2/2窗；低率扩展在冻结前完成，初始23种子保留。纯p–¹¹B有效单α谱，无γ；共享微胞、暗链、噪声、完整20 μs模拟电压、中央[5,15) μs评分，充分动态范围。Q为实际雪崩等效电荷，不是沉积能量；源注入率不当作探测/反应率。推理只读观测电压与冻结参数，无真值、K或源率输入。
+
+**本项目实际结果**：同一新批共同目标4253个，时间±10 ns最大基数一对一匹配后Q误差≤20%才完整恢复；两个训练种子共享同批ROOT，不当作两倍物理曝光。
+
+| 方案 | 完整恢复（两种子） | 额外输出（两种子） |
+| --- | ---: | ---: |
+| GRU原目标 | 1041/1100 | 525/498 |
+| GRU分量目标 | 856/832 | 512/521 |
+| U-Net–GRU原目标 | 1124/1164 | 462/455 |
+| U-Net–GRU分量目标 | 922/830 | 475/489 |
+| 当前WLS | 812 | 300 |
+| 旧冻结GRU | 1036 | 217 |
+
+
+**本轮取舍**：保留U-Net–GRU原目标作为候选，暂不采用当前分量损失；两个结构/两个种子都未获益。相对同批新GRU原目标，U-Net–GRU原目标完整恢复增加83/64、额外输出减少63/43，属于小幅改善。旧冻结U-Net恢复1148、额外466，新结构尚未明显超越它；旧数据划分不同，不单独归因于GRU瓶颈。
+
+**探索性诊断**：新增分量方案在时间匹配者上的Q误差中位数为约−21.1%至−13.3%；事后在真值最近bin读取电荷头没有消除下偏。该oracle检查不修改盲输出或主评分，既没有提供恢复率提升，也未独立确定失配、损失几何或训练预算的因果。实际源和结果另存`alpha_component_posthoc.py`与本地`anchor-head-diagnostic.json`。下一轮优先检查未知K事件表示与事件级Q/计数约束；若再试分量项，先核对孤立/受控电荷无偏，另定开发与新测试。
+
+合计受高率目标主导；Notebook另报逐率、条件Q偏差/宽度、漏检、电荷失败、拆并标志、同事件得失和额外输出。Q宽度不是能量FWHM，较小总波形残差不保证正确分量，额外输出也不一定对应物理上完全无信号。
+
+**实际检查与I/O记录**：1320份新测试评分重算、1200份神经输出复解码、120个物理总模型重构，60个实际RunInfo/宏/三个种子及冻结时序核对；75分量缓存、配对配置、禁用数组加载的盲推断、冷复跑及8个完整原生分量图通过。另逐项核对60个原ROOT采样时间/电压与导出数组；独立进程冷复跑22份数值拟合一致，仅WLS的`refinement_seconds`计时字段不参与数值相等断言，验证器适配器保留原冻结文件。62软件控制含白/AR1噪声、空/单/双及高幅外推，1364份评分与124个物理模型重算；不提供原生最小可分间隔。原控制保存函数在数值工作完成后遇到数组JSON转换错误，独立保存适配器以原种子重生成同62例，物理数组另存NPZ，冻结推断源码/参数不改。推断可在G4其余窗口生成时顺序处理已完成记录；流式驱动只增加I/O编排，不改变计划或模型。
+
+**绘图恢复**：全窗图首轮导出以143中断，无Python回溯，原因未确认；部分输出保留。单独适配器仅固定图例位置，重导出相同案例/分量/采样/图号，已完成首轮数组与重导出逐项一致。数值推断与评分不改。
+
+**限制与待办**：高率每档2短窗、同窗相关、原2 ns/8 ns表示、均值响应失配及高密度偶然匹配仍限制结论。缓存字段名`mean_decoder_floor`实际为真实Q/时间下的参考误差，不是最小残差下界。新增损失只在训练标注中心约束，未直接优化最终盲列表；一次权重/预算下的结果不否定所有分量监督。后续若改权重、表示或响应自由度，需另定开发/验证协议并留新测试，不在此批上反复挑选。对比预训练/实测迁移、混合α/γ、free-τ、最短窗和沉积能标未由本轮回答。
+
+过程位于本地`jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb`第23–28节。来源：[冻结实验](../pileup/experiments/alpha_component_ml_20261021/README.md)、[实际结果](../jupyter/artifacts/alpha_component_ml_20261021/report-tables.json)、[验证](../jupyter/artifacts/alpha_component_ml_20261021/validation.json)。实际源码/宏/运行器副本保留，无需Git回退；本地输入、模型与环境仍须保留。
+
+
+<a id="ml-training-revision-20261021"></a>
+### L46：2026-10-21——针对分量监督负结果修订机器学习训练设计
+
+**问题与证据层级**：用户要求用paper-search尝试解决ML解堆积不佳。复用本地topic/review/vocabulary索引、三份优先主题页及完整来源笔记，定点回查四篇原PDF。实际提取Sadeghi PDF3–6、Deltoro PDF4–6、Kim PDF5/7–9、Regadío PDF3/7；实际看原页分别4、4、8、3。页码按本地PDF第1页，Kim PDF8为印刷页6。索引search-topic延迟后完成、命中7个显式关联主题；search-review进程退出143、没有输出且原因未确认，以rg和global-review原答复替代。不据工具无输出断言无相关文献。本轮不联网、不递归精读新引文、不改papers，不训练或新模拟。
+
+**文献结论、条件与采用范围**：
+
+- **R1：Bashir Sadeghi; Dustin Scriven; Aaron Chester; Ronald Fox; Sean Liddick; Giordano Cerizza，2026**，*A machine learning framework for accurate and robust analysis of radiation detector pulses*。Nuclear Instruments and Methods in Physics Research A 1082, 170971。[笔记](../../papers/sources/2026_Sadeghi_NIMA_A-machine-learning-framework-for-accurate-and-robust-analysis-of-radiation-detector-pulses.md)、[原文](../../papers/raw/2026_Sadeghi_NIMA_A-machine-learning-framework-for-accurate-and-robust-analysis-of-radiation-detector-pulses.pdf)、[DOI](https://doi.org/10.1016/j.nima.2025.170971)。PDF3式3–8；PDF4图4/式9–12；PDF5数据及式13–15；PDF6表2。**条件**：CeBr3 50×50×3 mm³/H13700 PMT；250 MSPS/4 ns；250点/1 µs；实测单脉冲及其缩放、平移副本合成双脉冲；没有独立连续随机源率或完整噪声强度。 **原文支持**：先拟合共享响应参数，再训练逐事件参数修正；单/双分类、整体与两个已知分量及自编码重建联合训练。先按母单脉冲70/10/20划分再合成。 **项目差异**：当前仅在训练真值最近bin的Q/时间头上加固定响应分量项；没有论文的单/双分类、共享响应初始化、逐事件形状修正和自编码分支。论文的两阶段指共享参数→神经修正，不等于已经验证单→双→多的课程训练。 **限制/待核**：固定单/双任务；同一母波形副本相关；175条真实双脉冲没有独立分量真值。ASNR和分类准确率不等于本项目Q±20%、时间±10 ns完整恢复率；式12单脉冲共享参数符号与式11不一致，保留待核。 **审核**：AI精读草稿待人工审核；没有针对本篇科学结论的新人工确认。
+
+- **R2：J. M. Deltoro; G. Jaworski; A. Goasduff; V. González; A. Gadea; M. Palacz; J. J. Valiente-Dobón; J. Nyberg; S. Casans; A. E. Navarro-Antón; E. Sanchis; G. de Angelis; A. Boujrad; S. Coudert; T. Dupasquier; S. Ertürk; O. Stezowski; R. Wadsworth，2025**，*Reconstruction of pile-up events using a one-dimensional convolutional autoencoder for the NEDA detector array*。Nuclear Science and Techniques 36, 32。[笔记](../../papers/sources/2025_Deltoro_NST_Reconstruction-of-pile-up-events-using-a-one-dimensional-convolutional-autoencoder-for-the-NEDA-detector-array.md)、[原文](../../papers/raw/2025_Deltoro_NST_Reconstruction-of-pile-up-events-using-a-one-dimensional-convolutional-autoencoder-for-the-NEDA-detector-array.pdf)、[DOI](https://doi.org/10.1007/s41365-024-01606-y)。PDF4图3/§3.3；PDF5–6数据构造；其他成绩据既有完整笔记PDF7–8。**条件**：NEDA EJ301/PMT；250 MHz/4 ns、14 bit；实测单脉冲人工合成n–γ/γ–n；间隔12–160 ns、幅度150–7000 ADC；CC标签，无TOF真值；无连续随机源率。 **原文支持**：共享编码器、两个独立解码器，分别输出先/后两个实际组成波形，以合成前两个波形为训练标签。 **项目差异**：这是直接分量波形输出；当前网络实际只输出事件概率、Q和时间，分量是固定物理解码器派生的辅助项。 **限制/待核**：只验证固定两个异类脉冲；没有同类αα、未知K≥3或高率原生共享SiPM检验。母波形是否跨训练/测试复用未交代清楚；相关系数0.988并非逐事件能量/时间准确率。论文没有验证PIT/集合匹配。 **审核**：AI精读草稿待人工审核；入库授权不等于科学结论认可。
+
+- **R3：W. Kim; K. Ko; S. Lee; J. Park; G. Song; K. Lim; G. Cho，2023**，*Optimizing deep learning-based piled-up pulse height correction method for high radiation-field application*。JINST 18 C12002；正式出版会议论文。[笔记](../../papers/sources/2023_Kim_JINST_Optimizing-deep-learning-based-piled-up-pulse-height-correction-method-for-high-radiation-field-application.md)、[原文](../../papers/raw/2023_Kim_JINST_Optimizing-deep-learning-based-piled-up-pulse-height-correction-method-for-high-radiation-field-application.pdf)、[DOI](https://doi.org/10.1088/1748-0221/18/12/C12002)。PDF5数据；PDF7寻峰与网络；PDF8图4/表2（印刷页6）；PDF9表3及窗口选择。**条件**：LaBr3 1.5×1.5英寸/PMT、宽带放大；500 MS/s/2 ns、496点/992 ns；实测单脉冲合成人工1–10重堆积，训练间隔16–80 ns；噪声未完整量化，无实测连续Mcps恢复验证。 **原文支持**：检峰和条件脉高回归分别评价；表2中8 ns间隔导数检峰为105003/200000=52.50%，16 ns为150684/200000=75.34%，因此回归精度不能代替检出效率。 **项目差异**：本项目输入已有导数特征；要改的是输出容量/候选选择与评价，不能把再加导数称作新方案。 **限制/待核**：不直接提供逐事件总效率。式2.2写平均绝对相对误差，而表3约99%按准确度解释，尚有定义异文；不采用99%作本项目恢复率或最小窗依据。 **审核**：AI精读草稿待人工审核；已入库，没有新增科学采用确认。
+
+- **R4：Alberto Regadío; J. Ignacio García Tejedor; Luis Esteban; Sebastián Sánchez-Prieto，2024**，*Three topologies of deep neural networks for pulse height extraction*。Applied Radiation and Isotopes 204, 111137。[笔记](../../papers/sources/2024_Regadio_ARI_Three-topologies-of-deep-neural-networks-for-pulse-height-extraction.md)、[原文](../../papers/raw/2024_Regadio_ARI_Three-topologies-of-deep-neural-networks-for-pulse-height-extraction.pdf)、[DOI](https://doi.org/10.1016/j.apradiso.2023.111137)。PDF3式1–3；PDF7表1。**条件**：固定CR–RC 1/0.1 µs、20 MHz/50 ns、1024点；均匀0–1幅度；成形前人工白/Brown噪声；非GAGG/SiPM实测。率/图轴单位有原印异文。 **原文支持**：MMSE对整条目标事件序列选择一个0–5采样的公共延迟后计算MSE，允许训练输出整体延迟。 **项目差异**：这是可单独消融的对齐损失；不是每个事件任意移动、不是一对一集合匹配，也不是改变本项目物理τ。 **限制/待核**：缺逐事件Q/时间及误检联合评价；不能靠事后真值移动得到测试改善。当前oracle最近真值bin仍有Q偏差，因此该损失只列次优先级。 **审核**：AI精读草稿待人工审核；已入库，没有针对本篇科学结论的人工确认。
+
+**实际项目诊断，非论文数值**：读取L45同批保存结果4253目标；U-Net–GRU原目标两种子已匹配Q失败占1725/2849=60.55%、1620/2784=58.19%，分量方案为1895/2817=67.27%、2011/2841=70.78%。因此候选数与Q校准应分开诊断，不把所有失败归于漏检。均值模板软件single_4000白噪声控制种子1原/分量方案Q=4373/5012 pe，WLS=4000.12 pe；10 ns等幅双控制完整2/0/2。控制分布与原生训练不同；原生分量模型总体偏负，而该控制偏正，不能据此单独确诊错误或用统一比例修正。原有oracle最近bin诊断仍有Q下偏，非盲提升。
+
+**采用决定与拟议路线**：不重复把同一个真值bin辅助项称作完整SAEFit。优先A：训练集简单案例过拟合检查＋独立同分布控制，再做原生孤立Q/t训练验证；B：同结构同种子消融原目标、逐真Q²归一化分量项和训练确定的固定尺度分量项，检查Q覆盖、绝对尺度及收敛；C/D：直接两个实际分量输出，与两个存在性/Q/t物理解码分支比较，加入空/单/双使0/1/2未知，系统扫描间隔/幅比/Q/噪声，与WLS及当前密集头对照；E/F：单/双同时改善后，再扩展多槽＋存在性＋一对一分配和原生高率。课程训练、固定尺度损失、空窗扩展、PIT/集合匹配为本项目待验证提案，不是上述论文已证明的GAGG成果。SAEFit“两阶段”是共享响应→逐事件神经修正，不能引用成单→双→多课程的直接证据。MMSE仅列对齐消融，不借测试真值移动输出。
+
+**数据与评价**：先按母ROOT/种子分组，再裁剪/合成；均值线性叠加与原生共享微胞分量分开，暗链/阈下α保留；推断不读真K、Q、时刻或源率。暂保持95/351 ns双发光衰减及充分动态范围；Q为实际雪崩等效pe，非沉积能量。每2 ns一槽和8 ns候选筛选可能造成竞争，但偏移后输出时间差不一定≥8 ns。计数、条件Q/时间、完整效率、误拆/误并、额外输出同时评价，不能以总残差/相关度替代。已查看60窗今后只作开发/回归，新方案冻结后另留测试；不重复使用此批挑选后再叫独立确认。高率每档仅两ROOT的限制保留。
+
+**既有人工采用意见的边界**：核对[第545项原答复](../../papers/global-review.md#human-review-545-huang2025-confirmed)，Huang2025只认可给定谱库、已知率和模拟条件下统计能谱重建；[第555项原答复](../../papers/global-review.md#human-review-555-lin2026-confirmed)，Lin2026只认可表征/识别/多重数且保留面积代理标签。第668/669项的堆积拒绝/谱学采用边界亦保留；没有将这些意见转移为逐事件Q/t方法认可。
+
+**待验证及库维护待办**：先验证A/B，再决定C/D实现；不得把本次方案写成已改善。SAEFit式12符号/作者代码版本/真实分量真值，Deltoro/Kim母波形隔离与损失超参，Kim准确度公式，Regadío率/图轴与实现异文仍待核。若需新精读/补充资料，另在papers库处理，本项目不修改共享库。单/双任务的文献结果不能推成GAGG 80–100 MHz未知K恢复保证；free-τ、混合α/γ、沉积能标不由本次回答。
+
+本地记录：jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb第29节；[证据、条件与输入哈希](../jupyter/run_records/paper_search_ml_training_20261021_164120/evidence.json)。保留此前58个代码单元、39幅PNG和全部评分；新增只读取保存结果的轻量复核表，无新图/训练/推断。原Notebook/文档在同运行目录备份。
+
+
+<a id="alpha-pair-curriculum-20261021"></a>
+### L47：2026-10-21–22——单脉冲校准、直接分量头与共同微胞双脉冲的实际训练
+
+**依据与边界**：按L46/Notebook0004第29节实现。Sadeghi2026（10.1016/j.nima.2025.170971，PDF3–6式3–12/表2）、Deltoro2025（10.1007/s41365-024-01606-y，PDF4图3、PDF5–6数据）的原探测器/采样/噪声/固定双脉冲边界仍按L46；AI待审状态没有新增科学确认。本轮不重新检索/全文阅读或改写papers。课程训练、观测积分先验、两槽存在性和训练集合分配为项目改编，不称论文原样复现。
+
+**原值→实现**：由旧2ns密集头/8ns选峰/真值训练anchor辅助项，改做完整2.048µs局部帧的已知单事件校准与未知0/1/2分离。单事件Q用观测积分和预测到时的均值尾部修正，加有界残差；比较无分量、真实分量范数归一化、训练固定尺度三目标，各两种子/1200步。真实分量范数含形状涨落，近似Q²而非旧固定均值响应范数的逐行复现；共同积分结构的影响不能单独归因于归一化。两槽头分别为正观测电压的分量掩码和固定双τ物理解码，先比较无序最小分配，再在开发失败后、未生成新测试时追加有序目标＋独立计数＋全局条件解码，共四方案各两种子/2400步。此联合改法不分离各因素因果；推断不提供K/t/Q真值或源率。
+
+**数据与训练**：85/35旧孤立α母ROOT按原标定/开发分组，合格59/26。双分量前200步空/单预热，之后50%共同微胞光子重数字化、25%线性分量控制、25%均值控制。512训练/128验证联合数字化案例来自各自组内母光学输运；共同推进恢复/PDE/XT/暗链及噪声，电子学只在线性分量重放时拆分。线性缩放/插值不冒充原生微胞堆积。固定95/351ns和充分动态范围，Q为雪崩等效pe，非沉积能量。
+
+**冻结后测试与规则**：14模型、阈值、传统拟合惩罚、源码冻结后生成24个新原生G4孤立ROOT；独立均值、线性分量和256联合重数字化控制分域报告，不累加成独立ROOT曝光。新传统对照盲选0/1/2、NNLS消去Q并搜索时刻；验证空/单额外输出帧预算≤5%。网络refit保留网络报告K，局部±12ns再拟合。已知K拟合只作单列诊断。普通时间10ns/Q20%之外，新增min(10ns,真间隔/4)严格判据，真间隔只进入评分，以免近邻中点输出被误称分开。
+
+**原生裁帧补充**：原始真时刻居中选帧会提供时间先验，保留为诊断。初次测试推断完成后、尚未审阅准确度时发现这一问题；冻结权重/阈值不变，另按实际宏中的源触发时刻随机64–256ns预触发裁帧，选帧不读真实到时。主要单脉冲表与native比较采用此jitter-native视图；它与旧视图共享同24母ROOT，不是新增独立曝光，仍是给定外部触发的局部任务，不是完整20µs盲定位。设计时序和864行补充评分核验单独保留，未冒称最初冻结前已预声明。
+
+**实际结果**：新已知单事件合格分母18，single_logq两种子分别为18/18、18/18；single_relative两种子分别为18/18、18/18；single_fixed两种子分别为18/18、18/18。共同微胞控制盲拟合完整179/267、额外35；pair_direct：完整118/122, 额外12/6; pair_physical：完整140/121, 额外14/11; pair_ordered_direct：完整166/168, 额外16/18; pair_ordered_physical：完整163/168, 额外15/14。有序物理头＋局部重拟合，两种子分别完整恢复184/267和191/267，额外输出分别14和13；81个两事件均合格的帧中，严格双事件成功分别37和41，盲拟合为32。两训练种子分别保留，范围不是置信区间。 部分流程在这批共享微胞控制上同时增加完整恢复、保持或减少额外输出；这只说明本局部任务的改善，不能推成高率未知K结论。
+
+**实际验证与限制**：重算全部普通/严格评分、重解码原始槽预测，验证分量非负/和守恒、九个数字化案例精确重放、四独立进程禁止额外NPZ读取的冻结盲推断、24原生ROOT哈希/实际宏/三种子/冻结时序；3项单元检查及训练集工程过拟合通过。图30-1/30-2/31-1/32-1/32-2/33-1与原39图保留。两槽容量不支持任意高率完整20µs未知K；光子重数字化是离线同模型概率实现、非C++随机序列逐位等价。多案例共享24母ROOT，种子差异非置信区间；严格近邻失败、弱/零响应和额外输出均保留。共享状态4ns合格双事件有序物理头＋refit两种子均0/7，未得普适间隔/最高率、free双τ、混合α/γ或沉积能标结论。本次是局部无加权拟合对照，不能等同旧全窗WLS/GLS。先解决单/双失败，再决定未知K≥3/随机流扩展，未将超容量样本删后宣称高率成功。计数与单事件Q/形状涨落是下一轮开发检查项，改法须用另一批独立母ROOT测试。
+
+本地Notebook0004第30–34节及Run_Catalog记录实际过程；[独立实验](../pileup/experiments/alpha_pair_curriculum_20261021/README.md)、[结果](../jupyter/artifacts/alpha_pair_curriculum_20261021/report-tables.json)、[验证](../jupyter/artifacts/alpha_pair_curriculum_20261021/validation.json)。实际源码/宏/运行器副本保留，复现不要求Git回退；模型、输入和环境仍需本地保留。

@@ -1,0 +1,6 @@
+{
+  "threshold": 0.65,
+  "minimum_charge_pe": 250.0,
+  "edge_guard_samples": 262,
+  "maximum_components": 1600
+}

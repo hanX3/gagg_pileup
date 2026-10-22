@@ -1,0 +1,13 @@
+{
+  "created": "2026-10-14T16:40:47.364955+08:00",
+  "state": "frozen_before_test",
+  "weights_sha256": "833263fb8895a09874399bd00460fd0911553d1eb00b6f3998611bb1e7ca802d",
+  "config_sha256": "d98a50a14f76416b22794dd54368473aeb9bd31a18c35413f4893c21197f4ecd",
+  "data_split_sha256": "821fe18ea482f775e13945a5f2f21f39fa0ca3cb7c59d93dbcdd5c6533a1b424",
+  "threshold": 0.65,
+  "step": 1200,
+  "validation_objective": 0.5140434737204883,
+  "training_seconds": 515.9939791159995,
+  "parameters": 25707,
+  "model_source_sha256": "1dcf7984ff7b28d76e60afcdbd0ffe8150b9ff0a5d28009cc529170453116989"
+}

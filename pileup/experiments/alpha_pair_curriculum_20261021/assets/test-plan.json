@@ -1,0 +1,268 @@
+{
+  "planned_runs": [
+    {
+      "label": "test_alpha_1.5_0_0_00",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051000,
+      "preflight": true
+    },
+    {
+      "label": "test_alpha_1.5_0_0_01",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051001,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_1.5_2_0_00",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051002,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_1.5_2_0_01",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051003,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_1.5_4_4_00",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051004,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_1.5_4_4_01",
+      "particle": "alpha",
+      "energy_MeV": 1.5,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051005,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_2.5_0_0_00",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051006,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_2.5_0_0_01",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051007,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_2.5_2_0_00",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051008,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_2.5_2_0_01",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051009,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_2.5_4_4_00",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051010,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_2.5_4_4_01",
+      "particle": "alpha",
+      "energy_MeV": 2.5,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051011,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_5.486_0_0_00",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051012,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_5.486_0_0_01",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051013,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_5.486_2_0_00",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051014,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_5.486_2_0_01",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051015,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_5.486_4_4_00",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051016,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_5.486_4_4_01",
+      "particle": "alpha",
+      "energy_MeV": 5.486,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051017,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_8_0_0_00",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051018,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_8_0_0_01",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051019,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_8_2_0_00",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051020,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_8_2_0_01",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "x_mm": 2.0,
+      "y_mm": 0.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051021,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_8_4_4_00",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051022,
+      "preflight": false
+    },
+    {
+      "label": "test_alpha_8_4_4_01",
+      "particle": "alpha",
+      "energy_MeV": 8.0,
+      "x_mm": 4.0,
+      "y_mm": 4.0,
+      "role": "new_test_single",
+      "gamma_model": "brems",
+      "seed": 262051023,
+      "preflight": false
+    }
+  ]
+}

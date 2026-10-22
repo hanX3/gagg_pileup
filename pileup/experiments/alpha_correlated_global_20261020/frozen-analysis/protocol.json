@@ -1,0 +1,74 @@
+{
+  "created": "2026-10-20T21:48:56.689491+08:00",
+  "hypotheses": [
+    "Full correlated covariance vs its diagonal, identical observed-voltage pilot",
+    "Budgeted local differential evolution plus SLSQP vs SLSQP; K/time/Q remain unknown",
+    "Light GRU vs previous frozen CNN and physical fits, independent ROOT splits"
+  ],
+  "covariance": "sigma_e^2 I + diag(s) AR1(rho) diag(s); s^2=v_dark+eta max(pilot,0); frozen per record",
+  "covariance_estimation": "Empirical residual moments in known-single calibration; includes template mismatch, not microscopic truth covariance",
+  "penalty_multipliers": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "selection": "Minimize extra predictions in native development singles; then maximize macro complete-recovery F1 at 1/10/40 MHz; higher multiplier wins ties",
+  "optimizer_budget": {
+    "report_charge_pe": 500.0,
+    "component_charge_pe": 100.0,
+    "min_separation_ns": 3.0,
+    "pair_distance_ns": 200.0,
+    "move_ns": 24.0,
+    "tail_ns": 1400.0,
+    "passes": 2,
+    "max_iterations": 35,
+    "split_gaps_ns": [
+      6.0,
+      16.0,
+      40.0
+    ],
+    "max_additions": 160,
+    "residual_budget": 32,
+    "penalty_per_pe": 0.01,
+    "penalty_multiplier": 1.0,
+    "diagonal": false,
+    "global_calls": 12,
+    "global_popsize": 6,
+    "global_iterations": 12,
+    "global_seed": 262025007
+  },
+  "test_plan": {
+    "100000": 8,
+    "1000000": 3,
+    "10000000": 2,
+    "20000000": 2,
+    "40000000": 2,
+    "60000000": 2,
+    "80000000": 2,
+    "100000000": 2
+  },
+  "software_controls": "Empty/single/double matched-template white noise and independently sampled correlated noise; not native double-pulse resolution",
+  "adequate_dynamic_range": true,
+  "double_scintillation_decay_ns": [
+    95.0,
+    351.0
+  ],
+  "scoring": {
+    "charge_threshold_pe": 500,
+    "time_tolerance_ns": 10,
+    "relative_charge_tolerance": 0.2
+  },
+  "git_head": "6ae005296b26a7b52f20fef18da9e5e3fe8996ec",
+  "environment": {
+    "python": "3.14.3",
+    "platform": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "uproot": "5.7.7",
+      "awkward": "2.14.0",
+      "matplotlib": "3.11.2"
+    }
+  },
+  "global_scope": "At most one global initialization per each of twelve uniform acquisition-time bins; first eligible local two/three-component proposal; no truth or rate prioritization."
+}

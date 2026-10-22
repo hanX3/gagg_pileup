@@ -1,0 +1,12 @@
+{
+  "threshold": 0.65,
+  "min_neural_charge_pe": 250.0,
+  "prior_strength": 0.1,
+  "time_refine_ns": 6.0,
+  "time_passes": 1,
+  "min_separation_ns": 8.0,
+  "max_optimizer_iterations": 400,
+  "selection": "Validation-only macro charge-qualified F1",
+  "validation_objective": 0.5504344678158676,
+  "cnn_weights_sha256": "833263fb8895a09874399bd00460fd0911553d1eb00b6f3998611bb1e7ca802d"
+}

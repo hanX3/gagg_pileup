@@ -1,0 +1,1 @@
+Actual scheduling, validation and report source copies. The inference snapshot is separate and unchanged. These scripts were executed at their original jupyter/run_records/alpha_correlated_global_20261020 paths; their relative project-root calculation assumes that original location. replay_analysis.py is the direct frozen inference replay entry point. No Git checkout is required.

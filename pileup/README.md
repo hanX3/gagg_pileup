@@ -165,3 +165,26 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/gagg-full-signal-mpl 
 ## 已有低率0.1、1、10 MHz的五方法复查（2026-10-15）
 
 新增[低率分析快照](experiments/alpha_ml_low_rate_20261015/README.md)，复用12个新测试低率窗和12个公开回归低率窗，分别报告，没有G4新增或模型调参。低率U-Net多数未成功来自电荷误差，检出与电荷合格已明确区分；10 MHz全148个阈上目标在W90内有邻居，仍有明显堆积。[同一本Notebook第11–14节](../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015)保留原输出并新增失败图、长度关联、同目标配对及小样本敏感性；[采用汇总](../docs/literature-use.md#ml-low-rates-20261015)保留来源/审核范围和待验证条件。
+
+
+## 纯α的主动拆峰与局部模型搜索（2026-10-20）
+
+[实现模块](analysis/alpha_local_fit.py)在原盲拟合初值上增加单→双拆分、残差补峰、删除/合并和多初值局部联合时间/非负幅度优化，超过64分量也执行局部联合更新。固定95/351 ns和慢权重，完整analog_mV输入；未知真实K/t/Q，不输入源率。48个独立单α标定窗、24个开发单α及三个公开率窗选定经验SSE代价后，冻结并生成23个新原生测试窗。
+
+0.1–100 MHz八档同窗比较保留改善和退步：20/40 MHz完整恢复121/291→150/291、90/526→140/526，10 MHz为90/136→88/136；40 MHz额外预测50→66。174条固定均值＋白噪声控制单列；高率两窗不能确定最高可用率，Q恢复不等于沉积能量恢复。新增[冻结快照与重跑入口](experiments/alpha_local_model_selection_20261020/README.md)、[本地结果与固定图17-1至17-3](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#pure-alpha-local-model-selection-20261020)和[L40来源/边界](../docs/literature-use.md#pure-alpha-local-model-selection-20261020)，原36窗基线和旧输出保留。
+
+## 相关GLS、局部种群搜索与GRU（2026-10-21）
+
+[加权拟合实现](analysis/alpha_correlated_fit.py)将固定观测pilot的全协方差innovation白化接入局部K/非负幅度变量投影，增加对角消融及每窗12次预算的局部DE＋SLSQP；[轻量GRU](analysis/alpha_correlated_gru.py)使用原CNN的训练/验证ROOT、特征和损失，验证选择权重/阈值。48标定、24单α＋三个率窗开发后共同冻结，另生成0.1–100 MHz八档23个新原生ROOT，完整电压、固定95/351 ns和原生共享微胞条件不变。
+
+同一批23个新原生窗中，旧局部K、对角WLS、相关GLS、GLS＋局部DE、旧CNN和轻量GRU的完整恢复数依次为726、776、636、635、1038、982（共同目标4333个）。这是非均衡曝光总计，逐率结果及额外输出须同时阅读。 完整表同时报告漏检/额外输出/拆并标志、条件Q与时间误差、事件得失和五种循环错位参考。216个盲软件控制、36个已知K=2/3优化诊断单列；条件优化成功不能直接解释为未知K恢复，且DE使用额外评估。
+
+[实际快照及新目录复跑](experiments/alpha_correlated_global_20261020/README.md)保存实际源码、配置、宏、二进制、权重与冻结文件身份，不必切换Git提交；本地Notebook0003追加第19节和图19-1至19-5。[L42](../docs/literature-use.md#alpha-correlated-global-gru-20261021)保留文献审核边界、经验协方差失配和实际验证。Q仍为实现雪崩等效电荷，不是沉积能量；高率仅两窗，不能认证最高可用率或实物分辨率。
+
+<a id="alpha-ml-refresh-20261021"></a>
+## 2026-10-21：ML与当前拟合的共同复评及新确认
+
+[独立实验](experiments/alpha_ml_refresh_20261021/README.md)保留四个网络权重，新建CNN候选＋残差WLS，加入原pilot候选、去除神经Q幅度惩罚并允许未知K拆并。已有23个公开窗口单独复评；16个冻结后新ROOT覆盖八档源注入率。新确认WLS完整恢复419/2098，新混合446/2098，额外输出112→133。完整恢复增加伴随额外输出增加，属于取舍，未达到两项同时改善；不据此自动替换默认方法。实际源码／配置／权重／宏保留，原ROOT在`g4/data/`，本地Notebook0004第15–21节和Run_Catalog记录完整过程。新确认高率每档仅一窗，固定双τ、纯α和充分动态范围，未作沉积能标。
+
+<a id="alpha-component-ml-20261021"></a>
+2026-10-21完成[分量监督与U-Net–GRU的新训练比较](experiments/alpha_component_ml_20261021/README.md)：四方案各两个训练种子，49训练/26验证ROOT，冻结后60个新窗口覆盖0.1–100 MHz。U-Net–GRU原目标完整恢复1124/1164/4253、额外输出462/455，相对同批新GRU小幅改善，尚未明显超越旧U-Net；两个结构、两个种子加入分量损失后完整恢复数均下降，当前不采用该损失。WLS为812/4253、额外300；逐率错误、62软件控制和oracle诊断一并记录，不能只按合并数排名。实现保留未知K密集解码，固定95/351 ns、完整模拟电压及充分动态范围。实际源码/配置/模型/宏、数值检查和8幅全窗图保留，本地Notebook0004第23–28节与Run_Catalog记录过程；高率仍每档仅两短窗，Q未作沉积能标。

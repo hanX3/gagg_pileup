@@ -1,0 +1,5 @@
+# SiPM候选处理容量扩展（2026-10-20）
+
+父实验的100 MHz、20 μs窗口触发了sensor.max_candidates=10000000保护并未保存完整响应。原失败ROOT和日志保留在父manifest.failed_attempts。此独立源码/配置快照只将该计算保护上限提高至30000000；C++和二进制身份、物理概率、微胞/读出及拟合参数均不变。先以相同1 MHz种子重放验证导出的16个数组逐项一致，再重试原计划100 MHz的两套种子。正式ROOT仍直接写入共享g4/data，普通本机副本仅用于只读导出；实际宏、日志和运行记录见manifest.json。此配置扩展不构成新物理模型，也不提高物理动态范围。
+
+两份重试的物理运行均正常结束。一份ROOT的PrimaryPhoton.photon_arrival_t_ps分支无法解压，其全局WaveformEvent时间及主光子位置/能量可读；评分导出以唯一的x/y/能量浮点位精确连接恢复冗余时间，要求一对一且覆盖全部光子。另一完整100 MHz ROOT的16数组逐项等价验证通过，总波形4数组也与恢复前相同；原ROOT和异常日志保留，该原分支仍不可直接读取。适配器及验证过程保存在父实验postprocessing/和本地run_records/alpha_local_model_selection_20261020/redundant-time-validation.json。重放拟合使用已验证的缓存，不改变盲拟合输入或冻结参数。

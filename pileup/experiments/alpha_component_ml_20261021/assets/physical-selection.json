@@ -1,0 +1,31 @@
+{
+  "method": "diagonal",
+  "factor": 0.5,
+  "tag": "diagonal_0.5",
+  "config": {
+    "report_charge_pe": 500.0,
+    "component_charge_pe": 100.0,
+    "min_separation_ns": 3.0,
+    "pair_distance_ns": 200.0,
+    "move_ns": 24.0,
+    "tail_ns": 1400.0,
+    "passes": 2,
+    "max_iterations": 35,
+    "split_gaps_ns": [
+      6.0,
+      16.0,
+      40.0
+    ],
+    "max_additions": 160,
+    "residual_budget": 32,
+    "penalty_per_pe": 0.00010828911473121573,
+    "penalty_multiplier": 0.5,
+    "diagonal": true,
+    "global_calls": 0,
+    "global_popsize": 6,
+    "global_iterations": 12,
+    "global_seed": 262025007
+  },
+  "single_extras": 0,
+  "macro_f1": 0.6344896933132228
+}

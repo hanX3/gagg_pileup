@@ -1,0 +1,14 @@
+VALIDATED_SCORES native 864
+VALIDATED_SCORES mean 10944
+VALIDATED_SCORES linear 20160
+VALIDATED_SCORES shared 29376
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/sf_works/GAGG_pileup/pileup/analysis/alpha_pair_validate.py", line 154, in <module>
+    if __name__=='__main__':validate()
+                            ~~~~~~~~^^
+  File "/media/sf_works/GAGG_pileup/pileup/analysis/alpha_pair_validate.py", line 142, in validate
+    assert batch_scores(r['fits'],batch)==r['scores']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

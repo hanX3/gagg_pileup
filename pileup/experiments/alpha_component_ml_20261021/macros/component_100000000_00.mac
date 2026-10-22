@@ -1,0 +1,28 @@
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gagg/run/windowLength 20 us
+/gagg/run/preWindow 5 us
+/gagg/run/postWindow 5 us
+/gagg/run/seed 262042021
+/gagg/run/outputFile /media/sf_works/GAGG_pileup/g4/data/20261021_15h26m32s.root
+/gagg/sipm/configFile /media/sf_works/GAGG_pileup/pileup/experiments/alpha_component_ml_20261021/source/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+/gagg/sipm/seed 262142021
+/gagg/sipm/readoutSeed 262242021
+/gagg/sipm/enable true
+/gagg/step/setGaggMaxStep 1 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1 um
+/run/initialize
+/gagg/source/useDiskConeSource true
+/gagg/source/aimAtGagg true
+/gagg/source/diskRadius 10 mm
+/gagg/pileup/enable true
+/gagg/source/brems/enable false
+/gagg/source/brems/rateHz 0
+/gagg/source/c12Capture/enable false
+/gagg/source/c12Capture/rateHz 0
+/gagg/source/alphaP11B/enable true
+/gagg/source/alphaP11B/rateHz 100000000
+/run/beamOn 1

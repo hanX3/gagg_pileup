@@ -1,0 +1,205 @@
+{
+  "method": "diagonal",
+  "rows": [
+    {
+      "index": 0,
+      "gain": 0.0,
+      "fitted_charge_pe": 1622.806725680024,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 1,
+      "gain": 0.0,
+      "fitted_charge_pe": 1562.9279471195455,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 2,
+      "gain": 0.0,
+      "fitted_charge_pe": 5086.950066339805,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 3,
+      "gain": 0.0,
+      "fitted_charge_pe": 10027.380455024002,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 4,
+      "gain": 0.0,
+      "fitted_charge_pe": 16656.60411667814,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 5,
+      "gain": 0.0,
+      "fitted_charge_pe": 16763.567521969977,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 6,
+      "gain": 0.0,
+      "fitted_charge_pe": 16788.296102392003,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 7,
+      "gain": 0.0,
+      "fitted_charge_pe": 16812.621734080105,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 8,
+      "gain": 0.0,
+      "fitted_charge_pe": 1090.3815737634268,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 9,
+      "gain": 0.0,
+      "fitted_charge_pe": 1098.4353147473244,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 10,
+      "gain": 0.0,
+      "fitted_charge_pe": 2692.899083118307,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 11,
+      "gain": 0.0,
+      "fitted_charge_pe": 2748.108537397547,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 12,
+      "gain": 0.0,
+      "fitted_charge_pe": 695.0977590609596,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 13,
+      "gain": 0.0,
+      "fitted_charge_pe": 749.648036321586,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 14,
+      "gain": 0.0,
+      "fitted_charge_pe": 761.3433173572937,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 15,
+      "gain": 0.0,
+      "fitted_charge_pe": 3034.4610160925013,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 16,
+      "gain": 0.0,
+      "fitted_charge_pe": 3007.814375223156,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 17,
+      "gain": 0.31849262839432413,
+      "fitted_charge_pe": 2941.132441472573,
+      "gain_per_pe": 0.00010828911473121573
+    },
+    {
+      "index": 18,
+      "gain": 0.0,
+      "fitted_charge_pe": 1643.8108108128406,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 19,
+      "gain": 0.0,
+      "fitted_charge_pe": 1619.7891481496467,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 20,
+      "gain": 0.0,
+      "fitted_charge_pe": 1657.016618325832,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 21,
+      "gain": 0.0,
+      "fitted_charge_pe": 16667.768444033954,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 22,
+      "gain": 0.0,
+      "fitted_charge_pe": 16588.170162994935,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 23,
+      "gain": 0.0,
+      "fitted_charge_pe": 2908.6955613515715,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 24,
+      "gain": 0.0,
+      "fitted_charge_pe": 2815.5230856035932,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 25,
+      "gain": 0.0,
+      "fitted_charge_pe": 2753.123849248664,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 26,
+      "gain": 0.0,
+      "fitted_charge_pe": 779.9204877364328,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 27,
+      "gain": 0.0,
+      "fitted_charge_pe": 10133.404101347021,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 28,
+      "gain": 0.0,
+      "fitted_charge_pe": 2911.986909061121,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 29,
+      "gain": 0.0,
+      "fitted_charge_pe": 16628.61369384461,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 30,
+      "gain": 0.0,
+      "fitted_charge_pe": 5032.56127753928,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 31,
+      "gain": 0.0,
+      "fitted_charge_pe": 2888.7653024637743,
+      "gain_per_pe": 0.0
+    },
+    {
+      "index": 32,
+      "gain": 0.0,
+      "fitted_charge_pe": 2852.917566368333,
+      "gain_per_pe": 0.0
+    }
+  ],
+  "coefficient": 0.00010828911473121573,
+  "rule": "Maximum calibration-single full-record split gain / fitted charge; empirical, not a p-value"
+}

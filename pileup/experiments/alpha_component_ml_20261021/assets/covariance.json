@@ -1,0 +1,145 @@
+{
+  "parameters": {
+    "electronic_sigma_mV": 0.1,
+    "dark_variance_mV2": 0.0,
+    "shot_coefficient_mV": 0.7976401192199148,
+    "rho": 0.9819124013347901
+  },
+  "single_windows": 33,
+  "rows": [
+    {
+      "root": "g4/data/20261015_16h42m58s.root",
+      "fitted_charge_pe": 1658.7626422864205
+    },
+    {
+      "root": "g4/data/20261015_16h46m25s.root",
+      "fitted_charge_pe": 1549.848929510589
+    },
+    {
+      "root": "g4/data/20261015_16h46m36s.root",
+      "fitted_charge_pe": 5166.691797946559
+    },
+    {
+      "root": "g4/data/20261015_16h46m43s.root",
+      "fitted_charge_pe": 9910.798188931103
+    },
+    {
+      "root": "g4/data/20261015_16h42m59s.root",
+      "fitted_charge_pe": 16040.934885435143
+    },
+    {
+      "root": "g4/data/20261015_16h47m01s.root",
+      "fitted_charge_pe": 16164.647176797036
+    },
+    {
+      "root": "g4/data/20261015_16h47m12s.root",
+      "fitted_charge_pe": 16296.22419081723
+    },
+    {
+      "root": "g4/data/20261015_16h47m13s.root",
+      "fitted_charge_pe": 16321.855249315837
+    },
+    {
+      "root": "g4/data/20261016_11h29m09s.root",
+      "fitted_charge_pe": 1139.6227713601647
+    },
+    {
+      "root": "g4/data/20261016_11h29m12s.root",
+      "fitted_charge_pe": 1113.1493806888695
+    },
+    {
+      "root": "g4/data/20261016_11h30m40s.root",
+      "fitted_charge_pe": 2759.5817997410986
+    },
+    {
+      "root": "g4/data/20261016_11h30m43s.root",
+      "fitted_charge_pe": 2799.7794122765195
+    },
+    {
+      "root": "g4/data/20261016_11h30m44s.root",
+      "fitted_charge_pe": 712.7203109342271
+    },
+    {
+      "root": "g4/data/20261016_11h30m46s.root",
+      "fitted_charge_pe": 752.6997546689759
+    },
+    {
+      "root": "g4/data/20261016_11h30m48s.root",
+      "fitted_charge_pe": 768.6880204737242
+    },
+    {
+      "root": "g4/data/20261016_11h32m22s.root",
+      "fitted_charge_pe": 3092.4948159385312
+    },
+    {
+      "root": "g4/data/20261016_11h32m25s.root",
+      "fitted_charge_pe": 3090.1985056424287
+    },
+    {
+      "root": "g4/data/20261016_11h32m44s.root",
+      "fitted_charge_pe": 2971.2964725491556
+    },
+    {
+      "root": "g4/data/20261016_11h33m58s.root",
+      "fitted_charge_pe": 1614.749386801127
+    },
+    {
+      "root": "g4/data/20261016_11h35m10s.root",
+      "fitted_charge_pe": 1591.024589425946
+    },
+    {
+      "root": "g4/data/20261016_11h35m12s.root",
+      "fitted_charge_pe": 1647.4897706835852
+    },
+    {
+      "root": "g4/data/20261016_11h35m14s.root",
+      "fitted_charge_pe": 16160.230918140544
+    },
+    {
+      "root": "g4/data/20261016_11h35m20s.root",
+      "fitted_charge_pe": 16075.061639016623
+    },
+    {
+      "root": "g4/data/20261016_11h37m16s.root",
+      "fitted_charge_pe": 2952.5871506623007
+    },
+    {
+      "root": "g4/data/20261016_11h37m17s.root",
+      "fitted_charge_pe": 2841.964701013311
+    },
+    {
+      "root": "g4/data/20261020_10h48m58s.root",
+      "fitted_charge_pe": 2742.703432880117
+    },
+    {
+      "root": "g4/data/20261020_10h49m01s.root",
+      "fitted_charge_pe": 787.8777672705462
+    },
+    {
+      "root": "g4/data/20261020_10h50m24s.root",
+      "fitted_charge_pe": 9993.541513383045
+    },
+    {
+      "root": "g4/data/20261020_10h50m30s.root",
+      "fitted_charge_pe": 2984.2247589669737
+    },
+    {
+      "root": "g4/data/20261020_10h51m54s.root",
+      "fitted_charge_pe": 16089.184699241561
+    },
+    {
+      "root": "g4/data/20261020_10h51m57s.root",
+      "fitted_charge_pe": 5102.803877798913
+    },
+    {
+      "root": "g4/data/20261020_10h51m59s.root",
+      "fitted_charge_pe": 2942.0495795200527
+    },
+    {
+      "root": "g4/data/20261020_10h52m00s.root",
+      "fitted_charge_pe": 2951.7744717822607
+    }
+  ],
+  "fit_inputs": "Known-single identity, measured voltage; no charge/time truth used",
+  "covariance_scope": "Empirical calibrated residual model; AR1 structure assumed, shared-cell covariance not proven"
+}

@@ -1,0 +1,72 @@
+{
+  "state": "all_methods_frozen_before_test",
+  "created": "2026-10-14T19:25:05.063410+08:00",
+  "methods": {
+    "unet": {
+      "state": "frozen_before_test",
+      "created": "2026-10-14T18:51:04.592564+08:00",
+      "architecture": "unet",
+      "weights_sha256": "5aa3472fc2fdeb5e15bcb8c41a5571db171421ed4e2bb88322d286ccdd987fe6",
+      "config_sha256": "2058dcb62b65b8c4bdd4a04ece6884c89ec37c2d442de98838cc58a5f382423f",
+      "threshold": 0.75,
+      "step": 800,
+      "validation_objective": 0.5353935930786656,
+      "training_seconds": 2058.293985069002,
+      "parameters": 134355,
+      "sources": {
+        "alpha_ml_multimethod.py": "1363658616675689ea615fe8334cf3e8c660d9b49d3337b56f6eb11b83958142",
+        "alpha_ml_models.py": "12718966858647824e2c4dfe1d2e1d6b6cca7313ed8a6084c91eb09541ec5351",
+        "alpha_pileup_hybrid.py": "8f5476e44b2e3acfa19d4cc7c761cf792959405ea49618ca391bcb5672f9d653",
+        "alpha_pileup_ml.py": "1dcf7984ff7b28d76e60afcdbd0ffe8150b9ff0a5d28009cc529170453116989",
+        "alpha_pileup_fit.py": "d2c9b8071720c7f112606eea0717a71e42bf3b5f12b45a021b1961bbe13250b8",
+        "alpha_full_signal_study.py": "60849896ca0b77d9a23f5aeb3bb09302bcaf1412d7c273f4d62628e48a488cb2"
+      }
+    },
+    "transformer": {
+      "state": "frozen_before_test",
+      "created": "2026-10-14T19:23:49.097567+08:00",
+      "architecture": "transformer",
+      "weights_sha256": "ed677fcb1c47f60c5224dc253280952294623be4a89eb94d91dbd8d37db2bcb9",
+      "config_sha256": "e91e2c6e2043797c0c33440b47186167f02017a71f9dd4a88f4c2a1e16299ede",
+      "threshold": 0.85,
+      "step": 2400,
+      "validation_objective": 0.5421249369839053,
+      "training_seconds": 1879.007435232983,
+      "parameters": 30731,
+      "sources": {
+        "alpha_ml_multimethod.py": "1363658616675689ea615fe8334cf3e8c660d9b49d3337b56f6eb11b83958142",
+        "alpha_ml_models.py": "12718966858647824e2c4dfe1d2e1d6b6cca7313ed8a6084c91eb09541ec5351",
+        "alpha_pileup_hybrid.py": "8f5476e44b2e3acfa19d4cc7c761cf792959405ea49618ca391bcb5672f9d653",
+        "alpha_pileup_ml.py": "1dcf7984ff7b28d76e60afcdbd0ffe8150b9ff0a5d28009cc529170453116989",
+        "alpha_pileup_fit.py": "d2c9b8071720c7f112606eea0717a71e42bf3b5f12b45a021b1961bbe13250b8",
+        "alpha_full_signal_study.py": "60849896ca0b77d9a23f5aeb3bb09302bcaf1412d7c273f4d62628e48a488cb2"
+      }
+    },
+    "cnn": {
+      "created": "2026-10-14T16:40:47.364955+08:00",
+      "state": "frozen_before_test",
+      "weights_sha256": "833263fb8895a09874399bd00460fd0911553d1eb00b6f3998611bb1e7ca802d",
+      "config_sha256": "d98a50a14f76416b22794dd54368473aeb9bd31a18c35413f4893c21197f4ecd",
+      "data_split_sha256": "821fe18ea482f775e13945a5f2f21f39fa0ca3cb7c59d93dbcdd5c6533a1b424",
+      "threshold": 0.65,
+      "step": 1200,
+      "validation_objective": 0.5140434737204883,
+      "training_seconds": 515.9939791159995,
+      "parameters": 25707,
+      "model_source_sha256": "1dcf7984ff7b28d76e60afcdbd0ffe8150b9ff0a5d28009cc529170453116989"
+    }
+  },
+  "hybrid_config_sha256": "ff2c25a8d314ab8bfd1da92aba8e1cbed026385f57010873cb0485397618500a",
+  "sources": {
+    "alpha_ml_multimethod.py": "1363658616675689ea615fe8334cf3e8c660d9b49d3337b56f6eb11b83958142",
+    "alpha_ml_models.py": "12718966858647824e2c4dfe1d2e1d6b6cca7313ed8a6084c91eb09541ec5351",
+    "alpha_pileup_hybrid.py": "8f5476e44b2e3acfa19d4cc7c761cf792959405ea49618ca391bcb5672f9d653",
+    "alpha_pileup_ml.py": "1dcf7984ff7b28d76e60afcdbd0ffe8150b9ff0a5d28009cc529170453116989",
+    "alpha_pileup_fit.py": "d2c9b8071720c7f112606eea0717a71e42bf3b5f12b45a021b1961bbe13250b8",
+    "alpha_full_signal_study.py": "60849896ca0b77d9a23f5aeb3bb09302bcaf1412d7c273f4d62628e48a488cb2"
+  },
+  "calibration_sha256": "89b28371690ff3df4886664faa34eb21b5d3c8b481103ae86d099e60dbf71c8d",
+  "split_sha256": "e722749f1f681049c336d57f8c443e7adbda2fcca38b58432a7b19a2241abe16",
+  "test_tuning": false,
+  "previous_17_tests": "Regression only"
+}

@@ -1,0 +1,50 @@
+NATIVE_START test_alpha_1.5_0_0_00 g4/data/20261021_17h55m06s.root
+NATIVE_PREFLIGHT_PASSED 7.857960709996405
+NATIVE_START test_alpha_1.5_0_0_01 g4/data/20261021_17h55m15s.root
+NATIVE_START test_alpha_1.5_2_0_00 g4/data/20261021_17h55m16s.root
+NATIVE_START test_alpha_1.5_2_0_01 g4/data/20261021_17h55m17s.root
+NATIVE_START test_alpha_1.5_4_4_00 g4/data/20261021_17h55m18s.root
+NATIVE_START test_alpha_1.5_4_4_01 g4/data/20261021_17h55m20s.root
+NATIVE_START test_alpha_2.5_0_0_00 g4/data/20261021_17h55m21s.root
+NATIVE_START test_alpha_2.5_0_0_01 g4/data/20261021_17h55m22s.root
+NATIVE_START test_alpha_2.5_2_0_00 g4/data/20261021_17h55m23s.root
+NATIVE_START test_alpha_2.5_2_0_01 g4/data/20261021_17h55m24s.root
+NATIVE_START test_alpha_2.5_4_4_00 g4/data/20261021_17h55m25s.root
+NATIVE_START test_alpha_2.5_4_4_01 g4/data/20261021_17h55m26s.root
+NATIVE_START test_alpha_5.486_0_0_00 g4/data/20261021_17h55m27s.root
+NATIVE_START test_alpha_5.486_0_0_01 g4/data/20261021_17h55m28s.root
+NATIVE_START test_alpha_5.486_2_0_00 g4/data/20261021_17h55m29s.root
+NATIVE_START test_alpha_5.486_2_0_01 g4/data/20261021_17h55m30s.root
+NATIVE_START test_alpha_5.486_4_4_00 g4/data/20261021_17h55m31s.root
+NATIVE_START test_alpha_5.486_4_4_01 g4/data/20261021_17h55m32s.root
+NATIVE_START test_alpha_8_0_0_00 g4/data/20261021_17h55m34s.root
+NATIVE_START test_alpha_8_0_0_01 g4/data/20261021_17h55m35s.root
+NATIVE_START test_alpha_8_2_0_00 g4/data/20261021_17h55m36s.root
+NATIVE_START test_alpha_8_2_0_01 g4/data/20261021_17h55m37s.root
+NATIVE_START test_alpha_8_4_4_00 g4/data/20261021_17h55m38s.root
+NATIVE_START test_alpha_8_4_4_01 g4/data/20261021_17h55m39s.root
+NATIVE_DONE 2 test_alpha_1.5_4_4_00 9.5
+NATIVE_DONE 3 test_alpha_1.5_2_0_00 10.4
+NATIVE_DONE 4 test_alpha_1.5_2_0_01 10.2
+NATIVE_DONE 5 test_alpha_1.5_0_0_01 10.0
+NATIVE_DONE 6 test_alpha_1.5_4_4_01 5.9
+NATIVE_DONE 7 test_alpha_2.5_0_0_00 34.9
+NATIVE_DONE 8 test_alpha_2.5_0_0_01 36.1
+NATIVE_DONE 9 test_alpha_2.5_2_0_00 55.2
+NATIVE_DONE 10 test_alpha_2.5_2_0_01 73.0
+NATIVE_DONE 11 test_alpha_2.5_4_4_00 69.4
+NATIVE_DONE 12 test_alpha_2.5_4_4_01 71.5
+NATIVE_DONE 13 test_alpha_5.486_0_0_00 68.4
+NATIVE_DONE 14 test_alpha_5.486_0_0_01 54.6
+NATIVE_DONE 15 test_alpha_5.486_2_0_01 36.5
+NATIVE_DONE 16 test_alpha_5.486_2_0_00 40.8
+NATIVE_DONE 17 test_alpha_5.486_4_4_00 34.5
+NATIVE_DONE 18 test_alpha_5.486_4_4_01 34.6
+NATIVE_DONE 19 test_alpha_8_0_0_00 39.9
+NATIVE_DONE 20 test_alpha_8_0_0_01 40.8
+NATIVE_DONE 21 test_alpha_8_2_0_00 36.7
+NATIVE_DONE 22 test_alpha_8_2_0_01 32.3
+NATIVE_DONE 23 test_alpha_8_4_4_00 25.6
+NATIVE_DONE 24 test_alpha_8_4_4_01 24.3
+POOL test-pool 20 24
+FRESH_NATIVE_COMPLETE 24

@@ -1,0 +1,81 @@
+{
+  "created": "2026-10-21T10:06:53.661590+08:00",
+  "inference_or_physics_changed": false,
+  "rows": [
+    {
+      "original_path": "pileup/analysis/alpha_correlated_report.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/modules/alpha_correlated_report.py",
+      "sha256": "1a2c47ce78ffbe7596562c808be91185d3570ee25a9d5be7fe6f1f4da57002f8"
+    },
+    {
+      "original_path": "pileup/analysis/alpha_rate_data_hashed.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/modules/alpha_rate_data_hashed.py",
+      "sha256": "f9dfb658c7225c8ca1052df182bb22f907aaa1c7485022ebacf0ad76eb175fe6"
+    },
+    {
+      "original_path": "pileup/analysis/root_redundant_photon_fields.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/modules/root_redundant_photon_fields.py",
+      "sha256": "42c1accd0674520ab9efa0cb585e0468d09c59d54062f5dc5be48668274314f9"
+    },
+    {
+      "original_path": "pileup/analysis/test_root_redundant_photon_fields.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/modules/test_root_redundant_photon_fields.py",
+      "sha256": "a6cc69a5ce6063903c30f3ff421395d7f9bc49798bbfd4f83ca4db538b394fc3"
+    },
+    {
+      "original_path": "pileup/analysis/alpha_optimizer_budget.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/modules/alpha_optimizer_budget.py",
+      "sha256": "f5d423638e76832f8f0681dbb9ad9b28ecefc517aa71e70fdebb80f628d7fc8f"
+    },
+    {
+      "original_path": "pileup/analysis/test_alpha_optimizer_budget.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/modules/test_alpha_optimizer_budget.py",
+      "sha256": "6a337ded4bbb2b193fee2ffa909a56caee4a103bc2aea61163d868ef38101d10"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/produce_remaining.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/produce_remaining.py",
+      "sha256": "bf9af8423cf93f6a9af3137a4f7324b3521e27af210ce2a7390f5d938466fa10"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/finish_native_exports.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/finish_native_exports.py",
+      "sha256": "859bda177ae5c16008d672f18edfa3587e881309a69dcdfc0008bc0bc3f02661"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/evaluate_after_native.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/evaluate_after_native.py",
+      "sha256": "a7d9ee292a7d5dcc774cfba82bcf9c55bc670558f7ffaf74641955863cd80ea0"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/continue_pipeline.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/continue_pipeline.py",
+      "sha256": "ec0ed15d69115ca49a300b19352961d4cbee5af229e382439e9e4fc83f8b02dc"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/validate_io_recovery.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/validate_io_recovery.py",
+      "sha256": "14a8444ba2bd09fa0e90d81b9503b1d7e812d87002f0d139de8587f1d56b7477"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/validate_results.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/validate_results.py",
+      "sha256": "9708962ed10644ce2e1b3339a615a2bf66f4fade7d2d620562b4b3beb897218c"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/write_notebooks.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/write_notebooks.py",
+      "sha256": "ccce62128584dee4249f921bf82dce0ccf707eb9b077c90b74403f0a1bdc9e1a"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/validate_notebooks.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/validate_notebooks.py",
+      "sha256": "97b9a4327d7b42d0434c7584d7876431e03d6fe418d2a2fac6692e582cf27528"
+    },
+    {
+      "original_path": "jupyter/run_records/alpha_correlated_global_20261020/write_docs.py",
+      "snapshot_path": "pileup/experiments/alpha_correlated_global_20261020/delivery-source/runners/write_docs.py",
+      "sha256": "4fcd2c787e2681058551be52cd8d23d9ab798c82bc44adc541fc45660caa469b"
+    }
+  ]
+}

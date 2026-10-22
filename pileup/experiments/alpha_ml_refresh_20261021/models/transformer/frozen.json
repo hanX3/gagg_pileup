@@ -1,0 +1,20 @@
+{
+  "state": "frozen_before_test",
+  "created": "2026-10-14T19:23:49.097567+08:00",
+  "architecture": "transformer",
+  "weights_sha256": "ed677fcb1c47f60c5224dc253280952294623be4a89eb94d91dbd8d37db2bcb9",
+  "config_sha256": "e91e2c6e2043797c0c33440b47186167f02017a71f9dd4a88f4c2a1e16299ede",
+  "threshold": 0.85,
+  "step": 2400,
+  "validation_objective": 0.5421249369839053,
+  "training_seconds": 1879.007435232983,
+  "parameters": 30731,
+  "sources": {
+    "alpha_ml_multimethod.py": "1363658616675689ea615fe8334cf3e8c660d9b49d3337b56f6eb11b83958142",
+    "alpha_ml_models.py": "12718966858647824e2c4dfe1d2e1d6b6cca7313ed8a6084c91eb09541ec5351",
+    "alpha_pileup_hybrid.py": "8f5476e44b2e3acfa19d4cc7c761cf792959405ea49618ca391bcb5672f9d653",
+    "alpha_pileup_ml.py": "1dcf7984ff7b28d76e60afcdbd0ffe8150b9ff0a5d28009cc529170453116989",
+    "alpha_pileup_fit.py": "d2c9b8071720c7f112606eea0717a71e42bf3b5f12b45a021b1961bbe13250b8",
+    "alpha_full_signal_study.py": "60849896ca0b77d9a23f5aeb3bb09302bcaf1412d7c273f4d62628e48a488cb2"
+  }
+}
