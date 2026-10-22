@@ -1,6 +1,6 @@
 # α/γ 混合堆积：独立标定与稀疏加权拟合
 
-2026-10-15 建立与冻结，2026-10-16 完成同窗基线和记录。针对旧的两示例固定模板、阈下贡献及相关噪声问题，实现电荷相关平均模板、固定协方差加权、非负稀疏候选选择、弱分量保留和无L1条件幅度重拟合。方法借鉴已有文献原则，属于项目改写，未完整复现任何单篇论文。依据和限制见 [L23/L24](../../../docs/literature-use.md#alpha-gamma-regularized-20261015)，过程见本地 [Notebook第13节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)。
+2026-10-15 建立与冻结，2026-10-16 完成同窗基线和记录。针对旧的两示例固定模板、阈下贡献及相关噪声问题，实现电荷相关平均模板、固定协方差加权、非负稀疏候选选择、弱分量保留和无L1条件幅度重拟合。方法借鉴已有文献原则，属于项目改写，未完整复现任何单篇论文。依据和限制见 [L23/L24](../../../docs/literature-use.md#alpha-gamma-regularized-20261015)，过程见本地 [Notebook第13节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)。
 
 ## 独立数据与适用范围
 

@@ -68,7 +68,7 @@ bash tools/run_gagg_python.sh pileup/experiments/alpha_gamma_context_calibration
 
 报告重生成仅改本轮图表，原始ROOT与拟合结果保持。`context_replay`若已存在，会检查源码/输入身份后复用；需要从头复算时选另一个新目录。G4可由本目录source/brems/g4和source/mono662/g4独立CMake构建，不依赖切换Git提交。各实际宏包含原始绝对路径以对应RunInfo；异机重跑时按新项目根重定位配置和时间表，将outputFile改成新的秒级文件名，；同名则等待下一秒重新命名，不覆盖原文件。每个宏仍只执行beamOn 1。不要直接清空原manifest以重跑，应保存独立运行记录。
 
-26项Python测试、1项C++ SiPM测试通过；209个ROOT和220份原生拟合结果复核，另对一个新测试窗完成仅电压重跑。详见本地[验证记录](../../../jupyter/run_records/alpha_gamma_context_calibration_20261016/validation.json)、[Notebook第16节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-context-calibration-20261016)、[Run Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-context-calibration-20261016)和[文献采用L27](../../../docs/literature-use.md#alpha-gamma-context-calibration-20261016)。
+26项Python测试、1项C++ SiPM测试通过；209个ROOT和220份原生拟合结果复核，另对一个新测试窗完成仅电压重跑。详见本地[验证记录](../../../jupyter/run_records/alpha_gamma_context_calibration_20261016/validation.json)、[Notebook第16节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-context-calibration-20261016)、[Run Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-context-calibration-20261016)和[文献采用L27](../../../docs/literature-use.md#alpha-gamma-context-calibration-20261016)。
 
 下一步优先补齐强前史下的γ条件标定：本次仅4个有效γ前史标定，前史电压上限约172 mV，未覆盖上述≥200 mV失败组。可从独立标定库选取多份有效γ光子输入，与前脉冲在同一微胞阵列按新数字化种子重放，系统覆盖前史、间隔和位置；这属于条件响应检验，不能拿筛选后的样本估计γ探测效率。在独立重复样本上检验条件均值和协方差是否足以描述模板涨落，再在开发集比较类型推断与电荷分配，并用新的冻结后测试判断是否改善。这些是后续方案，本轮尚未实施；本轮16个新测试窗没有用于调参。
 

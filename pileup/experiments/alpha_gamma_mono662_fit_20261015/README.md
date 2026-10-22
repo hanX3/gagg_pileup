@@ -24,7 +24,7 @@ bash tools/run_gagg_python.sh EXP/run_analysis.py --stage production \
 
 已完成的计划行会复用；不要修改旧宏、配置或覆盖 ROOT。新物理配置应创建新的实验。重拟合使用新输出路径即可保留原结果；当前结果缓存检查模板设置与拟合源码哈希。
 
-完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
+完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
 
 实际写出异常与重放：独立快照将原 C12 源槽三条能量 16.1、11.7、4.439 MeV 全部改为 0.661657 MeV，响应标签改为 gamma_mono_661657_keV；这不是 C12 俘获谱。源能量仍经完整输运，不等于沉积能量。原 20261015_09h45m53s.root 的 SiPMEvent/avalanche_charge_C 分支写入失败；同种子重放为 20261015_10h09m11s.root。所有可读数组一致，新电荷分支通过恢复系数和总电荷核验。 原文件保留并标记 failed_readback，替代文件不增加独立样本数。ROOT 曾在写入错误后返回退出码 0；最终采用完整分支读取核验。生产时运行器快照保留原样，可复用模块已增加 ROOT 写入错误日志识别。
 

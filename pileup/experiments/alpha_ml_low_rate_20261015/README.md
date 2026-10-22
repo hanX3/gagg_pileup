@@ -10,7 +10,7 @@
 
 成功为q≥500 pe、时间±10 ns一对一匹配及电荷误差≤20%。报告区分漏检、电荷失败、额外预测和合并拆分；q为实际雪崩等效数，不是沉积能量。当前模板FWHM181.505 ns/W90 728.024 ns，事后真值近邻分组不输入算法。0.1/1 MHz目标少，100%不等于普适能力；不把公开回归并入新独立性能，不模拟低于0.1 MHz。
 
-[Notebook第11–14节](../../../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015) · [项目采用记录](../../../docs/literature-use.md#ml-low-rates-20261015) · [实际结果](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/summary.json) · [检查](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/validation.json)
+[Notebook第11–14节](../../../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015) · [项目采用记录](../../../docs/literature-use.md#ml-low-rates-20261015) · [实际结果](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/summary.json) · [检查](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/validation.json)
 
 `source/`保存低率分析模块，`manifest.json`记录其哈希、原实验依赖、输入路径、版本和未提交状态；`replay.py`校验并优先加载此模块与原冻结评分源码，不要求Git回退。当前后续分析依赖原冻结目录及其本地结果，不能只复制本目录而丢弃原快照/数据。
 

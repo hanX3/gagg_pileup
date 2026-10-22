@@ -14,4 +14,4 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/gagg-full-signal-mpl 
 
 运行所用源码、输入结果哈希、环境与输出路径在 `manifest.json` 中记录。原宏、源率、三组种子和每个 ROOT 的哈希由输入结果及其 G4 实验 manifest 追溯。该结果是动态范围充足且忽略量化的模拟基准，不代表已验证某款 ADC；恢复的是实际输出电荷，尚未连接沉积能量标定。
 
-研究问题、表图、限制和下一步统一记录于本地 [纯 α 笔记第14节](../../../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014)。
+研究问题、表图、限制和下一步统一记录于本地 [纯 α 笔记第14节](../../../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014)。

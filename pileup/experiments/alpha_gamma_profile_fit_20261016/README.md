@@ -10,7 +10,7 @@
 
 保留可变形状作为实验候选，暂不替换上一版比较基线。γ正确分型数21→22，但同时满足类型和电荷要求的预测比例由18/49降为18/51；γ的完整恢复F1从0.41379降到0.40449。因此，本轮没有达到α和γ都可靠逐事件恢复的目标。12组试验也表明，在当前标定与数据条件下，更多拟合自由度、更小残差或更复杂的噪声权重不能自动转化为更好的两类恢复。
 
-完整逐类恢复率、纯度、条件电荷误差、漏检/误拆分/误合并及图表见本地[Notebook第15节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-profile-fit-20261016)和[summary](../../../jupyter/artifacts/alpha_gamma_profile_fit_20261016/summary.json)。文献原则及适用条件见[L26](../../../docs/literature-use.md#alpha-gamma-profile-fit-20261016)。新方法需要先运行V3再做形状后处理，不能把后处理时间当成完整流程时间。
+完整逐类恢复率、纯度、条件电荷误差、漏检/误拆分/误合并及图表见本地[Notebook第15节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-profile-fit-20261016)和[summary](../../../jupyter/artifacts/alpha_gamma_profile_fit_20261016/summary.json)。文献原则及适用条件见[L26](../../../docs/literature-use.md#alpha-gamma-profile-fit-20261016)。新方法需要先运行V3再做形状后处理，不能把后处理时间当成完整流程时间。
 
 ## 数据与源码边界
 

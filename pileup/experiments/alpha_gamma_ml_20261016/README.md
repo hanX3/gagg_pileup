@@ -1,6 +1,6 @@
 # α＋γ 多任务网络与联合物理拟合
 
-研究问题：从完整含噪电压恢复未知数量事件的类型、到达时间和实现电荷，检验 CNN、U-Net 及网络候选＋物理拟合是否改善已有扩展标定拟合，α、γ 同等重要。当前过程与最终表格在本地 [Notebook 第8节](../../../jupyter/codex_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016) 维护。
+研究问题：从完整含噪电压恢复未知数量事件的类型、到达时间和实现电荷，检验 CNN、U-Net 及网络候选＋物理拟合是否改善已有扩展标定拟合，α、γ 同等重要。当前过程与最终表格在本地 [Notebook 第8节](../../../jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016) 维护。
 
 ## 固定条件与划分
 

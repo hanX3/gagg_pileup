@@ -194,8 +194,8 @@ def main() -> int:
     config = PROJECT / "jupyter/classic_notebook_config.json"
     if not config.is_file():
         config = PROJECT / "tools/classic_notebook_config.json"
-    notebook = PROJECT / "jupyter/codex_SiPM_Digitization.ipynb"
-    default_url = "/notebooks/jupyter/codex_SiPM_Digitization.ipynb" if notebook.is_file() else "/tree"
+    notebook = PROJECT / "jupyter/codex_0001_SiPM_Digitization.ipynb"
+    default_url = "/notebooks/jupyter/codex_0001_SiPM_Digitization.ipynb" if notebook.is_file() else "/tree"
     command = [python, "-m", "nbclassic", f"--config={config}",
                f"--ServerApp.root_dir={PROJECT}", "--ServerApp.use_redirect_file=False",
                f"--MultiKernelManager.default_kernel_name={KERNEL}",

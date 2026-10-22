@@ -1,7 +1,7 @@
 # 纯 α / S13360 计数率拟合先导试验
 
 新实验，不修改 2026-09-23 的冻结扫描。研究入口为
-[codex_Alpha_Pileup_Rate_Fitting.ipynb](../../../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb)。
+[codex_0003_Alpha_Pileup_Rate_Fitting.ipynb](../../../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb)。
 
 `source/` 保存本次实际 G4 C++、配置和运行器副本；`macros/` 为实际运行宏，
 `logs/` 为完整运行输出；`manifest.json` 保存 ROOT 映射、种子、哈希、版本、环境和状态。

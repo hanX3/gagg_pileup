@@ -1,6 +1,6 @@
 # 纯 α / S13360 中间计数率补充扫描
 
-研究入口：[纯 α 堆积拟合笔记](../../../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb)。
+研究入口：[纯 α 堆积拟合笔记](../../../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb)。
 源注入率为 2、4、6、8 × 10⁷ Hz，每档预定 3 个独立窗口。
 每个 ROOT 保存一个 20 μs 窗，中央 [5,15) μs 评价，关闭外部 γ 背景。
 注入率不是探测计数率或物理反应产生率。

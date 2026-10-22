@@ -2,7 +2,7 @@
 
 当前统一采用 **Hamamatsu S13360-6050PE，25°C、3 V 过压**，配置为 [sipm_hamamatsu_s13360_6050pe_v2.json](../g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json)。原生宏、批量运行器、离线验证、器件分析和当前笔记均使用这一器件。参数状态 `datasheet_based` 表示厂家典型值及注明的模型近似；实物标定尚未完成。
 
-文献关系见 [L06–L07](literature-use.md#sipm-use-20261010)，器件来源与采用边界见 [L13](literature-use.md#hamamatsu-s13360-20261013)，完整公式、Markdown参数表与波形见 [SiPM笔记](../jupyter/codex_SiPM_Digitization.ipynb)。
+文献关系见 [L06–L07](literature-use.md#sipm-use-20261010)，器件来源与采用边界见 [L13](literature-use.md#hamamatsu-s13360-20261013)，完整公式、Markdown参数表与波形见 [SiPM笔记](../jupyter/codex_0001_SiPM_Digitization.ipynb)。
 
 <a id="native-sipm"></a>
 ## Geant4 原生数字化

@@ -2,7 +2,7 @@
 
 本实验按完整 ROOT 划分原有36个窗口为26训练、10验证，再生成17个新种子测试窗口。输入为完整含噪 `analog_mV`，假定采集动态范围足够；沿用实际共享微胞 SiPM 状态，不考虑ADC削顶或量化。网络和拟合都从电压估计未知事件数、时间和电荷，真值仅用于监督训练和分别评分。
 
-完整过程与图表在本地 [独立 Notebook](../../../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb)；[采用记录](../../../docs/literature-use.md#ml-pileup-comparison-20261014) 说明文献方向和本项目的实际结果。它是自建小型1D膨胀残差CNN，含固定逆滤波等电压特征，不是论文U-Net/SAEFit完整实现的复现。
+完整过程与图表在本地 [独立 Notebook](../../../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb)；[采用记录](../../../docs/literature-use.md#ml-pileup-comparison-20261014) 说明文献方向和本项目的实际结果。它是自建小型1D膨胀残差CNN，含固定逆滤波等电压特征，不是论文U-Net/SAEFit完整实现的复现。
 
 ## 数据与配置
 

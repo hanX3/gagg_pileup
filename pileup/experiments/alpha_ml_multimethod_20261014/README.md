@@ -2,7 +2,7 @@
 
 在动态范围足够、完整含噪电压可记录的前提下，实际比较原盲模板拟合、冻结CNN、小型U-Net、局部Transformer和CNN＋物理拟合。26训练/10验证ROOT，新生成22个独立测试ROOT，旧17个公开窗仅作回归。未知K，真值只监督/评分，不输入推断。原200个保留最终测试未用。
 
-[实际Notebook第二轮](../../../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014) · [L21采用记录](../../../docs/literature-use.md#ml-multimethod-20261014) · [逐窗结果](../../../jupyter/artifacts/alpha_ml_multimethod_20261014_180000/new_test/summary.json) · [验证](../../../jupyter/run_records/alpha_ml_multimethod_20261014_180000/validation-results.json)
+[实际Notebook第二轮](../../../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014) · [L21采用记录](../../../docs/literature-use.md#ml-multimethod-20261014) · [逐窗结果](../../../jupyter/artifacts/alpha_ml_multimethod_20261014_180000/new_test/summary.json) · [验证](../../../jupyter/run_records/alpha_ml_multimethod_20261014_180000/validation-results.json)
 
 ## 已完成的方法与条件
 

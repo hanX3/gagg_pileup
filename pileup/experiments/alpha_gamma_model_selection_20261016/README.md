@@ -1,6 +1,6 @@
 # α/γ等权恢复：联合模型搜索的独立测试
 
-2026-10-16。针对上一版10/20 ns控制漏候选、200 ns γα局部错解和L1提前停止，实现更严格的线性选择、联合两脉冲时间/类型/电荷搜索及带复杂度代价的残差补峰。α、γ逐事件恢复同样重要，不用总准确率隐藏类别差异。来源及限制见[L25](../../../docs/literature-use.md#alpha-gamma-model-selection-20261016)；研究过程见本地[Notebook第14节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)。
+2026-10-16。针对上一版10/20 ns控制漏候选、200 ns γα局部错解和L1提前停止，实现更严格的线性选择、联合两脉冲时间/类型/电荷搜索及带复杂度代价的残差补峰。α、γ逐事件恢复同样重要，不用总准确率隐藏类别差异。来源及限制见[L25](../../../docs/literature-use.md#alpha-gamma-model-selection-20261016)；研究过程见本地[Notebook第14节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)。
 
 ## 数据、划分与冻结
 

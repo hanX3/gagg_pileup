@@ -24,7 +24,7 @@ bash tools/run_gagg_python.sh EXP/run_analysis.py --stage production \
 
 已完成的计划行会复用；不要修改旧宏、配置或覆盖 ROOT。新物理配置应创建新的实验。重拟合使用新输出路径即可保留原结果；当前结果缓存检查模板设置与拟合源码哈希。
 
-完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
+完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
 
 实际写出异常与重放：γ 使用现有 exp(−E/kT)/E 源，kT=100 keV，10 keV–5 MeV，物理源码没有更改。原 20261015_09h47m13s.root 的 PrimaryPhoton/photon_energy_eV 分支写入失败；同种子重放为 20261015_10h29m25s.root。所有可读数组一致，且拟合输入与评分数组逐项相同，保留对应拟合结果并记录复用证据。 原文件保留并标记 failed_readback，替代文件不增加独立样本数。ROOT 曾在写入错误后返回退出码 0；最终采用完整分支读取核验。生产时运行器快照保留原样，可复用模块已增加 ROOT 写入错误日志识别。
 
