@@ -1,0 +1,6 @@
+{
+  "files": {
+    "interpretation-source-v3/clarify_interpretation.py": "98d809f02dfdba0e78cfe720059d2b69e9568c9a54cf7a9a8e5feeb56a6ad07a"
+  },
+  "scope": "Prose only; complete notebook code/output preservation checked using normalized Notebook objects; earlier serialization assertion retained in validation-source-v2"
+}

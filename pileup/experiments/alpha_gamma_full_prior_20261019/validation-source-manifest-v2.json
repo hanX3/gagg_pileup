@@ -1,0 +1,7 @@
+{
+  "files": {
+    "validation-source-v2/validate.py": "0ffb4fb12b38168eb204cad13efc17ff9b043b86aad01148b1c9d0537ead6bdb",
+    "validation-source-v2/clarify_interpretation.py": "a4b4876ba5a00d3b5e1f9cc049ec8611b668d7ce73a62d332b62cabecaba5b43"
+  },
+  "correction": "Normalize in-memory tuple pairs to their JSON array representation for exact score comparison; original failure and validator retained; no fit/score changes"
+}

@@ -1,0 +1,125 @@
+{
+  "created": "2026-10-16T12:04:23.265150+08:00",
+  "readout": {
+    "model": "double_exponential",
+    "internal_dt_ns": 0.25,
+    "sample_period_ns": 2.0,
+    "aperture_ns": 0.5,
+    "rise_ns": 2.0,
+    "decay_ns": 20.0,
+    "transimpedance_ohm": 50.0,
+    "lowpass_ns": 2.0,
+    "baseline_mV": 10.0,
+    "noise_rms_mV": 0.1,
+    "adc_bits": 12,
+    "adc_min_mV": 0.0,
+    "adc_max_mV": 1000.0,
+    "template_csv": null,
+    "max_internal_bins": 5000000
+  },
+  "area_per_pe_mV_ns": 13.618501389,
+  "baseline_mV": 10.0,
+  "classes": {
+    "alpha": {
+      "slow_intercept": 0.7012780867176334,
+      "slow_log_slope": 0.02251257449398832,
+      "delay_ns": -1.4224238429772944,
+      "charge_range_pe": [
+        57.00000000000003,
+        16860.17307227368
+      ],
+      "used_samples": 61,
+      "rms_fraction_residual": 0.0658557736970674
+    },
+    "gamma": {
+      "slow_intercept": 0.2436353112307718,
+      "slow_log_slope": 0.01765627473477258,
+      "delay_ns": -0.5854856182777989,
+      "charge_range_pe": [
+        123.99999999999997,
+        4546.215056880715
+      ],
+      "used_samples": 21,
+      "rms_fraction_residual": 0.04865009285574086
+    }
+  },
+  "source_roles": [
+    "calibration_single",
+    "calibration_history"
+  ],
+  "model": "Expanded-position/low-charge mean; optional voltage-history linear slow-fraction regression",
+  "physics_changed": false,
+  "extrapolation": "Clamp shape charge to calibration range; charge estimate itself not clamped",
+  "baseline_policy": "Known 10 mV electronics setting; variance estimated from independent pre-source samples",
+  "limitations": [
+    "Position is unobserved at inference and marginalized by equal planned position sampling",
+    "Voltage history is an occupancy proxy; it cannot determine local microcell history",
+    "Source energy, deposited energy and realized charge are distinct quantities",
+    "Class/position-dependent detection acceptance affects usable gamma calibration",
+    "Finite calibration residual RMS includes photon statistics, transport and shape-fit variation"
+  ],
+  "noise": {
+    "baseline_variance_mV2": 0.010086888535434182,
+    "variance_per_mV": 0.6140754218831209,
+    "shot_rho_at_2ns": 0.899769634545772,
+    "estimated_from": "Population-template residuals of calibration events, 0–2000 ns after first active photon",
+    "covariance": "Heteroscedastic AR(1) factor; fixed weights from smoothed observed voltage per fit"
+  },
+  "context_classes": {
+    "alpha": {
+      "slow_intercept": 0.7018794569699403,
+      "slow_log_slope": 0.02205958580875982,
+      "slow_per_100mV": 0.009609309691799708,
+      "charge_range_pe": [
+        57.00000000000003,
+        16860.17307227368
+      ],
+      "history_range_mV": [
+        0.0,
+        449.39472977526975
+      ],
+      "delay_ns": -1.4224238429772944,
+      "used_samples": 85,
+      "rms_fraction_residual": 0.0605812691067622,
+      "fraction_variance_coeff": [
+        0.0,
+        0.0019056285719256639
+      ],
+      "fraction_residual_p16_p50_p84": [
+        -0.030584885619770536,
+        0.0020474134281270873,
+        0.0532909168765667
+      ]
+    },
+    "gamma": {
+      "slow_intercept": 0.2529884404443226,
+      "slow_log_slope": 0.025894158208023425,
+      "slow_per_100mV": 0.047663260367653934,
+      "charge_range_pe": [
+        123.99999999999997,
+        4546.215056880715
+      ],
+      "history_range_mV": [
+        0.0,
+        172.19952234879355
+      ],
+      "delay_ns": -0.5854856182777989,
+      "used_samples": 25,
+      "rms_fraction_residual": 0.06127993515168782,
+      "fraction_variance_coeff": [
+        0.0037552304521950657,
+        0.0
+      ],
+      "fraction_residual_p16_p50_p84": [
+        -0.05706325937674266,
+        -0.002553102224316539,
+        0.06594126111710977
+      ]
+    }
+  },
+  "observation_file": "/media/sf_works/GAGG_pileup/jupyter/artifacts/alpha_gamma_context_calibration_20261016/pooled-calibration-observations.json",
+  "observation_sha256": "8199663fffc8b9627f038f98db2fe94ee4c21ae77c7e23ac77c7ed1124bfad74",
+  "parent_calibration_sha256": "c43b159200363399e69a867c75232ac2edb9524e7ba84e821533add7782ff966",
+  "noise_policy": "Keep previous independent AR(1) noise parameters fixed to isolate template changes",
+  "context_feature": "Causal mean analog voltage in [onset-24,onset-4) ns minus baseline; clamp at zero"
+}

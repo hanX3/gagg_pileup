@@ -1,0 +1,36 @@
+{
+  "stem": "20261016_10h32m27s",
+  "inputs": {
+    "waveform": {
+      "path": "inputs/20261016_10h32m27s/waveform.npz",
+      "sha256": "8e92ae3a1b25b75464289e5a0399470e0400fb9c16a60fc1b7b94826d91625a4",
+      "source": "jupyter/artifacts/alpha_gamma_profile_fit_20261016/inputs/waveforms/20261016_10h32m27s.npz",
+      "source_sha256": "8e92ae3a1b25b75464289e5a0399470e0400fb9c16a60fc1b7b94826d91625a4"
+    },
+    "dense": {
+      "path": "inputs/20261016_10h32m27s/dense.npz",
+      "sha256": "e2cdf716c125ca9bc1eac0f18e019a16cb888483f8ce4954e3fc224decbdb193",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/dense/validation/unet/20261016_10h32m27s.npz",
+      "source_sha256": "e2cdf716c125ca9bc1eac0f18e019a16cb888483f8ce4954e3fc224decbdb193"
+    },
+    "baseline_model": {
+      "path": "inputs/20261016_10h32m27s/baseline_model.npz",
+      "sha256": "bae4c4d2eca6051a13d67f5cb67ffcec65bcd97842a32017cea0ddfc1a91c530",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/results/validation/baseline/20261016_10h32m27s.npz",
+      "source_sha256": "bae4c4d2eca6051a13d67f5cb67ffcec65bcd97842a32017cea0ddfc1a91c530"
+    },
+    "baseline": {
+      "path": "inputs/20261016_10h32m27s/baseline.json",
+      "sha256": "1696a1c1443cd5194638114f24507f48e4fd2a9bbdf345a91fecd8a1bc5983f1",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/results/validation/baseline/20261016_10h32m27s.json",
+      "source_sha256": "7291d8c5a3b2985cf7a47e4e4e2d161a2651864425d64f383375983d784a8863"
+    },
+    "neural": {
+      "path": "inputs/20261016_10h32m27s/neural.json",
+      "sha256": "2c653cf3bfc2944977e9f319c6b05df6c7f5a4fcdf9292208ae73b360452b873",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/results/validation/unet/20261016_10h32m27s.json",
+      "source_sha256": "b364ee33582215fd097a57cf4736d3893f35333720ca7b5e800828598533918e"
+    }
+  },
+  "calibration_sha256": "063887611b657c931a86627692d0f264979ec080b1999c6511f4a84d601331d9"
+}

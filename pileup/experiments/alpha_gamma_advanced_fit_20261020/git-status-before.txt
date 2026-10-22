@@ -1,0 +1,52 @@
+ M README.md
+ M docs/literature-use.md
+ M docs/sipm-response.md
+ M pileup/README.md
+ M pileup/experiments/alpha_full_signal_20261014/README.md
+ M pileup/experiments/alpha_gamma_brems_fit_20261015/README.md
+ M pileup/experiments/alpha_gamma_context_calibration_20261016/README.md
+ M pileup/experiments/alpha_gamma_ml_20261016/README.md
+ M pileup/experiments/alpha_gamma_model_selection_20261016/README.md
+ M pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md
+ M pileup/experiments/alpha_gamma_profile_fit_20261016/README.md
+ M pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md
+ M pileup/experiments/alpha_ml_comparison_20261014/README.md
+ M pileup/experiments/alpha_ml_low_rate_20261015/README.md
+ M pileup/experiments/alpha_ml_multimethod_20261014/README.md
+ M pileup/experiments/alpha_s13360_intermediate_rates_20261014/README.md
+ M pileup/experiments/alpha_s13360_rate_fit_20261013/README.md
+ M tools/gagg_environment.py
+?? 01a12346-5cf5-7a41-84bf-2ed6537cca55-ubuntu
+?? 01a133e6-3029-7320-856f-f6dca7e65038-debian
+?? 01a137d6-d4ad-7b00-b91d-3c99a721fecb-fedora
+?? "11BH_alpha_spectra/make_p11b_alpha_spectrum.py\357\200\272Zone.Identifier"
+?? analysis/alpha_gamma_advanced_native.py
+?? analysis/alpha_gamma_dual_decay_plots.py
+?? analysis/alpha_gamma_minimum_window.py
+?? analysis/alpha_gamma_short_window.py
+?? analysis/alpha_gamma_short_window_controls.py
+?? analysis/alpha_gamma_short_window_native.py
+?? analysis/alpha_gamma_short_window_report.py
+?? analysis/alpha_gamma_short_window_study.py
+?? analysis/short_window_information.py
+?? analysis/test_alpha_gamma_short_window.py
+?? "bremsstrahlung/make_brems_spectrum.py\357\200\272Zone.Identifier"
+?? pileup/analysis/__init__.py
+?? pileup/analysis/alpha_gamma_full_prior_fit.py
+?? pileup/analysis/alpha_gamma_full_prior_study.py
+?? pileup/analysis/alpha_gamma_full_prior_test.py
+?? pileup/analysis/alpha_gamma_prior_ablation.py
+?? pileup/analysis/alpha_gamma_prior_diagnostics.py
+?? pileup/analysis/alpha_gamma_prior_study.py
+?? pileup/analysis/test_alpha_gamma_full_prior_fit.py
+?? pileup/analysis/test_alpha_gamma_prior_ablation.py
+?? pileup/experiments/alpha_gamma_advanced_fit_20261020/
+?? pileup/experiments/alpha_gamma_full_prior_20261019/
+?? pileup/experiments/alpha_gamma_prior_ablation_20261019/
+?? pileup/experiments/alpha_gamma_short_window_20261019/
+?? pileup/experiments/alpha_gamma_short_window_gamma_extension_20261019/
+?? "stopping_power/make_birks_yield_curves.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_birks_yield_curves_modified.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_birks_yield_curves_o16.py\357\200\272Zone.Identifier"
+?? "stopping_power/make_gagg_stopping_tables_o16.cc\357\200\272Zone.Identifier"
+?? ubuntu

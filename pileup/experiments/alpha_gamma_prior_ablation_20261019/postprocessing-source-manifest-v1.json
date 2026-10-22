@@ -1,0 +1,6 @@
+{
+  "files": {
+    "postprocessing-source/pileup/analysis/alpha_gamma_prior_diagnostics.py": "bb8b457f03cb07d4dfa83968946368b4bc5fd4906c6ce4725cddfef469f227fd"
+  },
+  "purpose": "Evaluation-only transition tables and post-hoc failure illustration; no change to frozen fitting source."
+}

@@ -1,0 +1,7 @@
+{
+  "files": {
+    "postprocessing-source-v2/make_figures.py": "90ca95d4c6b8a2607567ee967e6ac1b34ccd8c7628e74b0034c6198e88d088c3",
+    "postprocessing-source-v2/repair_dev_layout.py": "18464887842bc49a87164654e89e29e2b06ec841020a5d901a33e986975c104f"
+  },
+  "scope": "Saved-score figures, timing and transitions; development label wrap only; no fitter changes"
+}

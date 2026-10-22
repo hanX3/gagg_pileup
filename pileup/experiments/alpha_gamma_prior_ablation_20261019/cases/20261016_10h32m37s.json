@@ -1,0 +1,36 @@
+{
+  "stem": "20261016_10h32m37s",
+  "inputs": {
+    "waveform": {
+      "path": "inputs/20261016_10h32m37s/waveform.npz",
+      "sha256": "b1672a53b443e1dd0d76086b2ae32ddc1143af8c4f228261172120bced084cbe",
+      "source": "jupyter/artifacts/alpha_gamma_profile_fit_20261016/inputs/waveforms/20261016_10h32m37s.npz",
+      "source_sha256": "b1672a53b443e1dd0d76086b2ae32ddc1143af8c4f228261172120bced084cbe"
+    },
+    "dense": {
+      "path": "inputs/20261016_10h32m37s/dense.npz",
+      "sha256": "b1d277c5bc734fe9ff4b5a82f566dc3d808a3bc1858c41d0615b902574418ce3",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/dense/validation/unet/20261016_10h32m37s.npz",
+      "source_sha256": "b1d277c5bc734fe9ff4b5a82f566dc3d808a3bc1858c41d0615b902574418ce3"
+    },
+    "baseline_model": {
+      "path": "inputs/20261016_10h32m37s/baseline_model.npz",
+      "sha256": "78027a18c5a0ce7def723d99649baf54b91149fb2f7f0ae460aa81f57df354a4",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/results/validation/baseline/20261016_10h32m37s.npz",
+      "source_sha256": "78027a18c5a0ce7def723d99649baf54b91149fb2f7f0ae460aa81f57df354a4"
+    },
+    "baseline": {
+      "path": "inputs/20261016_10h32m37s/baseline.json",
+      "sha256": "3b84fad5eb9c6b1d9e253a80f2ebaf56f44d1b488a9cbfdf68bb07273a2779dc",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/results/validation/baseline/20261016_10h32m37s.json",
+      "source_sha256": "c85246cfbdb56cc754f7c54c94376e83ee7cf1aa5b35326ee77dd846f29fd7a5"
+    },
+    "neural": {
+      "path": "inputs/20261016_10h32m37s/neural.json",
+      "sha256": "76ade453871035b4b1b24de13d362692bb03a71ccafeb737709297c8fd129684",
+      "source": "jupyter/artifacts/alpha_gamma_ml_20261016/results/validation/unet/20261016_10h32m37s.json",
+      "source_sha256": "10bb5f6ebe93668ba33eb7b4d9552b02b3cb0bf191030c23dddbb7a33a467c05"
+    }
+  },
+  "calibration_sha256": "063887611b657c931a86627692d0f264979ec080b1999c6511f4a84d601331d9"
+}

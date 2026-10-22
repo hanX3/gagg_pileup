@@ -1,0 +1,35 @@
+{
+  "created": "2026-10-19T16:00:32.304771+08:00",
+  "pre_ns": 50.0,
+  "post_ns": [
+    50.0,
+    75.0,
+    100.0,
+    150.0,
+    200.0,
+    250.0,
+    300.0,
+    400.0,
+    500.0,
+    750.0,
+    1000.0
+  ],
+  "primary_method": "template_gls",
+  "adaptive_relative_error_tolerance": 0.05,
+  "adaptive_multiplier": 54.45148527146574,
+  "per_class_development_multiplier": {
+    "alpha": 54.45148527146574,
+    "gamma": 11.265861357308697
+  },
+  "adaptive_residual_limit": 2.1059927602153237,
+  "guard_status": "Empirical development guard; no calibrated confidence/coverage guarantee",
+  "development_summary_sha256": "1a048724718c3754410c45f619e368382c2c15fa792cc400ef4af4731017ad79",
+  "calibration_sha256": "78cfda6cbba764fa5989f707bc358a5fc7860fe05acaeb8726b7ec701726c31d",
+  "calibration_arrays_sha256": "91c30c22face8b11247a4c9df1ce7f703c6138a8787f18e8b447d2fccbec4101",
+  "source_sha256": {
+    "analysis/alpha_gamma_short_window.py": "1cd1aaf333e89c11698a08b1f43d07130defc295b00771ec2979db715272bd1a",
+    "analysis/alpha_gamma_short_window_study.py": "f975935dc13eff87f8ea90fb6fd723f7a0900d9acefd43a7e91596802c89d585",
+    "analysis/alpha_gamma_waveform_fit.py": "bb588bdab8c248161c974d2d43c494ebc97bf1227054e6ccd0a01d1cd44ed7f5",
+    "analysis/test_alpha_gamma_short_window.py": "bba391980a8a9220fe2e4296e9c56760e268a7627aedaeaab637246b3d4fd518"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "files": {
+    "dependency-source/analysis/alpha_gamma_fit_window_scan.py": "e56576962732ecca49c54a7af99bf23b7472309979078ee5ffb631457007aa7c",
+    "dependency-source/analysis/alpha_gamma_waveform_fit.py": "bb588bdab8c248161c974d2d43c494ebc97bf1227054e6ccd0a01d1cd44ed7f5",
+    "dependency-source/analysis/hamamatsu_s13360.py": "f70b6d547034242e1d28f3c51087bd63d6699116b21fc60e04198c626d9c0f48",
+    "dependency-source/analysis/single_particle_sipm.py": "fc287ceab1413c2080f8ce2ec2002304d93f0fa0a4cdcb77e252a88f8ed7c569",
+    "dependency-source/analysis/sipm_waveform_comparison.py": "d7778c82af7bd3316abb815c121eeec779c83c315016771672b53daf6c6a14e8"
+  },
+  "reason": "Supply existing analysis.* imports required by the frozen AlphaTemplate dependency; no algorithm or settings change."
+}

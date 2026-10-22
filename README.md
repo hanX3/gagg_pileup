@@ -100,6 +100,12 @@ cd g4/build
 <a id="alpha-gamma-ml-20261016"></a>
 2026-10-16—17 完成[α＋γ多任务CNN、U-Net与网络＋物理拟合](pileup/experiments/alpha_gamma_ml_20261016/README.md)，另生成16个冻结后测试窗。混合流程相对扩展标定拟合的α完整恢复374/641→416/641，γ35/75→28/75，额外预测41→64；未达到两类同时改善，保留现有拟合默认流程。弱γ错分仍突出，匹配模板控制也显示网络尚未掌握稳定分离。完整结果、失败分层及独立性核验见[Notebook第8节](jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016)和[L29](docs/literature-use.md#alpha-gamma-ml-20261016)。
 
+<a id="alpha-gamma-prior-ablation-20261019"></a>
+2026-10-19 完成[电荷/类别先验消融](pileup/experiments/alpha_gamma_prior_ablation_20261019/README.md)：在20个已公开开发窗固定候选、时刻、模板及权重，拆开两个显式网络惩罚。无/仅电荷/仅类别/两者的α完整恢复为483/791、517/791、503/791、520/791，γ为42/86、37/86、42/86、38/86；仅电荷项使γ错分增加。该结果支持优先检查跨类别共用网络Q的约束，仍需完整流程及新独立测试验证。过程追加到[ML Notebook第9节](jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-prior-ablation-20261019)与[L30](docs/literature-use.md#alpha-gamma-prior-ablation-20261019)。
+
+<a id="alpha-gamma-full-prior-20261019"></a>
+2026-10-19 将[仅类别惩罚接回完整混合流程](pileup/experiments/alpha_gamma_full_prior_20261019/README.md)：20个已公开开发窗通过预定逐类恢复/precision/误报筛选后，固定λQ=0、λC=10及旧网络，另生成16个新独立原生窗口。新测试α完整恢复345/643→382/643，γ30/79→29/79，额外预测40→54。本批独立数据未通过与开发相同的筛选，不替换默认拟合流程。未通过项：gamma_pooled_recovery, cell_brems_1000000_alpha, cell_brems_10000000_gamma。详见[Notebook第10节](jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-full-prior-20261019)与[L31](docs/literature-use.md#alpha-gamma-full-prior-20261019)。
+
 ## 分析已有数据
 
 Python 分析及 Notebook 依赖见 [requirements-analysis.txt](requirements-analysis.txt)，包括 numpy、matplotlib、uproot、awkward、pandas、scipy 和 Notebook 执行组件。[requirements-analysis.lock.txt](requirements-analysis.lock.txt) 固定已验证的依赖版本；各系统分别安装对应的二进制包，不共享虚拟环境。环境工具保存在随仓库分发的 [tools](tools/) 中；`jupyter/` 下的研究笔记、图像和运行记录仍只在本地维护，GitHub 克隆不包含这些文件。
@@ -150,6 +156,12 @@ bash ../../tools/run_gagg_python.sh plot_pileup_waveform.py ../data/20260624_16h
 纯 α 响应核验与条件能标模块见 [pileup/analysis/alpha_response.py](pileup/analysis/alpha_response.py)，使用方法见 [pileup 说明](pileup/README.md#α-响应核验与能量标定)。首批 100 个校准/验证窗的检查、长尾模板及能标比较已完成，实际输出记录在本地 `jupyter/Alpha_Response_Calibration.ipynb`；当前电荷重建基线尚未完成与此条件能标的连接。
 
 孤立 α/γ 波形拟合与短窗口扫描分别见 [alpha_gamma_waveform_fit.py](analysis/alpha_gamma_waveform_fit.py) 和 [alpha_gamma_fit_window_scan.py](analysis/alpha_gamma_fit_window_scan.py)。默认示例需要另行提供对应 ROOT 和冻结运行记录；相关本地路径在模块中列明。两条孤立模拟波形只能展示模型行为，不能据此推断分类效率。
+
+2026-10-19 新增[因果短前缀的独立检验](pileup/experiments/alpha_gamma_short_window_20261019/README.md)：149个标定窗、45个开发窗，另生成30α＋144γ测试窗，比较固定95/351 ns两幅度及完整类别模板的OLS/GLS。开发选择的“触发前20 ns＋触发后300 ns”在新测试中使19个α和12个γ的Q≥500 pe目标全部达到电荷误差≤5%且类型正确；100 ns时分别仅14/19和7/12。该结果约束完整响应形状，只说明这批孤立模拟的电荷恢复；小样本不能认证普适最短窗，也不回答自由双τ或高率堆积性能。[本地Notebook第10节](jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#short-window-implementation-20261019)保留逐类效率、误差、零信号及停止失败结果；[采用记录L35](docs/literature-use.md#short-window-implementation-20261019)记录文献边界。
+
+2026-10-20 完成[自洽短前缀拟合的七流程比较](pileup/experiments/alpha_gamma_advanced_fit_20261020/README.md)：另生成168标定、84开发和168冻结后原生测试。开发选中`expanded_gls`；同批新测试在触发前20＋后150 ns时，“Q误差≤5%且类型正确”由原标定GLS的alpha16/16、gamma11/15，经扩充标定GLS的alpha16/16、gamma9/15，到所选方法的alpha16/16、gamma9/15。全部100/150/200/300/500 ns、局部区间覆盖及双脉冲假设失效保存在[本地Notebook第11节](jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#advanced-fit-implementation-20261020)和[采用记录L37](docs/literature-use.md#advanced-fit-implementation-20261020)。结论限于同模型孤立固定完整形状的实现电荷，不是free双τ或高率堆积性能。
+
+2026-10-20 实现[跨事件共享与标定约束双τ](pileup/experiments/alpha_gamma_shared_tau_20261020/README.md)：113条独立标定联合得到有效响应τ为91.74/364.82 ns，与固定95/351、逐事件约束/free双τ及完整模板GLS共同扫描50–1000 ns。开发冻结约束宽度后新增168个独立原生窗口；触发前20＋后150 ns时，带标定约束的Q±5%且类型正确为alpha 9/17、gamma 3/12，完整模板GLS为alpha 15/17、gamma 8/12。匹配均值＋白噪声对照另分开评价电荷和双τ精度；不能移作原生SiPM或材料寿命的普适最短窗。详见[本地Notebook第12节](jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#shared-tau-implementation-20261020)及[L38](docs/literature-use.md#shared-tau-implementation-20261020)。
 
 离线 SiPM 数字化入口为 [sipm_response.py](pileup/analysis/sipm_response.py)，使用同一 [S13360-6050PE 配置](g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json)，当前示例、验证入口和笔记均采用该器件。用完整时间窗推进所有粒子共享的 pixel 状态，另存雪崩表、波形、种子、配置及源码记录；不修改输入 ROOT。命令、概率定义、实测单雪崩模板接口和限制见 [使用说明](docs/sipm-response.md)。历史无能量字段的 ROOT 仅在明确启用常数有效 PDE 近似时接受。
 

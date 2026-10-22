@@ -1,0 +1,662 @@
+diff --git a/README.md b/README.md
+index 184be27..0f39ca1 100644
+--- a/README.md
++++ b/README.md
+@@ -57,7 +57,7 @@ cd g4/build
+ ./gagg ../macros/run_single_gamma_sipm.mac
+ ```
+ 
+-从项目根目录运行 `bash tools/run_gagg_python.sh -m analysis.single_particle_sipm run --alpha 4 --gamma 32` 可保存固定样本及三组随机数对照、实际源码与宏、ROOT 索引、读出交叉检查和图。默认数字化关闭，原生 SiPM 运行启用后要求 `/run/beamOn 1`。具体参数、削顶标记与模型限制见 [原生数字化](docs/sipm-response.md#native-sipm)。 本次完整改动与实际结果另见本地独立笔记 [codex_SiPM_Digitization.ipynb](jupyter/codex_SiPM_Digitization.ipynb)。
++从项目根目录运行 `bash tools/run_gagg_python.sh -m analysis.single_particle_sipm run --alpha 4 --gamma 32` 可保存固定样本及三组随机数对照、实际源码与宏、ROOT 索引、读出交叉检查和图。默认数字化关闭，原生 SiPM 运行启用后要求 `/run/beamOn 1`。具体参数、削顶标记与模型限制见 [原生数字化](docs/sipm-response.md#native-sipm)。 本次完整改动与实际结果另见本地独立笔记 [codex_0001_SiPM_Digitization.ipynb](jupyter/codex_0001_SiPM_Digitization.ipynb)。
+ 
+ ## 纯 α 堆积实验
+ 
+@@ -75,10 +75,10 @@ cd g4/build
+ 
+ 当前生产采用 G4 串行、每个 ROOT 一个波形窗、最多 8 个独立任务。ROOT 统一存入 `g4/data/`，使用原有秒级文件名，任务启动至少间隔 1 秒。具体入口与运行记录见 [pileup 说明](pileup/README.md)。
+ 
+-截至 2026-09-30，首轮四档各 100 个独立时间窗已全部完成并通过逐窗数据检查，生产 ROOT 合计约 54.27 GB。2026-10-13 另建 [S13360 纯 α 计数率先导实验](pileup/experiments/alpha_s13360_rate_fit_20261013/README.md)，保留源码、配置、宏、种子和运行清单；四档比较样本分别为 16、4、3、1 个独立窗，未使用首轮保留测试集。2026-10-14 补充 20、40、60、80 MHz 各 3 窗，并按用户指定的“采集动态范围足够”前提，对全部 36 窗进行 [完整电压统一重分析](pileup/experiments/alpha_full_signal_20261014/README.md)。当前 [盲重建基线](pileup/analysis/alpha_pileup_fit.py) 从完整含噪电压估计脉冲数、到达时间和电荷；本轮不考虑 ADC 位数、量化和削顶，旧 ADC 整窗拒绝结果只作为历史记录。同日完成 [时序 CNN 与拟合的比较](pileup/experiments/alpha_ml_comparison_20261014/README.md)：26 窗训练、10 窗验证、17 个新种子测试窗，20–100 MHz 的事件恢复率改善，误检增加；另保存近邻/幅度外推失败及高率偶然时间匹配对照。完整过程记录在本地 [独立 ML Notebook](jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb)。这些小样本结果不构成最终能谱或实物性能验证。下一步仍需条件能量标定、模型失配与扩大独立样本评价。方法依据与适用条件见 [文献采用记录](docs/literature-use.md)；运行明细与研究计划在本地 Jupyter 笔记中维护。
++截至 2026-09-30，首轮四档各 100 个独立时间窗已全部完成并通过逐窗数据检查，生产 ROOT 合计约 54.27 GB。2026-10-13 另建 [S13360 纯 α 计数率先导实验](pileup/experiments/alpha_s13360_rate_fit_20261013/README.md)，保留源码、配置、宏、种子和运行清单；四档比较样本分别为 16、4、3、1 个独立窗，未使用首轮保留测试集。2026-10-14 补充 20、40、60、80 MHz 各 3 窗，并按用户指定的“采集动态范围足够”前提，对全部 36 窗进行 [完整电压统一重分析](pileup/experiments/alpha_full_signal_20261014/README.md)。当前 [盲重建基线](pileup/analysis/alpha_pileup_fit.py) 从完整含噪电压估计脉冲数、到达时间和电荷；本轮不考虑 ADC 位数、量化和削顶，旧 ADC 整窗拒绝结果只作为历史记录。同日完成 [时序 CNN 与拟合的比较](pileup/experiments/alpha_ml_comparison_20261014/README.md)：26 窗训练、10 窗验证、17 个新种子测试窗，20–100 MHz 的事件恢复率改善，误检增加；另保存近邻/幅度外推失败及高率偶然时间匹配对照。完整过程记录在本地 [独立 ML Notebook](jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb)。这些小样本结果不构成最终能谱或实物性能验证。下一步仍需条件能量标定、模型失配与扩大独立样本评价。方法依据与适用条件见 [文献采用记录](docs/literature-use.md)；运行明细与研究计划在本地 Jupyter 笔记中维护。
+ 
+ <a id="ml-multimethod-20261014"></a>
+-同日扩展为[五种流程的共同测试](pileup/experiments/alpha_ml_multimethod_20261014/README.md)：新增U-Net、局部Transformer及CNN＋物理拟合，保留原CNN与盲拟合；两网络各训练2400步，22个新独立窗口覆盖八档源率，原17窗作回归。算法参数仅由验证集选择，完整电压输入和足够动态范围前提保持。不同率的改善并不一致，受控近邻、幅度外推失败及高密度偶然匹配均原样记录；详见[独立Notebook第二轮](jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014)和[采用记录L21](docs/literature-use.md#ml-multimethod-20261014)。
++同日扩展为[五种流程的共同测试](pileup/experiments/alpha_ml_multimethod_20261014/README.md)：新增U-Net、局部Transformer及CNN＋物理拟合，保留原CNN与盲拟合；两网络各训练2400步，22个新独立窗口覆盖八档源率，原17窗作回归。算法参数仅由验证集选择，完整电压输入和足够动态范围前提保持。不同率的改善并不一致，受控近邻、幅度外推失败及高密度偶然匹配均原样记录；详见[独立Notebook第二轮](jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014)和[采用记录L21](docs/literature-use.md#ml-multimethod-20261014)。
+ 
+ <a id="alpha-gamma-mixed-20261015"></a>
+ 2026-10-15 新增 [α/轫致辐射 γ](pileup/experiments/alpha_gamma_brems_fit_20261015/README.md) 与 [α/661.657 keV γ](pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md) 的盲拟合：α 注入 1/10 MHz、γ 均为 10 MHz，各条件 8 个独立原生共享微胞窗口。拟合未知脉冲数、时刻、电荷和类型，保持完整含噪电压输入；另有147次空/单/双脉冲控制。以下恢复要求真值Q≥500 p.e.、时间误差≤10 ns、类型正确及电荷误差≤20%，不是能量分辨率。
+@@ -90,15 +90,21 @@ cd g4/build
+ | 661.657 keV | 1 | 49/58（84.5%） | 29/32（90.6%） |
+ | 661.657 keV | 10 | 282/605（46.6%） | 12/31（38.7%） |
+ 
+-详细的检出/分型、α样本纯度、漏检及误拆分/误合并、条件电荷误差和偶然匹配对照见本地 [新 Notebook](jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)。固定模板仅来自两条旧孤立示例，结果受阈下信号和模型失配影响，不能推出通用最大计数率。采用依据与待验证事项见 [L22](docs/literature-use.md#alpha-gamma-mixed-20261015)。
++详细的检出/分型、α样本纯度、漏检及误拆分/误合并、条件电荷误差和偶然匹配对照见本地 [新 Notebook](jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)。固定模板仅来自两条旧孤立示例，结果受阈下信号和模型失配影响，不能推出通用最大计数率。采用依据与待验证事项见 [L22](docs/literature-use.md#alpha-gamma-mixed-20261015)。
+ 
+-2026-10-15–16 实施 [独立标定与稀疏加权拟合](pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md)：另生成56个标定、18个单粒子开发检查、4个混合验证及8个冻结后测试窗，加入电荷相关模板、固定相关噪声权重、稀疏选择与无L1幅度重拟合，并保留弱分量。相同新测试窗中，α源10 MHz时，α完整恢复在轫致辐射背景下由81/153增至97/153，在单能γ背景下由69/155增至91/155；α源1 MHz时两种背景均退步，γ未稳定改善。额外预测53→19、漏检60→61、误合并标志24→31，不能称为全面提高。实际结果、失败控制、纯度和条件电荷误差见 [Notebook第13节](jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)及 [L24](docs/literature-use.md#alpha-gamma-regularized-20261015)；每条件仅两窗，尚无占用依赖标定、沉积能谱或实物验证。
++2026-10-15–16 实施 [独立标定与稀疏加权拟合](pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md)：另生成56个标定、18个单粒子开发检查、4个混合验证及8个冻结后测试窗，加入电荷相关模板、固定相关噪声权重、稀疏选择与无L1幅度重拟合，并保留弱分量。相同新测试窗中，α源10 MHz时，α完整恢复在轫致辐射背景下由81/153增至97/153，在单能γ背景下由69/155增至91/155；α源1 MHz时两种背景均退步，γ未稳定改善。额外预测53→19、漏检60→61、误合并标志24→31，不能称为全面提高。实际结果、失败控制、纯度和条件电荷误差见 [Notebook第13节](jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)及 [L24](docs/literature-use.md#alpha-gamma-regularized-20261015)；每条件仅两窗，尚无占用依赖标定、沉积能谱或实物验证。
+ 
+ <a id="alpha-gamma-model-selection-20261016"></a>
+-2026-10-16 继续[联合时刻/类型搜索与残差模型比较](pileup/experiments/alpha_gamma_model_selection_20261016/README.md)，按α、γ同等重要选择方案并另生成8个测试窗。同模板控制24/40→40/40；新原生低α率轫致辐射条件相对上一版为alpha 12/16→14/16、gamma 7/12→11/12。高率为brems：α 81/142→78/142，γ 0/6→1/6；mono662：α 85/143→86/143，γ 0/6→1/6，仍不足以可靠恢复两类。真值辅助诊断和标定覆盖检查说明候选搜索之外的问题仍需处理；完整同窗三方法比较见[Notebook第14节](jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)和[L25](docs/literature-use.md#alpha-gamma-model-selection-20261016)。
++2026-10-16 继续[联合时刻/类型搜索与残差模型比较](pileup/experiments/alpha_gamma_model_selection_20261016/README.md)，按α、γ同等重要选择方案并另生成8个测试窗。同模板控制24/40→40/40；新原生低α率轫致辐射条件相对上一版为alpha 12/16→14/16、gamma 7/12→11/12。高率为brems：α 81/142→78/142，γ 0/6→1/6；mono662：α 85/143→86/143，γ 0/6→1/6，仍不足以可靠恢复两类。真值辅助诊断和标定覆盖检查说明候选搜索之外的问题仍需处理；完整同窗三方法比较见[Notebook第14节](jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)和[L25](docs/literature-use.md#alpha-gamma-model-selection-20261016)。
+ 
+ <a id="alpha-gamma-ml-20261016"></a>
+-2026-10-16—17 完成[α＋γ多任务CNN、U-Net与网络＋物理拟合](pileup/experiments/alpha_gamma_ml_20261016/README.md)，另生成16个冻结后测试窗。混合流程相对扩展标定拟合的α完整恢复374/641→416/641，γ35/75→28/75，额外预测41→64；未达到两类同时改善，保留现有拟合默认流程。弱γ错分仍突出，匹配模板控制也显示网络尚未掌握稳定分离。完整结果、失败分层及独立性核验见[Notebook第8节](jupyter/codex_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016)和[L29](docs/literature-use.md#alpha-gamma-ml-20261016)。
++2026-10-16—17 完成[α＋γ多任务CNN、U-Net与网络＋物理拟合](pileup/experiments/alpha_gamma_ml_20261016/README.md)，另生成16个冻结后测试窗。混合流程相对扩展标定拟合的α完整恢复374/641→416/641，γ35/75→28/75，额外预测41→64；未达到两类同时改善，保留现有拟合默认流程。弱γ错分仍突出，匹配模板控制也显示网络尚未掌握稳定分离。完整结果、失败分层及独立性核验见[Notebook第8节](jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016)和[L29](docs/literature-use.md#alpha-gamma-ml-20261016)。
++
++<a id="alpha-gamma-prior-ablation-20261019"></a>
++2026-10-19 完成[电荷/类别先验消融](pileup/experiments/alpha_gamma_prior_ablation_20261019/README.md)：在20个已公开开发窗固定候选、时刻、模板及权重，拆开两个显式网络惩罚。无/仅电荷/仅类别/两者的α完整恢复为483/791、517/791、503/791、520/791，γ为42/86、37/86、42/86、38/86；仅电荷项使γ错分增加。该结果支持优先检查跨类别共用网络Q的约束，仍需完整流程及新独立测试验证。过程追加到[ML Notebook第9节](jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-prior-ablation-20261019)与[L30](docs/literature-use.md#alpha-gamma-prior-ablation-20261019)。
++
++<a id="alpha-gamma-full-prior-20261019"></a>
++2026-10-19 将[仅类别惩罚接回完整混合流程](pileup/experiments/alpha_gamma_full_prior_20261019/README.md)：20个已公开开发窗通过预定逐类恢复/precision/误报筛选后，固定λQ=0、λC=10及旧网络，另生成16个新独立原生窗口。新测试α完整恢复345/643→382/643，γ30/79→29/79，额外预测40→54。本批独立数据未通过与开发相同的筛选，不替换默认拟合流程。未通过项：gamma_pooled_recovery, cell_brems_1000000_alpha, cell_brems_10000000_gamma。详见[Notebook第10节](jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-full-prior-20261019)与[L31](docs/literature-use.md#alpha-gamma-full-prior-20261019)。
+ 
+ ## 分析已有数据
+ 
+@@ -151,6 +157,10 @@ bash ../../tools/run_gagg_python.sh plot_pileup_waveform.py ../data/20260624_16h
+ 
+ 孤立 α/γ 波形拟合与短窗口扫描分别见 [alpha_gamma_waveform_fit.py](analysis/alpha_gamma_waveform_fit.py) 和 [alpha_gamma_fit_window_scan.py](analysis/alpha_gamma_fit_window_scan.py)。默认示例需要另行提供对应 ROOT 和冻结运行记录；相关本地路径在模块中列明。两条孤立模拟波形只能展示模型行为，不能据此推断分类效率。
+ 
++2026-10-19 新增[因果短前缀的独立检验](pileup/experiments/alpha_gamma_short_window_20261019/README.md)：149个标定窗、45个开发窗，另生成30α＋144γ测试窗，比较固定95/351 ns两幅度及完整类别模板的OLS/GLS。开发选择的“触发前20 ns＋触发后300 ns”在新测试中使19个α和12个γ的Q≥500 pe目标全部达到电荷误差≤5%且类型正确；100 ns时分别仅14/19和7/12。该结果约束完整响应形状，只说明这批孤立模拟的电荷恢复；小样本不能认证普适最短窗，也不回答自由双τ或高率堆积性能。[本地Notebook第10节](jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#short-window-implementation-20261019)保留逐类效率、误差、零信号及停止失败结果；[采用记录L35](docs/literature-use.md#short-window-implementation-20261019)记录文献边界。
++
++2026-10-20 完成[自洽短前缀拟合的七流程比较](pileup/experiments/alpha_gamma_advanced_fit_20261020/README.md)：另生成168标定、84开发和168冻结后原生测试。开发选中`expanded_gls`；同批新测试在触发前20＋后150 ns时，“Q误差≤5%且类型正确”由原标定GLS的alpha16/16、gamma11/15，经扩充标定GLS的alpha16/16、gamma9/15，到所选方法的alpha16/16、gamma9/15。全部100/150/200/300/500 ns、局部区间覆盖及双脉冲假设失效保存在[本地Notebook第11节](jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#advanced-fit-implementation-20261020)和[采用记录L37](docs/literature-use.md#advanced-fit-implementation-20261020)。结论限于同模型孤立固定完整形状的实现电荷，不是free双τ或高率堆积性能。
++
+ 离线 SiPM 数字化入口为 [sipm_response.py](pileup/analysis/sipm_response.py)，使用同一 [S13360-6050PE 配置](g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json)，当前示例、验证入口和笔记均采用该器件。用完整时间窗推进所有粒子共享的 pixel 状态，另存雪崩表、波形、种子、配置及源码记录；不修改输入 ROOT。命令、概率定义、实测单雪崩模板接口和限制见 [使用说明](docs/sipm-response.md)。历史无能量字段的 ROOT 仅在明确启用常数有效 PDE 近似时接受。
+ 
+ ## ROOT 数据与运行记录
+diff --git a/docs/literature-use.md b/docs/literature-use.md
+index 72b16d0..545e221 100644
+--- a/docs/literature-use.md
++++ b/docs/literature-use.md
+@@ -130,12 +130,12 @@
+ 
+ 用户随后选择从官方 `G4VDigitizerModule` / `G4DigiManager` 实现，先检查单α和单γ电信号。现已增加 [SiPMDigitizer](../g4/src/SiPMDigitizer.cc) 和C++数值核心，在完整窗光子排序后显式调用，保存当前G4Event的digi集合并写入 `SiPMEvent`；Python离线入口保留用于参数扫描与独立读出核对。此实现采用L06/L07的PDE—恢复—电荷关系、L09的统一时序队列方向和L10的雪崩数组/电路分层。L09四邻居多候选、双分量后脉冲以及L11公共偏置反馈尚未实现；参数仍为本项目假设，文献AI待审核状态不变。
+ 
+-官方机制依据：[Geant4 digitization](https://geant4.web.cern.ch/documentation/dev/bfad_html/ForApplicationDevelopers/Detector/digitization.html)及本机11.4.2头文件。未引入第三方G4SiPM，亦不将项目 `SiPMDigitizer` 称为Geant4提供的完整SiPM物理模型。单粒子条件、配置和验证入口见 [响应说明](sipm-response.md#native-sipm)，完整改动与实际结果见独立笔记 [codex_SiPM_Digitization.ipynb](../jupyter/codex_SiPM_Digitization.ipynb)，研究路线见 [PLAN第13.12节](../jupyter/Research_Plan_20260921.ipynb#sipm-native-20261010)。这些软件/合成核验不替代真实器件或高率实验验证。
++官方机制依据：[Geant4 digitization](https://geant4.web.cern.ch/documentation/dev/bfad_html/ForApplicationDevelopers/Detector/digitization.html)及本机11.4.2头文件。未引入第三方G4SiPM，亦不将项目 `SiPMDigitizer` 称为Geant4提供的完整SiPM物理模型。单粒子条件、配置和验证入口见 [响应说明](sipm-response.md#native-sipm)，完整改动与实际结果见独立笔记 [codex_0001_SiPM_Digitization.ipynb](../jupyter/codex_0001_SiPM_Digitization.ipynb)，研究路线见 [PLAN第13.12节](../jupyter/Research_Plan_20260921.ipynb#sipm-native-20261010)。这些软件/合成核验不替代真实器件或高率实验验证。
+ 
+ <a id="hamamatsu-s13360-20261013"></a>
+ ## L13：滨松 S13360-6050PE 的数据表配置（2026-10-13）
+ 
+-用户要求将假设 SiPM 换成一个具体滨松型号；本次选择单通道 **S13360-6050PE，25°C、3 V 过压**。最新入口为 [v2 配置](../g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json)，完整依据、对照结果和限制写在 [codex_SiPM_Digitization.ipynb 器件参数节](../jupyter/codex_SiPM_Digitization.ipynb#hamamatsu-s13360-20261013)。`datasheet_based` 表示典型参数与注明的近似，不能称为实物标定。
++用户要求将假设 SiPM 换成一个具体滨松型号；本次选择单通道 **S13360-6050PE，25°C、3 V 过压**。最新入口为 [v2 配置](../g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json)，完整依据、对照结果和限制写在 [codex_0001_SiPM_Digitization.ipynb 器件参数节](../jupyter/codex_0001_SiPM_Digitization.ipynb#hamamatsu-s13360-20261013)。`datasheet_based` 表示典型参数与注明的近似，不能称为实物标定。
+ 
+ - **厂家原始资料**：Hamamatsu Photonics, *MPPC S13360 series*，文件名 `s13360_series_kapd1052e.pdf`，Cat.No.KAPD1052E07，Jul.2025；无DOI。[官方产品页](https://www.hamamatsu.com.cn/cn/zh-cn/product/optical-sensors/mppc/mppc_mppc-array/S13360-6050PE.html)与[官方PDF](https://www.hamamatsu.com.cn/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/s13360_series_kapd1052e.pdf)。项目下载副本、SHA256和页面图保存在本地 `jupyter/run_records/codex_hamamatsu_s13360_sources/`，未写入共享文献库。核对PDF文本及2/11页型号/几何；实际查看3–5页原页图像，核参数表、PE光谱曲线KAPDB0322EB及过压曲线KAPDB0324EA。
+ - **采用的典型输入**：有效面6×6 mm、50 μm pitch、14400 pixel、增益1.7×10⁶、DCR 2 Mcps（0.5 p.e.阈值）、串扰3%；峰值PDE 40%指定450 nm，不直接作为GAGG全光谱效率。PDE不含串扰/AP，已含74%填充因子，不重复乘该因子。端电容1280 pF、击穿电压53±5 V、工作电压温度系数54 mV/°C和环氧折射率1.55仅作为资料记录；当前没有完整封装、电路或温度反馈模型。
+@@ -154,7 +154,7 @@
+ <a id="psd-fit-use-20261013"></a>
+ ### 2026-10-13：α / γ 波形拟合函数的文献核对
+ 
+-用户希望用波形拟合作GAGG + S13360-6050PE粒子鉴别。本轮按 `paper-search` 只读检索本地库，复用来源笔记并定点核原PDF；完整函数、参数表、书目信息/DOI、原文链接、条件和推导已集中迁入 [独立拟合笔记第2节](../jupyter/codex_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#psd-fit-functions-20261013)，核验清单及PDF哈希在 [文献核验记录](../jupyter/run_records/psd_fit_literature_20261013_163822/sources.json)。文献阶段仅核对函数；随后按用户要求完成现有两条独立模拟波形的拟合与模板判别示例，见下方项目计算更新。未重新运行Geant4或更改物理输入。
++用户希望用波形拟合作GAGG + S13360-6050PE粒子鉴别。本轮按 `paper-search` 只读检索本地库，复用来源笔记并定点核原PDF；完整函数、参数表、书目信息/DOI、原文链接、条件和推导已集中迁入 [独立拟合笔记第2节](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#psd-fit-functions-20261013)，核验清单及PDF哈希在 [文献核验记录](../jupyter/run_records/psd_fit_literature_20261013_163822/sources.json)。文献阶段仅核对函数；随后按用户要求完成现有两条独立模拟波形的拟合与模板判别示例，见下方项目计算更新。未重新运行Geant4或更改物理输入。
+ 
+ #### L14：GAGG双指数——分别保留α和γ的衰减常数
+ 
+@@ -180,7 +180,7 @@
+ <a id="psd-fit-results-20261013"></a>
+ ### 项目计算更新：2026-10-13 孤立 α / γ 波形拟合
+ 
+-以下是当前模拟的计算结果，不是上述文献或真实器件的性能结论。过程、拟合式、静态参数表、残差图和执行输出在 [codex_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb](../jupyter/codex_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#fit-inputs)；可复用实现为 [alpha_gamma_waveform_fit.py](../analysis/alpha_gamma_waveform_fit.py)，结果与来源信息见 [summary.json](../jupyter/artifacts/alpha_gamma_fit_20261013_165844/summary.json)。
++以下是当前模拟的计算结果，不是上述文献或真实器件的性能结论。过程、拟合式、静态参数表、残差图和执行输出在 [codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#fit-inputs)；可复用实现为 [alpha_gamma_waveform_fit.py](../analysis/alpha_gamma_waveform_fit.py)，结果与来源信息见 [summary.json](../jupyter/artifacts/alpha_gamma_fit_20261013_165844/summary.json)。
+ 
+ - 采用无ADC削顶的S13360-6050PE ROOT `20261013_09h58m53s`（α）和 `09h59m09s`（γ），各一个已知孤立脉冲。源能5.486/0.661657 MeV，晶体沉积能4.939493/0.202202 MeV；γ是已选定的部分沉积有信号事件。参数从RunInfo与原运行冻结源码读取，未用当前宏推断历史条件。重复种子和仅改变电子噪声的记录不计为独立样本。
+ - SiPM前对有效面光子到达直方图作bin积分Poisson尾部拟合；SiPM后显式卷积2/20 ns单雪崩核、2 ns低通和0.5 ns采样孔径，拟合analog与ADC。光子诊断使用首光子对齐；电压拟合仅由观测波形估计起点/基线，不传入事件粒子标签、真值时刻或沉积能。
+@@ -188,12 +188,12 @@
+ - 分别用模拟输入定义的α/γ形状拟合同一ADC记录，两例的较小SSE假设都与评价标签一致。当前使用 `D_SSE = SSE_gamma - SSE_alpha`，并非已校准χ²；相邻样点残差相关系数约0.963/0.941，未建立完整协方差。两条不同光量的样例不支持鉴别率、FOM或ROC，也不能据此证明实物适用性。
+ - 独立状态方程与解析卷积、无噪声参数回收、32次电压优化的多初值收敛、量化与哈希/重复事件检查已通过，见 [数值验证记录](../jupyter/run_records/alpha_gamma_fit_20261013_165844/validation_analysis.json)。后续需要独立校准/验证/测试事件、共同光量区间和实物SPE/前端标定；文献审核状态保持不变。
+ 
+-- **短窗口追加检查**：将ADC拟合终点扩展到阈值后100、200、300、500、750 ns，并保留1–2.5 μs对照，起点仍为阈值前200 ns。固定95/351 ns时，500 ns的慢占比α/γ为0.7365/0.2012，接近2 μs的0.7402/0.2047；100–300 ns自由寿命出现大幅变化、参数触界或分量权重趋零。两类固定模板在这两个样例的全部窗口仍偏向对应标签，不构成最短窗口或鉴别效率验证。100 ns短窗拟合的α自由模型在0–2 μs共同评价区间RMS/峰高约8.48%，显示窗内残差小不保证长尾外推准确。9档窗口共72次拟合已核对样点、残差和2 μs回归，见 [拟合笔记第5.2节](../jupyter/codex_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#short-window-scan-20261013)及 [追加记录](../jupyter/run_records/alpha_gamma_short_windows_20261013_205215/validation_analysis.json)。仍需独立样本决定窗口；已有长记录定位和预触发基线需求没有消失。
++- **短窗口追加检查**：将ADC拟合终点扩展到阈值后100、200、300、500、750 ns，并保留1–2.5 μs对照，起点仍为阈值前200 ns。固定95/351 ns时，500 ns的慢占比α/γ为0.7365/0.2012，接近2 μs的0.7402/0.2047；100–300 ns自由寿命出现大幅变化、参数触界或分量权重趋零。两类固定模板在这两个样例的全部窗口仍偏向对应标签，不构成最短窗口或鉴别效率验证。100 ns短窗拟合的α自由模型在0–2 μs共同评价区间RMS/峰高约8.48%，显示窗内残差小不保证长尾外推准确。9档窗口共72次拟合已核对样点、残差和2 μs回归，见 [拟合笔记第5.2节](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#short-window-scan-20261013)及 [追加记录](../jupyter/run_records/alpha_gamma_short_windows_20261013_205215/validation_analysis.json)。仍需独立样本决定窗口；已有长记录定位和预触发基线需求没有消失。
+ 
+ <a id="alpha-rate-fitting-20261013"></a>
+ ### 项目计算更新：2026-10-13 纯 α / S13360 计数率与单脉冲恢复
+ 
+-研究与全部图表见新笔记 [codex_Alpha_Pileup_Rate_Fitting.ipynb](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb)。本轮只读复用主题/审核索引、数字脉冲处理、PSD、光产额主题及 L01/L02/L03 来源笔记，并核对 Morad 第553项的实际意见；没有新增论文下载或原文逐页复核。实际采用 L01 的残差发现遗漏成分、L02 的脉冲数与峰数分离、L05 的条件误差与总体效率分母分离。当前逆滤波候选、非负幅度/浮点时间重拟合和停止规则是本项目方案，不称复现作者未完整给出的阈值/χ²检验；L03 的 LASSO 没有作为本次算法实现。
++研究与全部图表见新笔记 [codex_0003_Alpha_Pileup_Rate_Fitting.ipynb](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb)。本轮只读复用主题/审核索引、数字脉冲处理、PSD、光产额主题及 L01/L02/L03 来源笔记，并核对 Morad 第553项的实际意见；没有新增论文下载或原文逐页复核。实际采用 L01 的残差发现遗漏成分、L02 的脉冲数与峰数分离、L05 的条件误差与总体效率分母分离。当前逆滤波候选、非负幅度/浮点时间重拟合和停止规则是本项目方案，不称复现作者未完整给出的阈值/χ²检验；L03 的 LASSO 没有作为本次算法实现。
+ 
+ - **数据与模型**：新冻结实验 [alpha_s13360_rate_fit_20261013](../pileup/experiments/alpha_s13360_rate_fit_20261013/README.md)，当前 p–¹¹B 有效单 α 谱、无 γ/其他物理源、S13360-6050PE 原生波长 PDE/共享微胞恢复/串扰/暗计数及 ADC。10⁵/10⁶/10⁷/10⁸ Hz 分别16/4/3/1个独立20 μs窗，中心门[5,15) μs；另1个开发窗排除于结果。原有400窗及保留测试集未用于本次性能分析。SiPM只将计算候选保护1000万→8000万，物理/读出参数未改；实际宏、RunInfo、源码、种子、环境和哈希全部保存。
+ - **真值隔离与拟合函数**：拟合器只接收总电压、采样时刻、可观察ADC端点码和固定α模板，不接收注入率、真实K/时刻/能量。模板由前次独立孤立α的ADC结果固定95/351 ns、有效慢面积占比0.740174，并卷积现有读出。当前G4发光权重仍0.30/0.70，L04记录的真实GAGG模型差异未消除。实际雪崩按光子祖先归属仅用于评分，保留堆积中的微胞状态，不把独立重数字化的电荷当作本次真实贡献。
+@@ -206,7 +206,7 @@
+ <a id="literature-rate-limits-20261014"></a>
+ ### L17：2026-10-14——拟合解堆积的计数率与恢复质量
+ 
+-**检索与核验范围**：本轮按 `paper-search` 只读检索本地共享库，核对既有精读笔记与审核记录，并定点查原PDF关键文字/图表。完整题录、证据表、装置/噪声条件和待核事项集中在 [纯α堆积笔记第11节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#literature-rate-limits-20261014)，不重复维护完整报告。以下来源仍为AI草稿待人工审核；`global-review.md` B23归并未新增人工确认。本轮不联网、不修改共享库，不运行论文代码或新增仿真。
++**检索与核验范围**：本轮按 `paper-search` 只读检索本地共享库，核对既有精读笔记与审核记录，并定点查原PDF关键文字/图表。完整题录、证据表、装置/噪声条件和待核事项集中在 [纯α堆积笔记第11节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#literature-rate-limits-20261014)，不重复维护完整报告。以下来源仍为AI草稿待人工审核；`global-review.md` B23归并未新增人工确认。本轮不联网、不修改共享库，不运行论文代码或新增仿真。
+ 
+ - [Zhang2024](../../papers/sources/2024_Zhang_NIMA_Development-of-a-pile-up-pulse-recovery-algorithm-for-the-LaBr3-detector.md)，[DOI](https://doi.org/10.1016/j.nima.2024.169273)：原PDF4–6、图6–7/9/11。同模板、低噪声LaBr₃模拟建议≤6×10⁷ s⁻¹，但本轮粗读图7(a)，10⁷/6×10⁷/10⁸ s⁻¹全能峰效率仅约90%/30%/8%；不是本项目逐事件电荷/时间成功率。实测快中子区≤4×10⁶ s⁻¹的>98%来自模拟推算；γ-flash约6.67×10⁷ s⁻¹由恢复间隔拟合获得，缺同率独立效率真值。
+ - [Khilkevitch2020](../../papers/sources/2020_Khilkevitch_NIMA_Advanced-algorithms-for-signal-processing-scintillation-gamma-ray-detectors-at-high-counting-rates.md)，[DOI](https://doi.org/10.1016/j.nima.2020.164309)：原PDF8/10/11，§4.5、表2、图17。LaBr₃+PMT实测5.1×10⁶ s⁻¹时fitting的4.44 MeV峰FWHM 0.098 MeV；模拟3×10⁷ s⁻¹时拟合补权后的总率仍偏差约33%。统计补权不恢复每个事件的时间和能量，离线处理不等于在线吞吐。
+@@ -218,13 +218,13 @@
+ <a id="pulse-duration-rate-20261014"></a>
+ ### L18：2026-10-14——用信号长度解释计数率与拟合难度
+ 
+-**项目计算与采用口径**：在 [纯α堆积笔记第12节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#pulse-duration-rate-20261014) 中，沿用独立单α拟合的95/351 ns模板和冻结读出，计算电压FWHM 181.5 ns、10%–90%上升时间25.81 ns、90%/99%面积时长0.728/1.536 μs；这是当前平均模拟模板的结果，不是材料或实物脉宽测量。明确采用泊松占用量 `μ=R_sig W` 和下一邻居重叠概率 `1−exp(−μ)`，另以 `1−exp(−2μ)` 表示两侧任一邻居；`R_sig`为信号事件率，与源注入率及算法恢复率分开。重叠概率不作为拟合失败率，宽度不作为死时间。
++**项目计算与采用口径**：在 [纯α堆积笔记第12节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#pulse-duration-rate-20261014) 中，沿用独立单α拟合的95/351 ns模板和冻结读出，计算电压FWHM 181.5 ns、10%–90%上升时间25.81 ns、90%/99%面积时长0.728/1.536 μs；这是当前平均模拟模板的结果，不是材料或实物脉宽测量。明确采用泊松占用量 `μ=R_sig W` 和下一邻居重叠概率 `1−exp(−μ)`，另以 `1−exp(−2μ)` 表示两侧任一邻居；`R_sig`为信号事件率，与源注入率及算法恢复率分开。重叠概率不作为拟合失败率，宽度不作为死时间。
+ 
+ **方法条件与实际结果**：已知恰好两个脉冲及其时间、固定基线/正确模板、白噪声时，幅度标准差相对孤立脉冲放大 `1/sqrt(1−ρ²)`；20/50/100 ns间隔对应3.67/1.89/1.35倍，不是盲分辨效率。本次只对已保存盲拟合作真值评价：10⁷ Hz注入组204个阈上目标全有±1.536 μs内有电荷α邻居，仍恢复142个；最近邻<12 ns为3/23、≥50 ns为83/99。3个独立窗的事后分组受幅度、多个邻居和共享微胞状态混杂，未给出通用分辨时间或最大计数率。原漏检/假脉冲、条件电荷误差及10⁸ Hz削顶限制仍保留，未新增能量标定或G4生产。
+ 
+ **文献来源与迁移限制**：复用 [Zhang2024](../../papers/sources/2024_Zhang_NIMA_Development-of-a-pile-up-pulse-recovery-algorithm-for-the-LaBr3-detector.md)，定点查原PDF2正文和PDF3图2：LaBr₃+R6233 PMT的FWHM主带约20个2 ns样点，即约40 ns，且随幅度变化。当前模板/40 ns的FWHM比约4.54，仅用于相同信号率下的占用量比较；不将文献60 Mcps按此比例换算为GAGG工作上限。来源仍为AI草稿待人工审核，本项目解析推导和数值验证不构成对文献的人工批准。
+ 
+-**补核原文讨论**：见 [第12.7节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#duration-literature-direct-20261014)。[Löher2012](../../papers/sources/2012_Loher_NIMA_High-count-rate-gamma-ray-spectroscopy-with-LaBr3-Ce-scintillation-detectors.md) PDF4 §3.3/图5直接扫描间隔与恢复误差，PDF5式(5)/图8使用`nτ`及60/200 ns时间尺度联系计数率；[Khilkevitch2020](../../papers/sources/2020_Khilkevitch_NIMA_Advanced-algorithms-for-signal-processing-scintillation-gamma-ray-detectors-at-high-counting-rates.md) PDF2明确PMT、ADC带宽和电缆使实测脉冲长于材料衰减；Zhang2024 PDF2/4区分峰/尾堆积并用式(6)指数间隔和图6解释近邻漏失；Shevelev2016 PDF2以旧BGO约320 ns的高率堆积说明更换快LaBr₃的动机。这些支持时间尺度与率联合评价，不提供GAGG通用上限；当前模板数值、近邻分组和ρ误差公式仍明确为本项目结果/推导。保留Löher式(5)对P(0)的文字解释与公式不一致这一限制，审核状态不变。
++**补核原文讨论**：见 [第12.7节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#duration-literature-direct-20261014)。[Löher2012](../../papers/sources/2012_Loher_NIMA_High-count-rate-gamma-ray-spectroscopy-with-LaBr3-Ce-scintillation-detectors.md) PDF4 §3.3/图5直接扫描间隔与恢复误差，PDF5式(5)/图8使用`nτ`及60/200 ns时间尺度联系计数率；[Khilkevitch2020](../../papers/sources/2020_Khilkevitch_NIMA_Advanced-algorithms-for-signal-processing-scintillation-gamma-ray-detectors-at-high-counting-rates.md) PDF2明确PMT、ADC带宽和电缆使实测脉冲长于材料衰减；Zhang2024 PDF2/4区分峰/尾堆积并用式(6)指数间隔和图6解释近邻漏失；Shevelev2016 PDF2以旧BGO约320 ns的高率堆积说明更换快LaBr₃的动机。这些支持时间尺度与率联合评价，不提供GAGG通用上限；当前模板数值、近邻分组和ρ误差公式仍明确为本项目结果/推导。保留Löher式(5)对P(0)的文字解释与公式不一致这一限制，审核状态不变。
+ 
+ **验证与待办**：宽度网格/尾部收敛、50万组泊松间隔及每种条件4000次孤立/已知时间双脉冲白噪声最小二乘检查已通过；新Notebook单元已执行，原31单元及输出保留。见 [结果](../jupyter/artifacts/pulse_duration_rate_20261014_105829/summary.json) 和 [验证记录](../jupyter/run_records/pulse_duration_rate_20261014_105829/validation.json)。后续需在独立样本上分别改变慢尾/前沿，明确固定电荷或固定峰高、采样和噪声，并检验幅度比、相关噪声、微胞恢复和ADC量程；当前单一宽度数据不足以测出 `R_max(W)`。
+ 
+@@ -233,21 +233,21 @@
+ 
+ 沿用L17/L18的率、效率与时间尺度区分，新增20/40/60/80 MHz各3个独立20 μs窗口，中心门每档共30 μs；物理与0–1000 mV ADC配置不变。实际ADC逐事件恢复为20 MHz：51/443、40 MHz：0/858、60 MHz：0/1223、80 MHz：0/1640；中心ADC端点样点比例依次0.81%、24.82%、65.80%、96.71%。任何端点触及都会按原政策整窗拒绝，故其效率下降不能单独解释为拟合的物理极限。未削顶模拟电压仅对拒绝窗作诊断，不当作实际ADC结果。三窗/档及单一脉宽仍不足以定义最大工作率或`R_max(W)`。
+ 
+-新环境的两份同种子检查物理分支完全一致；14份新ROOT（12独立+2对照）的实际宏/种子/哈希及电荷守恒通过。高密度光子时间+x碰撞改用精确y/能量完成评分归属，原冻结导出器保留；盲拟合不接收真值、源率或已知脉冲数。完整结果、失败分解和输入限制见[纯α笔记第13节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#intermediate-rates-20261014)及[验证记录](../jupyter/run_records/alpha_intermediate_rates_20261014_114000/validation_results.json)。本轮没有新增文献结论或修改共享库审核状态，后续优先区分量程、局部削顶恢复和固定宽度下的拟合失配。
++新环境的两份同种子检查物理分支完全一致；14份新ROOT（12独立+2对照）的实际宏/种子/哈希及电荷守恒通过。高密度光子时间+x碰撞改用精确y/能量完成评分归属，原冻结导出器保留；盲拟合不接收真值、源率或已知脉冲数。完整结果、失败分解和输入限制见[纯α笔记第13节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#intermediate-rates-20261014)及[验证记录](../jupyter/run_records/alpha_intermediate_rates_20261014_114000/validation_results.json)。本轮没有新增文献结论或修改共享库审核状态，后续优先区分量程、局部削顶恢复和固定宽度下的拟合失配。
+ 
+ <a id="full-signal-rates-20261014"></a>
+ ### 项目计算更新：2026-10-14 动态范围足够的完整电压基准
+ 
+ **用户指定的当前假设**：采集动态范围足够，完整信号可被记录；本轮不以ADC位数、量化或削顶限制堆积恢复。统一用已有36个独立窗口的含噪 `analog_mV` 重新盲拟合，保留原SiPM状态、采样/电子学响应、固定模板和评分标准；不传入ADC端点掩码、真值或源率。旧ADC结果和“触顶即整窗拒绝”仅作历史记录，先前提出的量程扫描/局部削顶恢复不作为本轮前置工作。
+ 
+-**实际计算**：八档36窗均完成拟合；新增四档为20 MHz：152/443（34.31%）、40 MHz：140/858（16.32%）、60 MHz：119/1223（9.73%）、80 MHz：68/1640（4.15%）。本次20 MHz包含全部3窗，消除旧analog仅分析拒绝窗的条件选择。其余率、失败分解、条件电荷误差及固定脉宽占用量集中于[纯α笔记第14节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014)。没有新G4运行；原ROOT/宏/冻结实验保留。
++**实际计算**：八档36窗均完成拟合；新增四档为20 MHz：152/443（34.31%）、40 MHz：140/858（16.32%）、60 MHz：119/1223（9.73%）、80 MHz：68/1640（4.15%）。本次20 MHz包含全部3窗，消除旧analog仅分析拒绝窗的条件选择。其余率、失败分解、条件电荷误差及固定脉宽占用量集中于[纯α笔记第14节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014)。没有新G4运行；原ROOT/宏/冻结实验保留。
+ 
+ **验证与边界**：4项完整电压控制、36窗输入与评分检查通过，见[验证记录](../jupyter/run_records/alpha_full_signal_20261014_143000/validation_results.json)。这是假设动态范围足够且忽略量化的模拟研究，未验证某款ADC；输出电荷尚未转为沉积能谱，小样本与单一宽度不足以定义最大工作率。下一步聚焦近邻间隔、幅度比、模板失配及受控脉宽扫描。本条是项目假设与计算更新，没有新增文献结论，共享库审核状态不变。
+ 
+ <a id="ml-pileup-literature-20261014"></a>
+ ### L19：2026-10-14——机器学习／人工智能的pileup候选方法
+ 
+-**检索与核验**：按`paper-search`只读共享库，优先主题／审核记录并全文补查，选15篇重点来源。各篇题名、作者、DOI、原PDF／笔记链接、页码、训练／测试条件和限制集中于[纯α笔记第15节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#ml-pileup-literature-20261014)及[证据表](../jupyter/run_records/ml_pileup_literature_20261014_153426/evidence.json)。复用已有完整精读，15个DOI与原PDF首页匹配；定点原页文字／图像核对范围逐篇记录，没有再次全文精读所有论文。共享库保持只读，未联网或训练模型。
++**检索与核验**：按`paper-search`只读共享库，优先主题／审核记录并全文补查，选15篇重点来源。各篇题名、作者、DOI、原PDF／笔记链接、页码、训练／测试条件和限制集中于[纯α笔记第15节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#ml-pileup-literature-20261014)及[证据表](../jupyter/run_records/ml_pileup_literature_20261014_153426/evidence.json)。复用已有完整精读，15个DOI与原PDF首页匹配；定点原页文字／图像核对范围逐篇记录，没有再次全文精读所有论文。共享库保持只读，未联网或训练模型。
+ 
+ **当前采用范围**：将SAEFit分量监督参数回归、1D卷积自编码器和U-Net事件序列展开作为后续候选；Morad的未知到达数／时间检出可参考，Jeon的候选峰高回归需保留检出依赖。Huang2025 Sensors的统计谱／真实率先验与TIM的时序能量分类分开；Lin的识别／计数、Fu／Liu的尾部PSD收益不等同逐事件时间＋电荷恢复。Ma2019已知4／9重数、Kafaee／Wang2022已知双脉冲只用于受控基准。没有据此替换当前算法、移植器件参数或认定GAGG高率性能。
+ 
+@@ -273,7 +273,7 @@
+ | 80 | 1 | 531 | 30 / 5.65 | 109 / 20.53 |
+ | 100 | 1 | 654 | 16 / 2.45 | 100 / 15.29 |
+ 
+-**失败与边界**：空/单/阈下和20–200 ns平均模板双脉冲控制正常，但10 ns双脉冲CNN恢复1/2（拟合2/2），40000 pe超训练范围单脉冲CNN0/1且有2个额外预测（拟合1/1）。训练电荷最大约7989 pe，未验证大幅度外推。CNN网格峰距8 ns后允许时间偏移，而拟合还合并最终<8 ns分量，约束不完全相同。高率时间移位对照保留预测数量/电荷，检验偶然匹配；其结果与漏检/误拆分/误合并、条件电荷/时间误差集中于[独立Notebook](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-pileup-comparison-20261014)。不能将高密度时间匹配和电荷先验贡献全部称为真实事件身份恢复。
++**失败与边界**：空/单/阈下和20–200 ns平均模板双脉冲控制正常，但10 ns双脉冲CNN恢复1/2（拟合2/2），40000 pe超训练范围单脉冲CNN0/1且有2个额外预测（拟合1/1）。训练电荷最大约7989 pe，未验证大幅度外推。CNN网格峰距8 ns后允许时间偏移，而拟合还合并最终<8 ns分量，约束不完全相同。高率时间移位对照保留预测数量/电荷，检验偶然匹配；其结果与漏检/误拆分/误合并、条件电荷/时间误差集中于[独立Notebook](../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-pileup-comparison-20261014)。不能将高密度时间匹配和电荷先验贡献全部称为真实事件身份恢复。
+ 
+ **验证与下一步**：4项模型检查、同种子物理一致性及17窗输入/哈希/评分/仅电压网络重放通过，见[验证](../jupyter/run_records/alpha_ml_comparison_20261014_162000/validation-results.json)。训练约8.60分钟，离线单窗CPU中位耗时CNN 0.1147 s、拟合 4.723 s；不等同实时吞吐。高率一窗/档、100 MHz无同率验证、已知纯α家族与固定噪声/响应，仅为模拟先导。后续扩大独立曝光、比较神经候选+物理refit、宽度/形状/背景失配及能量标定，不能据此定义最大工作率。
+ 
+@@ -297,7 +297,7 @@
+ | 80 | 2 | 1104 | 4.89 | 16.12 | 19.38 | 13.68 | 16.30 |
+ | 100 | 2 | 1344 | 2.46 | 17.86 | 18.38 | 15.03 | 13.17 |
+ 
+-**失败、控制与限制**：九组平均模板控制中10 ns双脉冲U-Net/Transformer/拟合2/2，CNN1/2、混合0/2；40000 pe超训练范围单脉冲三网络及混合均0/1、拟合1/1。均不作为实物分辨能力。每档高率仅两窗；100 MHz无同率验证；时间移位显示高密度偶然匹配贡献。条件电荷/时间P16/50/84、漏检、额外预测、误拆分/误合并标志、固定区间示例、残差与离线耗时集中于[独立Notebook第二轮](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014)。较低波形RMS不保证逐事件电荷正确，混合不能补出完全没有神经候选的事件。尚无沉积能量标定、背景/形状失配和实物泛化，不给最大工作率或能谱分辨率。
++**失败、控制与限制**：九组平均模板控制中10 ns双脉冲U-Net/Transformer/拟合2/2，CNN1/2、混合0/2；40000 pe超训练范围单脉冲三网络及混合均0/1、拟合1/1。均不作为实物分辨能力。每档高率仅两窗；100 MHz无同率验证；时间移位显示高密度偶然匹配贡献。条件电荷/时间P16/50/84、漏检、额外预测、误拆分/误合并标志、固定区间示例、残差与离线耗时集中于[独立Notebook第二轮](../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014)。较低波形RMS不保证逐事件电荷正确，混合不能补出完全没有神经候选的事件。尚无沉积能量标定、背景/形状失配和实物泛化，不给最大工作率或能谱分辨率。
+ 
+ **验证与待办**：5项新算法检查、同种子物理字段一致性、39窗哈希/独立ROOT与种子/仅电压精确重放/统一评分/物理电压检查通过，见[验证记录](../jupyter/run_records/alpha_ml_multimethod_20261014_180000/validation-results.json)。混合优化117次，终止成功117次、达到预算或其它非成功停止0次；终止成功不是事件恢复成功。实际源码、宏、种子、环境及共享目录清单故障恢复记录保留在[新冻结实验](../pileup/experiments/alpha_ml_multimethod_20261014/README.md)。后续扩大独立曝光并验证宽度/形状/噪声/背景失配；候选增峰或幅度范围扩展另建实验，不用本测试调参。
+ 
+@@ -316,7 +316,7 @@
+ 
+ **与长度关联**：复用L18的当前模板FWHM181.505 ns、W90 728.024 ns。三档实测有电荷α率0.1/0.65/8.7 MHz，`R_charge W90`为0.0728/0.4732/6.3338；全部有电荷α（含保护区、阈下）查两侧近邻，W90内目标为0/8、7/10、148/148。Poisson参考概率不当失败率，分组受幅度/共享微胞混杂，不给因果分辨时间或最高工作率。0.1/1 MHz的8/8与10/10只有少量目标，逐ROOT删除范围不是置信区间，回归/新测试不合并。
+ 
+-**证据和边界**：[同一本Notebook第11–14节](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015)保存条件电荷/时间P16/50/84、全部漏检/额外预测/合并拆分、同目标配对、原生失败图及逐窗敏感性；[检查](../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/validation.json)覆盖24低率窗五方法原评分、哈希和计数分解。快照及重跑见[后续实验](../pileup/experiments/alpha_ml_low_rate_20261015/README.md)。没有新增论文结论、改变Regadío待审核或Wang第549项的限定范围；共享库只读，已有文献器件/采样/噪声条件不能直接移植为GAGG低率性能。尚未沉积能量标定或实物泛化；本轮未模拟低于0.1 MHz。
++**证据和边界**：[同一本Notebook第11–14节](../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015)保存条件电荷/时间P16/50/84、全部漏检/额外预测/合并拆分、同目标配对、原生失败图及逐窗敏感性；[检查](../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/validation.json)覆盖24低率窗五方法原评分、哈希和计数分解。快照及重跑见[后续实验](../pileup/experiments/alpha_ml_low_rate_20261015/README.md)。没有新增论文结论、改变Regadío待审核或Wang第549项的限定范围；共享库只读，已有文献器件/采样/噪声条件不能直接移植为GAGG低率性能。尚未沉积能量标定或实物泛化；本轮未模拟低于0.1 MHz。
+ 
+ <a id="alpha-gamma-mixed-20261015"></a>
+ ### L22：2026-10-15——α/γ 原生混合波形的拟合先导
+@@ -340,7 +340,7 @@
+ 
+ **失配诊断与限制**：不计入正式统计的轫致辐射预检查窗中，用真值扣除阈下γ的线性电压，保留实际共享恢复电荷、暗链与噪声，α完整恢复6/10→9/10、γ仍1/4。该单窗辅助诊断支持弱γ干扰α，但不能解释全部分型错误，也不是盲处理或降低γ率的重模拟。电荷是实际单胞等效量，未建立两类沉积能量条件标定，不能称为能量分辨率或能谱已恢复。样本量与模板标定均有限。
+ 
+-**可追溯记录**：[新Notebook](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)、[轫致辐射实验](../pileup/experiments/alpha_gamma_brems_fit_20261015/README.md)、[单能γ实验](../pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md)。保留36个新ROOT，两个写入失败原文件同种子重放后排除；正式分母仍32窗。全部有效文件进行各树/分支读取、宏/种子/哈希核验。未修改共享文献库。
++**可追溯记录**：[新Notebook](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)、[轫致辐射实验](../pileup/experiments/alpha_gamma_brems_fit_20261015/README.md)、[单能γ实验](../pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md)。保留36个新ROOT，两个写入失败原文件同种子重放后排除；正式分母仍32窗。全部有效文件进行各树/分支读取、宏/种子/哈希核验。未修改共享文献库。
+ 
+ **待验证**：扩大独立窗；建立同器件、不同沉积能量和位置/微胞占用下的独立模板与条件电荷能量标定；扫描α/γ率比；比较连续慢分量与弱背景模型。若需新文献精读或入库，仍在papers项目处理。
+ 
+@@ -351,18 +351,18 @@
+ 
+ 文献依据据既有精读：[Tamagawa等2015完整笔记](../../papers/sources/2015_Tamagawa_NIMA_Alpha-gamma-pulse-shape-discrimination-in-Gd3Al2Ga3O12-GAGG-Ce3%2B-crystal-scintillator-using-shape-indicator.md)，PDF2–4，GAGG/R6233K PMT、500 MHz/2048 ns、选定能窗的平均模板SI及低能误判边界，[出版社/DOI](https://doi.org/10.1016/j.nima.2015.05.052)；[Marrone等2002完整笔记](../../papers/sources/2002_Marrone_NIMA_Pulse-shape-analysis-of-liquid-scintillators-for-neutron-studies.md)，PDF3–4、6–7，NE213/C6D6液闪/PMT标定形状拟合及堆积，[出版社/DOI](https://doi.org/10.1016/S0168-9002(02)01063-X)。本轮核对出版社题录与DOI，未重新全文或PDF精读，AI待审核状态及已有局部采用意见保持。以上文献没有证明当前GAGG/S13360多MHz原生混合流的性能。
+ 
+-详细过程：[现有Notebook第10节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-failure-diagnosis-20261015)；[诊断结果](../jupyter/artifacts/alpha_gamma_fit_20261015_093500/oracle_diagnostic/preflight-onset-types.json)；[可复用诊断模块](../pileup/analysis/alpha_gamma_oracle_diagnostic.py)。原有25个Notebook单元及输出保留，新段落记录实际计算与方案边界。
++详细过程：[现有Notebook第10节](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-failure-diagnosis-20261015)；[诊断结果](../jupyter/artifacts/alpha_gamma_fit_20261015_093500/oracle_diagnostic/preflight-onset-types.json)；[可复用诊断模块](../pileup/analysis/alpha_gamma_oracle_diagnostic.py)。原有25个Notebook单元及输出保留，新段落记录实际计算与方案边界。
+ 
+ <a id="alpha-gamma-weakfit-pilot-20261015"></a>
+ **随后实际尝试的盲改进及负结果**：新增[内部门槛与报告门槛分离实现](../pileup/analysis/alpha_gamma_weakfit.py)，弱分量保留在完整电压模型中，输出/评价仍为500 p.e./10 ns/20%。拟合只输入波形和固定标定。两条预检查窗的三次探索中，轫致辐射原始α6/10、γ1/4；内部200 p.e.变为9/10、0/4，内部100 p.e.变为5/10、1/4。单能γ原始α5/7、γ4/6；内部100 p.e.变为1/7、5/6。其γ选择纯度同时从5/5变为5/10，说明只看该类恢复增加会掩盖α泄漏。残差均降低，却未取得同时稳定改善，故不替换原基线、不扩大到32窗宣传新准确度。这些是小样本探索，不是独立性能检验。
+ 
+-当前证据支持下一步同时做弱分量复杂度约束、独立模板/噪声标定与分型置信度，而非单独继续降低门槛。尚未实现正则背景或混合CNN。新控制确认小分量进入模型却不进入过阈值报告，5项既有混合拟合测试与3份保存模型重构检查通过。[Notebook第11节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-weakfit-pilot-20261015)保留波形、残差、效率、纯度、假候选及运行时间；[结果索引](../jupyter/artifacts/alpha_gamma_fit_20261015_093500/weakfit_pilot/summary.json)。没有修改文献结论或共享库。
++当前证据支持下一步同时做弱分量复杂度约束、独立模板/噪声标定与分型置信度，而非单独继续降低门槛。尚未实现正则背景或混合CNN。新控制确认小分量进入模型却不进入过阈值报告，5项既有混合拟合测试与3份保存模型重构检查通过。[Notebook第11节](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-weakfit-pilot-20261015)保留波形、残差、效率、纯度、假候选及运行时间；[结果索引](../jupyter/artifacts/alpha_gamma_fit_20261015_093500/weakfit_pilot/summary.json)。没有修改文献结论或共享库。
+ 
+ 
+ <a id="pileup-fit-optimization-literature-20261015"></a>
+ ### L23：2026-10-15——面向混合α/γ的拟合优化文献
+ 
+-**问题与实际证据**：L22的三次低内部门槛盲试验降低了残差，却未稳定同时改善α/γ恢复与纯度。本次按`paper-search`只读共享库，复用完整精读笔记并定点核5篇原文；没有修改拟合器、启动新仿真或宣称准确度提高。完整题录、笔记/PDF链接、原页位置、仪器/噪声/计数率条件和优先级见[现有Notebook第12节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#pileup-fit-optimization-literature-20261015)及[证据记录](../jupyter/run_records/pileup_fit_literature_20261015/evidence.json)。
++**问题与实际证据**：L22的三次低内部门槛盲试验降低了残差，却未稳定同时改善α/γ恢复与纯度。本次按`paper-search`只读共享库，复用完整精读笔记并定点核5篇原文；没有修改拟合器、启动新仿真或宣称准确度提高。完整题录、笔记/PDF链接、原页位置、仪器/噪声/计数率条件和优先级见[现有Notebook第12节](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#pileup-fit-optimization-literature-20261015)及[证据记录](../jupyter/run_records/pileup_fit_literature_20261015/evidence.json)。
+ 
+ **采用的方法原则与限制**：
+ 
+@@ -401,7 +401,7 @@
+ 
+ **保留的失败**：首版权重给噪声下行涨落过高权，单粒子开发检查λ=3只有α2/8、γ1/3恢复且额外13；改后8/8、3/3、额外0，与旧基线相同。开发集已用于修正，不当独立测试。40次同模板双脉冲检查中，2/4 ns网格恢复计数相同；每网格10/20/40/80/200 ns分别为0/8、2/8、8/8、8/8、6/8，含10/20 ns漏候选与200 ns γα局部错解。该控制没有光子/微胞涨落，不能宣称40 ns实物分辨能力。
+ 
+-**追溯与待验证**：已有Notebook[第13节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)记录全过程、纯度、完整条件误差、固定区间图和逐目标配对。86个ROOT全树/分支、宏/种子/哈希与冻结时序核验，16次测试拟合共同重评分、8个新方法模型重构、一窗只波形重放和13项检查见[验证记录](../jupyter/run_records/alpha_gamma_regularized_20261015/validation.json)。8次L1成功终止只说明满足优化器停止规则，最大投影梯度0.15813（λ=3）仍高于严格1e−5梯度容差；候选选择不是已证实的精确最优解。尚未消融各改动、完成γ位置/占用标定、分型概率校准、沉积能标或实物验证。下一步在新实验验证求解精度、受约束残差增峰、单/双模型竞争与多初值，处理控制中已见的漏候选/局部解；不得以本次已读测试再选参。
++**追溯与待验证**：已有Notebook[第13节](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)记录全过程、纯度、完整条件误差、固定区间图和逐目标配对。86个ROOT全树/分支、宏/种子/哈希与冻结时序核验，16次测试拟合共同重评分、8个新方法模型重构、一窗只波形重放和13项检查见[验证记录](../jupyter/run_records/alpha_gamma_regularized_20261015/validation.json)。8次L1成功终止只说明满足优化器停止规则，最大投影梯度0.15813（λ=3）仍高于严格1e−5梯度容差；候选选择不是已证实的精确最优解。尚未消融各改动、完成γ位置/占用标定、分型概率校准、沉积能标或实物验证。下一步在新实验验证求解精度、受约束残差增峰、单/双模型竞争与多初值，处理控制中已见的漏候选/局部解；不得以本次已读测试再选参。
+ 
+ <a id="alpha-gamma-model-selection-20261016"></a>
+ ### L25：2026-10-16——α/γ等权目标下的联合模型搜索与独立复验
+@@ -427,7 +427,7 @@
+ 
+ **失败诊断和下一步**：本轮高α率12个阈上γ中，2个完整恢复、1个漏检、8个类型错、1个仅电荷不合格；高率α被误判为γ也从上一版9个增至26个，必须结合纯度判断。在旧开发窗刻意提供真实数量/时刻、用于形状和协方差的真实电荷及协方差用真实类型，另比较固定真实类型/双类型NNLS。高率brems即使固定真实类型也只恢复α53/73、γ1/4；该诊断不是盲算法，也不是严格物理上限。这提示当前平均模板及噪声模型可能受形状失配、涨落或重叠病态性影响，尚未做完整因果分离。开发目标78/161个α低于α标定下限1545.6 p.e.、2/12个γ高于γ标定上限1996.7 p.e.；应优先补齐低Qα、γ及位置/前史占用标定，再验证受约束形状分布模型，不能只靠进一步补峰或降低阈值。
+ 
+-**追溯**：现有Notebook[第14节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)保存逐类纯度、电荷条件误差、漏检/误拆分/误合并及图像；[验证记录](../jupyter/run_records/alpha_gamma_model_selection_20261016/validation.json)核对8个ROOT全分支、132份冻结源码、24个拟合的共同评分/模型、一窗盲重放及17项算法检查。本轮线性选择达到KKT容差，但非线性搜索有有限预算，不保证全局最优；每条件两窗，未验证稳定γ效率、沉积能谱或实物泛化。
++**追溯**：现有Notebook[第14节](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)保存逐类纯度、电荷条件误差、漏检/误拆分/误合并及图像；[验证记录](../jupyter/run_records/alpha_gamma_model_selection_20261016/validation.json)核对8个ROOT全分支、132份冻结源码、24个拟合的共同评分/模型、一窗盲重放及17项算法检查。本轮线性选择达到KKT容差，但非线性搜索有有限预算，不保证全局最优；每条件两窗，未验证稳定γ效率、沉积能谱或实物泛化。
+ 
+ <a id="alpha-gamma-profile-fit-20261016"></a>
+ ### L26：2026-10-16——全窗电荷重估、相关噪声与受约束类内形状
+@@ -448,7 +448,7 @@
+ 
+ **诊断与局限**：使用祖先真值的形状描述量在开发α/γ中位数分别0.7283/0.2321，不能把所有失败归因于两类本来相同；这也不保证叠加电压可稳定分解。显式提供真数量/时刻/Q以及协方差用真实类型后，带状协方差且固定真实类型的高率brems仍仅恢复α52/73、γ2/4；是条件诊断而非盲性能或严格物理上限。下一步优先补齐α约500–1500 p.e.、γ标定上端及不同位置/前史条件的独立响应标定，建立条件化平均模板和形状散布；用含真实光子统计与共享微胞恢复的受控双脉冲扫描间隔和幅度比，检验模板失配、随机涨落与分解病态性各自的作用。当前证据尚不足以把失败归因于单一原因，也不能宣称已达到物理分辨极限。该补充标定与因果扫描本轮尚未实施。
+ 
+-**追溯与验证**：[冻结实验](../pileup/experiments/alpha_gamma_profile_fit_20261016/README.md)、[Notebook第15节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-profile-fit-20261016)、[验证](../jupyter/run_records/alpha_gamma_profile_fit_20261016/validation.json)。24项测试、8个新ROOT全分支、144份冻结源码、86个原生拟合模型/评分、40个控制评分与一窗只输入电压的完整重放通过。两方法在20组同模板仅电子白噪声控制均40/40，不是实测10 ns分辨率。旧52个Notebook单元及输出保留。
++**追溯与验证**：[冻结实验](../pileup/experiments/alpha_gamma_profile_fit_20261016/README.md)、[Notebook第15节](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-profile-fit-20261016)、[验证](../jupyter/run_records/alpha_gamma_profile_fit_20261016/validation.json)。24项测试、8个新ROOT全分支、144份冻结源码、86个原生拟合模型/评分、40个控制评分与一窗只输入电压的完整重放通过。两方法在20组同模板仅电子白噪声控制均40/40，不是实测10 ns分辨率。旧52个Notebook单元及输出保留。
+ 
+ ## 新文献整理需求待办
+ 
+@@ -489,7 +489,7 @@
+ 
+ - **复用依据与状态**：[Fixsen2004精读](../../papers/sources/2004_Fixsen_NIMA_Pulse-estimation-in-nonlinear-detectors-with-nonstationary-noise.md)，PDF2 §2–3、PDF3 §4（TES模拟，条件平均形状/协方差标定，[DOI](https://doi.org/10.1016/j.nima.2003.11.313)）；[Rosado2019精读](../../papers/sources/2019_Rosado_IEEESensorsJ_Modeling-the-Nonlinear-Response-of-Silicon-Photomultipliers.md)，PDF2–4恢复和非线性响应、PDF5–7两种Hamamatsu器件与LYSO/LED验证，[DOI](https://doi.org/10.1109/JSEN.2019.2938018)。两篇均为“AI精读草稿，待人工审核”，无新增人工确认。仅采用检查条件响应和恢复效应的原则，不移植TES性能或SiPM平均响应为逐事件pileup指标。
+ - **本项目实现**：独立新增141个标定窗，覆盖低电荷α、三点位置及四种原生双脉冲顺序；新孤立γ只有8个可用例，拟合前完整合并旧56个独立标定窗，所有零信号保留。时间表接口只改变受控源的指定方式，物理和共享微胞/读出参数不改；逐事件祖先标签仅用于标定形状及评价。旧样本集中在中央，合并后的平均不能解释成连续均匀位置的精确平均。
+-- **方法假设**：新增均值标定；再试电荷/可观测前史依赖的慢分量及常数+1/Q散布约束，0.5/1两尺度。回归和惩罚形式为项目方案，非论文给出的GAGG算法。H是估计起点前电压的代理量，位置/真实微胞占用不输入盲拟合；AR(1)噪声沿用旧独立标定。系数原值/新值和适用范围在[Notebook第16节](../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-context-calibration-20261016)及[冻结calibration](../pileup/experiments/alpha_gamma_context_calibration_20261016/calibration.json)对照。
++- **方法假设**：新增均值标定；再试电荷/可观测前史依赖的慢分量及常数+1/Q散布约束，0.5/1两尺度。回归和惩罚形式为项目方案，非论文给出的GAGG算法。H是估计起点前电压的代理量，位置/真实微胞占用不输入盲拟合；AR(1)噪声沿用旧独立标定。系数原值/新值和适用范围在[Notebook第16节](../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-context-calibration-20261016)及[冻结calibration](../pileup/experiments/alpha_gamma_context_calibration_20261016/calibration.json)对照。
+ - **实际计算**：冻结后的16个新混合窗口中，expanded相对原V3的α完整恢复为374/656（57.01%）→378/656（57.62%），γ为30/64（46.88%）→31/64（48.44%）；额外预测55→44，漏检120→117，误合并标志58→56。α完整预测比例373/563→377/555，γ30/91→31/91，γ预测仍有很大误分类/误恢复负担。各条件并不一致：高α率轫致辐射背景的γ反而4/16→3/16，单能γ背景为2/17→3/17；两种高α率条件合计γ仍仅6/33（18.18%）。按条件分层、成对重采样窗口得到恢复率差的95%百分位区间：α为−0.45至+1.65个百分点，γ为−3.13至+5.80个百分点，均跨零。该区间只包含本次窗口波动，不含标定和物理系统误差，不能据此确认稳定提升。 保留扩展标定及全部失败候选，暂不替换V3默认流程。新增标定补齐了原低电荷α范围，但均值修正尚不足以解决密集混合波形：测试后分组中，500–1000 p.e.的α只恢复38/157；与最近另一Q≥50 p.e.脉冲相距小于50 ns的γ仍为9/36，其中18例被错分型；前史电压≥200 mV的γ仅3/21，其中13例错分型。这些是真值辅助的相关性描述，不能当成因果证明或物理时间分辨极限。两个前史形状候选在开发集的α恢复均从92/161降至83/161，γ仍5/12，因此未进入本轮独立测试。每条件仅4个混合窗，原生双脉冲验证中γ目标也只有2例。 开发按两类和四条件等权F1选择，另外27孤立/16原生双脉冲验证；16新混合窗在冻结后生成。完整漏检/误检/分型/条件Q偏差与散布及窗口bootstrap见[实验记录](../pileup/experiments/alpha_gamma_context_calibration_20261016/README.md)。Q为实现p.e.，不称能量分辨率。
+ - **验证/待办**：26项Python测试及C++ SiPM检查通过，209个新ROOT、220份拟合复核、一个完整电压盲重跑。下一步优先补齐强前史下的γ条件标定：本次仅4个有效γ前史标定，前史电压上限约172 mV，未覆盖上述≥200 mV失败组。可从独立标定库选取多份有效γ光子输入，与前脉冲在同一微胞阵列按新数字化种子重放，系统覆盖前史、间隔和位置；这属于条件响应检验，不能拿筛选后的样本估计γ探测效率。在独立重复样本上检验条件均值和协方差是否足以描述模板涨落，再在开发集比较类型推断与电荷分配，并用新的冻结后测试判断是否改善。这些是后续方案，本轮尚未实施；本轮16个新测试窗没有用于调参。 仍需处理位置/前史覆盖不足、标定不确定性、当前共享95/351 ns基底与真实器件差异；没有把本轮结果当成物理不可辨识极限。
+ 
+@@ -498,7 +498,7 @@
+ ### L28：2026-10-16——α＋γ混合波形的机器学习解堆积候选
+ 
+ **范围与追溯**：使用本地paper-search，只读复用8篇来源笔记，6篇定点核原页；没有联网、新训练或新仿真。
+-完整书目、DOI、装置/采样/噪声/率条件、原页链接、项目采用范围见[新Notebook](../jupyter/codex_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb)和[evidence.json](../jupyter/run_records/alpha_gamma_ml_literature_20261016/evidence.json)。
++完整书目、DOI、装置/采样/噪声/率条件、原页链接、项目采用范围见[新Notebook](../jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb)和[evidence.json](../jupyter/run_records/alpha_gamma_ml_literature_20261016/evidence.json)。
+ 本次检索没有核实同GAGG＋共享SiPM条件的α＋γ逐事件完整恢复基准；n/γ文献作为算法类比，不能转移其数值性能。
+ 
+ **采用方向与边界**：Kim2023（DOI 10.1016/j.apradiso.2023.110880，PDF3–6）支持共享CNN的脉高/类型多任务，但以已找到峰为前提；12 ns双脉冲MT分类84.80%，9重降至60.22%，式3/5口径有歧义，不采作能量准确率/召回证据。
+@@ -535,4 +535,169 @@ Tamagawa2015（10.1016/j.nima.2015.05.052，PDF3）GAGG＋PMT的α138/599 ns与
+ 
+ **采用决定**：未达到两类恢复同时改善，不替换已有拟合默认流程。混合相对拟合α+6.55、γ−9.33个百分点；按条件分层的成对窗口bootstrap95%区间分别+2.62至+10.49、−16.88至−1.23个百分点，只含有限窗口波动。弱γ500–1000 p.e.恢复19/49→10/49、错分15/49→26/49；前史≥200 mV的γ2/13→0/13，各分层重叠。高α率γ仍4/31，未解决密集γ恢复。匹配模板双脉冲80事件拟合80/80、CNN46/80、U-Net45/80、混合71/80，提示当前学习和组合仍有缺陷，不能解释成物理极限。
+ 
+-**追溯、验证与待办**：[冻结实验](../pileup/experiments/alpha_gamma_ml_20261016/README.md)、[Notebook第8节](../jupyter/codex_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016)、[评分/重放复核](../jupyter/run_records/alpha_gamma_ml_20261016/analysis-validation.json)。9项算法检查、28新有效ROOT、420份重评分、四方法电压盲重放；原生控制γ仅3个。保留序列化失败及VirtualBox受阻记录，按原种子在本机缓存完成训练后归档。下一步Q匹配及前史条件原生训练、固定候选PSD/幅度消融与先验校准，开发约束逐类恢复和误报，另用新测试；真实器件、物理域偏移和能量标定仍未验证，不修改共享文献库。
++**追溯、验证与待办**：[冻结实验](../pileup/experiments/alpha_gamma_ml_20261016/README.md)、[Notebook第8节](../jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016)、[评分/重放复核](../jupyter/run_records/alpha_gamma_ml_20261016/analysis-validation.json)。9项算法检查、28新有效ROOT、420份重评分、四方法电压盲重放；原生控制γ仅3个。保留序列化失败及VirtualBox受阻记录，按原种子在本机缓存完成训练后归档。下一步Q匹配及前史条件原生训练、固定候选PSD/幅度消融与先验校准，开发约束逐类恢复和误报，另用新测试；真实器件、物理域偏移和能量标定仍未验证，不修改共享文献库。
++
++<a id="alpha-gamma-prior-ablation-20261019"></a>
++### L30：2026-10-19——固定候选下拆分网络电荷与类别惩罚
++
++**依据与范围**：沿用L28/L29中Kim2023、Morad2024的多任务及检出/分类分开评价方向和原适用条件；本轮只复用既有精读笔记与项目代码，没有重新核原PDF或新增论文性能结论。Morad第553项限定确认、其余AI草稿状态保持。将两个显式惩罚拆分是本项目的受控诊断，文献没有验证当前归一化网络分数为校准后验，也没有验证当前单个Q先验可跨类别共用。
++
++**设计与实现**：20个已公开开发窗（两γ背景×α源1/10 MHz×5窗，γ源10 MHz），791个α/86个γ阈上目标。固定盲候选、初始类别/Q、到达时刻、模板Q及噪声权重，无到时搜索或增峰；仅比较(λQ,λC)=(0,0)/(10,0)/(0,10)/(10,10)。强度沿用旧开发选择，没有新调参。“无显式先验”仍有共同网络候选与初始形状，不能当作纯拟合。盲输入仅完整电压与保存的盲输出，真值在全部拟合后评分。
++
++**实际计算**：无/仅电荷/仅类别/两者的α完整恢复为483/791、517/791、503/791、520/791；γ为42/86、37/86、42/86、38/86；额外预测53/83/59/83。仅电荷项使6个原成功γ失败（5个错分α、1个Q超差），补回1个；γ差−5.81个百分点，成对整窗分层重采样95%范围−10.34至−2.15个百分点。仅类别项α增加20个、γ净变化0（4失4得），γ完整precision37.2%→54.5%，但α完整precision略降、额外预测增加。区间仅描述已公开开发窗的波动，不作为新独立性能或实物结论。
++
++**解释与采用决定**：当前把已解码事件的一个Q中心同时用于α、γ假设，Q惩罚能够影响分型。事后首个错分示例真值γ为554.14 p.e.、网络Q967.02 p.e.；无先验得584.67 p.e.的γ，仅电荷后得948.95 p.e.的α。该例用于解释全窗优化的变化，不把全部失败或物理可辨识性归因于一个因素。暂保留默认流程；下一轮优先检验完整流程中的候选/类别提示与物理Q重估，再做独立的类型/电荷/可观测前史条件Q校准与Q匹配训练，冻结后另留新测试。
++
++**记录与验证**：[实验和复算](../pileup/experiments/alpha_gamma_prior_ablation_20261019/README.md)、[现有Notebook第9节](../jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-prior-ablation-20261019)、[本地结果](../jupyter/artifacts/alpha_gamma_prior_ablation_20261019/summary.json)。4项数值测试、20份密集输出解码、80组共同候选/目标单调性及预定首窗四组重放纳入验证。全部满足至多6轮的停止容差，但不是全局最优保证。没有新G4、训练、概率校准或能量标定；ROOT和旧结果保留，共享文献库未写入。
++
++<a id="alpha-gamma-full-prior-20261019"></a>
++### L31：2026-10-19——仅类别惩罚的完整混合流程及新独立测试
++
++**依据与边界**：沿用L28–L30的既有精读与原审核状态，没有新增原文复核或论文性能结论。拆分惩罚及筛选容差是项目方案；归一化网络事件分数仍不当作已校准后验。当前Q相关模板仍由初始网络/物理电荷决定，去掉显式Q项不等于去掉全部网络Q影响。
++
++**实现与冻结**：仅λQ 10→0、λC保留10，候选/形状初值、固定噪声权重、时刻/类别/电荷搜索及残差补峰预算沿用旧完整流程。20公开开发窗相对物理拟合α471/791→505/791、γ38/86→42/86，额外预测45→57，达到事先设置的逐类恢复、precision与额外预测筛选。工程容差不作为文献阈值或统计等效性结论。其后冻结旧U-Net权重、阈值[0.4,0.55]、标定和拟合配置，另生成16新种子原生窗，两γ背景×α源1/10 MHz×各4窗，γ源10 MHz。物理与完整电压/足够动态范围前提不变。
++
++**独立计算结果**：同窗物理拟合→仅类别混合，α345/643→382/643，γ30/79→29/79；额外预测40→54。完整恢复仍要求Q≥500 p.e.、匹配≤10 ns、类型正确、Q误差≤20%，不是沉积能量分辨率。本批独立数据未通过与开发相同的筛选，不替换默认拟合流程。未通过项：gamma_pooled_recovery, cell_brems_1000000_alpha, cell_brems_10000000_gamma。全部五方法、分条件、错分/漏检与条件Q误差保存在本地summary。- 相对扩展标定物理拟合的alpha恢复数变化+37，恢复率差+5.75个百分点；成对整窗95%范围[+4.10, +7.72]个百分点。 - 相对扩展标定物理拟合的gamma恢复数变化-1，恢复率差-1.27个百分点；成对整窗95%范围[-6.06, +3.70]个百分点。
++
++**解释、验证与待办**：γ损失8个原成功事件、补回7个；弱γ为扩展标定物理拟合 16/52、旧混合：Q＋类别 13/52、新混合：仅类别 13/52。窗口重采样只含有限统计，各分层重叠；若干非线性子问题达到评价预算，不声称全局最优。3项数值检查、旧端点和冻结网络密集图/五方法数值复现、16窗重建文件访问检查、ROOT/RunInfo/原宏与重评分纳入验证。首次缺输出目录在生成ROOT前修复，日志保留；分析外层143中断后仅补跑缺结果的2窗，14个完整结果保持原哈希，不新增样本或调参。下一步在独立标定/开发资料中检验类型/Q/可观测前史条件的模板与不确定度，再设计新实验；此批测试不再用于调参。未验证真实器件、沉积能量与物理域偏移，不修改共享文献库。
++
++**追溯**：[冻结实验](../pileup/experiments/alpha_gamma_full_prior_20261019/README.md)、[Notebook第10节](../jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-full-prior-20261019)、[本地验证](../jupyter/run_records/alpha_gamma_full_prior_20261019/validation.json)。
++
++**补充分型对照**：同批完整混合由无显式惩罚到仅类别提示，α367/643→382/643、γ32/79→29/79，额外预测49→54；丢失5个原成功γ且均错分α，补回2个。相对物理拟合损失的8个原成功γ也全部错分α。类别提示仍有取舍，下一步优先在训练/独立标定资料中做Q匹配PSD、类别分数校准和可观测前史/Q条件模板检查，不用本批测试选参。γ相对物理拟合的窗口区间跨零，不声称总体显著下降。
++
++<a id="alpha-gamma-recovery-strategy-20261019"></a>
++### L32：2026-10-19——针对弱γ错分的文献复核与后续方案
++
++**检索与证据层级**：按`paper-search`只读共享库，复用主题页、完整精读笔记和global-review原始答复。7篇重点来源的题名、作者、DOI、真实笔记/PDF链接、装置/采样/噪声/率条件及逐篇核验范围集中于[Notebook第11节](../jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-recovery-strategy-20261019)和[本地证据表](../jupyter/run_records/alpha_gamma_recovery_strategy_20261019/evidence.json)。DOI核PDF首页；实际原页图为Tamagawa3–4、Kim6、Morad10、Fixsen2、Klanner4，其余仅定点文字/既有笔记，不声明本轮重新全文精读。Morad第553项仍仅限检出/分类指标和构造条件，其余AI草稿状态不变。共享库未修改，未联网或追读引用。
++
++**采用范围**：Tamagawa2015（10.1016/j.nima.2015.05.052，PDF3–4）用于总面积归一形状判别对照；99.95% γ保留/0.22% α误留限GAGG/PMT孤立源事件0.5–0.75 MeVee，不是本项目密集堆积成绩。Luo2018（10.1016/j.nima.2018.03.078，PDF4–6）用于多类型假设比较的先例，限BC-501A双脉冲；不采用其会残差抵消的绝对残差总和。Kim2023（10.1016/j.apradiso.2023.110880，PDF6表2/3/5）保留多任务取舍：12 ns分类MT84.80%低于ST87.91%，9重MT总体分类60.22%；原标Acc.H/Recall疑点不消除。Morad2024（10.1109/TNS.2024.3371573，PDF3–7、10）用于检出、上下文分类分开；6 Mcps条件分类89.1%与含漏检72.9%分列，不证明热图分数已校准。
++
++Rosado2019（10.1109/JSEN.2019.2938018，PDF2–5、7）及Klanner2024（10.1016/j.nima.2023.169018，PDF3–4、9）支持SiPM恢复/光时间结构影响响应的机制，验证以指定器件平均电荷为主，不是GAGG逐事件解堆积；不直接移植参数或有疑点的公式。Fixsen2004（10.1016/j.nima.2003.11.313，PDF2–3）只借鉴条件均值/完整协方差标定，限TES模型的局部最小二乘；条件高斯log det及形状分布归一化是本项目拟议统计模型要求，不冒充该文已实现的波形pileup方法。
++
++**项目核查与轻量计算**：重新汇总L31已公开79个γ，物理拟合为成功30/错类型35/正确类型但Q超差4/漏失10；仅类别混合为29/40/2/8。相对物理拟合丢失的8个成功γ全部变错类型；统计区间仍跨零，不宣称总体显著下降。当前混合只用Q条件模板且形状Q初值固定，不使用保存的context_classes；旧物理基线已有Q形状更新，旧context拟合也已试过，不能称本轮才首次想到。旧γ前史参数来自25个有效样本、最大172.20 mV，而公开失败分层有25个≥200 mV目标；这是标定覆盖缺口，不是器件上限。按当前目标，λC=10、假设scoreα/scoreγ=4，会给γ增加27.73白化SSE代价；这是代数量级，不是实测失败分数分布。
++
++**拟议改进，尚未实施**：先固定盲候选，用观测减盲估邻居的残差做独立SI/白化模板/PSD对照；不对已经生成的固定类型模板再分型。用原生Q/可观测前史匹配资料检验幅度捷径，检出和分型输出分开，在独立按ROOT分组的标定集校准融合；同一电压的物理/网络分数不作为独立证据相乘。补弱γ强前史条件响应与不确定度，再检验Q/时刻/形状自洽的双假设比较。自由快慢比例会吸收类间差；若采用条件概率须处理形状分布归一化、条件协方差和形状涨落重复计入，而不是仅增加自由度或给旧经验惩罚机械补项。以上为本项目推导/方案，不是文献性能保证。
++
++**验证与边界**：3个轻量Notebook单元实际执行，旧65单元/图像保留；格式、链接、计数恒等式、来源/输入哈希检查见[本地验证](../jupyter/run_records/alpha_gamma_recovery_strategy_20261019/validation.json)。没有改重建器、训练模型或生成ROOT，默认物理拟合不变。旧公开测试只作失败描述/回归，不择参；新方案冻结后再做独立共同测试，继续要求α/γ完整恢复和误报同时受控。
++
++**新增文献/标定待办**：同GAGG/SiPM原生混合逐事件实测证据、弱γ强前史的条件形状与噪声分解、融合分数校准/重复计入控制仍缺。Kim式3/5、Morad FA分母/NoA先验、Klanner实现异文沿原记录保留；需要新增精读或代码核验时在papers项目另行处理，不从本项目修改共享库。
++
++<a id="free-lifetime-minimum-window-20261019"></a>
++### L33：2026-10-19——自由双衰减时间的最短观察窗口诊断
++
++**依据与范围**：沿用L14–L16的完整响应卷积和原S13360两个孤立样例，不新增文献性能结论或物理参数。自由τ是当前电压模型的有效参数；GAGG/PMT平均波形的文献寿命不等于本器件逐事件可辨识精度。原文来源/审核条件保持，原始文献没有规定100/500 ns通用门槛。
++
++**实际计算**：复用原ADC缓存、原约束和四初值，500–750 ns每25 ns扫描，新增22次拟合；两个粒子×500/750 ns共4个历史端点数值回归。T指观测阈值后长度，另用前200 ns且定位/基线依赖更长记录。按两τ均与同事件2.5 μs自由解相差≤5%/10%/20%、无触边且全部更长已测T均满足，两例共同最早已测试T分别为550/550/525 ns。门槛是本轮探索性定义，非置信区间、实物精度或连续意义下最短值；独立粒子仍只有1α+1γ。
++
++**解释与边界**：500 ns自由拟合面积已与长窗相差约3%以内，但γ慢τ仍高约23%；固定τ的100 ns γ慢占比0.3335，相比2 μs的0.2047并不稳定。长窗自由解α80.36/348.05、γ81.41/221.63 ns仍不同于仿真输入95/351 ns，因此本节只回答相对长窗解稳定，未确定真实寿命准确恢复所需T。Poisson前向无新到达概率exp(−RdetT)仅作计数率联系，Rdet非源率、不代表恢复效率，不能由1/T给最大率；后续需独立分Q样本和受控间隔/高率联合拟合。
++
++**追溯与验证**：[原Notebook第8节](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#free-lifetime-minimum-window-20261019)、[新汇总](../jupyter/artifacts/alpha_gamma_window_minimum_20261019/summary.json)、[协议与冻结源码](../jupyter/run_records/alpha_gamma_window_minimum_20261019/protocol.json)、[验证](../jupyter/run_records/alpha_gamma_window_minimum_20261019/validation.json)。原29单元/图像保留，未生成ROOT或替换旧结果；有效寿命与本征发光寿命、观察长度与最大率分开，未将同一事件多个截窗当独立样本。
++
++**固定τ补充对照**：同日仅复算原9档固定95/351 ns结果，仍自由拟合A/B/t0/ws，没有新增拟合。相对各自2500 ns固定τ解，要求本点及所有更长已测点的数值均合格，两类共同最早已测档位为面积≤10%：200 ns、面积≤5%：300 ns、面积和ws各≤5%/10%：500 ns。100 ns的γ面积+11.49%、ws+62.88%，不能说固定τ后100 ns普遍足够。α的1000 ns拟合有基线上界触边；若严格加入上一节的无触边条件，共同起点为1500 ns。必须将这个基线/模型质量问题与数值稳定分开，不能把前述300/500 ns称为已通过全部质量条件的最短窗，也不能把1500 ns解释为物理必需长度。两事件、粗网格及长基线依赖不变，无新增文献或总体精度结论。[Notebook固定τ对照](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#fixed-tau-window-comparison-20261019)、[复算与两种标准](../jupyter/artifacts/alpha_gamma_fixed_tau_window_20261019/summary.json)、[验证](../jupyter/run_records/alpha_gamma_fixed_tau_window_20261019/validation.json)。
++
++<a id="short-window-literature-strategy-20261019"></a>
++### L34：2026-10-19——缩短拟合观察窗的方法与信息量诊断
++
++**证据与审核范围**：按`paper-search`只读共享库，复用Belli2008、Radeka1968、Fixsen2004、Nakhostin2019 JINST、Yang2022、Saxena2020六篇完整已有笔记，定点核原页；实际看图Belli3–4、Radeka6–7、Fixsen2、Nakhostin4、Yang4、Saxena2，其他位置分清本轮文字/旧笔记层级。方法与适用条件见[Notebook第9节](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#short-window-literature-strategy-20261019)；完整题名、作者、DOI/未核状态、来源位置和审核记录见[证据表](../jupyter/run_records/alpha_gamma_short_window_strategy_20261019/evidence.json)。两次导航脚本45 s超时后用rg/索引，不据无返回说无文献。六篇仍为AI草稿；第554项认可的是另一篇Nakhostin TNS背景抑制，第658项不转移Fixsen；共享库和审核状态未改。
++
++**采用与限制**：Belli（10.1016/j.nima.2008.06.045，PDF3–4图4–6）支持独立单脉冲截断补尾的误差验证设计；NE213固定7.5/45 ns、200 MS/s条件下7点35 ns/加缓冲50 ns峰距及均值/SD约±8%，不能移为GAGG最短窗。Radeka（DOI本轮未核，PDF6–7/13）用于有限窗口权重及噪声代价原则，串/并联白噪声/冲量信号前提保持；式16–17原印冲突不直接实现。Fixsen（10.1016/j.nima.2003.11.313，PDF2式1–2）用于独立均值/完整协方差标定原则，不作当前SiPM短窗性能证明。Nakhostin（10.1088/1748-0221/14/04/P04012，PDF4/9–10）的NaI离线795 kHz缩尾到20 ns后峰宽16%，100 ns窗含20 ns基线，噪声代价及式2.2/2.3不自洽保留，不照抄为已核代码。Yang（10.1016/j.nima.2022.166376，PDF2–5）的双平均窗尾部预测仍拒绝0.75 μs近邻；Saxena（10.1016/j.nima.2018.09.123，PDF2–5）的HPGe实时自适应成形为1 Mcps输入/370 kcps输出，0.7 μs平顶/2.4 μs复位等待不能照搬。两者只借鉴残尾估计/窗口自适应思想，不据此承诺100 ns逐事件准确恢复。
++
++**项目推导与实际计算**：拟议固定τ后以Af/As线性幅度与少数非线性参数profile搜索、独立基线及条件协方差；相同模型/目标下参数改写不增加信息，不能单独保证精度改善。短窗先截协方差再求逆，不能截长窗逆矩阵；原定位使用整段峰和长前窗，不是严格因果前缀。另实现理想单指数Poisson过程的N/τ Fisher诊断：给定已知起点、任意示例N=10000/τ=351 ns，100 ns总量在τ固定时相对1σ界约2.01%，τ自由时总量约21.25%、τ约24.47%。这是本项目解析说明，非双指数GAGG/ADC下界或实测精度；28项独立积分、7次逆矩阵和2个短窗极限检查通过。
++
++**下一步及未验证项**：先实现完整响应两幅度拟合与只依赖前缀的触发/基线，再检验条件均值/协方差和α/γ形状不确定度，缩尾作有正则的对照；逐事件双τ自由与跨事件共享τ分开。预定扫Tpre=20–200 ns、Tpost=50–1000 ns，按ROOT分标定/开发/新测试，真值只评价；电荷≤5%且事件合格率≥95%/两τ各≤10%只是拟议工程目标。报告两类检测/分类、偏差、分辨率、漏失/误拆/误并及选择效率，校准自适应停止后的覆盖率，不用两条波形的稳定性作“正确”证明。本轮没有新增GAGG拟合、训练或ROOT。[协议（尚未执行）](../jupyter/run_records/alpha_gamma_short_window_strategy_20261019/proposed-protocol.json)、[独立模块](../analysis/short_window_information.py)、[计算结果](../jupyter/artifacts/alpha_gamma_short_window_strategy_20261019/information.json)、[本轮验证](../jupyter/run_records/alpha_gamma_short_window_strategy_20261019/validation.json)。原41 Notebook单元及旧拟合器保留。待补本器件短窗独立原生精度、条件噪声/形状标定、因果总延迟，以及缩尾原式代码/勘误证据；新增精读在papers项目另行处理。
++
++
++**2026-10-20笔记展示整理**：按用户要求，Notebook 0002聚焦双指数模型，移除单衰减拟合对照及理想信息量诊断的正文／图9-1，合并重复叙述并按研究问题排序；保留其余图号和双指数数值。历史推导、原始结果与验证仍保留在上述独立模块、产物及运行记录中。第9节的第一阶段方案已在下方L35执行；此次整理不新增拟合、文献采用或物理结论。
++
++<a id="short-window-implementation-20261019"></a>
++### L35：2026-10-19——因果短前缀拟合的实现与独立原生检验
++
++**文献依据与采用边界**：落实[L34](#short-window-literature-strategy-20261019)的有限窗补尾、线性幅度profile和独立条件均值/协方差原则；Belli NE213固定7.5/45 ns、Radeka理想噪声、Fixsen TES的装置/采样/模型条件与AI草稿审核状态均沿L34，不引入新的文献性能或人工确认。Radeka/Nakhostin原式疑点未消除，未照抄缩尾公式；本轮没有修改共享papers库。α/γ完整模板、条件pilot、50%收缩和停止规则为本项目实现，不冒充论文给出的GAGG性能。
++
++**实现与独立性**：149个旧孤立标定窗、45个旧开发窗，70个Q≥250 pe（52α/18γ）用于三档类别均值/726维协方差；基线均值和电子噪声独立标定，σB=0.2 mV及50%对角收缩为工程设定。四方法是固定95/351 ns两幅度OLS/GLS及独立完整α/γ形状OLS/GLS，输入同一完整原生analog_mV。触发用过去滚动中位数的连续三点2 mV门槛，窗口只读[触发−Tpre,触发+Tpost]；先截协方差再分解，未使用未来峰值/尾部定位。固定类别完整形状比固定双τ且自由比例约束更强，参数改写本身不提高信息量。
++
++配置、标定、4个核心源码哈希冻结后，新增174个独立原生20 μs单事件ROOT（30α/144γ），预定包含γ扩展并保留零信号；单能γ0.1/0.2/0.661657/1.5 MeV、α1.5/1.8/2.5/5.486/8 MeV，三点位置。真值只在该事件44个窗口全部拟合完成后打开，不作为推断输入。Q≥500 pe目标数为α19、γ12；这是实现光子后代雪崩电荷，不是源/沉积/可见能量。
++
++**实际结果**：主方法template_gls。开发选择的前20＋后300 ns候选在新测试通过本批点比例门槛（α19/19（100.0%），γ12/12（100.0%））；目标为两类各≥95%事件Q误差≤5%。测试网格仅作探索描述：前20 ns：后300 ns；前50 ns：后300 ns；前100 ns：后300 ns；前200 ns：后300 ns。小样本点比例和逐条件Wilson区间不能认证总体95%门槛；同事件多个截窗不当作独立样本，未据测试重选算法/停止阈值。前20 ns的关键比较如下。
++
++| 触发后T / ns | 方法 | α电荷误差≤5% | γ电荷误差≤5% |
++| ---: | --- | ---: | ---: |
++| 100 | physics_ols | 3/19（15.8%） | 0/12（0.0%） |
++| 100 | physics_gls | 4/19（21.1%） | 1/12（8.3%） |
++| 100 | template_ols | 14/19（73.7%） | 6/12（50.0%） |
++| 100 | template_gls | 14/19（73.7%） | 7/12（58.3%） |
++| 200 | physics_ols | 10/19（52.6%） | 4/12（33.3%） |
++| 200 | physics_gls | 10/19（52.6%） | 7/12（58.3%） |
++| 200 | template_ols | 15/19（78.9%） | 3/12（25.0%） |
++| 200 | template_gls | 18/19（94.7%） | 12/12（100.0%） |
++| 300 | physics_ols | 11/19（57.9%） | 6/12（50.0%） |
++| 300 | physics_gls | 18/19（94.7%） | 10/12（83.3%） |
++| 300 | template_ols | 17/19（89.5%） | 7/12（58.3%） |
++| 300 | template_gls | 19/19（100.0%） | 12/12（100.0%） |
++| 500 | physics_ols | 11/19（57.9%） | 3/12（25.0%） |
++| 500 | physics_gls | 19/19（100.0%） | 11/12（91.7%） |
++| 500 | template_ols | 14/19（73.7%） | 8/12（66.7%） |
++| 500 | template_gls | 19/19（100.0%） | 12/12（100.0%） |
++| 1000 | physics_ols | 15/19（78.9%） | 6/12（50.0%） |
++| 1000 | physics_gls | 19/19（100.0%） | 12/12（100.0%） |
++| 1000 | template_ols | 18/19（94.7%） | 10/12（83.3%） |
++| 1000 | template_gls | 19/19（100.0%） | 12/12（100.0%） |
++
++**停止与负对照**：开发最坏窗口误差得到k=54.45149，残差阈值2.10599，固定前50 ns；新测试α接受0/19、γ接受0/12，拒绝保留为无条件失败。局部σ和经验放大不能视作已校准顺序置信区间。24个标定均值相加的双脉冲（72次前缀检查）只检查单脉冲假设遇邻居的失效，不是新原生共享微胞双脉冲恢复验证。
++
++**验证与限制**：4项有独立数值参照/未来污染的算法检查通过；174个ROOT的实际RunInfo、宏、种子、配置、哈希与祖先电荷核验，1408个汇总组独立重评分，4次原生未来NaN/平移检查及2次快照源码重放通过。[Notebook第10节](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#short-window-implementation-20261019)保留原50单元和输出；[实验](../pileup/experiments/alpha_gamma_short_window_20261019/README.md)、[测试汇总](../jupyter/artifacts/alpha_gamma_short_window_implementation_20261019/test-summary.json)、[数据验证](../jupyter/run_records/alpha_gamma_short_window_implementation_20261019/native-data-validation.json)。本轮假定至多一个孤立脉冲、不估计数量，尚不能报告盲多脉冲误拆/误并，也不回答free双τ最短窗。旧两条ADC的长窗数值稳定与本轮独立模拟真值精度口径不同，不直接比较缩短倍数。待补有效γ/条件前史/标定不确定度、原生双脉冲、跨事件共享τ与freeτ、实物域偏移及高率联合拟合；不以1/T替代计数率能力。新文献整理仍在papers项目处理。
++
++<a id="advanced-fit-literature-20261020"></a>
++### L36：2026-10-20——短窗口GLS之后的条件响应、形状模态与标定统计
++
++**问题与核验层级**：用户询问是否有更好的拟合方法。按`paper-search`只读本地库，复用导航、完整来源笔记及global-review原始答复；两次knowledge_index导航各45秒无输出超时，改用rg，不以无返回判断无文献。五篇正式期刊来源与逐篇实际文本／原页范围、文件哈希、作者、DOI或未核状态、设备／能区／采样／噪声／率条件汇总于[证据表](../jupyter/run_records/alpha_gamma_advanced_fit_literature_20261020/evidence.json)。这是定点证据核对，不是五篇新全文精读或入库；共享库未写入，未联网。过程与候选追加到[笔记0002第9.1–9.2节](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#advanced-fit-literature-20261020)，原代码输出和图号保持。
++
++| 来源 | 实际依据与采用范围 | 限制／审核 |
++| --- | --- | --- |
++| D. J. Fixsen, S. H. Moseley等，2004，*Pulse estimation in nonlinear detectors with nonstationary noise*；[精读](../../papers/sources/2004_Fixsen_NIMA_Pulse-estimation-in-nonlinear-detectors-with-nonstationary-noise.md)／[原文](../../papers/raw/2004_Fixsen_NIMA_Pulse-estimation-in-nonlinear-detectors-with-nonstationary-noise.pdf)；[DOI](https://doi.org/10.1016/j.nima.2003.11.313) | PDF2式1–2（原页实看）、PDF3文字；条件均值和逆协方差随标定能量插值，用于提出自洽条件拟合。 | TES模型0.5–5 eV、每点5000次，采样／率未给；原式无log det。AI待审核，无本篇人工确认。 |
++| Chris H. Whitford，2005，*Implementation of optimal filters for pulse height measurement from non-linear detectors with non-stationary noise*；[精读](../../papers/sources/2005_Whitford_NIMA_Implementation-of-optimal-filters-for-pulse-height-measurement-from-non-linear-detectors-with-non-stationary-noise.md)／[原文](../../papers/raw/2005_Whitford_NIMA_Implementation-of-optimal-filters-for-pulse-height-measurement-from-non-linear-detectors-with-non-stationary-noise.pdf)；[DOI](https://doi.org/10.1016/j.nima.2005.09.001) | PDF2式4–5、PDF3图3（两页实看）、PDF4式9–10文字；局部dS/dE与端点自洽插值，并保留时刻／基线代价。 | TES 2–20 keV；20 keV改善19%相对未知相位峰取值，仍差下界14%；40 eV是指定2 keV间距的能标偏差。无堆积或硬件验证，AI待审。 |
++| S. E. Busch, J. S. Adams等，2016，*Progress Towards Improved Analysis of TES X-ray Data Using Principal Component Analysis*；[精读](../../papers/sources/2016_Busch_JLTP_Progress-towards-improved-analysis-of-TES-X-ray-data-using-principal-component-analysis.md)／[原文](../../papers/raw/2016_Busch_JLTP_Progress-towards-improved-analysis-of-TES-X-ray-data-using-principal-component-analysis.pdf)；[DOI](https://doi.org/10.1007/s10909-015-1357-z) | PDF3与6原页实看，PDF5／7文字；少量波形变化分量及能量方向标定，作为结构化形状／协方差候选。 | Mo/Au TES、1 MS/s；Mn Gaussian FWHM3.19±0.14→1.56±0.13 eV，Al无改善；仅第658项限定采用，独立划分／权重与4317/4984计数差仍待核。 |
++| Roger Barlow, Christine Beeston，1993，*Fitting using finite Monte Carlo samples*；[精读](../../papers/sources/1993_Barlow_CPC_Fitting-using-finite-Monte-Carlo-samples.md)／[原文](../../papers/raw/1993_Barlow_CPC_Fitting-using-finite-Monte-Carlo-samples.pdf)；DOI未核 | PDF2式8–9原页实看，PDF3条件最大化文字；有限MC模板统计进入辅助似然，借鉴到有限标定误差传播。 | 原文为Poisson分箱计数，不能直接用于相关电压；模板均值profile不等于边缘积分。DOI未核、PII不改写为DOI；原式7等疑点保留，AI待审。 |
++| Jaime Rosado，2019，*Modeling the Nonlinear Response of Silicon Photomultipliers*；[精读](../../papers/sources/2019_Rosado_IEEESensorsJ_Modeling-the-Nonlinear-Response-of-Silicon-Photomultipliers.md)／[原文](../../papers/raw/2019_Rosado_IEEESensorsJ_Modeling-the-Nonlinear-Response-of-Silicon-Photomultipliers.pdf)；[DOI](https://doi.org/10.1109/JSEN.2019.2938018) | PDF4式19原页实看；PDF2–3／5／7–8文字；SiPM恢复、触发概率与电荷改变，为条件响应提供物理动机。 | S13360-1325CS/1350CS，LYSO3×3×20 mm／LED，300–2100 keV、400 ns电荷积分；仅平均电荷／电流模型，非6050PE波形逆算法，AI待审。 |
++
++
++**与当前实现的差别**：已核`analysis/alpha_gamma_short_window.py`，现有流程已有线性幅度／基线profile、连续时刻搜索、三Q档类别模板，以及`C=Qpilot*K(tpilot)+sigma_e²I`和50%对角收缩；不是完全固定且与Q无关的协方差。具体缺口是模板和C按单次pilot冻结，拟合Q／t0不再自洽更新。有效标定70条、γ每档6条与726维协方差提示应优先验证统计稳定性及标定范围。L26已有形状试验α170/290→173/290、γ18/38不变；不把增加自由度写成已经改善。
++
++**采用的研究建议／尚未验证**：优先比较自洽条件均值／噪声，随后比较开发集选择的低秩结构与有限标定不确定度。若采用参数相关条件高斯似然，`rᵀ C(theta)⁻¹r + log det C(theta)`是本项目统计建模，不冒充Fixsen原式；旧同前缀共用固定C的log det为常数。PCA旋转不自动白化；形状模态若已在残差C内，不重复添加；有限标定误差会被多事件共享。固定形状Q恢复、带标定先验／共享τ和逐事件完全free双τ分开验证，不能由300 ns小样本100%推出自由寿命最短窗或高率能力。
++
++预定先用开发数据比较100/150/200/300 ns，在公开旧测试上只回归；方法冻结后另设新测试，逐类报告Q误差、分型、漏检、接受度与区间覆盖，保留失败。未实现新拟合器、未重新拟合、未生成ROOT，尚不能排序本项目真实性能。Scoullar2008会议PPR仅复用既有笔记／原修订记录，公开似然及事件数选择细节不足，未作为可直接复现的首选。
++
++**文献整理待办**：如后续采用，先另行确认相关电压的有限模板联合统计模型、类别／Q／时刻条件协方差、PCA能量方向与分量选择、自由双τ可辨识／覆盖。Barlow DOI和原印疑点、Whitford详细TES依赖等仍待核；补充文献整理在papers项目按独立授权处理，不在本项目修改共享库或自动追读。
++
++
++<a id="advanced-fit-implementation-20261020"></a>
++### L37：2026-10-20——自洽条件似然、低秩协方差与标定均值误差的实现
++
++**文献采用与边界**：落实[L36](#advanced-fit-literature-20261020)中Fixsen/Whitford的条件响应思想、Busch的低维变化方向及Barlow–Beeston的有限模板统计原则，原探测器/采样/噪声/能区/率条件和审核状态全部沿L36，没有新文献性能或人工确认。本轮不重读或修改共享库。参数相关高斯目标`rᵀC⁻¹r+log det C`、残差对角的采样解释和32次分层ROOT bootstrap高斯均值误差是本项目方案；不是Fixsen原式或Poisson Barlow–Beeston的原样电压实现。PCA替代相关协方差，不新增无限制形状幅度，不重复计入同一涨落。均值标定误差跨事件共享，当前未完整重采样分档、协方差、器件系统误差。
++
++**实现和分组**：七条流程含原标定GLS、扩充标定GLS、自洽密集条件似然、PCA8/PCA16和两种均值误差组合。只拟合至多一个孤立脉冲的未知类型/Q/连续时刻/基线，完整双分量发光物理保持。基线解析profile及0.2 mV共同软约束；模板随当前log Q插值，协方差随当前Q/时刻更新，先截前缀再分解。新增420个原生20 μs单粒子ROOT，4个预检查计入标定；168标定＋84开发＋168冻结后测试，保留所有零信号γ，不拒绝ADC触顶。α源1.5/2.5/5.486/8 MeV、单能γ源0.1/0.2/0.661657/1.5 MeV、三点位置，保持原物理/SiPM与2 ns analog_mV输入。
++
++加入旧149标定和45开发后，为317/129窗；有效标定Q≥250 pe从70增加到113，γ各档从[6, 6, 6]增加到[14, 14, 13]。旧174个已公开测试不用于择法或本轮评分。开发按两类等权、100/150/200/300 ns等权的Q±5%且类型正确选中`expanded_gls`，前窗20 ns；开发95%点比例规则选择后300 ns。主短窗目标150 ns预先固定，方法/标定/源码冻结后才生成168个新测试；按ROOT/三个种子隔离，真值在全部方法/窗口推断后打开。
++
++**独立结果**：目标为实现光子后代雪崩Q≥500 pe，而非源/沉积/可见能量。本批测试α16、γ15个目标；保留零电荷γ108个。150 ns联合成功由原标定GLS的alpha16/16、gamma11/15，经扩充标定GLS的alpha16/16、gamma9/15，到所选方法的alpha16/16、gamma9/15。完整关键窗口如下，同事件截窗不当作独立样本。
++
++| 触发后T / ns | 同批方法 | α Q±5%且类型正确 | γ Q±5%且类型正确 |
++| ---: | --- | ---: | ---: |
++| 100 | legacy_gls | 14/16 | 10/15 |
++| 100 | expanded_gls | 12/16 | 10/15 |
++| 150 | legacy_gls | 16/16 | 11/15 |
++| 150 | expanded_gls | 16/16 | 9/15 |
++| 200 | legacy_gls | 15/16 | 15/15 |
++| 200 | expanded_gls | 15/16 | 15/15 |
++| 300 | legacy_gls | 16/16 | 15/15 |
++| 300 | expanded_gls | 16/16 | 15/15 |
++| 500 | legacy_gls | 16/16 | 15/15 |
++| 500 | expanded_gls | 16/16 | 15/15 |
++
++150 ns配对比较：alpha对legacy_gls差+0.00个百分点、配对ROOT重采样95%范围[+0.00,+0.00]；alpha对expanded_gls差+0.00个百分点、配对ROOT重采样95%范围[+0.00,+0.00]；gamma对legacy_gls差-13.33个百分点、配对ROOT重采样95%范围[-40.00,+13.33]；gamma对expanded_gls差+0.00个百分点、配对ROOT重采样95%范围[+0.00,+0.00]。范围仅表示指定模拟设计下有限ROOT统计，不是含标定/器件系统误差的总体保证。所选方法在新测试网格中两类≥95%且所有更长档通过的探索性最早点为后300 ns；未据此重新选择方法或窗口，小样本100%不能认证总体≥95%。电荷偏差/SD为匹配条件统计，联合成功和覆盖保留漏检为失败。
++
++**区间与失败控制**：所选方法局部名义95%区间：alpha后150 ns覆盖14/16、有效区间16/16；gamma后150 ns覆盖10/15、有效区间15/15；alpha后300 ns覆盖7/16、有效区间16/16；gamma后300 ns覆盖12/15、有效区间15/15。区间条件于当前类别和模型，不声称已覆盖类别切换/模型失配或顺序停止。所选方法在150 ns、108个零信号窗上有0个触发、0个Q≥500 pe误报。优化器状态、起点/Q触边、无效区间和分Q结果全部保留。另有24条标定均值相加＋白噪声双脉冲、48个前缀负对照，只评分第一个脉冲，未模拟共享微胞非线性或恢复第二个脉冲，不是原生盲解堆积。
++
++**验证和结论适用性**：9项独立数值参照检查、4个旧开发端点回归通过；420个ROOT的RunInfo/实际宏/三个种子/配置/原文件哈希/祖先电荷核验，280组独立重评分，4组原生未来NaN/时移/缓存重放和2组冻结源码重放通过。原短窗源码及全部历史结果哈希保持，Notebook原51单元的代码/输出/图像保留，新增图11-1/11-2/11-3。只验证同G4/SiPM模型、有限能区/位置的孤立固定形状Q；未给free双τ最短窗、实物精度、原生高率误拆/误并或最高源率，不用1/T替代计数率能力。下一步仍需条件噪声/标定系统误差、跨事件共享τ、原生双脉冲及混合高率的独立开发与测试。
++
++**复现与记录**：[实验及冻结源码](../pileup/experiments/alpha_gamma_advanced_fit_20261020/README.md)、[Notebook第11节](../jupyter/codex_0002_GAGG_SiPM_Alpha_Gamma_Fitting.ipynb#advanced-fit-implementation-20261020)、[完整报告](../jupyter/artifacts/alpha_gamma_advanced_fit_20261020/report.json)、[验证](../jupyter/run_records/alpha_gamma_advanced_fit_20261020/native-data-validation.json)。文献追加整理仍在papers项目按独立授权处理。
+diff --git a/docs/sipm-response.md b/docs/sipm-response.md
+index 3edcece..9e84293 100644
+--- a/docs/sipm-response.md
++++ b/docs/sipm-response.md
+@@ -2,7 +2,7 @@
+ 
+ 当前统一采用 **Hamamatsu S13360-6050PE，25°C、3 V 过压**，配置为 [sipm_hamamatsu_s13360_6050pe_v2.json](../g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json)。原生宏、批量运行器、离线验证、器件分析和当前笔记均使用这一器件。参数状态 `datasheet_based` 表示厂家典型值及注明的模型近似；实物标定尚未完成。
+ 
+-文献关系见 [L06–L07](literature-use.md#sipm-use-20261010)，器件来源与采用边界见 [L13](literature-use.md#hamamatsu-s13360-20261013)，完整公式、Markdown参数表与波形见 [SiPM笔记](../jupyter/codex_SiPM_Digitization.ipynb)。
++文献关系见 [L06–L07](literature-use.md#sipm-use-20261010)，器件来源与采用边界见 [L13](literature-use.md#hamamatsu-s13360-20261013)，完整公式、Markdown参数表与波形见 [SiPM笔记](../jupyter/codex_0001_SiPM_Digitization.ipynb)。
+ 
+ <a id="native-sipm"></a>
+ ## Geant4 原生数字化
+diff --git a/pileup/README.md b/pileup/README.md
+index 5a5d4c0..e205ccb 100644
+--- a/pileup/README.md
++++ b/pileup/README.md
+@@ -144,7 +144,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/gagg-full-signal-mpl
+   --output jupyter/artifacts/alpha_full_signal_new_run --workers 2
+ ```
+ 
+-[冻结源码与复现说明](experiments/alpha_full_signal_20261014/README.md) 保留本次输入清单和配置；[研究笔记第14节](../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014) 汇总恢复率、漏检/误拆分/误合并、条件电荷误差和脉宽关系。旧 `alpha_rate_study.py` 及其 ADC 结果保留用于重放历史研究口径；当前比较以完整电压结果为准。
++[冻结源码与复现说明](experiments/alpha_full_signal_20261014/README.md) 保留本次输入清单和配置；[研究笔记第14节](../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014) 汇总恢复率、漏检/误拆分/误合并、条件电荷误差和脉宽关系。旧 `alpha_rate_study.py` 及其 ADC 结果保留用于重放历史研究口径；当前比较以完整电压结果为准。
+ 
+ ## 机器学习与拟合的实际比较（2026-10-14）
+ 
+@@ -152,16 +152,16 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/gagg-full-signal-mpl
+ 
+ 同一2214个q≥500 pe目标，以时间误差≤10 ns且电荷误差≤20%计成功，CNN恢复571个，原拟合296个；20–100 MHz提高恢复率并增加误检，10 MHz两者接近。高率每档仅一个新窗，时间打乱后仍存在偶然匹配；10 ns双脉冲及超训练电荷幅度的软件控制失败均保留，不能将结果解释为可靠解决全部高率pile-up。
+ 
+-[独立Notebook](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb) 保存实际训练、控制、各率表/图、失败分解、耗时和限制；[冻结实验与重跑说明](experiments/alpha_ml_comparison_20261014/README.md) 提供源码、配置、划分、种子、宏和模型输入路径；[采用记录L20](../docs/literature-use.md#ml-pileup-comparison-20261014) 与该笔记对应。实现是项目自建小型CNN，含物理逆滤波特征，未宣称复现论文完整网络；输出电荷尚未连接沉积能量标定。
++[独立Notebook](../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb) 保存实际训练、控制、各率表/图、失败分解、耗时和限制；[冻结实验与重跑说明](experiments/alpha_ml_comparison_20261014/README.md) 提供源码、配置、划分、种子、宏和模型输入路径；[采用记录L20](../docs/literature-use.md#ml-pileup-comparison-20261014) 与该笔记对应。实现是项目自建小型CNN，含物理逆滤波特征，未宣称复现论文完整网络；输出电荷尚未连接沉积能量标定。
+ 
+ <a id="ml-multimethod-20261014"></a>
+ ## U-Net、Transformer和CNN＋物理拟合（2026-10-14）
+ 
+ 新增两种网络和真正的CNN候选物理模板refit，沿用26训练/10验证ROOT及冻结响应，22个新种子测试窗统一比较五流程；旧17窗只作回归。U-Net第800步/0.75、Transformer第2400步/0.85及混合先验λ=0.1均由验证集选定。训练/测试保持实际共享微胞历史，推断只用完整电压，未知K、不用真值/源率。原CNN、原拟合及旧实验保留。
+ 
+-[新冻结源码与重跑说明](experiments/alpha_ml_multimethod_20261014/README.md) · [实际表、图、误检和控制](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014) · [文献采用L21](../docs/literature-use.md#ml-multimethod-20261014)。小型项目架构没有宣称论文完整复现；高率每档两窗、100 MHz无同率验证、近邻和幅度外推失败，不构成实物/能谱或实时能力证明。
++[新冻结源码与重跑说明](experiments/alpha_ml_multimethod_20261014/README.md) · [实际表、图、误检和控制](../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014) · [文献采用L21](../docs/literature-use.md#ml-multimethod-20261014)。小型项目架构没有宣称论文完整复现；高率每档两窗、100 MHz无同率验证、近邻和幅度外推失败，不构成实物/能谱或实时能力证明。
+ 
+ <a id="ml-low-rates-20261015"></a>
+ ## 已有低率0.1、1、10 MHz的五方法复查（2026-10-15）
+ 
+-新增[低率分析快照](experiments/alpha_ml_low_rate_20261015/README.md)，复用12个新测试低率窗和12个公开回归低率窗，分别报告，没有G4新增或模型调参。低率U-Net多数未成功来自电荷误差，检出与电荷合格已明确区分；10 MHz全148个阈上目标在W90内有邻居，仍有明显堆积。[同一本Notebook第11–14节](../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015)保留原输出并新增失败图、长度关联、同目标配对及小样本敏感性；[采用汇总](../docs/literature-use.md#ml-low-rates-20261015)保留来源/审核范围和待验证条件。
++新增[低率分析快照](experiments/alpha_ml_low_rate_20261015/README.md)，复用12个新测试低率窗和12个公开回归低率窗，分别报告，没有G4新增或模型调参。低率U-Net多数未成功来自电荷误差，检出与电荷合格已明确区分；10 MHz全148个阈上目标在W90内有邻居，仍有明显堆积。[同一本Notebook第11–14节](../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015)保留原输出并新增失败图、长度关联、同目标配对及小样本敏感性；[采用汇总](../docs/literature-use.md#ml-low-rates-20261015)保留来源/审核范围和待验证条件。
+diff --git a/pileup/experiments/alpha_full_signal_20261014/README.md b/pileup/experiments/alpha_full_signal_20261014/README.md
+index e6e42bd..affbeb2 100644
+--- a/pileup/experiments/alpha_full_signal_20261014/README.md
++++ b/pileup/experiments/alpha_full_signal_20261014/README.md
+@@ -14,4 +14,4 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/gagg-full-signal-mpl
+ 
+ 运行所用源码、输入结果哈希、环境与输出路径在 `manifest.json` 中记录。原宏、源率、三组种子和每个 ROOT 的哈希由输入结果及其 G4 实验 manifest 追溯。该结果是动态范围充足且忽略量化的模拟基准，不代表已验证某款 ADC；恢复的是实际输出电荷，尚未连接沉积能量标定。
+ 
+-研究问题、表图、限制和下一步统一记录于本地 [纯 α 笔记第14节](../../../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014)。
++研究问题、表图、限制和下一步统一记录于本地 [纯 α 笔记第14节](../../../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb#full-signal-rates-20261014)。
+diff --git a/pileup/experiments/alpha_gamma_brems_fit_20261015/README.md b/pileup/experiments/alpha_gamma_brems_fit_20261015/README.md
+index e267dc7..f22e2c3 100644
+--- a/pileup/experiments/alpha_gamma_brems_fit_20261015/README.md
++++ b/pileup/experiments/alpha_gamma_brems_fit_20261015/README.md
+@@ -24,7 +24,7 @@ bash tools/run_gagg_python.sh EXP/run_analysis.py --stage production \
+ 
+ 已完成的计划行会复用；不要修改旧宏、配置或覆盖 ROOT。新物理配置应创建新的实验。重拟合使用新输出路径即可保留原结果；当前结果缓存检查模板设置与拟合源码哈希。
+ 
+-完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
++完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
+ 
+ 实际写出异常与重放：γ 使用现有 exp(−E/kT)/E 源，kT=100 keV，10 keV–5 MeV，物理源码没有更改。原 20261015_09h47m13s.root 的 PrimaryPhoton/photon_energy_eV 分支写入失败；同种子重放为 20261015_10h29m25s.root。所有可读数组一致，且拟合输入与评分数组逐项相同，保留对应拟合结果并记录复用证据。 原文件保留并标记 failed_readback，替代文件不增加独立样本数。ROOT 曾在写入错误后返回退出码 0；最终采用完整分支读取核验。生产时运行器快照保留原样，可复用模块已增加 ROOT 写入错误日志识别。
+ 
+diff --git a/pileup/experiments/alpha_gamma_context_calibration_20261016/README.md b/pileup/experiments/alpha_gamma_context_calibration_20261016/README.md
+index adc5360..d9c9d67 100644
+--- a/pileup/experiments/alpha_gamma_context_calibration_20261016/README.md
++++ b/pileup/experiments/alpha_gamma_context_calibration_20261016/README.md
+@@ -68,7 +68,7 @@ bash tools/run_gagg_python.sh pileup/experiments/alpha_gamma_context_calibration
+ 
+ 报告重生成仅改本轮图表，原始ROOT与拟合结果保持。`context_replay`若已存在，会检查源码/输入身份后复用；需要从头复算时选另一个新目录。G4可由本目录source/brems/g4和source/mono662/g4独立CMake构建，不依赖切换Git提交。各实际宏包含原始绝对路径以对应RunInfo；异机重跑时按新项目根重定位配置和时间表，将outputFile改成新的秒级文件名，；同名则等待下一秒重新命名，不覆盖原文件。每个宏仍只执行beamOn 1。不要直接清空原manifest以重跑，应保存独立运行记录。
+ 
+-26项Python测试、1项C++ SiPM测试通过；209个ROOT和220份原生拟合结果复核，另对一个新测试窗完成仅电压重跑。详见本地[验证记录](../../../jupyter/run_records/alpha_gamma_context_calibration_20261016/validation.json)、[Notebook第16节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-context-calibration-20261016)、[Run Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-context-calibration-20261016)和[文献采用L27](../../../docs/literature-use.md#alpha-gamma-context-calibration-20261016)。
++26项Python测试、1项C++ SiPM测试通过；209个ROOT和220份原生拟合结果复核，另对一个新测试窗完成仅电压重跑。详见本地[验证记录](../../../jupyter/run_records/alpha_gamma_context_calibration_20261016/validation.json)、[Notebook第16节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-context-calibration-20261016)、[Run Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-context-calibration-20261016)和[文献采用L27](../../../docs/literature-use.md#alpha-gamma-context-calibration-20261016)。
+ 
+ 下一步优先补齐强前史下的γ条件标定：本次仅4个有效γ前史标定，前史电压上限约172 mV，未覆盖上述≥200 mV失败组。可从独立标定库选取多份有效γ光子输入，与前脉冲在同一微胞阵列按新数字化种子重放，系统覆盖前史、间隔和位置；这属于条件响应检验，不能拿筛选后的样本估计γ探测效率。在独立重复样本上检验条件均值和协方差是否足以描述模板涨落，再在开发集比较类型推断与电荷分配，并用新的冻结后测试判断是否改善。这些是后续方案，本轮尚未实施；本轮16个新测试窗没有用于调参。
+ 
+diff --git a/pileup/experiments/alpha_gamma_ml_20261016/README.md b/pileup/experiments/alpha_gamma_ml_20261016/README.md
+index 722827d..74965b4 100644
+--- a/pileup/experiments/alpha_gamma_ml_20261016/README.md
++++ b/pileup/experiments/alpha_gamma_ml_20261016/README.md
+@@ -1,6 +1,6 @@
+ # α＋γ 多任务网络与联合物理拟合
+ 
+-研究问题：从完整含噪电压恢复未知数量事件的类型、到达时间和实现电荷，检验 CNN、U-Net 及网络候选＋物理拟合是否改善已有扩展标定拟合，α、γ 同等重要。当前过程与最终表格在本地 [Notebook 第8节](../../../jupyter/codex_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016) 维护。
++研究问题：从完整含噪电压恢复未知数量事件的类型、到达时间和实现电荷，检验 CNN、U-Net 及网络候选＋物理拟合是否改善已有扩展标定拟合，α、γ 同等重要。当前过程与最终表格在本地 [Notebook 第8节](../../../jupyter/codex_0006_Alpha_Gamma_Pileup_ML_Literature_20261016.ipynb#alpha-gamma-ml-implementation-20261016) 维护。
+ 
+ ## 固定条件与划分
+ 
+diff --git a/pileup/experiments/alpha_gamma_model_selection_20261016/README.md b/pileup/experiments/alpha_gamma_model_selection_20261016/README.md
+index 89b13ac..d6234c2 100644
+--- a/pileup/experiments/alpha_gamma_model_selection_20261016/README.md
++++ b/pileup/experiments/alpha_gamma_model_selection_20261016/README.md
+@@ -1,6 +1,6 @@
+ # α/γ等权恢复：联合模型搜索的独立测试
+ 
+-2026-10-16。针对上一版10/20 ns控制漏候选、200 ns γα局部错解和L1提前停止，实现更严格的线性选择、联合两脉冲时间/类型/电荷搜索及带复杂度代价的残差补峰。α、γ逐事件恢复同样重要，不用总准确率隐藏类别差异。来源及限制见[L25](../../../docs/literature-use.md#alpha-gamma-model-selection-20261016)；研究过程见本地[Notebook第14节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)。
++2026-10-16。针对上一版10/20 ns控制漏候选、200 ns γα局部错解和L1提前停止，实现更严格的线性选择、联合两脉冲时间/类型/电荷搜索及带复杂度代价的残差补峰。α、γ逐事件恢复同样重要，不用总准确率隐藏类别差异。来源及限制见[L25](../../../docs/literature-use.md#alpha-gamma-model-selection-20261016)；研究过程见本地[Notebook第14节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-model-selection-20261016)。
+ 
+ ## 数据、划分与冻结
+ 
+diff --git a/pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md b/pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md
+index a943dcf..7633e87 100644
+--- a/pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md
++++ b/pileup/experiments/alpha_gamma_mono662_fit_20261015/README.md
+@@ -24,7 +24,7 @@ bash tools/run_gagg_python.sh EXP/run_analysis.py --stage production \
+ 
+ 已完成的计划行会复用；不要修改旧宏、配置或覆盖 ROOT。新物理配置应创建新的实验。重拟合使用新输出路径即可保留原结果；当前结果缓存检查模板设置与拟合源码哈希。
+ 
+-完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
++完整过程见本地 [α/γ 混合拟合 Notebook](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb)，实际文件目录见 [Run_Catalog](../../../jupyter/Run_Catalog.ipynb#alpha-gamma-mixed-20261015)，依据与限制见 [文献采用记录](../../../docs/literature-use.md#alpha-gamma-mixed-20261015)。完整恢复要求 Q≥500 p.e.、一对一时间误差≤10 ns、类型正确及电荷误差≤20%；同时报告漏检、额外候选、误拆分/误合并、条件电荷/时间误差和按独立窗重采样的不确定度。
+ 
+ 实际写出异常与重放：独立快照将原 C12 源槽三条能量 16.1、11.7、4.439 MeV 全部改为 0.661657 MeV，响应标签改为 gamma_mono_661657_keV；这不是 C12 俘获谱。源能量仍经完整输运，不等于沉积能量。原 20261015_09h45m53s.root 的 SiPMEvent/avalanche_charge_C 分支写入失败；同种子重放为 20261015_10h09m11s.root。所有可读数组一致，新电荷分支通过恢复系数和总电荷核验。 原文件保留并标记 failed_readback，替代文件不增加独立样本数。ROOT 曾在写入错误后返回退出码 0；最终采用完整分支读取核验。生产时运行器快照保留原样，可复用模块已增加 ROOT 写入错误日志识别。
+ 
+diff --git a/pileup/experiments/alpha_gamma_profile_fit_20261016/README.md b/pileup/experiments/alpha_gamma_profile_fit_20261016/README.md
+index a90d846..e224efb 100644
+--- a/pileup/experiments/alpha_gamma_profile_fit_20261016/README.md
++++ b/pileup/experiments/alpha_gamma_profile_fit_20261016/README.md
+@@ -10,7 +10,7 @@
+ 
+ 保留可变形状作为实验候选，暂不替换上一版比较基线。γ正确分型数21→22，但同时满足类型和电荷要求的预测比例由18/49降为18/51；γ的完整恢复F1从0.41379降到0.40449。因此，本轮没有达到α和γ都可靠逐事件恢复的目标。12组试验也表明，在当前标定与数据条件下，更多拟合自由度、更小残差或更复杂的噪声权重不能自动转化为更好的两类恢复。
+ 
+-完整逐类恢复率、纯度、条件电荷误差、漏检/误拆分/误合并及图表见本地[Notebook第15节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-profile-fit-20261016)和[summary](../../../jupyter/artifacts/alpha_gamma_profile_fit_20261016/summary.json)。文献原则及适用条件见[L26](../../../docs/literature-use.md#alpha-gamma-profile-fit-20261016)。新方法需要先运行V3再做形状后处理，不能把后处理时间当成完整流程时间。
++完整逐类恢复率、纯度、条件电荷误差、漏检/误拆分/误合并及图表见本地[Notebook第15节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-profile-fit-20261016)和[summary](../../../jupyter/artifacts/alpha_gamma_profile_fit_20261016/summary.json)。文献原则及适用条件见[L26](../../../docs/literature-use.md#alpha-gamma-profile-fit-20261016)。新方法需要先运行V3再做形状后处理，不能把后处理时间当成完整流程时间。
+ 
+ ## 数据与源码边界
+ 
+diff --git a/pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md b/pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md
+index 812bea8..15b9a0f 100644
+--- a/pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md
++++ b/pileup/experiments/alpha_gamma_regularized_fit_20261015/README.md
+@@ -1,6 +1,6 @@
+ # α/γ 混合堆积：独立标定与稀疏加权拟合
+ 
+-2026-10-15 建立与冻结，2026-10-16 完成同窗基线和记录。针对旧的两示例固定模板、阈下贡献及相关噪声问题，实现电荷相关平均模板、固定协方差加权、非负稀疏候选选择、弱分量保留和无L1条件幅度重拟合。方法借鉴已有文献原则，属于项目改写，未完整复现任何单篇论文。依据和限制见 [L23/L24](../../../docs/literature-use.md#alpha-gamma-regularized-20261015)，过程见本地 [Notebook第13节](../../../jupyter/codex_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)。
++2026-10-15 建立与冻结，2026-10-16 完成同窗基线和记录。针对旧的两示例固定模板、阈下贡献及相关噪声问题，实现电荷相关平均模板、固定协方差加权、非负稀疏候选选择、弱分量保留和无L1条件幅度重拟合。方法借鉴已有文献原则，属于项目改写，未完整复现任何单篇论文。依据和限制见 [L23/L24](../../../docs/literature-use.md#alpha-gamma-regularized-20261015)，过程见本地 [Notebook第13节](../../../jupyter/codex_0005_Alpha_Gamma_Pileup_Fitting_20261015.ipynb#alpha-gamma-regularized-20261015)。
+ 
+ ## 独立数据与适用范围
+ 
+diff --git a/pileup/experiments/alpha_ml_comparison_20261014/README.md b/pileup/experiments/alpha_ml_comparison_20261014/README.md
+index a10ea38..19a142f 100644
+--- a/pileup/experiments/alpha_ml_comparison_20261014/README.md
++++ b/pileup/experiments/alpha_ml_comparison_20261014/README.md
+@@ -2,7 +2,7 @@
+ 
+ 本实验按完整 ROOT 划分原有36个窗口为26训练、10验证，再生成17个新种子测试窗口。输入为完整含噪 `analog_mV`，假定采集动态范围足够；沿用实际共享微胞 SiPM 状态，不考虑ADC削顶或量化。网络和拟合都从电压估计未知事件数、时间和电荷，真值仅用于监督训练和分别评分。
+ 
+-完整过程与图表在本地 [独立 Notebook](../../../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb)；[采用记录](../../../docs/literature-use.md#ml-pileup-comparison-20261014) 说明文献方向和本项目的实际结果。它是自建小型1D膨胀残差CNN，含固定逆滤波等电压特征，不是论文U-Net/SAEFit完整实现的复现。
++完整过程与图表在本地 [独立 Notebook](../../../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb)；[采用记录](../../../docs/literature-use.md#ml-pileup-comparison-20261014) 说明文献方向和本项目的实际结果。它是自建小型1D膨胀残差CNN，含固定逆滤波等电压特征，不是论文U-Net/SAEFit完整实现的复现。
+ 
+ ## 数据与配置
+ 
+diff --git a/pileup/experiments/alpha_ml_low_rate_20261015/README.md b/pileup/experiments/alpha_ml_low_rate_20261015/README.md
+index f04951b..02bf10a 100644
+--- a/pileup/experiments/alpha_ml_low_rate_20261015/README.md
++++ b/pileup/experiments/alpha_ml_low_rate_20261015/README.md
+@@ -10,7 +10,7 @@
+ 
+ 成功为q≥500 pe、时间±10 ns一对一匹配及电荷误差≤20%。报告区分漏检、电荷失败、额外预测和合并拆分；q为实际雪崩等效数，不是沉积能量。当前模板FWHM181.505 ns/W90 728.024 ns，事后真值近邻分组不输入算法。0.1/1 MHz目标少，100%不等于普适能力；不把公开回归并入新独立性能，不模拟低于0.1 MHz。
+ 
+-[Notebook第11–14节](../../../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015) · [项目采用记录](../../../docs/literature-use.md#ml-low-rates-20261015) · [实际结果](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/summary.json) · [检查](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/validation.json)
++[Notebook第11–14节](../../../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-low-rates-20261015) · [项目采用记录](../../../docs/literature-use.md#ml-low-rates-20261015) · [实际结果](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/summary.json) · [检查](../../../jupyter/artifacts/alpha_ml_low_rate_20261015_082901/validation.json)
+ 
+ `source/`保存低率分析模块，`manifest.json`记录其哈希、原实验依赖、输入路径、版本和未提交状态；`replay.py`校验并优先加载此模块与原冻结评分源码，不要求Git回退。当前后续分析依赖原冻结目录及其本地结果，不能只复制本目录而丢弃原快照/数据。
+ 
+diff --git a/pileup/experiments/alpha_ml_multimethod_20261014/README.md b/pileup/experiments/alpha_ml_multimethod_20261014/README.md
+index 8f3406f..f28f8c9 100644
+--- a/pileup/experiments/alpha_ml_multimethod_20261014/README.md
++++ b/pileup/experiments/alpha_ml_multimethod_20261014/README.md
+@@ -2,7 +2,7 @@
+ 
+ 在动态范围足够、完整含噪电压可记录的前提下，实际比较原盲模板拟合、冻结CNN、小型U-Net、局部Transformer和CNN＋物理拟合。26训练/10验证ROOT，新生成22个独立测试ROOT，旧17个公开窗仅作回归。未知K，真值只监督/评分，不输入推断。原200个保留最终测试未用。
+ 
+-[实际Notebook第二轮](../../../jupyter/codex_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014) · [L21采用记录](../../../docs/literature-use.md#ml-multimethod-20261014) · [逐窗结果](../../../jupyter/artifacts/alpha_ml_multimethod_20261014_180000/new_test/summary.json) · [验证](../../../jupyter/run_records/alpha_ml_multimethod_20261014_180000/validation-results.json)
++[实际Notebook第二轮](../../../jupyter/codex_0004_Alpha_Pileup_ML_Comparison_20261014.ipynb#ml-multimethod-20261014) · [L21采用记录](../../../docs/literature-use.md#ml-multimethod-20261014) · [逐窗结果](../../../jupyter/artifacts/alpha_ml_multimethod_20261014_180000/new_test/summary.json) · [验证](../../../jupyter/run_records/alpha_ml_multimethod_20261014_180000/validation-results.json)
+ 
+ ## 已完成的方法与条件
+ 
+diff --git a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/README.md b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/README.md
+index 6a4d28f..e338ba4 100644
+--- a/pileup/experiments/alpha_s13360_intermediate_rates_20261014/README.md
++++ b/pileup/experiments/alpha_s13360_intermediate_rates_20261014/README.md
+@@ -1,6 +1,6 @@
+ # 纯 α / S13360 中间计数率补充扫描
+ 
+-研究入口：[纯 α 堆积拟合笔记](../../../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb)。
++研究入口：[纯 α 堆积拟合笔记](../../../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb)。
+ 源注入率为 2、4、6、8 × 10⁷ Hz，每档预定 3 个独立窗口。
+ 每个 ROOT 保存一个 20 μs 窗，中央 [5,15) μs 评价，关闭外部 γ 背景。
+ 注入率不是探测计数率或物理反应产生率。
+diff --git a/pileup/experiments/alpha_s13360_rate_fit_20261013/README.md b/pileup/experiments/alpha_s13360_rate_fit_20261013/README.md
+index 46c73fc..5c3d98b 100644
+--- a/pileup/experiments/alpha_s13360_rate_fit_20261013/README.md
++++ b/pileup/experiments/alpha_s13360_rate_fit_20261013/README.md
+@@ -1,7 +1,7 @@
+ # 纯 α / S13360 计数率拟合先导试验
+ 
+ 新实验，不修改 2026-09-23 的冻结扫描。研究入口为
+-[codex_Alpha_Pileup_Rate_Fitting.ipynb](../../../jupyter/codex_Alpha_Pileup_Rate_Fitting.ipynb)。
++[codex_0003_Alpha_Pileup_Rate_Fitting.ipynb](../../../jupyter/codex_0003_Alpha_Pileup_Rate_Fitting.ipynb)。
+ 
+ `source/` 保存本次实际 G4 C++、配置和运行器副本；`macros/` 为实际运行宏，
+ `logs/` 为完整运行输出；`manifest.json` 保存 ROOT 映射、种子、哈希、版本、环境和状态。
+diff --git a/tools/gagg_environment.py b/tools/gagg_environment.py
+index fea34ec..6f09792 100644
+--- a/tools/gagg_environment.py
++++ b/tools/gagg_environment.py
+@@ -194,8 +194,8 @@ def main() -> int:
+     config = PROJECT / "jupyter/classic_notebook_config.json"
+     if not config.is_file():
+         config = PROJECT / "tools/classic_notebook_config.json"
+-    notebook = PROJECT / "jupyter/codex_SiPM_Digitization.ipynb"
+-    default_url = "/notebooks/jupyter/codex_SiPM_Digitization.ipynb" if notebook.is_file() else "/tree"
++    notebook = PROJECT / "jupyter/codex_0001_SiPM_Digitization.ipynb"
++    default_url = "/notebooks/jupyter/codex_0001_SiPM_Digitization.ipynb" if notebook.is_file() else "/tree"
+     command = [python, "-m", "nbclassic", f"--config={config}",
+                f"--ServerApp.root_dir={PROJECT}", "--ServerApp.use_redirect_file=False",
+                f"--MultiKernelManager.default_kernel_name={KERNEL}",

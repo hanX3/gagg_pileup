@@ -1,0 +1,225 @@
+{
+  "created": "2026-10-19T11:39:05.540080+08:00",
+  "state": "frozen_before_new_test_generation",
+  "development_protocol_sha256": "f753ab7b339658771f341fc3285e3d56fb2a3a420c4675065af5f0afe20891fb",
+  "development_summary_sha256": "73b49a745298df6edda7d7d0b9a53f63748dc010efd1922f281ffbd8b1e25fe4",
+  "development_gate": {
+    "reference": "baseline",
+    "pooled_recovery": "Each particle recovered count >= baseline",
+    "precision_margin_absolute": 0.02,
+    "extra_multiplier": 1.25,
+    "extra_offset": 5,
+    "cell_recovery_margin_absolute": 0.05,
+    "cell_minimum_targets": 20,
+    "interpretation": "Practical predeclared screening tolerances, not evidence of statistical equivalence",
+    "action_if_failed": "Record failure and diagnose; do not spend fresh final-test data on this unchanged candidate",
+    "action_if_passed": "Freeze candidate, then generate new independent native test windows before scoring"
+  },
+  "baseline_mV": 10.0,
+  "calibration_sha256": "063887611b657c931a86627692d0f264979ec080b1999c6511f4a84d601331d9",
+  "neural_model_sha256": "40ecf7d65b33df04f85381c808b407e6829e2ea6c4e9664d848c726d7ad5b7a9",
+  "neural_thresholds": [
+    0.4,
+    0.55
+  ],
+  "source_manifest_sha256": "c8429679be7732036a73edb2c6f7427881c3e50793310520bac54295922a1167",
+  "test_source_manifest_sha256": "abf633d9dad3200d95e6f985d8329ee92929f7575b326286050096f56699afb6",
+  "native_source_manifest_sha256": "fe9b015156a2f4b6580b1a8c48d2b411a6cb31c85cfc6f61f53ec0286d44b8a3",
+  "hybrid_configs": {
+    "hybrid_none": {
+      "charge_strength": 0.0,
+      "class_strength": 0.0,
+      "passes": 2,
+      "time_range_ns": 8.0,
+      "min_separation_ns": 4.0,
+      "pair_distance_ns": 100.0,
+      "max_additions": 8,
+      "addition_cost": 9.0,
+      "max_components": 400,
+      "fit_stride": 2
+    },
+    "hybrid_both": {
+      "charge_strength": 10.0,
+      "class_strength": 10.0,
+      "passes": 2,
+      "time_range_ns": 8.0,
+      "min_separation_ns": 4.0,
+      "pair_distance_ns": 100.0,
+      "max_additions": 8,
+      "addition_cost": 9.0,
+      "max_components": 400,
+      "fit_stride": 2
+    },
+    "class_only": {
+      "charge_strength": 0.0,
+      "class_strength": 10.0,
+      "passes": 2,
+      "time_range_ns": 8.0,
+      "min_separation_ns": 4.0,
+      "pair_distance_ns": 100.0,
+      "max_additions": 8,
+      "addition_cost": 9.0,
+      "max_components": 400,
+      "fit_stride": 2
+    }
+  },
+  "physical_baseline": "Frozen expanded fit_model_selection with addition_cost=1",
+  "common_methods": [
+    "baseline",
+    "unet",
+    "hybrid_none",
+    "hybrid_both",
+    "class_only"
+  ],
+  "test_bootstrap_seed": 261091102,
+  "test_plan": [
+    {
+      "label": "test_full_prior_brems_1000000_00",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091200,
+      "preflight": true
+    },
+    {
+      "label": "test_full_prior_brems_1000000_01",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091201,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_brems_1000000_02",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091202,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_brems_1000000_03",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091203,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_brems_10000000_00",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091204,
+      "preflight": true
+    },
+    {
+      "label": "test_full_prior_brems_10000000_01",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091205,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_brems_10000000_02",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091206,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_brems_10000000_03",
+      "role": "test_mixed",
+      "gamma_model": "brems",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091207,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_mono662_1000000_00",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091208,
+      "preflight": true
+    },
+    {
+      "label": "test_full_prior_mono662_1000000_01",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091209,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_mono662_1000000_02",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091210,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_mono662_1000000_03",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 1000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091211,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_mono662_10000000_00",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091212,
+      "preflight": true
+    },
+    {
+      "label": "test_full_prior_mono662_10000000_01",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091213,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_mono662_10000000_02",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091214,
+      "preflight": false
+    },
+    {
+      "label": "test_full_prior_mono662_10000000_03",
+      "role": "test_mixed",
+      "gamma_model": "mono662",
+      "rate_hz": 10000000,
+      "gamma_rate_hz": 10000000,
+      "seed": 261091215,
+      "preflight": false
+    }
+  ],
+  "test_labels_seen": false,
+  "test_roots_generated": false,
+  "candidate_parameters_changed_after_development": false,
+  "test_rule": "Apply the same practical screen and report all strata/paired-window uncertainty without retuning"
+}
