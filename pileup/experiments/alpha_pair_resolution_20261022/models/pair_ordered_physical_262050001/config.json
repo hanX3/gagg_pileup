@@ -1,0 +1,18 @@
+{
+  "variant": "pair_ordered_physical",
+  "seed": 262050001,
+  "steps": 2400,
+  "threads": 1,
+  "batch_size": 32,
+  "single_known_K": false,
+  "parameters": 110750,
+  "pretrained": "jupyter/artifacts/alpha_pair_curriculum_20261021/models/single_logq_262050001/model.pt",
+  "pretrained_sha256": "be3b7e78ad17d475a667a5477f5e477bd106d0579c80f5e3716edd652b9f3213",
+  "source_sha256": {
+    "pileup/analysis/alpha_pair_ordered.py": "434a07f26ae9d8545cefae850cd6e18a7df1de6b604fbab2ce1e64dfd2e6b4ff",
+    "pileup/analysis/alpha_pair_ml.py": "041e56e467eb855d6baefd72aeaac732bc52c6f0d1565e8d3398778c8db12d90",
+    "pileup/analysis/alpha_pair_data.py": "07775629b333177d6d8e8193a3a8d5db3a2ecbe8038ce53f31df0cfc3b95e5a6"
+  },
+  "model": "Ordered targets + explicit0/1/2 classifier + global decoder conditioning + conditional single merge; combined ablation",
+  "reason": "Development unordered-slot failure before any new test; not test-tuned"
+}

@@ -1,0 +1,142 @@
+{
+  "created": "2026-10-22T09:35:05.933677+08:00",
+  "purpose": "Conditional two-event resolution; no universal deadtime inferred.",
+  "gaps_ns": [
+    0.0,
+    2.0,
+    4.0,
+    6.0,
+    8.0,
+    10.0,
+    12.0,
+    16.0,
+    20.0,
+    30.0,
+    40.0,
+    60.0,
+    80.0,
+    120.0,
+    200.0,
+    400.0,
+    800.0
+  ],
+  "mean_conditions": [
+    {
+      "name": "reference",
+      "q1": 4000.0,
+      "q2": 4000.0,
+      "noise_rms": 0.1,
+      "ar1": 0.0
+    },
+    {
+      "name": "low_equal",
+      "q1": 1000.0,
+      "q2": 1000.0,
+      "noise_rms": 0.1,
+      "ar1": 0.0
+    },
+    {
+      "name": "high_equal",
+      "q1": 16000.0,
+      "q2": 16000.0,
+      "noise_rms": 0.1,
+      "ar1": 0.0
+    },
+    {
+      "name": "weak_second",
+      "q1": 4000.0,
+      "q2": 1000.0,
+      "noise_rms": 0.1,
+      "ar1": 0.0
+    },
+    {
+      "name": "weak_first",
+      "q1": 1000.0,
+      "q2": 4000.0,
+      "noise_rms": 0.1,
+      "ar1": 0.0
+    },
+    {
+      "name": "white_1mV",
+      "q1": 4000.0,
+      "q2": 4000.0,
+      "noise_rms": 1.0,
+      "ar1": 0.0
+    },
+    {
+      "name": "ar1_0p98",
+      "q1": 4000.0,
+      "q2": 4000.0,
+      "noise_rms": 0.1,
+      "ar1": 0.98
+    }
+  ],
+  "repetitions_per_point": 40,
+  "mean_single_controls_per_condition": 80,
+  "mean_empty_controls_per_condition": 80,
+  "native_energies_MeV": [
+    2.5,
+    5.486,
+    8.0
+  ],
+  "native_roots_per_energy": 80,
+  "shared_conditions": [
+    "low_low",
+    "mid_mid",
+    "high_high",
+    "low_high",
+    "high_low"
+  ],
+  "shared_replicates": 40,
+  "linear_conditions": [
+    "mid_mid"
+  ],
+  "higher_noise_shared_conditions": [
+    "mid_mid"
+  ],
+  "models": [
+    "pair_ordered_physical_262050001",
+    "pair_ordered_physical_262050002"
+  ],
+  "models_retrained": false,
+  "thresholds_reselected": false,
+  "fitting_penalty": 0.001,
+  "samples": 1024,
+  "sampling_ns": 2.0,
+  "first_sample_ns": 0.25,
+  "first_photon_control_range_ns": [
+    96.0,
+    256.0
+  ],
+  "fixed_scintillation_taus_ns": [
+    95.0,
+    351.0
+  ],
+  "adequate_dynamic_range": true,
+  "truth_charge": "Actual avalanche-equivalent pe; not deposited/source energy.",
+  "truth_time": "First photon inside active plane, not pulse maximum.",
+  "q_threshold_pe": 500.0,
+  "relative_charge_tolerance": 0.2,
+  "ordinary_time_tolerance_ns": 10.0,
+  "strict_time_rule": "min(10 ns, true separation/4), evaluation only",
+  "coincident_control": "Delta0 excluded from individual-separation efficiency; sum/ambiguity diagnostic.",
+  "false_output_budget": 0.05,
+  "budget_rule": "Report empty and single controls separately; inherited thresholds never tuned on these tests.",
+  "delta90": "Smallest positive tested gap with point efficiency>=90% at this and every later tested gap; pointwise Wilson95 bounds separately, not simultaneous confidence.",
+  "independence": "40 independent pairs within each native condition; same parents reused across gaps and some conditions. Never pool as independent exposure.",
+  "physical_groups": "Source energies set conditions; realized Q and amplitude ratios must be reported separately.",
+  "source_rate": "Controlled pairs and singles, not a Poisson rate scan.",
+  "mean_seed": 262223000,
+  "native_seed_start": 262220000,
+  "digitizer_seed_start": 262230000,
+  "limits": "Local pure-alpha unknown0/1/2; fixed tau; not mixed alpha/gamma, unknownK>=3, full20us or measured hardware.",
+  "development_cost_check": {
+    "mean_fit_seconds": 0.0327,
+    "joint_digitization_seconds": [
+      0.409,
+      0.43,
+      0.38
+    ],
+    "domain": "Previously exposed data only; measured before this protocol."
+  }
+}

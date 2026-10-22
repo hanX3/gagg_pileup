@@ -1,0 +1,10 @@
+FIT shared-noise 100 / 840
+FIT shared-noise 200 / 840
+FIT shared-noise 300 / 840
+FIT shared-noise 400 / 840
+FIT shared-noise 500 / 840
+FIT shared-noise 600 / 840
+FIT shared-noise 700 / 840
+FIT shared-noise 800 / 840
+NEURAL shared-noise pair_ordered_physical_262050001 done
+NEURAL shared-noise pair_ordered_physical_262050002 done

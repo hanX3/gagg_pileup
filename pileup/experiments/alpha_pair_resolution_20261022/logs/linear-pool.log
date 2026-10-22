@@ -1,0 +1,13 @@
+POOL native-pool 20 240
+POOL native-pool 40 240
+POOL native-pool 60 240
+POOL native-pool 80 240
+POOL native-pool 100 240
+POOL native-pool 120 240
+POOL native-pool 140 240
+POOL native-pool 160 240
+POOL native-pool 180 240
+POOL native-pool 200 240
+POOL native-pool 220 240
+POOL native-pool 240 240
+LINEAR_POOL_COMPLETE

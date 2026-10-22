@@ -1,0 +1,458 @@
+CACHE_COPY_BEGIN /tmp/gagg-resolution-physical-g84wh1ys
+CACHE_VERIFIED 40
+CACHE_VERIFIED 80
+CACHE_VERIFIED 120
+CACHE_VERIFIED 160
+CACHE_VERIFIED 200
+CACHE_VERIFIED 240
+FROZEN_CHECK_BEGIN
+FROZEN_CHECK_DONE
+WORKER_INIT 6
+WORKER_INIT 9
+WORKER_INIT 11
+WORKER_INIT 10
+WORKER_READY 10
+WORKER_READY 9
+SHARED 100 / 3480
+SHARED 200 / 3480
+SHARED 300 / 3480
+SHARED 400 / 3480
+WORKER_READY 6
+SHARED 500 / 3480
+WORKER_READY 11
+CASE_START pair_low_low_200_000
+CASE_DONE pair_low_low_200_000 1.505
+CASE_START pair_low_low_400_000
+SHARED 600 / 3480
+CASE_DONE pair_low_low_400_000 1.808
+CASE_START pair_low_low_800_000
+CASE_DONE pair_low_low_800_000 1.236
+CASE_START pair_mid_mid_0_000
+CASE_DONE pair_mid_mid_0_000 5.492
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py"Timeout (0:02:00)!
+Thread 0x, line 122 in spawn_main00007fdf45abeb80
+  File "<string> [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line "368 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File ", line /usr/lib64/python3.14/multiprocessing/process.py1" in <module>
+, line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fe5f7941b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007ff6fd6deb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 368 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+SHARED 700 / 3480
+CASE_START pair_mid_mid_2_000
+CASE_DONE pair_mid_mid_2_000 5.768
+CASE_START pair_mid_mid_4_000
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/home/xc/.local/share/gagg-pileup/envs/215c00023483/fedora-44-x86_64-py3.14/lib64/python3.14/site-packages/numpy/_core/_ufunc_config.py", line 511 in inner
+  <invalid frame>
+Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python] (most recent call first):
+  File Timeout (0:02:00)!
+Thread 0x"/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+00007fe5f7941b80 [  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py"Timeout (0:02:00)!
+Thread 0xpython], line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 12200007ff6fd6deb80 [ (most recent call first):
+ in spawn_main
+  File "<string>", line 1 in <module>
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 339 in simulate_avalanches
+python  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line ] (most recent call first):
+108 in   File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_readout.pyrun
+CASE_DONE pair_mid_mid_4_000 8.824
+"  File , line ??? in _current_bin_charge
+  <invalid frame>
+"/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_mid_mid_6_000
+CASE_DONE pair_mid_mid_6_000 7.115
+SHARED 800 / 3480
+CASE_START pair_mid_mid_8_000
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_DONE pair_mid_mid_8_000 2.888
+Timeout (0:02:00)!
+Thread 0x00007ff6fd6deb80Timeout (0:02:00)!
+Thread 0x00007fe5f7941b80 [python]Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python (most recent call first):
+  File  [python] (most recent call first):
+  File "] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 343 in simulate_avalanches
+  File ""/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File /media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line ", line 39449 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py"394 in 
+joint_case  File 
+"  File /usr/lib64/python3.14/multiprocessing/process.py, line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+"/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line ", line 108 in run
+  File 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File   File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap"/usr/lib64/python3.14/multiprocessing/process.py""<string>"
+  File , line "320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main, line 1 in <module>
+
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_mid_mid_10_000
+CASE_DONE pair_mid_mid_10_000 4.241
+SHARED 900 / 3480
+CASE_START pair_mid_mid_12_000
+CASE_DONE pair_mid_mid_12_000 0.407
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 353 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python]Timeout (0:02:00)!
+Thread 0x (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 00007ff6fd6deb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 343 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py"340 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 254, line 394 in  in _process_worker
+joint_case
+  File "/usr/lib64/python3.14/multiprocessing/process.py"  File , line 108 in run
+"/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py"  File ", line 49/usr/lib64/python3.14/multiprocessing/process.py" in execute, line 
+  File 320 in "/usr/lib64/python3.14/concurrent/futures/process.py_bootstrap
+", line 254  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File  in _process_worker"/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in 
+  File spawn_main
+Timeout (0:02:00)!
+Thread 0x00007fe5f7941b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 232 in map_cells
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 405 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File ""/usr/lib64/python3.14/multiprocessing/process.py  File "<string>", line 1 in <module>/usr/lib64/python3.14/concurrent/futures/process.py"", line 
+, line 254 in 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+_process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_mid_mid_16_000
+CASE_DONE pair_mid_mid_16_000 4.316
+CASE_START pair_mid_mid_20_000
+CASE_DONE pair_mid_mid_20_000 4.567
+SHARED 1000 / 3480
+Timeout (0:10:00)!
+Thread 0x00007f9be569a6c0 [QueueFeederThre] (most recent call first):
+  File "/usr/lib64/python3.14/threading.py", line 369 in wait
+  File "/usr/lib64/python3.14/multiprocessing/queues.py", line 249 in _feed
+  File "/usr/lib64/python3.14/threading.py", line 1024 in run
+  File "/usr/lib64/python3.14/threading.py", line 1082 in _bootstrap_inner
+  File "/usr/lib64/python3.14/threading.py", line 1044 in _bootstrap
+
+Thread 0x00007f9be5e9b6c0 [Thread-1] (most recent call first):
+  File "/usr/lib64/python3.14/selectors.py", line 398 in select
+  File "/usr/lib64/python3.14/multiprocessing/connection.py", line 1165 in wait
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 416 in wait_result_broken_or_wakeup
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 343 in run
+  File "/usr/lib64/python3.14/threading.py", line 1082 in _bootstrap_inner
+  File "/usr/lib64/python3.14/threading.py", line 1044 in _bootstrap
+
+Thread 0x00007f9bfb11db80 [python] (most recent call first):
+  File "/usr/lib64/python3.14/threading.py", line 369 in wait
+  File "/usr/lib64/python3.14/threading.py", line 670 in wait
+  File "/usr/lib64/python3.14/concurrent/futures/_base.py", line 237 in as_completed
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 451 in physical_controls
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 86 in main
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 95 in <module>
+CASE_START pair_mid_mid_30_000
+CASE_DONE pair_mid_mid_30_000 2.235
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_readout.py", line ??? in _current_bin_charge
+  <invalid frame>
+Timeout (0:02:00)!
+Thread 0x00007ff6fd6deb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 339 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 352 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.pyTimeout (0:02:00)!
+Thread 0x00007fe5f7941b80", line  [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 343 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py"108 in , line 394run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+ in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_mid_mid_40_000
+CASE_DONE pair_mid_mid_40_000 7.148
+SHARED 1100 / 3480
+CASE_START pair_mid_mid_60_000
+CASE_DONE pair_mid_mid_60_000 4.352
+CASE_START pair_mid_mid_80_000
+CASE_DONE pair_mid_mid_80_000 3.008
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 343 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007ff6fd6deb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 343 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python] (most recent call first):
+  File "/home/xc/.local/share/gagg-pileup/envs/215c00023483/fedora-44-x86_64-py3.14/lib64/python3.14/site-packages/numpy/_core/fromnumeric.py", line ??? in _wrapfunc
+  <invalid frame>
+Timeout (0:02:00)!
+Thread 0x00007fe5f7941b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 357 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_mid_mid_120_000
+SHARED 1200 / 3480
+CASE_DONE pair_mid_mid_120_000 5.909
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007ff6fd6deb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 352 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fe5f7941b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 339 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_mid_mid_200_000
+CASE_DONE pair_mid_mid_200_000 5.183
+CASE_START pair_mid_mid_400_000
+CASE_DONE pair_mid_mid_400_000 6.931
+SHARED 1300 / 3480
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 328 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007ff6fd6deb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python] (most recent call first):
+  File "/home/xc/.local/share/gagg-pileup/envs/215c00023483/fedora-44-x86_64-py3.14/lib64/python3.14/site-packages/numpy/_core/fromnumeric.py", line ??? in searchsorted
+  <invalid frame>
+Timeout (0:02:00)!
+Thread 0x00007fe5f7941b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 330 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_mid_mid_800_000
+CASE_DONE pair_mid_mid_800_000 3.77
+CASE_START pair_high_high_0_000
+CASE_DONE pair_high_high_0_000 7.429
+Timeout (0:02:00)!
+Thread 0x00007fdb2df49b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 357 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007ff6fd6deb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 354 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fdf45abeb80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 357 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007fe5f7941b80 [python] (most recent call first):
+  File "/home/xc/.local/share/gagg-pileup/envs/215c00023483/fedora-44-x86_64-py3.14/lib64/python3.14/site-packages/numpy/_core/fromnumeric.py", line 1539 in searchsorted
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 350 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 49 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+CASE_START pair_high_high_2_000
+SHARED 1400 / 3480
+CASE_DONE pair_high_high_2_000 5.033

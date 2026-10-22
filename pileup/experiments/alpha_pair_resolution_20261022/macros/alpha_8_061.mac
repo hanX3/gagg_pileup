@@ -1,0 +1,25 @@
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gagg/run/windowLength 20 us
+/gagg/run/preWindow 5 us
+/gagg/run/postWindow 5 us
+/gagg/run/seed 262220221
+/gagg/run/outputFile /media/sf_works/GAGG_pileup/g4/data/20261022_10h23m55s.root
+/gagg/sipm/configFile /media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/source/brems/g4/configs/sipm_hamamatsu_s13360_6050pe_v2.json
+/gagg/sipm/seed 262320221
+/gagg/sipm/readoutSeed 262420221
+/gagg/sipm/enable true
+/gagg/step/setGaggMaxStep 1 um
+/gagg/step/setMylarFrontMaxStep 0.5 um
+/gagg/step/setMylarSideMaxStep 1 um
+/run/initialize
+/gagg/pileup/enable false
+/gagg/source/useDiskConeSource false
+/gun/particle alpha
+/gun/energy 8.0 MeV
+/gun/position 0 0 0 mm
+/gun/direction 0 0 1
+/gun/time 5 us
+/run/beamOn 1

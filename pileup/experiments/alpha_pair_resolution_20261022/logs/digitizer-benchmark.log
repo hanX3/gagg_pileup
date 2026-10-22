@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/benchmark_digitizer.py", line 66, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/benchmark_digitizer.py", line 53, in main
+    np.testing.assert_array_equal(avalanches[0].last_fire_ns,avalanches[1].last_fire_ns)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AvalancheResult' object has no attribute 'final_last_fire_ns'

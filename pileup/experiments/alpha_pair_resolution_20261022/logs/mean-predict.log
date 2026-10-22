@@ -1,0 +1,24 @@
+usage: replay.py [-h] [--workers WORKERS]
+                 {prepare,mean,native,physical,linear}
+replay.py: error: argument stage: invalid choice: 'predict' (choose from prepare, mean, native, physical, linear)
+Traceback (most recent call last):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/run.py", line 12, in <module>
+    runpy.run_path(str(folder/'replay.py'), run_name='__main__')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay.py", line 11, in <module>
+    main()
+    ~~~~^^
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_fit.py", line 194, in main
+    if args.stage=='predict':predict(args.dataset,args.workers)
+                             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_fit.py", line 85, in predict
+    row=future.result();done[row['index']]=row
+  File "/usr/lib64/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib64/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.

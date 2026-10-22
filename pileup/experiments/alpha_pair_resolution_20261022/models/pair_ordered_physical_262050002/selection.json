@@ -1,0 +1,273 @@
+{
+  "step": 2000,
+  "threshold": 0.5,
+  "objective": 0.6328125,
+  "simple_frame_extra_fraction": 0.03903903903903904,
+  "eligible": true,
+  "summary": {
+    "target_count": 815,
+    "matched_count": 704,
+    "recovered_count": 486,
+    "missed_count": 111,
+    "unmatched_predictions": 17,
+    "merge_flags": 57,
+    "split_flags": 10,
+    "reconstructed_count": 721,
+    "q_failed": 218,
+    "qualified_f1": 0.6328125,
+    "q_error_p16_p50_p84": [
+      -0.1212399925600719,
+      0.00325511587622318,
+      0.26119854264522074
+    ],
+    "q_error_median_abs": 0.09243060737300834,
+    "t_error_ns_p16_p50_p84": [
+      -1.244364013671875,
+      -0.5602493286132812,
+      0.3531207275390625
+    ],
+    "t_error_ns_median_abs": 0.7421875
+  },
+  "grid": [
+    {
+      "threshold": 0.2,
+      "objective": 0.6056511056511057,
+      "simple_frame_extra_fraction": 0.11411411411411411,
+      "eligible": false,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 768,
+        "recovered_count": 493,
+        "missed_count": 47,
+        "unmatched_predictions": 45,
+        "merge_flags": 19,
+        "split_flags": 33,
+        "reconstructed_count": 813,
+        "q_failed": 275,
+        "qualified_f1": 0.6056511056511057,
+        "q_error_p16_p50_p84": [
+          -0.23035465113657774,
+          0.00026545026879931655,
+          0.23220920850355659
+        ],
+        "q_error_median_abs": 0.10773457973252015,
+        "t_error_ns_p16_p50_p84": [
+          -1.26085205078125,
+          -0.5406570434570312,
+          0.6015722656249999
+        ],
+        "t_error_ns_median_abs": 0.7801284790039062
+      }
+    },
+    {
+      "threshold": 0.35,
+      "objective": 0.6353240152477764,
+      "simple_frame_extra_fraction": 0.05105105105105105,
+      "eligible": false,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 736,
+        "recovered_count": 500,
+        "missed_count": 79,
+        "unmatched_predictions": 23,
+        "merge_flags": 38,
+        "split_flags": 14,
+        "reconstructed_count": 759,
+        "q_failed": 236,
+        "qualified_f1": 0.6353240152477764,
+        "q_error_p16_p50_p84": [
+          -0.14567499753280405,
+          0.001984093975026524,
+          0.2505108298178933
+        ],
+        "q_error_median_abs": 0.09486201181231468,
+        "t_error_ns_p16_p50_p84": [
+          -1.2513977050781249,
+          -0.5504150390625,
+          0.44880371093749966
+        ],
+        "t_error_ns_median_abs": 0.7634544372558594
+      }
+    },
+    {
+      "threshold": 0.5,
+      "objective": 0.6328125,
+      "simple_frame_extra_fraction": 0.03903903903903904,
+      "eligible": true,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 704,
+        "recovered_count": 486,
+        "missed_count": 111,
+        "unmatched_predictions": 17,
+        "merge_flags": 57,
+        "split_flags": 10,
+        "reconstructed_count": 721,
+        "q_failed": 218,
+        "qualified_f1": 0.6328125,
+        "q_error_p16_p50_p84": [
+          -0.1212399925600719,
+          0.00325511587622318,
+          0.26119854264522074
+        ],
+        "q_error_median_abs": 0.09243060737300834,
+        "t_error_ns_p16_p50_p84": [
+          -1.244364013671875,
+          -0.5602493286132812,
+          0.3531207275390625
+        ],
+        "t_error_ns_median_abs": 0.7421875
+      }
+    },
+    {
+      "threshold": 0.65,
+      "objective": 0.6246684350132626,
+      "simple_frame_extra_fraction": 0.018018018018018018,
+      "eligible": true,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 684,
+        "recovered_count": 471,
+        "missed_count": 131,
+        "unmatched_predictions": 9,
+        "merge_flags": 62,
+        "split_flags": 3,
+        "reconstructed_count": 693,
+        "q_failed": 213,
+        "qualified_f1": 0.6246684350132626,
+        "q_error_p16_p50_p84": [
+          -0.10288297466863773,
+          0.004319638233995282,
+          0.30520124294176626
+        ],
+        "q_error_median_abs": 0.08791197468343592,
+        "t_error_ns_p16_p50_p84": [
+          -1.2456060791015624,
+          -0.562255859375,
+          0.31600585937500003
+        ],
+        "t_error_ns_median_abs": 0.7373847961425781
+      }
+    },
+    {
+      "threshold": 0.8,
+      "objective": 0.6045883940620783,
+      "simple_frame_extra_fraction": 0.009009009009009009,
+      "eligible": true,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 661,
+        "recovered_count": 448,
+        "missed_count": 154,
+        "unmatched_predictions": 6,
+        "merge_flags": 69,
+        "split_flags": 1,
+        "reconstructed_count": 667,
+        "q_failed": 213,
+        "qualified_f1": 0.6045883940620783,
+        "q_error_p16_p50_p84": [
+          -0.08672088969268715,
+          0.006175479724082944,
+          0.3471503532987107
+        ],
+        "q_error_median_abs": 0.08819166080994645,
+        "t_error_ns_p16_p50_p84": [
+          -1.231732177734375,
+          -0.5623779296875,
+          0.302333068847656
+        ],
+        "t_error_ns_median_abs": 0.734649658203125
+      }
+    },
+    {
+      "threshold": 0.9,
+      "objective": 0.5856655290102389,
+      "simple_frame_extra_fraction": 0.009009009009009009,
+      "eligible": true,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 645,
+        "recovered_count": 429,
+        "missed_count": 170,
+        "unmatched_predictions": 5,
+        "merge_flags": 73,
+        "split_flags": 1,
+        "reconstructed_count": 650,
+        "q_failed": 216,
+        "qualified_f1": 0.5856655290102389,
+        "q_error_p16_p50_p84": [
+          -0.07674916955576656,
+          0.0077814853562951924,
+          0.44280599797128434
+        ],
+        "q_error_median_abs": 0.09274304402766176,
+        "t_error_ns_p16_p50_p84": [
+          -1.23963134765625,
+          -0.572174072265625,
+          0.22099365234375015
+        ],
+        "t_error_ns_median_abs": 0.73394775390625
+      }
+    },
+    {
+      "threshold": 0.95,
+      "objective": 0.5625431928127159,
+      "simple_frame_extra_fraction": 0.009009009009009009,
+      "eligible": true,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 627,
+        "recovered_count": 407,
+        "missed_count": 188,
+        "unmatched_predictions": 5,
+        "merge_flags": 75,
+        "split_flags": 1,
+        "reconstructed_count": 632,
+        "q_failed": 220,
+        "qualified_f1": 0.5625431928127159,
+        "q_error_p16_p50_p84": [
+          -0.045251856303660624,
+          0.012728613081427032,
+          0.5677121309576241
+        ],
+        "q_error_median_abs": 0.09467793167744687,
+        "t_error_ns_p16_p50_p84": [
+          -1.2238348388671876,
+          -0.5738525390625,
+          0.2148498535156252
+        ],
+        "t_error_ns_median_abs": 0.73394775390625
+      }
+    },
+    {
+      "threshold": 0.99,
+      "objective": 0.5138396025550035,
+      "simple_frame_extra_fraction": 0.009009009009009009,
+      "eligible": true,
+      "summary": {
+        "target_count": 815,
+        "matched_count": 590,
+        "recovered_count": 362,
+        "missed_count": 225,
+        "unmatched_predictions": 4,
+        "merge_flags": 81,
+        "split_flags": 0,
+        "reconstructed_count": 594,
+        "q_failed": 228,
+        "qualified_f1": 0.5138396025550035,
+        "q_error_p16_p50_p84": [
+          -0.004009280881133168,
+          0.03290583984681583,
+          0.8719287848276439
+        ],
+        "q_error_median_abs": 0.10332354872731553,
+        "t_error_ns_p16_p50_p84": [
+          -1.2458544921875,
+          -0.5896110534667969,
+          0.18519470214843733
+        ],
+        "t_error_ns_median_abs": 0.7477340698242188
+      }
+    }
+  ]
+}

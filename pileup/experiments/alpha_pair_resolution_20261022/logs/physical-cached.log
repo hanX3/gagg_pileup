@@ -1,0 +1,62 @@
+CACHE_COPY_BEGIN /tmp/gagg-resolution-physical-g84wh1ys
+CACHE_VERIFIED 40
+CACHE_VERIFIED 80
+CACHE_VERIFIED 120
+CACHE_VERIFIED 160
+CACHE_VERIFIED 200
+CACHE_VERIFIED 240
+FROZEN_CHECK_BEGIN
+FROZEN_CHECK_DONE
+WORKER_INIT 9
+WORKER_INIT 6
+WORKER_READY 6
+WORKER_READY 9
+CASE_START pair_low_low_0_000
+CASE_DONE pair_low_low_0_000 22.871
+CASE_START pair_low_low_2_000
+CASE_DONE pair_low_low_2_000 0.693
+CASE_START pair_low_low_4_000
+CASE_DONE pair_low_low_4_000 0.911
+SHARED 100 / 3480
+CASE_START pair_low_low_6_000
+CASE_DONE pair_low_low_6_000 1.249
+CASE_START pair_low_low_8_000
+CASE_DONE pair_low_low_8_000 0.71
+Timeout (0:02:00)!
+Thread 0x00007f85ecb02b80 [python] (most recent call first):
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 232 in map_cells
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/sipm_response.py", line 275 in simulate_avalanches
+  File "/media/sf_works/GAGG_pileup/pileup/experiments/alpha_pair_resolution_20261022/replay-source/pileup/analysis/alpha_pair_resolution_data.py", line 394 in joint_case
+  File "/media/sf_works/GAGG_pileup/jupyter/run_records/alpha_pair_resolution_20261022/physical_cached.py", line 46 in execute
+  File "/usr/lib64/python3.14/concurrent/futures/process.py", line 254 in _process_worker
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 108 in run
+  File "/usr/lib64/python3.14/multiprocessing/process.py", line 320 in _bootstrap
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib64/python3.14/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+Timeout (0:02:00)!
+Thread 0x00007f4eb1d7ab80 [python] (most recent call first):
+  File "/home/xc/.local/share/gagg-pileup/envs/215c00023483/fedora-44-x86_64-py3.14/lib64/python3.14/site-packages/numpy/_core/fromnumeric.py", line ??? in _wrapfunc
+  <invalid frame>
+CASE_START pair_low_low_10_000
+SHARED 200 / 3480
+CASE_DONE pair_low_low_10_000 0.798
+CASE_START pair_low_low_12_000
+CASE_DONE pair_low_low_12_000 0.593
+CASE_START pair_low_low_16_000
+CASE_DONE pair_low_low_16_000 0.727
+SHARED 300 / 3480
+CASE_START pair_low_low_20_000
+CASE_DONE pair_low_low_20_000 0.39
+CASE_START pair_low_low_30_000
+CASE_DONE pair_low_low_30_000 0.855
+CASE_START pair_low_low_40_000
+SHARED 400 / 3480
+CASE_DONE pair_low_low_40_000 0.062
+CASE_START pair_low_low_60_000
+CASE_DONE pair_low_low_60_000 0.06
+CASE_START pair_low_low_80_000
+CASE_DONE pair_low_low_80_000 0.108
+SHARED 500 / 3480
+CASE_START pair_low_low_120_000
+CASE_DONE pair_low_low_120_000 0.067
